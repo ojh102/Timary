@@ -1,0 +1,161 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
+apply plugin: 'io.fabric'
+apply plugin: 'com.getkeepsafe.dexcount'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.github.ojh102.timary"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.appVersionCode
+        versionName rootProject.ext.appVersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../keystore/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+
+        release {
+            keyAlias System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS")
+            keyPassword System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
+            storeFile file(System.getenv("HOME") + "/keystores/my_keystore.jks")
+            storePassword System.getenv("BITRISEIO_ANDROID_KEYSTORE_PASSWORD")
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            versionNameSuffix "-DEBUG"
+            applicationIdSuffix ".debug"
+
+            debuggable true
+            zipAlignEnabled false
+            minifyEnabled false
+            multiDexEnabled true
+        }
+
+        qa {
+            signingConfig signingConfigs.debug
+            versionNameSuffix "-QA"
+            applicationIdSuffix ".qa"
+
+            debuggable true
+            zipAlignEnabled true
+            minifyEnabled true
+            multiDexEnabled false
+            shrinkResources true
+            crunchPngs true
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFiles file('../proguard').listFiles()
+            println(proguardFiles)
+        }
+
+        release {
+            signingConfig null
+
+            debuggable false
+            zipAlignEnabled true
+            minifyEnabled true
+            multiDexEnabled false
+            shrinkResources true
+            crunchPngs true
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFiles file('../proguard').listFiles()
+            println(proguardFiles)
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Timary-${variant.versionName}-${variant.name}-${variant.versionCode}.apk"
+        }
+    }
+
+}
+
+realm {
+    kotlinExtensionsEnabled = true
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
+
+    // Support Lib
+    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:customtabs:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:support-vector-drawable:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLibraryVersion"
+    kapt "com.android.databinding:compiler:$rootProject.androidGradleVersion"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:$rootProject.firebaseVersion"
+    implementation "com.google.firebase:firebase-messaging:$rootProject.firebaseVersion"
+
+    // AAC
+    implementation "android.arch.lifecycle:extensions:$rootProject.archVersion"
+    kapt "android.arch.lifecycle:compiler:$rootProject.archVersion"
+
+    // Lottie
+    implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
+
+    // DI
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rootProject.rxKotlinVersion"
+    implementation "com.jakewharton.rxrelay2:rxrelay:$rootProject.rxRelayVersion"
+
+    // BottomNavigationViewEx
+    implementation "com.github.ittianyu:BottomNavigationViewEx:$rootProject.bottomNavigationViewExVersion"
+
+    // Debug
+    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
+    implementation "com.facebook.stetho:stetho:$rootProject.stethoVersion"
+    implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stethoVersion"
+
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.0@aar') {
+        transitive = true
+    }
+
+    // Test
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$rootProject.runnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+}
+
+apply plugin: 'com.google.gms.google-services'

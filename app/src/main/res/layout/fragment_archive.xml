@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="com.github.ojh102.timary.R"/>
+
+    <variable
+      name="headerText"
+      type="CharSequence"/>
+  </data>
+
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/tv_archive"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="60dp"
+      android:layout_marginLeft="16dp"
+      android:text="꺼낸 기억"
+      android:textAppearance="@style/B28"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:textGradientEnd="@{R.color.deepPurple}"
+      app:textGradientStart="@{R.color.lightPurple}"/>
+
+    <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/tv_archive_header"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="12dp"
+      android:layout_marginLeft="16dp"
+      android:text="@{headerText}"
+      android:textAppearance="@style/N16Grape"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_archive"
+      tools:text="다섯 개의 기억이 타임캡슐에 담겨있습니다."/>
+
+    <View
+      android:id="@+id/line_archive"
+      android:layout_width="0dp"
+      android:layout_height="0.5dp"
+      android:layout_marginTop="16dp"
+      android:background="@color/linePurple"
+      app:layout_constraintTop_toBottomOf="@+id/tv_archive_header"/>
+
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/rv_archive"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/line_archive"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+</layout>

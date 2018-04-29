@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+  </data>
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.LoginActivity">
+
+    <FrameLayout
+      android:id="@+id/container_fragment"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@+id/navigation"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+      android:id="@+id/navigation"
+      android:layout_width="0dp"
+      android:layout_height="52dp"
+      android:background="@color/white"
+      app:itemBackground="@drawable/background_navigation"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:menu="@menu/navigation"/>
+
+    <View
+      android:layout_width="0dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/navigation"
+      android:background="@color/heather"
+      android:layout_height="0.5dp"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+</layout>
+

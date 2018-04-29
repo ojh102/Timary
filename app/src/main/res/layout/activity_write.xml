@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="com.github.ojh102.timary.R"/>
+
+    <variable
+      name="inputs"
+      type="com.github.ojh102.timary.ui.write.content.WriteContract.Inputs"/>
+
+    <variable
+      name="today"
+      type="String"/>
+
+  </data>
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.write.content.WriteActivity">
+
+    <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?android:actionBarSize"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/tv_write"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="4dp"
+      android:layout_marginLeft="16dp"
+      android:text="@{today}"
+      android:textAppearance="@style/B28"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar"
+      app:textGradientEnd="@{R.color.deepPurple}"
+      app:textGradientStart="@{R.color.lightPurple}"
+      tools:text="2018년\n1월7일의 기억"/>
+
+    <ScrollView
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="20dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_write">
+
+      <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/edit_write_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:paddingBottom="32dp"
+        android:background="@null"
+        android:hint="@string/write_hint"
+        android:lineSpacingMultiplier="1.2"
+        android:onTextChanged="@{(text, start, before, count) -> inputs.inputContent(text.toString)}"
+        android:textAppearance="@style/N16Black"
+        android:textColorHint="@color/heather"
+        android:textCursorDrawable="@drawable/cursor_heather"/>
+
+    </ScrollView>
+
+  </android.support.constraint.ConstraintLayout>
+
+</layout>

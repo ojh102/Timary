@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="AppFont" parent="TextAppearance.AppCompat"/>
+
+  <!-- normal -->
+  <style name="AppFont.N">
+    <item name="android:textStyle">normal</item>
+  </style>
+
+  <style name="N10" parent="AppFont.N">
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="N12" parent="AppFont.N">
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="N14" parent="AppFont.N">
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="N15" parent="AppFont.N">
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="N16" parent="AppFont.N">
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="N18" parent="AppFont.N">
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="N20" parent="AppFont.N">
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="N24" parent="AppFont.N">
+    <item name="android:textSize">24sp</item>
+  </style>
+
+  <style name="N40" parent="AppFont.N">
+    <item name="android:textSize">40sp</item>
+  </style>
+
+  <style name="N50" parent="AppFont.N">
+    <item name="android:textSize">60sp</item>
+  </style>
+
+  <style name="N60" parent="AppFont.N">
+    <item name="android:textSize">60sp</item>
+  </style>
+
+
+  <!-- bold -->
+  <style name="AppFont.B" parent="AppFont.N">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="B10" parent="AppFont.B">
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="B12" parent="AppFont.B">
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="B14" parent="AppFont.B">
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="B15" parent="AppFont.B">
+    <item name="android:textSize">15sp</item>
+  </style>
+
+  <style name="B16" parent="AppFont.B">
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="B18" parent="AppFont.B">
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="B20" parent="AppFont.B">
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="B24" parent="AppFont.B">
+    <item name="android:textSize">24sp</item>
+  </style>
+
+  <style name="B28" parent="AppFont.B">
+    <item name="android:textSize">28sp</item>
+  </style>
+
+  <style name="B30" parent="AppFont.B">
+    <item name="android:textSize">30sp</item>
+  </style>
+
+  <style name="B40" parent="AppFont.B">
+    <item name="android:textSize">40sp</item>
+  </style>
+
+
+  <!--heather-->
+  <style name="B12Heather" parent="B12">
+    <item name="android:textColor">@color/heather</item>
+  </style>
+
+  <style name="N14Heather" parent="N14">
+    <item name="android:textColor">@color/heather</item>
+  </style>
+
+  <style name="B14Heather" parent="B14">
+    <item name="android:textColor">@color/heather</item>
+  </style>
+
+  <style name="B16Heather" parent="B16">
+    <item name="android:textColor">@color/heather</item>
+  </style>
+
+  <style name="B18Heather" parent="B18">
+    <item name="android:textColor">@color/heather</item>
+  </style>
+
+
+  <!-- grape -->
+  <style name="N16Grape" parent="N16">
+    <item name="android:textColor">@color/grape</item>
+  </style>
+
+  <style name="B14Grape" parent="B14">
+    <item name="android:textColor">@color/grape</item>
+  </style>
+
+  <style name="B16Grape" parent="B16">
+    <item name="android:textColor">@color/grape</item>
+  </style>
+
+  <style name="N20Grape" parent="N20">
+    <item name="android:textColor">@color/grape</item>
+  </style>
+
+  <style name="B28Grape" parent="B28">
+    <item name="android:textColor">@color/grape</item>
+  </style>
+
+
+  <!-- red-->
+  <style name="N10Red" parent="N10">
+    <item name="android:textColor">@color/red</item>
+  </style>
+
+  <style name="N12Red" parent="N12">
+    <item name="android:textColor">@color/red</item>
+  </style>
+
+  <style name="N14Red" parent="N14">
+    <item name="android:textColor">@color/red</item>
+  </style>
+
+  <style name="N15Red" parent="N15">
+    <item name="android:textColor">@color/red</item>
+  </style>
+
+
+  <!-- black -->
+  <style name="N14Black" parent="N14">
+    <item name="android:textColor">@color/black</item>
+  </style>
+
+  <style name="N16Black" parent="N16">
+    <item name="android:textColor">@color/black</item>
+  </style>
+
+  <style name="B16Black" parent="B16">
+    <item name="android:textColor">@color/black</item>
+  </style>
+
+
+  <!-- warm grey -->
+  <style name="N14WarmGery" parent="N14">
+    <item name="android:textColor">@color/warmGrey</item>
+  </style>
+
+  <!-- greyish brown -->
+  <style name="N15GreyishBrown" parent="N15">
+    <item name="android:textColor">@color/greyishBrown</item>
+  </style>
+
+  <style name="B15GreyishBrown" parent="B15">
+    <item name="android:textColor">@color/greyishBrown</item>
+  </style>
+
+
+  <!-- capsule grey -->
+  <style name="B14CapsuleGrey" parent="B14">
+    <item name="android:textColor">@color/capsuleGrey</item>
+  </style>
+
+  <!-- hint gray -->
+  <style name="N16HintGray" parent="N16">
+    <item name="android:textColor">@color/hintGray</item>
+  </style>
+
+
+  <!-- white -->
+  <style name="N15White" parent="N15">
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="N16White" parent="N16">
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="B12White" parent="B12">
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="B14White" parent="B14">
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="B16White" parent="B16">
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="B16White30" parent="B16">
+    <item name="android:textColor">@color/white_30</item>
+  </style>
+
+  <style name="B18White" parent="B18">
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="B28White" parent="B28">
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+
+  <!-- setting -->
+  <style name="N14SettingGery" parent="N14">
+    <item name="android:textColor">@color/settingGrey</item>
+  </style>
+
+  <style name="N16SettingBlack" parent="N16">
+    <item name="android:textColor">@color/settingBlack</item>
+  </style>
+
+</resources>

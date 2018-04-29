@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="LongTimaryButton">
+    <item name="android:textAppearance">@style/B18White</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">@drawable/btn_text</item>
+    <item name="android:background">@drawable/btn_long</item>
+  </style>
+
+  <style name="TimaryButton">
+    <item name="android:textAppearance">@style/N16White</item>
+    <item name="android:textColor">@drawable/btn_text</item>
+    <item name="android:background">@drawable/btn</item>
+  </style>
+
+  <style name="TimaryDeleteAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <item name="buttonBarNeutralButtonStyle">@style/buttonBarButtonStyle.Neutral</item>
+    <item name="buttonBarNegativeButtonStyle">@style/buttonBarButtonStyle.Negative</item>
+    <item name="buttonBarPositiveButtonStyle">@style/buttonBarButtonStyle.Delete</item>
+  </style>
+
+  <style name="buttonBarButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+  </style>
+
+  <style name="buttonBarButtonStyle.Neutral">
+  </style>
+
+  <style name="buttonBarButtonStyle.Negative">
+    <item name="android:textColor">@color/warmGrey</item>
+  </style>
+
+  <style name="buttonBarButtonStyle.Delete">
+    <item name="android:textColor">@color/red</item>
+  </style>
+
+</resources>

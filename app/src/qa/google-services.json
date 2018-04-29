@@ -1,0 +1,117 @@
+{
+  "project_info": {
+    "project_number": "1074517501187",
+    "firebase_url": "https://timary-650ba.firebaseio.com",
+    "project_id": "timary-650ba",
+    "storage_bucket": "timary-650ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074517501187:android:a80b3cdb5b06a663",
+        "android_client_info": {
+          "package_name": "com.github.ojh102.timary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074517501187-fobj4t11bas8g335en552vjtjljt74og.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.github.ojh102.timary",
+            "certificate_hash": "4bb17ff825843adf9040f244d35211832c360da4"
+          }
+        },
+        {
+          "client_id": "1074517501187-tqhk48hkvhhs7d5e4po167rqash4l6jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsF1Qvkn6Rl8WmCCQ_h12l3YjimpHvVHs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074517501187-tqhk48hkvhhs7d5e4po167rqash4l6jr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074517501187:android:94229b76dcb73f7d",
+        "android_client_info": {
+          "package_name": "com.github.ojh102.timary.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074517501187-tqhk48hkvhhs7d5e4po167rqash4l6jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsF1Qvkn6Rl8WmCCQ_h12l3YjimpHvVHs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074517501187:android:c8b620cca1e35c5b",
+        "android_client_info": {
+          "package_name": "com.github.ojh102.timary.qa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074517501187-tqhk48hkvhhs7d5e4po167rqash4l6jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsF1Qvkn6Rl8WmCCQ_h12l3YjimpHvVHs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

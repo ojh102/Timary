@@ -1,0 +1,1 @@
+-keep class com.github.ojh102.timary.model** { *; }
