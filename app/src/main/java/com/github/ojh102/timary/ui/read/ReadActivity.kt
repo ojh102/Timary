@@ -8,8 +8,8 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivityReadBinding
 import com.github.ojh102.timary.ui.complete.CompleteType
+import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.TimaryParser
-import com.github.ojh102.timary.util.intent.Navigator
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 

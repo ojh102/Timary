@@ -5,9 +5,9 @@
   </data>
   <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="wrap_content"
-    android:paddingLeft="16dp">
+    android:paddingLeft="16dp"
+    android:background="@color/white">
 
     <View
       android:layout_width="0dp"

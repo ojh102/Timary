@@ -8,9 +8,9 @@ import android.view.animation.Animation
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentHomeBinding
+import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.TimaryParser
-import com.github.ojh102.timary.util.intent.Navigator
-import com.github.ojh102.timary.util.resources.TimaryResourcesUtil
+import com.github.ojh102.timary.util.extension.dpToPixel
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
@@ -52,7 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewMode
 
             tv_date.alpha = offsetPercentage
 
-            val bottomMargin = TimaryResourcesUtil.dpToPixel(16f) * offsetPercentage
+            val bottomMargin = context.dpToPixel(16f) * offsetPercentage
 
             val layoutParams = tv_write.layoutParams as ConstraintLayout.LayoutParams
             layoutParams.bottomMargin = bottomMargin.toInt()
@@ -78,16 +78,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewMode
     }
 
     private fun bindObservable() {
-
-        viewModel.outputs.homeCapsuleList()
-//                .subscribeBy(
-//                        onNext = {
-//                            homeAdapter.clear()
-//                            homeAdapter.addItem(HomeHeaderItem(it.size))
-//                            homeAdapter.addItems(it)
-//                        }
-//                )
-
         bind(
                 viewModel.outputs.homeCapsuleList()
                         .subscribeBy(

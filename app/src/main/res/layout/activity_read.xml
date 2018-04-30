@@ -16,7 +16,7 @@
 
     <variable
       name="timaryParser"
-      type="com.github.ojh102.timary.util.TimaryParser" />
+      type="com.github.ojh102.timary.util.TimaryParser"/>
   </data>
 
   <android.support.constraint.ConstraintLayout

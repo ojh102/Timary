@@ -16,7 +16,7 @@ class TimaryDB @Inject constructor(
             val hourMillis = curMillis % (24 * 60 * 60 * 1000)
             val curTime = curMillis - hourMillis
 
-            it.where(Capsule::class.java).greaterThanOrEqualTo("targetDate", curTime).sort("targetDate").findAll()
+            it.where(Capsule::class.java).greaterThanOrEqualTo(FIELD_TARGET_DATE, curTime).sort(FIELD_TARGET_DATE).findAll()
         })
     }
 
@@ -26,13 +26,13 @@ class TimaryDB @Inject constructor(
             val hourMillis = curMillis % (24 * 60 * 60 * 1000)
             val curTime = curMillis - hourMillis
 
-            it.where(Capsule::class.java).lessThanOrEqualTo("targetDate", curTime).sort("targetDate").findAll()
+            it.where(Capsule::class.java).lessThanOrEqualTo(FIELD_TARGET_DATE, curTime).sort(FIELD_TARGET_DATE).findAll()
         })
     }
 
     fun findCapsuleById(id: Long): Observable<Capsule> {
         return TimaryRealmObservableFactory.from(realmConfiguration, {
-            it.where(Capsule::class.java).equalTo("id", id).findAll()
+            it.where(Capsule::class.java).equalTo(FIELD_ID, id).findAll()
         })
     }
 
@@ -44,7 +44,7 @@ class TimaryDB @Inject constructor(
 
     fun deleteCapsuleById(id: Long): Completable {
         return DBTransaction.executeAsync(realmConfiguration, {
-            it.where(Capsule::class.java).equalTo("id", id).findFirst()?.deleteFromRealm()
+            it.where(Capsule::class.java).equalTo(FIELD_ID, id).findFirst()?.deleteFromRealm()
         })
     }
 

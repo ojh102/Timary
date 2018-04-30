@@ -11,9 +11,9 @@ import com.github.ojh102.timary.ui.main.archieve.ArchiveFragment
 import com.github.ojh102.timary.ui.main.home.HomeFragment
 import com.github.ojh102.timary.ui.main.setting.SettingFragment
 import com.github.ojh102.timary.util.extension.addFragment
+import com.github.ojh102.timary.util.extension.dpToPixel
 import com.github.ojh102.timary.util.extension.hideFragment
 import com.github.ojh102.timary.util.extension.showFragment
-import com.github.ojh102.timary.util.resources.TimaryResourcesUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewModel>(),
@@ -64,8 +64,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewMode
         navigation.setTextVisibility(false)
 
         navigation.itemIconTintList = null
-        navigation.itemHeight = TimaryResourcesUtil.dpToPixel(56f)
-        navigation.setIconsMarginTop(TimaryResourcesUtil.dpToPixel(16f))
+        navigation.itemHeight = dpToPixel(56f)
+        navigation.setIconsMarginTop(dpToPixel(16f))
 
         navigation.onNavigationItemSelectedListener = this
     }

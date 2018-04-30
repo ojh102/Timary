@@ -27,12 +27,12 @@
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:background="@drawable/item_store_background"
+      android:checked="@{storeItem.isSelected()}"
       android:gravity="center"
       android:onClick="@{() -> itemSelectedListener.onItemSelect(storeItem, position)}"
       android:text="@{storeItem.text}"
       android:textAlignment="gravity"
       android:textAppearance="@style/N16"
-      android:checked="@{storeItem.isSelected()}"
       android:textColor="@drawable/item_store_text"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
@@ -45,9 +45,9 @@
       android:layout_width="0dp"
       android:layout_height="1dp"
       android:background="@color/heather"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintBottom_toBottomOf="parent"/>
+      app:layout_constraintRight_toRightOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 

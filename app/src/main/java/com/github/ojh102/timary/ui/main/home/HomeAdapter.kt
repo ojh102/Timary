@@ -24,7 +24,7 @@ class HomeAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             TYPE_HEADER -> {
-                HomeHeaderViewHolder(ViewHomeHeaderBinding.inflate(parent.inflater(), parent, false))
+                HomeHeaderViewHolder(ViewHomeHeaderBinding.inflate(parent.inflater(), parent, false), timaryParser)
             }
             TYPE_CLOSED_CAPSULE -> {
                 ClosedCapsuleViewHolder(ViewCapsuleCloseBinding.inflate(parent.inflater(), parent, false), timaryParser)

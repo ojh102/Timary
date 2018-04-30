@@ -8,7 +8,6 @@ import android.text.style.TextAppearanceSpan
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentArchiveBinding
-import com.github.ojh102.timary.util.resources.TimaryResourcesUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
@@ -32,7 +31,8 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding, ArchiveContract.Arc
         super.onActivityCreated(savedInstanceState)
 
         initializeRecyclerView()
-        bindArchive()
+
+        bindObservable()
     }
 
     private fun initializeRecyclerView() {
@@ -42,13 +42,13 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding, ArchiveContract.Arc
         }
     }
 
-    private fun bindArchive() {
+    private fun bindObservable() {
         bind(
                 viewModel.outputs.archiveCapsuleList()
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeBy(
                                 onNext = {
-                                    binding.headerText = SpannableString(TimaryResourcesUtil.getString(R.string.format_archive_header, it.size))
+                                    binding.headerText = SpannableString(context?.getString(R.string.format_archive_header, it.size))
                                             .apply {
                                                 setSpan(TextAppearanceSpan(context, R.style.B16Grape), 0, it.size.toString().length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                                             }

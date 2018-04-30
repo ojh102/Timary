@@ -1,99 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <import type="com.github.ojh102.timary.R" />
+  <data>
+    <import type="com.github.ojh102.timary.R"/>
 
-        <variable
-            name="inputs"
-            type="com.github.ojh102.timary.ui.write.store.StoreContract.Inputs" />
+    <variable
+      name="inputs"
+      type="com.github.ojh102.timary.ui.write.store.StoreContract.Inputs"/>
 
-        <variable
-            name="storeItem"
-            type="com.github.ojh102.timary.ui.write.store.StoreItem" />
+    <variable
+      name="storeItem"
+      type="com.github.ojh102.timary.ui.write.store.StoreItem"/>
 
-        <variable
-            name="timaryParser"
-            type="com.github.ojh102.timary.util.TimaryParser" />
-    </data>
+    <variable
+      name="timaryParser"
+      type="com.github.ojh102.timary.util.TimaryParser"/>
+  </data>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?android:actionBarSize"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/tv_store"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginLeft="16dp"
-            android:text="오늘의 기억을\n언제까지 담아둘까요?"
-            android:textAppearance="@style/B28"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:textGradientEnd="@{R.color.deepPurple}"
-            app:textGradientStart="@{R.color.lightPurple}" />
+    <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/tv_store"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="4dp"
+      android:layout_marginLeft="16dp"
+      android:text="@string/store_title"
+      android:textAppearance="@style/B28"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar"
+      app:textGradientEnd="@{R.color.deepPurple}"
+      app:textGradientStart="@{R.color.lightPurple}"/>
 
-        <View
-            android:id="@+id/line_store"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@color/heather"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_store" />
+    <View
+      android:id="@+id/line_store"
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:layout_marginTop="60dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      android:background="@color/heather"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_store"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_store"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_store_description"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line_store" />
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/rv_store"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginBottom="12dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      app:layout_constraintBottom_toTopOf="@+id/tv_store_description"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/line_store"/>
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/tv_store_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:gravity="center_horizontal"
-            android:lineSpacingMultiplier="1.2"
-            android:text="@{storeItem == null ? null : timaryParser.getStoreText(storeItem.text, storeItem.date)}"
-            android:textAppearance="@style/N15GreyishBrown"
-            app:layout_constraintBottom_toTopOf="@+id/btn_store"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+    <android.support.v7.widget.AppCompatTextView
+      android:id="@+id/tv_store_description"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="12dp"
+      android:gravity="center_horizontal"
+      android:lineSpacingMultiplier="1.2"
+      android:text="@{storeItem == null ? null : timaryParser.getStoreText(storeItem.text, storeItem.date)}"
+      android:textAppearance="@style/N15GreyishBrown"
+      app:layout_constraintBottom_toTopOf="@+id/btn_store"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"/>
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_store"
-            style="@style/LongTimaryButton"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:enabled="@{storeItem != null}"
-            android:onClick="@{() -> inputs.storeCapsule(storeItem)}"
-            android:text="@string/store_memory"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+    <android.support.v7.widget.AppCompatButton
+      android:id="@+id/btn_store"
+      style="@style/LongTimaryButton"
+      android:layout_width="0dp"
+      android:layout_height="56dp"
+      android:enabled="@{storeItem != null}"
+      android:onClick="@{() -> inputs.storeCapsule(storeItem)}"
+      android:text="@string/store_memory"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"/>
 
-    </android.support.constraint.ConstraintLayout>
+  </android.support.constraint.ConstraintLayout>
 
 </layout>

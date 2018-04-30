@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivitySplashBinding
-import com.github.ojh102.timary.util.intent.Navigator
+import com.github.ojh102.timary.util.Navigator
 import io.reactivex.Completable
 import io.reactivex.rxkotlin.subscribeBy
 import java.util.concurrent.TimeUnit
@@ -16,6 +16,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashContract.Splash
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding.inputs = viewModel
 
         bindObservable()
     }

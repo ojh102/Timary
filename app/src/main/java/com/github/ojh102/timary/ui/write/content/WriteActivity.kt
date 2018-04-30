@@ -6,8 +6,8 @@ import android.view.MenuItem
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivityWriteBinding
+import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.TimaryParser
-import com.github.ojh102.timary.util.intent.Navigator
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.rxkotlin.withLatestFrom
 import java.util.*

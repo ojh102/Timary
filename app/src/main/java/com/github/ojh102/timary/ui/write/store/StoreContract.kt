@@ -8,6 +8,7 @@ import com.github.ojh102.timary.util.KEY_CAPSULE_CONTENT
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
@@ -19,7 +20,7 @@ interface StoreContract {
     }
 
     interface Outputs {
-        fun storeDate(): Observable<List<StoreItem>>
+        fun storeDate(): Single<List<StoreItem>>
         fun clickStoreItem(): Observable<Pair<StoreItem, Int>>
         fun completeStoreCapsule(): Observable<Capsule>
     }
@@ -41,7 +42,7 @@ interface StoreContract {
                     .subscribeBy { contentRelay.accept(it) }
         }
 
-        override fun storeDate(): Observable<List<StoreItem>> {
+        override fun storeDate(): Single<List<StoreItem>> {
             return storeDateRepository.getStoreDateList()
         }
 

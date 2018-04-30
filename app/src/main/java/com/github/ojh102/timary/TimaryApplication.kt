@@ -13,19 +13,12 @@ import timber.log.Timber
 
 class TimaryApplication : DaggerApplication() {
 
-    companion object {
-        @JvmStatic
-        lateinit var globalApplicationContext: Context
-    }
-
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerAppComponent.builder().application(this).build()
     }
 
     override fun onCreate() {
         super.onCreate()
-
-        globalApplicationContext = applicationContext
 
         FirebaseApp.initializeApp(this)
         Fabric.with(this, Crashlytics())

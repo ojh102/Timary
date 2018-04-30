@@ -10,7 +10,7 @@
 
     <variable
       name="today"
-      type="String" />
+      type="String"/>
   </data>
 
   <android.support.constraint.ConstraintLayout
@@ -108,7 +108,7 @@
                   android:layout_width="0dp"
                   android:layout_height="64dp"
                   android:gravity="center_vertical"
-                  android:text="오늘은 어떤 기억을 담아둘까?"
+                  android:text="@string/home_hint"
                   android:textAppearance="@style/B16White30"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toLeftOf="@+id/cursor"

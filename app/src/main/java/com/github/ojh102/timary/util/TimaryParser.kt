@@ -3,11 +3,9 @@ package com.github.ojh102.timary.util
 import android.content.Context
 import android.text.Spannable
 import android.text.SpannableString
+import android.text.Spanned
 import android.text.style.TextAppearanceSpan
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.TimaryApplication
-import com.github.ojh102.timary.ui.write.store.StoreItem
-import com.github.ojh102.timary.util.resources.TimaryResourcesUtil
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,15 +32,15 @@ class TimaryParser(private val context: Context) {
         val month = calendar[Calendar.MONTH]
         val day = calendar[Calendar.DAY_OF_MONTH]
 
-        val datToHangul = if (month == 0 && day == 1) {
-            "첫 날"
+        val datText = if (month == 0 && day == 1) {
+            context.getString(R.string.capsule_first_day)
         } else if (month == 11 && day == 31) {
-            "마지막 날"
+            context.getString(R.string.capsule_last_day)
         } else {
             dateToTextMonthDay(writtenDate)
         }
 
-        return "${datToHangul}의 기억"
+        return context.getString(R.string.format_capsule_title_format, datText)
     }
 
     fun dDay(targetDate: Long): Float {
@@ -145,9 +143,9 @@ class TimaryParser(private val context: Context) {
 
         val argText = "$text $dateText"
 
-        val spannableString = SpannableString(TimaryResourcesUtil.getString(R.string.format_store_capsule, argText))
+        val spannableString = SpannableString(context.getString(R.string.format_store_capsule, argText))
         spannableString.setSpan(
-                TextAppearanceSpan(TimaryApplication.globalApplicationContext, R.style.B15GreyishBrown),
+                TextAppearanceSpan(context, R.style.B15GreyishBrown),
                 text.length + 1,
                 argText.length,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -156,87 +154,20 @@ class TimaryParser(private val context: Context) {
         return spannableString
     }
 
+    fun getHeaderText(num: Int): CharSequence {
+        val numString = num.toString()
+        val text = context.getString(R.string.format_home_header, num)
+
+        return SpannableString(text).apply {
+            setSpan(TextAppearanceSpan(context, R.style.B16Grape), 0, numString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+    }
+
+
     private fun getCalendar(date: Long): Calendar {
         return Calendar.getInstance().apply {
             timeInMillis = date
         }
-    }
-
-    fun getNextSeason(): StoreItem {
-
-        val spring = getNextEventDay(Season.SPRING.month, Season.SPRING.day)
-        val summer = getNextEventDay(Season.SUMMER.month, Season.SUMMER.day)
-        val autumn = getNextEventDay(Season.AUTUMN.month, Season.AUTUMN.day)
-        val winter = getNextEventDay(Season.WINTER.month, Season.WINTER.day)
-
-        val targetSeason = listOf(spring, summer, autumn, winter).min()
-
-        return when (targetSeason) {
-            spring -> {
-                StoreItem(context.getString(R.string.store_spring), targetSeason)
-            }
-            summer -> {
-                StoreItem(context.getString(R.string.store_summer), targetSeason)
-            }
-            autumn -> {
-                StoreItem(context.getString(R.string.store_autumn), targetSeason)
-            }
-            winter -> {
-                StoreItem(context.getString(R.string.store_winter), targetSeason)
-            }
-            else -> {
-                throw IllegalStateException("what the fuck")
-            }
-        }
-    }
-
-    fun getLastDayOfYear(): StoreItem {
-        return StoreItem(
-                context.getString(R.string.store_last_day),
-                Calendar.getInstance().apply { set(get(Calendar.YEAR), 11, 31) }.timeInMillis
-        )
-    }
-
-    fun getFirstDayOfYear(): StoreItem {
-        return StoreItem(
-                context.getString(R.string.store_first_day),
-                Calendar.getInstance().apply { set(get(Calendar.YEAR) + 1, 0, 1) }.timeInMillis
-        )
-    }
-
-    fun getRandomDay(): StoreItem {
-        val curCal = Calendar.getInstance()
-
-        val year = curCal.get(Calendar.YEAR)
-
-        val random = Random().apply { setSeed(System.currentTimeMillis()) }
-
-        val ranMonth = random.nextInt(12)
-        val ranDay = random.nextInt(29)
-
-        val targetCal = Calendar.getInstance()
-        targetCal.set(year, ranMonth, ranDay)
-        targetCal.before(curCal)
-        targetCal.set(year + 1, ranMonth, ranDay)
-
-        return StoreItem(context.getString(R.string.store_random), targetCal.timeInMillis)
-    }
-
-    private fun getNextEventDay(targetMonth: Int, targetDay: Int): Long {
-        return Calendar.getInstance().apply {
-
-            val curYear = get(Calendar.YEAR)
-            val curMon = get(Calendar.MONTH)
-            val curDay = get(Calendar.DAY_OF_MONTH)
-
-            val targetYear = if (curMon >= targetMonth && curDay >= targetDay) {
-                curYear + 1
-            } else {
-                curYear
-            }
-
-            set(targetYear, targetMonth, targetDay)
-        }.timeInMillis
     }
 }
 

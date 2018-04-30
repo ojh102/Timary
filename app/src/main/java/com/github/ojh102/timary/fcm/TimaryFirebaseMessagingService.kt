@@ -12,12 +12,12 @@ import android.os.Build.VERSION_CODES.O
 import android.support.annotation.RequiresApi
 import android.support.v4.app.NotificationCompat
 import android.support.v4.app.NotificationManagerCompat
+import android.support.v4.content.ContextCompat
 import com.github.ojh102.timary.BuildConfig
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.db.TimarySharedPreferenceManager
 import com.github.ojh102.timary.ui.splash.SplashActivity
 import com.github.ojh102.timary.util.KEY_SETTING_NOTIFICATION
-import com.github.ojh102.timary.util.resources.TimaryResourcesUtil
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import dagger.android.AndroidInjection
@@ -67,13 +67,13 @@ class TimaryFirebaseMessagingService : FirebaseMessagingService() {
                 PendingIntent.FLAG_ONE_SHOT
         )
 
-        val channelId = TimaryResourcesUtil.getString(R.string.app_name)
+        val channelId = this.getString(R.string.app_name)
 
         val notification = NotificationCompat.Builder(this, channelId)
                 .setSmallIcon(R.drawable.icon_home_off)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .setColor(TimaryResourcesUtil.getColor(R.color.grape))
+                .setColor(ContextCompat.getColor(this, R.color.grape))
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setAutoCancel(true)
                 .setContentTitle(title)
@@ -98,7 +98,7 @@ class TimaryFirebaseMessagingService : FirebaseMessagingService() {
 
         notificationChannel.enableLights(true)
         notificationChannel.enableVibration(true)
-        notificationChannel.lightColor = TimaryResourcesUtil.getColor(R.color.grape)
+        notificationChannel.lightColor = ContextCompat.getColor(this, R.color.grape)
         notificationManager.createNotificationChannel(notificationChannel)
     }
 

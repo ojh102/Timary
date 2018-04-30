@@ -5,12 +5,10 @@ import android.view.animation.*
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivityCompleteBinding
+import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.extension.afterMeasured
-import com.github.ojh102.timary.util.intent.Navigator
-import com.github.ojh102.timary.util.rx.IOTransfer
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_complete.*
-import kotlinx.android.synthetic.main.activity_complete.view.*
 import java.util.concurrent.TimeUnit
 
 class CompleteActivity : BaseActivity<ActivityCompleteBinding, CompleteContract.CompleteViewModel>() {
@@ -33,7 +31,6 @@ class CompleteActivity : BaseActivity<ActivityCompleteBinding, CompleteContract.
 
                 viewModel.outputs.type()
                         .delay(3, TimeUnit.SECONDS)
-                        .compose(IOTransfer())
                         .subscribeBy {
                             if (it == CompleteType.SIGN_UP || it == CompleteType.WRITE) {
                                 Navigator.navigateToMainActivity(this)

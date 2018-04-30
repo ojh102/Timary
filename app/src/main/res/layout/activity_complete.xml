@@ -6,11 +6,11 @@
 
     <variable
       name="title"
-      type="String" />
+      type="String"/>
 
     <variable
       name="description"
-      type="String" />
+      type="String"/>
 
   </data>
 
@@ -30,7 +30,7 @@
       android:textAppearance="@style/B28White"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"/>
 
     <android.support.v7.widget.AppCompatTextView
       android:id="@+id/tv_description"
@@ -44,7 +44,7 @@
       android:textAppearance="@style/N15White"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+      app:layout_constraintTop_toBottomOf="@+id/tv_title"/>
 
     <android.support.v7.widget.AppCompatImageView
       android:id="@+id/iv_logo"
@@ -52,9 +52,9 @@
       android:layout_height="wrap_content"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:srcCompat="@drawable/group"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/group"/>
 
     <com.airbnb.lottie.LottieAnimationView
       android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:lottie_autoPlay="true"
-      app:lottie_fileName="lottie/loading.json" />
+      app:lottie_fileName="lottie/loading.json"/>
 
   </android.support.constraint.ConstraintLayout>
 </layout>

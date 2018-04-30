@@ -1,104 +1,62 @@
 <resources>
-    <string name="app_name_kor">타이머리</string>
+  <string name="app_name_kor">타이머리</string>
 
-    <!--<string name="facebook_app_id">333518870475119</string>-->
-    <!--<string name="fb_login_protocol_scheme">fb333518870475119</string>-->
+  <string name="delete">삭제</string>
+  <string name="write">담아두기</string>
+  <string name="cancel">취소</string>
+  <string name="ok">확인</string>
 
-    <string name="next">다음</string>
-    <string name="delete">삭제</string>
-    <string name="write">담아두기</string>
-    <string name="cancel">취소</string>
-    <string name="complete">완료</string>
-    <string name="ok">확인</string>
+  <string name="splash_title">기억의 타임캡슐</string>
 
-    <string name="login_title">기억의 타임캡슐</string>
+  <string name="setting_title">설정</string>
+  <string name="setting_notification">타임캡슐 꺼냄 알림</string>
+  <string name="setting_notification_sub">기억을 꺼내는 시점에 알림</string>
+  <string name="setting_pin">앱 비밀번호 잠금</string>
+  <string name="setting_pin_sub">타이머리 실행시 비밀번호 입력</string>
+  <string name="setting_pin_change">앱 잠금 비밀번호 변경</string>
+  <string name="setting_term">이용약관</string>
+  <string name="setting_rating">별점주기</string>
+  <string name="setting_maker">만든사람 소개</string>
+  <string name="setting_license">오픈소스 라이선스</string>
 
-    <string name="login">로그인</string>
-    <string name="sign_up">회원가입</string>
-    <string name="email">이메일</string>
-    <string name="email_address">이메일 주소</string>
-    <string name="password">비밀번호</string>
-    <string name="password_find">비밀번호 찾기</string>
+  <string name="format_year">%1$d년</string>
+  <string name="format_dday">%1$s 꺼내기, D-%2$s</string>
+  <string name="format_dday_archive">%1$s에 꺼낸 기억</string>
+  <string name="format_home_header">%1$d개의 기억이\n타임캡슐에 담겨있습니다.</string>
+  <string name="format_archive_header">%1$d개의 기억이 타임캡슐에 담겨있습니다.</string>
+  <string name="format_date_title_memory_with_line">yyyy년\nM월 d일의 기억"</string>
+  <string name="format_date">yyyy년 M월 d일</string>
+  <string name="format_date_month_day">M월 d일</string>
+  <string name="format_delete_capsule_title">%1$s을\n지웠습니다</string>
+  <string name="format_write_capsule_title">%1$s에\n기억을 꺼냅니다</string>
+  <string name="format_store_capsule">%1$s까지\n기억을 담아둡니다</string>
+  <string name="format_store_calendar_select">달력에서 선택한</string>
+  <string name="format_click_capsule_close">기억을 %1$d일 후에 꺼낼 수 있습니다.</string>
+  <string name="format_capsule_title_format">%1$s의 기억</string>
 
-    <string name="term_title">이용약관</string>
+  <string name="read_delete_title">기억 지우기</string>
+  <string name="read_delete_message">기억을 지우면 다시 되돌릴 수 없습니다. 기억을 지우시겠습니까?</string>
+  <string name="write_hint">오늘은 어떤 기억을 담아둘까?</string>
 
-    <string name="login_error_email">잘못된 이메일 형식입니다</string>
-    <string name="login_error_password">비밀번호가 틀렸습니다</string>
+  <string name="store_title">오늘의 기억을\n언제까지 담아둘까요?</string>
+  <string name="store_memory">기억 담아두기</string>
+  <string name="store_calendar">달력에서 직접 선택</string>
+  <string name="store_calendar_selected">달력에서 선택한 </string>
+  <string name="store_spring">다음 봄이 시작되는 날</string>
+  <string name="store_summer">다음 여름이 시작되는 날</string>
+  <string name="store_autumn">다음 가을이 시작되는 날</string>
+  <string name="store_winter">다음 겨울이 시작되는 날</string>
+  <string name="store_last_day">올해의 마지막 날</string>
+  <string name="store_first_day">내년 첫 날</string>
+  <string name="store_random">아무때나</string>
 
-    <string name="sign_up_name_title">이름이 뭐에요?</string>
-    <string name="sign_up_name_hint">이름을 입력해주세요</string>
-    <string name="sign_up_term">서비스 이용약관과 정책</string>
-    <string name="sign_up_invalid_email">잘못된 이메일 형식입니다</string>
+  <string name="today">오늘</string>
 
-    <string name="sign_up_email_password_title">이메일과 비밀번호를\n알려주세요</string>
-    <string name="sign_up_authentication_title">인증 이메일을\n보냈습니다</string>
+  <string name="capsule_open_title">타임캡슐이 열렸습니다</string>
+  <string name="capsule_open">기억 꺼내기</string>
+  <string name="capsule_first_day">첫 날</string>
+  <string name="capsule_last_day">마지막 날</string>
 
-    <string name="authentication_normal">"인증코드를 4자리 입력해 주세요.</string>
-    <string name="authentication_error">"인증코드가 일치하지 않습니다. 다시입력해주세요.</string>
-
-    <string name="complete_sign_up">"가입완료"</string>
-    <string name="complete_delete">%1$s의 기억을 지웠습니다</string>
-    <string name="complete_write">%1$s에 기억을 꺼냅니다</string>
-    <string name="complete_sign_up_description">%1$s님을 위한\n기억의 타임캡슐을 만들었습니다</string>
-
-    <string name="setting_notification">타임캡슐 꺼냄 알림</string>
-    <string name="setting_notification_sub">기억을 꺼내는 시점에 알림</string>
-    <string name="setting_pin">앱 비밀번호 잠금</string>
-    <string name="setting_pin_sub">타이머리 실행시 비밀번호 입력</string>
-    <string name="setting_pin_change">앱 잠금 비밀번호 변경</string>
-    <string name="setting_term">이용약관</string>
-    <string name="setting_rating">별점주기</string>
-    <string name="setting_maker">만든사람 소개</string>
-    <string name="setting_license">오픈소스 라이선스</string>
-    <string name="setting_password">계정 비밀번호 변경</string>
-    <string name="logout">로그아웃</string>
-
-    <string name="format_year">%1$d년</string>
-
-    <string name="format_dday">%1$s 꺼내기, D-%2$s</string>
-    <string name="format_dday_archive">%1$s에 꺼낸 기억</string>
-
-    <string name="format_home_header">%1$s개의 기억이\n타임캡슐에 담겨있습니다.</string>
-    <string name="format_archive_header">%1$d개의 기억이 타임캡슐에 담겨있습니다.</string>
-    <string name="format_date_title_memory_with_line">yyyy년\nM월 d일의 기억"</string>
-    <string name="format_date">yyyy년 M월 d일</string>
-    <string name="format_date_month_day">M월 d일</string>
-    <string name="format_delete_capsule_title">%1$s을\n지웠습니다</string>
-    <string name="format_write_capsule_title">%1$s에\n기억을 꺼냅니다</string>
-    <string name="format_store_capsule">%1$s까지\n기억을 담아둡니다</string>
-    <string name="format_sign_up_term">%1$s에\n동의하고 회원가입을 진행합니다.</string>
-    <string name="format_authentication_resend">%1$s으로 인증메일을 다시 전송했습니다.</string>
-    <string name="format_login_missing_password_resend">%1$s로 임시 비밀번호를 다시 보냈습니다.</string>
-    <string name="format_click_capsule_close">기억을 %1$d일 후에 꺼낼 수 있습니다.</string>
-
-    <string name="read_delete_title">기억 지우기</string>
-    <string name="read_delete_message">기억을 지우면 다시 되돌릴 수 없습니다. 기억을 지우시겠습니까?</string>
-    <string name="write_hint">오늘은 어떤 기억을 담아둘까?</string>
-
-    <string name="store_memory">기억 담아두기</string>
-    <string name="store_calendar">달력에서 직접 선택</string>
-    <string name="store_spring">다음 봄이 시작되는 날</string>
-    <string name="store_summer">다음 여름이 시작되는 날</string>
-    <string name="store_autumn">다음 가을이 시작되는 날</string>
-    <string name="store_winter">다음 겨울이 시작되는 날</string>
-    <string name="store_last_day">올해의 마지막 날</string>
-    <string name="store_first_day">내년 첫 날</string>
-    <string name="store_random">아무때나</string>
-    <string name="email_not_receive">이메일을 받지 못하셨나요?</string>
-    <string name="email_resend">이메일 재전송</string>
-
-    <string name="login_missing_password_title">비밀번호를 잊으셨나요?</string>
-    <string name="login_missing_password_please_email">이메일 주소를 입력해주세요.</string>
-    <string name="login_missing_paaword_not_registration_email">등록되지 않은 이메일 주소입니다</string>
-    <string name="login_missing_password_confirm_title">이메일로 임시 비밀번호를 보냈습니다</string>
-    <string name="login_missing_password_confirm_desc">임시 비밀번호로 로그인 후 비밀번호를 변경해주세요.</string>
-    <string name="setting_password_error">비밀번호가 틀렸습니다.</string>
-    <string name="setting_password_origin_title">기존 비밀번호를\n입력해주세요</string>
-    <string name="setting_password_new_title">새로운 비밀번호를\n입력해주세요</string>
-    <string name="setting_password_complete_title">비밀번호가\n변경되었습니다</string>
-    <string name="today">오늘</string>
-    <string name="capsule_open_title">타임캡슐이 열렸습니다</string>
-    <string name="capsule_open">기억 꺼내기</string>
-    <string name="setting_logout_alert">로그아웃 하시겠습니까?</string>
-
+  <string name="archive_title">꺼낸 기억</string>
+  <string name="home_hint">오늘은 어떤 기억을 담아둘까?</string>
 </resources>

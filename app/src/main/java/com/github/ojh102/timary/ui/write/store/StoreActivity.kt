@@ -7,9 +7,9 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivityStoreBinding
 import com.github.ojh102.timary.ui.complete.CompleteType
+import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.TimaryParser
 import com.github.ojh102.timary.util.extension.toast
-import com.github.ojh102.timary.util.intent.Navigator
 import com.github.ojh102.timary.util.rx.IOTransfer
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_store.*
@@ -53,7 +53,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
     private fun bindObservable() {
         bind(
                 viewModel.outputs.storeDate()
-                        .subscribe {
+                        .subscribeBy {
                             storeAdapter.setItems(it)
                         },
 
@@ -93,7 +93,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
                 set(year, month, day)
             }
 
-            binding.storeItem = StoreItem("달력에서 선택한 ", selectedCal.timeInMillis)
+            binding.storeItem = StoreItem(getString(R.string.store_calendar_selected), selectedCal.timeInMillis)
 
         }, cal[Calendar.YEAR], cal[Calendar.MONTH], cal[Calendar.DAY_OF_MONTH]).apply {
             setCancelable(false)

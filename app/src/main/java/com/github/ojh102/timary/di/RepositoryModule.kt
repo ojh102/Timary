@@ -6,7 +6,6 @@ import com.github.ojh102.timary.db.TimarySharedPreferenceManager
 import com.github.ojh102.timary.repository.CapsuleRepository
 import com.github.ojh102.timary.repository.SettingRepository
 import com.github.ojh102.timary.repository.StoreDateRepository
-import com.github.ojh102.timary.util.TimaryParser
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -28,8 +27,8 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideStoreDateRepository(context: Context, timaryParser: TimaryParser): StoreDateRepository {
-        return StoreDateRepository(context, timaryParser)
+    fun provideStoreDateRepository(context: Context): StoreDateRepository {
+        return StoreDateRepository(context)
     }
 
 }
