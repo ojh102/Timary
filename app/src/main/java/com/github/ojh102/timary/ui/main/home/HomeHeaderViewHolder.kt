@@ -6,7 +6,7 @@ import com.github.ojh102.timary.util.TimaryParser
 
 class HomeHeaderViewHolder(
         private val binding: ViewHomeHeaderBinding,
-        private val timaryParser: TimaryParser
+        timaryParser: TimaryParser
 ) : BaseViewHolder<HomeHeaderItem>(binding) {
 
     init {

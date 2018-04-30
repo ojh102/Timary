@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.fcm
+package com.github.ojh102.timary.service
 
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.FirebaseInstanceIdService

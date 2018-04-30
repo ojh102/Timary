@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.di
 
-import com.github.ojh102.timary.fcm.TimaryFirebaseMessagingService
+import com.github.ojh102.timary.service.TimaryFirebaseMessagingService
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

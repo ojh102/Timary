@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.fcm
+package com.github.ojh102.timary.service
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

@@ -7,7 +7,6 @@ import com.github.ojh102.timary.db.TimaryDB
 import com.github.ojh102.timary.db.TimaryRealmMigration
 import com.github.ojh102.timary.db.TimaryRealmScheme
 import com.github.ojh102.timary.db.TimarySharedPreferenceManager
-import com.github.ojh102.timary.util.TimaryParser
 import dagger.Module
 import dagger.Provides
 import io.realm.RealmConfiguration
@@ -52,11 +51,4 @@ class DBModule {
     fun provideTimaryDB(realmConfiguration: RealmConfiguration): TimaryDB {
         return TimaryDB(realmConfiguration)
     }
-
-    @Singleton
-    @Provides
-    fun provideTimaryParser(context: Context): TimaryParser {
-        return TimaryParser(context)
-    }
-
 }

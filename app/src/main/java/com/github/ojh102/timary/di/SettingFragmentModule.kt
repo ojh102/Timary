@@ -2,15 +2,13 @@ package com.github.ojh102.timary.di
 
 import com.github.ojh102.timary.annotation.FragmentScope
 import com.github.ojh102.timary.ui.main.setting.SettingAdapter
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module
-class SettingFragmentModule {
+abstract class SettingFragmentModule {
 
     @FragmentScope
-    @Provides
-    fun provideSettingAdapter(): SettingAdapter {
-        return SettingAdapter()
-    }
+    @Binds
+    abstract fun bindSettingAdapter(settingAdapter: SettingAdapter): SettingAdapter
 }

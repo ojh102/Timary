@@ -51,13 +51,13 @@
       android:name=".ui.common.TextActivity"
       android:screenOrientation="portrait"/>
 
-    <service android:name=".fcm.TimaryFirebaseMessagingService">
+    <service android:name=".service.TimaryFirebaseMessagingService">
       <intent-filter>
         <action android:name="com.google.firebase.MESSAGING_EVENT"/>
       </intent-filter>
     </service>
 
-    <service android:name=".fcm.TimaryFirebaseInstanceIdService">
+    <service android:name=".service.TimaryFirebaseInstanceIdService">
       <intent-filter>
         <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
       </intent-filter>

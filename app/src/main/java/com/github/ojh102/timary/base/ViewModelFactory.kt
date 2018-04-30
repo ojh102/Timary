@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.di
+package com.github.ojh102.timary.base
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
