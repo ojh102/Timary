@@ -1,31 +1,25 @@
 ext {
     buildVersionCode = {
-        def candidate = "99"
-
-        def (major, minor, patch) = timaryVersion.toLowerCase().replaceAll('-', '').tokenize('.')
-
-        if (patch.endsWith("debug")) {
-            candidate = "0"
-            patch = patch.replaceAll("[^0-9]", "")
-        } else {
-            def qa
-            (patch, qa) = patch.tokenize("qa")
-
-            if (qa) {
-                candidate = qa
-            }
+        def (major, minor, patch) = timaryVersion.toLowerCase().replaceAll('-', '').tokenize('.').collect {
+            it.toInteger()
         }
 
-        (major, minor, patch, candidate) = [major, minor, patch, candidate].collect { it.toInteger() }
+        def screenVersion = supportedScreenSize.toInteger()
 
-        (major * 1000000) + (minor * 10000) + (patch * 100) + candidate
+        def resultVersionCode = (minSdkVersion * 10000000) + (screenVersion * 100000) + (major * 10000) + (minor * 100) + (patch * 1)
+        println("versionCode = ${resultVersionCode}")
+        resultVersionCode
     }
 
     buildVersionName = { versionName, buildNumber ->
-        return "${versionName}-${buildNumber}"
+        def resultVersionName = "${versionName}.${buildNumber}"
+        println("versionName = ${resultVersionName}")
+        resultVersionName
     }
 
     getApkName = { versionName, buildType, buildNumber ->
-        "timary-${versionName}-${buildType}-${buildNumber}.apk"
+        def resultApkName = "timary-${versionName}.${buildNumber}-${buildType}.apk"
+        println("apkName = ${resultApkName}")
+        resultApkName
     }
 }

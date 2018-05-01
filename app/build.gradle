@@ -48,7 +48,6 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
-            versionNameSuffix "-DEBUG"
             applicationIdSuffix ".debug"
 
             debuggable true
@@ -59,7 +58,6 @@ android {
 
         qa {
             signingConfig signingConfigs.debug
-            versionNameSuffix "-QA"
             applicationIdSuffix ".qa"
 
             debuggable true
