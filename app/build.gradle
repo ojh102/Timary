@@ -8,7 +8,7 @@ apply plugin: 'com.getkeepsafe.dexcount'
 apply from: '../versioning.gradle'
 
 def rawBuildNumber = System.getenv("BITRISE_BUILD_NUMBER") ?: "0"
-def buildQualifier = Integer.parseInt(rawBuildNumber)
+def buildNumber = Integer.parseInt(rawBuildNumber)
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -96,11 +96,11 @@ android {
         }
 
         variant.outputs.each { output ->
-            output.versionNameOverride = buildVersionName(timaryVersion, buildQualifier)
+            output.versionNameOverride = buildVersionName(timaryVersion, buildNumber)
         }
 
         variant.outputs.all {
-            outputFileName = getApkName(timaryVersion, variant.buildType.name, buildQualifier)
+            outputFileName = getApkName(timaryVersion, variant.buildType.name, buildNumber)
         }
     }
 }

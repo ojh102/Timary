@@ -21,11 +21,11 @@ ext {
         (major * 1000000) + (minor * 10000) + (patch * 100) + candidate
     }
 
-    buildVersionName = { versionName, buildQualifier ->
-        return versionName + buildQualifier
+    buildVersionName = { versionName, buildNumber ->
+        return "${versionName}-${buildNumber}"
     }
 
-    getApkName = { versionName, buildType, buildQualifier ->
-        "timary-${versionName}-${buildType}-${buildQualifier}.apk"
+    getApkName = { versionName, buildType, buildNumber ->
+        "timary-${versionName}-${buildType}-${buildNumber}.apk"
     }
 }
