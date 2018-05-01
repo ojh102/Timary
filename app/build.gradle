@@ -5,6 +5,10 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'realm-android'
 apply plugin: 'io.fabric'
 apply plugin: 'com.getkeepsafe.dexcount'
+apply from: '../versioning.gradle'
+
+def rawBuildNumber = System.getenv("BITRISE_BUILD_NUMBER") ?: "0"
+def buildQualifier = Integer.parseInt(rawBuildNumber)
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -13,8 +17,6 @@ android {
         applicationId "com.github.ojh102.timary"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.appVersionCode
-        versionName rootProject.ext.appVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -89,11 +91,18 @@ android {
     }
 
     applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.versionCodeOverride = buildVersionCode(timaryVersion)
+        }
+
+        variant.outputs.each { output ->
+            output.versionNameOverride = buildVersionName(timaryVersion, buildQualifier)
+        }
+
         variant.outputs.all {
-            outputFileName = "Timary-${variant.versionName}-${variant.name}-${variant.versionCode}.apk"
+            outputFileName = getApkName(timaryVersion, variant.buildType.name, buildQualifier)
         }
     }
-
 }
 
 realm {
