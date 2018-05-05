@@ -9,7 +9,7 @@ buildscript {
         kotlinVersion = '1.2.41'
         supportLibraryVersion = '27.1.1'
         googleServiceVersion = '3.2.0'
-        firebaseVersion = '15.0.0'
+        firebaseVersion = '15.0.2'
         constraintLibraryVersion = '1.1.0'
         archVersion = '1.1.1'
         realmVersion = "5.1.0"
