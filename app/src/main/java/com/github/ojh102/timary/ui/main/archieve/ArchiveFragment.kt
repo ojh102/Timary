@@ -1,7 +1,7 @@
 package com.github.ojh102.timary.ui.main.archieve
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.TextAppearanceSpan
@@ -37,7 +37,7 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding, ArchiveContract.Arc
 
     private fun initializeRecyclerView() {
         binding.rvArchive.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
             adapter = archiveAdapter
         }
     }

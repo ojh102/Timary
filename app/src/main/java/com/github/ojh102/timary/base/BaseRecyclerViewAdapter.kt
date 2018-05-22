@@ -1,8 +1,8 @@
 package com.github.ojh102.timary.base
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+abstract class BaseRecyclerViewAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     protected val items = mutableListOf<Any>()
 
@@ -10,8 +10,8 @@ abstract class BaseRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewH
         return items.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(holder.adapterPosition != RecyclerView.NO_POSITION) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
+        if(holder.adapterPosition != androidx.recyclerview.widget.RecyclerView.NO_POSITION) {
             (holder as? BaseViewHolder<*>)?.onBindViewHolder(items[position])
         }
     }

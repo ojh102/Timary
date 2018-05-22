@@ -17,7 +17,7 @@ android {
         applicationId "com.github.ojh102.timary"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     dataBinding {
@@ -113,24 +113,21 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
 
-    // Support Lib
-    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:customtabs:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:support-vector-drawable:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLibraryVersion"
-    kapt "com.android.databinding:compiler:$rootProject.androidGradleVersion"
+    // Android Jetpack
+    implementation "androidx.appcompat:appcompat:$rootProject.androidXVersion1"
+    implementation "androidx.vectordrawable:vectordrawable:$rootProject.androidXVersion1"
+    implementation "androidx.annotation:annotation:$rootProject.androidXVersion1"
+    implementation "com.google.android.material:material:$rootProject.androidXVersion1"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.androidXVersion1"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLibraryVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.androidXVersion2"
+    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.androidXVersion2"
+    kapt "androidx.databinding:databinding-compiler:$rootProject.androidGradleVersion"
 
     // Firebase
     implementation "com.google.firebase:firebase-core:$rootProject.firebaseVersion"
     implementation "com.google.firebase:firebase-messaging:$rootProject.firebaseVersion"
 
-    // AAC
-    implementation "android.arch.lifecycle:extensions:$rootProject.archVersion"
-    kapt "android.arch.lifecycle:compiler:$rootProject.archVersion"
 
     // Lottie
     implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
@@ -161,8 +158,8 @@ dependencies {
 
     // Test
     testImplementation "junit:junit:$rootProject.junitVersion"
-    androidTestImplementation "com.android.support.test:runner:$rootProject.runnerVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test:runner:$rootProject.runnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
 }
 
 apply plugin: 'com.google.gms.google-services'

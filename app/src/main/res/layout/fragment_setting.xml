@@ -11,12 +11,12 @@
 
   </data>
 
-  <android.support.constraint.ConstraintLayout
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_setting"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
       app:textGradientEnd="@{R.color.deepPurple}"
       app:textGradientStart="@{R.color.lightPurple}"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rv_setting"
       android:layout_width="0dp"
       android:layout_height="0dp"
@@ -40,6 +40,6 @@
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/tv_setting"/>
 
-  </android.support.constraint.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -1,8 +1,8 @@
 package com.github.ojh102.timary.base
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import android.content.Intent
-import android.support.annotation.CheckResult
+import androidx.annotation.CheckResult
 import com.github.ojh102.timary.util.RequestCode
 import com.github.ojh102.timary.util.ResultCode
 import com.jakewharton.rxrelay2.PublishRelay

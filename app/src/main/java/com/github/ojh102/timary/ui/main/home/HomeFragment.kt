@@ -1,16 +1,18 @@
 package com.github.ojh102.timary.ui.main.home
 
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
-import android.support.v7.widget.LinearLayoutManager
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import com.github.ojh102.timary.R
+import com.github.ojh102.timary.R.id.*
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentHomeBinding
 import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.TimaryParser
 import com.github.ojh102.timary.util.extension.dpToPixel
+import com.google.android.material.appbar.AppBarLayout
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
@@ -47,17 +49,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewMode
     private fun initializeAppbar() {
         binding.today = timaryParser.dateToTitleWithLine(Date().time)
 
-        appbar.addOnOffsetChangedListener { appBarLayout, _ ->
+        appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, _ ->
             val offsetPercentage = (1 - (appBarLayout.y / appBarLayout.totalScrollRange) * -1)
 
             tv_date.alpha = offsetPercentage
 
             val bottomMargin = context.dpToPixel(16f) * offsetPercentage
 
-            val layoutParams = tv_write.layoutParams as ConstraintLayout.LayoutParams
+            val layoutParams = tv_write.layoutParams as androidx.constraintlayout.widget.ConstraintLayout.LayoutParams
             layoutParams.bottomMargin = bottomMargin.toInt()
             tv_write.layoutParams = layoutParams
-        }
+        })
 
         cursor.run {
             animation = AlphaAnimation(0f, 1f).apply {
@@ -72,7 +74,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewMode
 
     private fun initializeRecyclerView() {
         rv_capsule.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
             adapter = homeAdapter
         }
     }

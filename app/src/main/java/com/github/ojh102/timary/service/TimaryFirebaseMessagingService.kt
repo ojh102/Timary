@@ -9,10 +9,10 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.O
-import android.support.annotation.RequiresApi
-import android.support.v4.app.NotificationCompat
-import android.support.v4.app.NotificationManagerCompat
-import android.support.v4.content.ContextCompat
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import com.github.ojh102.timary.BuildConfig
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.db.TimarySharedPreferenceManager

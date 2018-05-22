@@ -1,7 +1,7 @@
 package com.github.ojh102.timary.ui.main.setting
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSettingBinding
@@ -32,7 +32,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingContract.Set
 
     private fun initializeRecyclerView() {
         rv_setting.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
             adapter = settingAdapter
         }
     }

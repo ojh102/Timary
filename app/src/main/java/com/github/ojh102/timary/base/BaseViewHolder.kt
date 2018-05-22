@@ -1,11 +1,11 @@
 package com.github.ojh102.timary.base
 
-import android.databinding.ViewDataBinding
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseViewHolder<in ITEM : Any>(
         binding: ViewDataBinding
-) : RecyclerView.ViewHolder(binding.root) {
+) : androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root) {
 
     @Suppress("UNCHECKED_CAST")
     fun onBindViewHolder(item: Any?) {

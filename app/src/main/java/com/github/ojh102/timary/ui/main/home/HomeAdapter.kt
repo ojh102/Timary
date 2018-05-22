@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.ui.main.home
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import com.github.ojh102.timary.base.BaseRecyclerViewAdapter
 import com.github.ojh102.timary.databinding.ViewCapsuleCloseBinding
@@ -21,7 +21,7 @@ class HomeAdapter(
         const val TYPE_OPENED_CAPSULE = 102
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         return when (viewType) {
             TYPE_HEADER -> {
                 HomeHeaderViewHolder(ViewHomeHeaderBinding.inflate(parent.inflater(), parent, false), timaryParser)

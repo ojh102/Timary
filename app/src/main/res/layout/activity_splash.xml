@@ -9,13 +9,13 @@
       type="com.github.ojh102.timary.ui.splash.SplashContract.Inputs"/>
   </data>
 
-  <android.support.constraint.ConstraintLayout
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".ui.splash.SplashActivity">
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/logo"
       android:layout_width="52dp"
       android:layout_height="52dp"
@@ -26,7 +26,7 @@
       app:layout_constraintRight_toRightOf="parent"
       app:srcCompat="@drawable/positive"/>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/line_logo"
       android:layout_width="42dp"
       android:layout_height="5dp"
@@ -36,7 +36,7 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"/>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/iv_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
       app:layout_constraintRight_toRightOf="parent"
       app:srcCompat="@drawable/logo_type_timary"/>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/container_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent">
 
-      <android.support.v7.widget.AppCompatTextView
+      <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
-      <android.support.v7.widget.AppCompatTextView
+      <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title_sub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,10 +75,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-  </android.support.constraint.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
 

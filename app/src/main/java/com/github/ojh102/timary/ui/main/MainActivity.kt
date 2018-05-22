@@ -1,7 +1,7 @@
 package com.github.ojh102.timary.ui.main
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.view.MenuItem
 import android.view.WindowManager
 import com.github.ojh102.timary.R
@@ -17,7 +17,7 @@ import com.github.ojh102.timary.util.extension.showFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewModel>(),
-        BottomNavigationView.OnNavigationItemSelectedListener {
+        com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener {
 
     override fun getLayoutRes() = R.layout.activity_main
     override fun getModelClass() = MainContract.MainViewModel::class.java

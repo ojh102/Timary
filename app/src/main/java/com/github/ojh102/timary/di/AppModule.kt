@@ -1,7 +1,7 @@
 package com.github.ojh102.timary.di
 
 import android.app.Application
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider
 import android.content.Context
 import com.github.ojh102.timary.base.ViewModelFactory
 import com.github.ojh102.timary.util.TimaryParser

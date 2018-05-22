@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.ui.main.setting
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import com.github.ojh102.timary.base.BaseRecyclerViewAdapter
 import com.github.ojh102.timary.databinding.ViewSettingDeepLineBinding
@@ -18,7 +18,7 @@ class SettingAdapter : BaseRecyclerViewAdapter() {
         const val TYPE_DEEP_LINE = 103
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         when (viewType) {
             TYPE_SWITCH -> {
                 return SwitchViewHolder(ViewSettingSwitchBinding.inflate(parent.inflater(), parent, false))

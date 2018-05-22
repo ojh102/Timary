@@ -2,7 +2,7 @@ package com.github.ojh102.timary.ui.write.store
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivityStoreBinding
@@ -46,7 +46,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
     }
 
     private fun initializeRecyclerView() {
-        rv_store.layoutManager = LinearLayoutManager(this)
+        rv_store.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         rv_store.adapter = storeAdapter
     }
 

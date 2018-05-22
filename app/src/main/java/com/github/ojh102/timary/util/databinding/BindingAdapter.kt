@@ -1,15 +1,15 @@
 package com.github.ojh102.timary.util.databinding
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.graphics.drawable.ColorDrawable
-import android.support.annotation.StringRes
-import android.support.annotation.StyleRes
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewCompat
-import android.support.v4.widget.TextViewCompat
-import android.support.v7.content.res.AppCompatResources
+import androidx.annotation.StringRes
+import androidx.annotation.StyleRes
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.widget.TextViewCompat
+import androidx.appcompat.content.res.AppCompatResources
 import android.text.method.MovementMethod
 import android.view.View
 import android.widget.TextView

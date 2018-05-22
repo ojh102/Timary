@@ -1,7 +1,7 @@
 package com.github.ojh102.timary.ui.write.store
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseRecyclerViewAdapter
@@ -19,7 +19,7 @@ class StoreAdapter(
 
     var callbacks : Callbacks? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val binding = ViewStoreBinding.inflate(parent.inflater(), parent, false)
 
         binding.itemSelectedListener = object : StoreViewHolder.OnItemSelectedListener {

@@ -4,11 +4,10 @@ import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.os.Handler
-import android.support.annotation.IdRes
-import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.app.Fragment
-import android.support.v4.util.Pair
-import android.support.v7.app.AppCompatActivity
+import androidx.annotation.IdRes
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
+import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,26 +23,26 @@ fun Context.toast(message: String?, duration: Int = Toast.LENGTH_SHORT) {
     }
 }
 
-fun AppCompatActivity.addFragment(@IdRes containerViewId: Int, fragment: Fragment, tag: String) {
+fun AppCompatActivity.addFragment(@IdRes containerViewId: Int, fragment: androidx.fragment.app.Fragment, tag: String) {
     supportFragmentManager.beginTransaction()
             .add(containerViewId, fragment, tag)
             .commitNow()
 }
 
 fun AppCompatActivity.showFragment(tag: String) {
-    val fragment = supportFragmentManager.findFragmentByTag(tag)
-
-    supportFragmentManager.beginTransaction()
-            .show(fragment)
-            .commitNow()
+    supportFragmentManager.findFragmentByTag(tag)?.let {
+        supportFragmentManager.beginTransaction()
+                .show(it)
+                .commitNow()
+    }
 }
 
 fun AppCompatActivity.hideFragment(tag: String) {
-    val fragment = supportFragmentManager.findFragmentByTag(tag)
-
-    supportFragmentManager.beginTransaction()
-            .hide(fragment)
-            .commitNow()
+    supportFragmentManager.findFragmentByTag(tag)?.let {
+        supportFragmentManager.beginTransaction()
+                .hide(it)
+                .commitNow()
+    }
 }
 
 fun AppCompatActivity.startActivityWithTransition(intent: Intent, vararg views: View) {

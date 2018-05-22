@@ -10,7 +10,7 @@
       type="com.github.ojh102.timary.ui.main.setting.TitleItem"/>
   </data>
 
-  <android.support.constraint.ConstraintLayout
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:paddingLeft="16dp"
@@ -19,7 +19,7 @@
     android:foreground="?android:selectableItemBackground"
     android:onClick="@{titleItem.onClickListener}">
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -30,6 +30,6 @@
       app:layout_constraintTop_toTopOf="parent"
       tools:text="개인정보 보호약관"/>
 
-  </android.support.constraint.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

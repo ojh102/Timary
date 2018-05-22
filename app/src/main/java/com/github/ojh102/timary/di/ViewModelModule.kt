@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.di
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.github.ojh102.timary.annotation.ViewModelKey
 import com.github.ojh102.timary.ui.complete.CompleteContract
 import com.github.ojh102.timary.ui.main.MainContract

@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.util.databinding
 
-import android.databinding.BindingConversion
+import androidx.databinding.BindingConversion
 import android.view.View
 
 object BindingConversion {

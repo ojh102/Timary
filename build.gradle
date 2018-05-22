@@ -1,10 +1,12 @@
 buildscript {
     ext {
-        compileSdkVersion = 27
+        compileSdkVersion = 'android-P'
         minSdkVersion = 21
-        targetSdkVersion = 27
+        targetSdkVersion = 'P'
 
-        androidGradleVersion = '3.1.2'
+        androidGradleVersion = '3.2.0-alpha15'
+        androidXVersion1 = '1.0.0-alpha1'
+        androidXVersion2 = '2.0.0-alpha1'
 
         kotlinVersion = '1.2.41'
         supportLibraryVersion = '27.1.1'
@@ -13,7 +15,7 @@ buildscript {
         constraintLibraryVersion = '1.1.0'
         archVersion = '1.1.1'
         realmVersion = "5.1.0"
-        daggerVersion = '2.14.1'
+        daggerVersion = '2.16'
         rxJavaVersion = '2.1.13'
         rxKotlinVersion = '2.2.0'
         rxAndroidVersion = '2.0.2'
@@ -25,8 +27,8 @@ buildscript {
         stethoVersion = '1.5.0'
 
         junitVersion = '4.12'
-        espressoVersion = '3.0.1'
-        runnerVersion = '1.0.1'
+        espressoVersion = '3.1.0-alpha2'
+        runnerVersion = '1.1.0-alpha2'
     }
 
     repositories {

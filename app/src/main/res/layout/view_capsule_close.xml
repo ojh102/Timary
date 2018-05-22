@@ -21,13 +21,13 @@
 
   </data>
 
-  <android.support.constraint.ConstraintLayout
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:selectableItemBackground"
     android:onClick="@{capsuleClickListener}">
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_year"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
       app:layout_constraintTop_toTopOf="parent"
       tools:text="2018년"/>
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
       app:layout_constraintTop_toBottomOf="@+id/tv_year"
       tools:text="첫 날의 기억"/>
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_d_day"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
       app:layout_constraintTop_toBottomOf="@+id/tv_title"
       tools:text="봄이 시작되는 첫 날 꺼내기, D-51"/>
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_content"
       android:layout_width="0dp"
       android:layout_height="64dp"
@@ -86,6 +86,6 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"/>
 
-  </android.support.constraint.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

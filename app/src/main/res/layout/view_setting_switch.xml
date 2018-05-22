@@ -10,14 +10,14 @@
 
   </data>
 
-  <android.support.constraint.ConstraintLayout
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="72dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:background="@color/white">
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
       app:layout_constraintVertical_chainStyle="packed"
       tools:text="타임캡슐 꺼냄 알림"/>
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_description"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
       app:layout_constraintTop_toBottomOf="@+id/tv_title"
       tools:text="기억을 꺼내는 시점에서 알림"/>
 
-    <android.support.v7.widget.SwitchCompat
+    <androidx.appcompat.widget.SwitchCompat
       android:layout_width="48dp"
       android:layout_height="wrap_content"
       android:checked="@{switchItem.isChecked}"
@@ -51,5 +51,6 @@
       app:layout_constraintTop_toTopOf="parent"
       app:switchMinWidth="48dp"/>
 
-  </android.support.constraint.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
