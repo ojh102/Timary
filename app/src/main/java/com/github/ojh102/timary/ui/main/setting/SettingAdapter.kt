@@ -1,15 +1,26 @@
 package com.github.ojh102.timary.ui.main.setting
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
-import com.github.ojh102.timary.base.BaseRecyclerViewAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.github.ojh102.timary.databinding.ViewSettingDeepLineBinding
 import com.github.ojh102.timary.databinding.ViewSettingLineBinding
 import com.github.ojh102.timary.databinding.ViewSettingSwitchBinding
 import com.github.ojh102.timary.databinding.ViewSettingTitleBinding
 import com.github.ojh102.timary.util.extension.inflater
 
-class SettingAdapter : BaseRecyclerViewAdapter() {
+class SettingAdapter : ListAdapter<SettingItems, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<SettingItems>() {
+
+    override fun areItemsTheSame(oldItem: SettingItems, newItem: SettingItems): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: SettingItems, newItem: SettingItems): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+}) {
 
     companion object {
         const val TYPE_SWITCH = 100
@@ -38,22 +49,36 @@ class SettingAdapter : BaseRecyclerViewAdapter() {
         }
     }
 
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when(holder) {
+            is SwitchViewHolder -> {
+                holder.bind(getItem(position) as SettingItems.SwitchItem)
+            }
+            is TitleViewHolder -> {
+                holder.bind(getItem(position) as SettingItems.TitleItem)
+            }
+            is LineViewHolder -> {
+                holder.bind(getItem(position) as SettingItems.LineItem)
+            }
+            is DeepLineViewHolder -> {
+                holder.bind(getItem(position) as SettingItems.DeepLineItem)
+            }
+        }
+    }
+
     override fun getItemViewType(position: Int): Int {
-        when(items[position]) {
-            is SwitchItem -> {
-                return TYPE_SWITCH
+        return when(getItem(position)) {
+            is SettingItems.SwitchItem -> {
+                TYPE_SWITCH
             }
-            is TitleItem -> {
-                return TYPE_TITLE
+            is SettingItems.TitleItem -> {
+                TYPE_TITLE
             }
-            is LineItem -> {
-                return TYPE_LINE
+            is SettingItems.LineItem -> {
+                TYPE_LINE
             }
-            is DeepLineItem -> {
-                return TYPE_DEEP_LINE
-            }
-            else -> {
-                return -1
+            is SettingItems.DeepLineItem -> {
+                TYPE_DEEP_LINE
             }
         }
     }

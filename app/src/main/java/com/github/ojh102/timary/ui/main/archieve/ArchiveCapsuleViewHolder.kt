@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.ui.main.archieve
 
-import com.github.ojh102.timary.base.BaseViewHolder
+import androidx.recyclerview.widget.RecyclerView
 import com.github.ojh102.timary.databinding.ViewCapsuleArchiveBinding
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.util.TimaryParser
@@ -8,13 +8,14 @@ import com.github.ojh102.timary.util.TimaryParser
 class ArchiveCapsuleViewHolder(
         private val binding: ViewCapsuleArchiveBinding,
         timaryParser: TimaryParser
-) : BaseViewHolder<Capsule>(binding) {
+
+) : RecyclerView.ViewHolder(binding.root) {
 
     init {
         binding.timaryParser = timaryParser
     }
 
-    override fun bind(item: Capsule) {
+    fun bind(item: Capsule) {
         binding.capsule = item
     }
 

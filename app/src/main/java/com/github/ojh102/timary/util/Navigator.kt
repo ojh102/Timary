@@ -23,8 +23,8 @@ class Navigator {
         }
 
         @JvmStatic
-        fun navigateToWriteActivity(context: Context) {
-            context.startActivity(Intent(context, WriteActivity::class.java))
+        fun navigateToWriteActivity(context: Context?) {
+            context?.startActivity(Intent(context, WriteActivity::class.java))
         }
 
         @JvmStatic

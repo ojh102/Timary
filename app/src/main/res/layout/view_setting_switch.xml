@@ -6,7 +6,7 @@
 
     <variable
       name="switchItem"
-      type="com.github.ojh102.timary.ui.main.setting.SwitchItem"/>
+      type="com.github.ojh102.timary.ui.main.setting.SettingItems.SwitchItem"/>
 
   </data>
 

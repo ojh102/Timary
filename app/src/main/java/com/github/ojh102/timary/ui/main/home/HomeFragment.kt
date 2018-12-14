@@ -1,12 +1,10 @@
 package com.github.ojh102.timary.ui.main.home
 
 import android.os.Bundle
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.R.id.*
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentHomeBinding
 import com.github.ojh102.timary.util.Navigator
@@ -27,10 +25,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewMode
     }
 
     @Inject
-    protected lateinit var timaryParser: TimaryParser
+    lateinit var timaryParser: TimaryParser
 
     @Inject
-    protected lateinit var homeAdapter: HomeAdapter
+    lateinit var homeAdapter: HomeAdapter
 
     override fun getLayoutRes() = R.layout.fragment_home
     override fun getModelClass() = HomeContract.HomeViewModel::class.java
@@ -74,25 +72,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewMode
 
     private fun initializeRecyclerView() {
         rv_capsule.apply {
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(context)
             adapter = homeAdapter
         }
     }
 
     private fun bindObservable() {
         bind(
-                viewModel.outputs.homeCapsuleList()
+                viewModel.outputs.homeItemList()
                         .subscribeBy(
                                 onNext = {
-                                    homeAdapter.clear()
-                                    homeAdapter.addItem(HomeHeaderItem(it.size))
-                                    homeAdapter.addItems(it)
+                                    homeAdapter.submitList(it)
                                 }
                         ),
 
                 viewModel.outputs.clickWrite()
                         .subscribeBy {
-                            context?.let { Navigator.navigateToWriteActivity(it) }
+                            Navigator.navigateToWriteActivity(context)
                         }
         )
     }

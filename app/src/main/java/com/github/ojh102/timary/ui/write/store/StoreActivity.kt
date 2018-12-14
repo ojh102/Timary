@@ -23,10 +23,10 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
     override fun getModelClass() = StoreContract.StoreViewModel::class.java
 
     @Inject
-    protected lateinit var storeAdapter: StoreAdapter
+    lateinit var storeAdapter: StoreAdapter
 
     @Inject
-    protected lateinit var timaryParser: TimaryParser
+    lateinit var timaryParser: TimaryParser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +54,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
         bind(
                 viewModel.outputs.storeDate()
                         .subscribeBy {
-                            storeAdapter.setItems(it)
+                            storeAdapter.submitList(it)
                         },
 
                 viewModel.outputs.clickStoreItem()

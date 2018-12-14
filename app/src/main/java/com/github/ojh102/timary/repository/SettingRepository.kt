@@ -5,10 +5,7 @@ import android.view.View
 import android.widget.CompoundButton
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.db.TimarySharedPreferenceManager
-import com.github.ojh102.timary.ui.main.setting.DeepLineItem
-import com.github.ojh102.timary.ui.main.setting.SettingItem
-import com.github.ojh102.timary.ui.main.setting.SwitchItem
-import com.github.ojh102.timary.ui.main.setting.TitleItem
+import com.github.ojh102.timary.ui.main.setting.SettingItems
 import com.github.ojh102.timary.util.KEY_SETTING_NOTIFICATION
 import com.github.ojh102.timary.util.Navigator
 import io.reactivex.Single
@@ -19,10 +16,11 @@ class SettingRepository @Inject constructor(
         private val timarySharedPreferenceManager: TimarySharedPreferenceManager
 ) {
 
-    fun getSettingItemList(): Single<List<SettingItem>> {
+    fun getSettingItemList(): Single<List<SettingItems>> {
 
-        val items = mutableListOf<SettingItem>().apply {
-            add(SwitchItem(
+        val items = mutableListOf<SettingItems>().apply {
+            add(SettingItems.SwitchItem(
+                    R.string.setting_notification,
                     context.getString(R.string.setting_notification),
                     context.getString(R.string.setting_notification_sub),
                     timarySharedPreferenceManager.getBoolean(KEY_SETTING_NOTIFICATION, true),
@@ -31,9 +29,10 @@ class SettingRepository @Inject constructor(
                     }
             ))
 
-            add(DeepLineItem())
+            add(SettingItems.DeepLineItem(0))
 
-            add(TitleItem(
+            add(SettingItems.TitleItem(
+                    R.string.setting_term,
                     context.resources.getString(R.string.setting_term),
                     View.OnClickListener {
                         Navigator.navigateToTermTextActivity(it.context)

@@ -10,7 +10,7 @@ interface SettingContract {
     interface Inputs
 
     interface Outputs {
-        fun settingItemList(): Single<List<SettingItem>>
+        fun settingItemList(): Single<List<SettingItems>>
     }
 
     class SettingViewModel @Inject constructor(
@@ -20,7 +20,7 @@ interface SettingContract {
         val inputs: Inputs = this
         val outputs: Outputs = this
 
-        override fun settingItemList(): Single<List<SettingItem>> {
+        override fun settingItemList(): Single<List<SettingItems>> {
             return settingRepository.getSettingItemList()
         }
     }

@@ -40,7 +40,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingContract.Set
     private fun bindObservable() {
         bind(
                 viewModel.outputs.settingItemList()
-                        .subscribe(settingAdapter::setItems)
+                        .subscribe(settingAdapter::submitList)
         )
     }
 }

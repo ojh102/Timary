@@ -12,7 +12,6 @@ object DBTransaction {
     }
 
     fun executeAsync(realmConfiguration: RealmConfiguration, transactionAction: (realm: Realm) -> Unit): Completable {
-
         return Completable.create { emitter ->
             val realm = Realm.getInstance(realmConfiguration)
 

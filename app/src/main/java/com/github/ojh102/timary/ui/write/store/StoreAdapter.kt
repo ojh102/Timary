@@ -1,17 +1,25 @@
 package com.github.ojh102.timary.ui.write.store
 
 import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
-import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseRecyclerViewAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.github.ojh102.timary.databinding.ViewStoreBinding
 import com.github.ojh102.timary.util.extension.inflater
 import java.util.*
+import javax.inject.Inject
 
-class StoreAdapter(
-        private val context: Context
-) : BaseRecyclerViewAdapter() {
+class StoreAdapter @Inject constructor() : ListAdapter<StoreItem, StoreViewHolder>(object : DiffUtil.ItemCallback<StoreItem>() {
+
+    override fun areItemsTheSame(oldItem: StoreItem, newItem: StoreItem): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areContentsTheSame(oldItem: StoreItem, newItem: StoreItem): Boolean {
+        return oldItem == newItem
+    }
+
+}) {
 
     interface Callbacks {
         fun onItemSelect(item: StoreItem, position: Int)
@@ -19,22 +27,22 @@ class StoreAdapter(
 
     var callbacks : Callbacks? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
+    lateinit var items: MutableList<StoreItem>
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreViewHolder {
         val binding = ViewStoreBinding.inflate(parent.inflater(), parent, false)
 
         binding.itemSelectedListener = object : StoreViewHolder.OnItemSelectedListener {
             override fun onItemSelect(item: StoreItem, position: Int) {
-                items.map { it as StoreItem }.forEach {
+                items.forEach {
                     it.setSelected(false)
                 }
 
                 if(position == items.size - 1) {
-                    items.removeAt(position)
-
-                    items.add(createRandomStoreItem())
+                    items[position].date = createRandomDate()
                 }
 
-                (items[position] as StoreItem).setSelected(true)
+                items[position].setSelected(true)
 
                 callbacks?.onItemSelect(item, position)
 
@@ -45,7 +53,19 @@ class StoreAdapter(
         return StoreViewHolder(binding)
     }
 
-    private fun createRandomStoreItem(): StoreItem {
+    override fun onBindViewHolder(holder: StoreViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+
+    override fun submitList(list: List<StoreItem>?) {
+        super.submitList(list)
+
+        list?.let {
+            items = it.toMutableList()
+        }
+    }
+
+    private fun createRandomDate(): Long {
         val curCal = Calendar.getInstance()
 
         val year = curCal.get(Calendar.YEAR)
@@ -60,7 +80,7 @@ class StoreAdapter(
         targetCal.before(curCal)
         targetCal.set(year + 1, ranMonth, ranDay)
 
-        return StoreItem(context.getString(R.string.store_random), targetCal.timeInMillis)
+        return targetCal.timeInMillis
     }
 
 }

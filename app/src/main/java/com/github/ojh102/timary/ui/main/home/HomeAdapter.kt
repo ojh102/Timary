@@ -2,27 +2,32 @@ package com.github.ojh102.timary.ui.main.home
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
-import com.github.ojh102.timary.base.BaseRecyclerViewAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.github.ojh102.timary.databinding.ViewCapsuleCloseBinding
 import com.github.ojh102.timary.databinding.ViewCapsuleOpenBinding
 import com.github.ojh102.timary.databinding.ViewHomeHeaderBinding
-import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.util.TimaryParser
 import com.github.ojh102.timary.util.extension.inflater
 
-class HomeAdapter(
-        private val timaryParser: TimaryParser
-) : BaseRecyclerViewAdapter() {
+class HomeAdapter(private val timaryParser: TimaryParser) : ListAdapter<HomeItems, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<HomeItems>() {
+    override fun areItemsTheSame(oldItem: HomeItems, newItem: HomeItems): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: HomeItems, newItem: HomeItems): Boolean {
+        return oldItem.id == newItem.id
+    }
+}) {
 
     companion object {
-        const val TYPE_UNKNOWN = -1
         const val TYPE_HEADER = 100
         const val TYPE_CLOSED_CAPSULE = 101
         const val TYPE_OPENED_CAPSULE = 102
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
-        return when (viewType) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when(viewType) {
             TYPE_HEADER -> {
                 HomeHeaderViewHolder(ViewHomeHeaderBinding.inflate(parent.inflater(), parent, false), timaryParser)
             }
@@ -33,26 +38,36 @@ class HomeAdapter(
                 OpenedCapsuleViewHolder(ViewCapsuleOpenBinding.inflate(parent.inflater(), parent, false), timaryParser)
             }
             else -> {
-                throw IllegalArgumentException("is invalid view type")
+                throw IllegalArgumentException("is invalid view type $viewType")
+            }
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when(holder) {
+            is HomeHeaderViewHolder -> {
+                holder.bind((getItem(position) as HomeItems.Header))
+            }
+            is ClosedCapsuleViewHolder -> {
+                holder.bind((getItem(position) as HomeItems.StoredCapsule.ClosedCapsule).capsule)
+            }
+            is OpenedCapsuleViewHolder -> {
+                holder.bind((getItem(position) as HomeItems.StoredCapsule.OpenedCapsule).capsule)
             }
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        val item = items[position]
-        return when (item) {
-            is HomeHeaderItem -> {
+        val item = getItem(position)
+        return when(item) {
+            is HomeItems.Header -> {
                 TYPE_HEADER
             }
-            is Capsule -> {
-                if (item.isOpened()) {
-                    TYPE_OPENED_CAPSULE
-                } else {
-                    TYPE_CLOSED_CAPSULE
-                }
+            is HomeItems.StoredCapsule.OpenedCapsule -> {
+                TYPE_OPENED_CAPSULE
             }
-            else -> {
-                TYPE_UNKNOWN
+            is HomeItems.StoredCapsule.ClosedCapsule -> {
+                TYPE_CLOSED_CAPSULE
             }
         }
     }

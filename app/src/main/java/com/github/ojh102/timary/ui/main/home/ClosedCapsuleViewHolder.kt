@@ -1,8 +1,8 @@
 package com.github.ojh102.timary.ui.main.home
 
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseViewHolder
 import com.github.ojh102.timary.databinding.ViewCapsuleCloseBinding
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.util.TimaryParser
@@ -11,7 +11,7 @@ import com.github.ojh102.timary.util.extension.toast
 class ClosedCapsuleViewHolder(
         private val binding: ViewCapsuleCloseBinding,
         timaryParser: TimaryParser
-) : BaseViewHolder<Capsule>(binding) {
+) : RecyclerView.ViewHolder(binding.root) {
 
     private val context by lazy(LazyThreadSafetyMode.NONE) {
         binding.root.context
@@ -34,7 +34,7 @@ class ClosedCapsuleViewHolder(
         }
     }
 
-    override fun bind(item: Capsule) {
+    fun bind(item: Capsule) {
         binding.capsule = item
     }
 

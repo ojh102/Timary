@@ -15,14 +15,12 @@ class AppModule {
 
     @Module
     interface BindModule {
-
         @Singleton
         @Binds
-        abstract fun bindContext(application: Application): Context
+        fun bindContext(application: Application): Context
 
-        @Singleton
         @Binds
-        abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+        fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
     }
 
     @Singleton

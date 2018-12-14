@@ -17,6 +17,7 @@ object TimaryRealmObservableFactory {
             return StrongReferenceCounter()
         }
     }
+
     private val listRefs = object : ThreadLocal<StrongReferenceCounter<RealmList<*>>>() {
         override fun initialValue(): StrongReferenceCounter<RealmList<*>> {
             return StrongReferenceCounter()
@@ -46,10 +47,10 @@ object TimaryRealmObservableFactory {
         return Observable.create<E> { emitter ->
             val observableRealm = Realm.getInstance(realmConfiguration)
             val realmResults: RealmResults<E> = query.invoke(observableRealm)
-            resultsRefs.get().acquireReference(realmResults)
+            resultsRefs.get()!!.acquireReference(realmResults)
 
             val listener = RealmChangeListener<RealmResults<E>> {
-                if (!emitter.isDisposed) {
+                if(!emitter.isDisposed) {
                     realmResults.first(defaultValue)?.let {
                         emitter.onNext(observableRealm.copyFromRealm(it))
                     }
@@ -61,7 +62,7 @@ object TimaryRealmObservableFactory {
             emitter.setDisposable(Disposables.fromRunnable {
                 realmResults.removeChangeListener(listener)
                 observableRealm.close()
-                resultsRefs.get().releaseReference(realmResults)
+                resultsRefs.get()!!.releaseReference(realmResults)
             })
 
             realmResults.first(defaultValue)?.let {
@@ -77,14 +78,14 @@ object TimaryRealmObservableFactory {
 
     ): Observable<List<E>> {
 
-        return Observable.create<List<E>>({ emitter ->
+        return Observable.create<List<E>> { emitter ->
 
             val observableRealm = Realm.getInstance(realmConfiguration)
             val realmResults = query.invoke(observableRealm)
-            resultsRefs.get().acquireReference(realmResults)
+            resultsRefs.get()!!.acquireReference(realmResults)
 
             val listener = RealmChangeListener<RealmResults<E>> {
-                if (!emitter.isDisposed) {
+                if(!emitter.isDisposed) {
                     emitter.onNext(observableRealm.copyFromRealm(realmResults))
                 }
             }
@@ -94,12 +95,12 @@ object TimaryRealmObservableFactory {
             emitter.setDisposable(Disposables.fromRunnable {
                 realmResults.removeChangeListener(listener)
                 observableRealm.close()
-                resultsRefs.get().releaseReference(realmResults)
+                resultsRefs.get()!!.releaseReference(realmResults)
             })
 
             emitter.onNext(observableRealm.copyFromRealm(realmResults))
 
-        }).compose(RealmIOTransfer())
+        }.compose(RealmIOTransfer())
     }
 
     // Helper class for keeping track of strong references to objects.
@@ -110,7 +111,7 @@ object TimaryRealmObservableFactory {
         fun acquireReference(obj: K) {
             val count = references[obj]
 
-            if (count == null) {
+            if(count == null) {
                 references[obj] = 1
             } else {
                 references[obj] = count + 1

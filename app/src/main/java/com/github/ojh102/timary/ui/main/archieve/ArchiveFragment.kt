@@ -21,7 +21,7 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding, ArchiveContract.Arc
     }
 
     @Inject
-    protected lateinit var archiveAdapter: ArchiveAdapter
+    lateinit var archiveAdapter: ArchiveAdapter
 
     override fun getLayoutRes() = R.layout.fragment_archive
 
@@ -53,7 +53,7 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding, ArchiveContract.Arc
                                                 setSpan(TextAppearanceSpan(context, R.style.B16Grape), 0, it.size.toString().length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                                             }
 
-                                    archiveAdapter.setItems(it)
+                                    archiveAdapter.submitList(it)
                                 }
                         )
         )

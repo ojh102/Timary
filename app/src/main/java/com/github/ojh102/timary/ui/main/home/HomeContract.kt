@@ -14,7 +14,7 @@ interface HomeContract {
     }
 
     interface Outputs {
-        fun homeCapsuleList(): Observable<List<Capsule>>
+        fun homeItemList(): Observable<List<HomeItems>>
         fun clickWrite(): Observable<Unit>
     }
 
@@ -27,8 +27,18 @@ interface HomeContract {
 
         private val clickWriteRelay = PublishRelay.create<Unit>()
 
-        override fun homeCapsuleList(): Observable<List<Capsule>> {
-            return capsuleRepository.getHomeCapsuleList()
+        override fun homeItemList(): Observable<List<HomeItems>> {
+            return capsuleRepository.getHomeCapsuleList().map { capsuleList ->
+                capsuleList.map { capsule ->
+                    if(capsule.isOpened()) {
+                        HomeItems.StoredCapsule.OpenedCapsule(capsule)
+                    } else {
+                        HomeItems.StoredCapsule.ClosedCapsule(capsule)
+                    }
+                }.toMutableList<HomeItems>().apply {
+                    add(0, HomeItems.Header(size))
+                }
+            }
         }
 
         override fun onClickWrite() {

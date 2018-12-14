@@ -4,7 +4,7 @@
   <data>
     <variable
       name="headerItem"
-      type="com.github.ojh102.timary.ui.main.home.HomeHeaderItem"/>
+      type="com.github.ojh102.timary.ui.main.home.HomeItems.Header"/>
 
     <variable
       name="timaryParser"
@@ -21,7 +21,7 @@
       android:layout_height="wrap_content"
       android:layout_marginLeft="16dp"
       android:lineSpacingMultiplier="1.2"
-      android:text="@{timaryParser.getHeaderText(headerItem.num)}"
+      android:text="@{timaryParser.getHeaderText(headerItem.storedCapsuleSize)}"
       android:textAppearance="@style/N16Grape"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
