@@ -6,7 +6,7 @@
 
 
 ## Build Status
-[![Build Status](https://www.bitrise.io/app/4471369b21539e88/status.svg?token=LBT_zQceRadlMXxlc7g7Dw&branch=release)](https://www.bitrise.io/app/4471369b21539e88)
+[![Build Status](https://app.bitrise.io/app/4471369b21539e88/status.svg?token=LBT_zQceRadlMXxlc7g7Dw&branch=release)](https://app.bitrise.io/app/4471369b21539e88)
 
 ## Google Play
 
