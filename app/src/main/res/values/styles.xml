@@ -12,14 +12,12 @@
     <item name="android:windowTranslucentStatus">true</item>
     <item name="android:windowTranslucentNavigation">false</item>
     <item name="android:statusBarColor">@android:color/transparent</item>
-    <item name="android:fitsSystemWindows">true</item>
     <item name="colorControlNormal">@color/heather</item>
     <item name="actionMenuTextAppearance">@style/N16Grape</item>
     <item name="actionMenuTextColor">@color/grape</item>
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
-
 
   <style name="AppTheme.Debug" parent="AppTheme">
     <item name="windowActionBar">false</item>

@@ -16,8 +16,7 @@ import com.github.ojh102.timary.util.extension.hideFragment
 import com.github.ojh102.timary.util.extension.showFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewModel>(),
-        com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewModel>() {
 
     override fun getLayoutRes() = R.layout.activity_main
     override fun getModelClass() = MainContract.MainViewModel::class.java
@@ -32,42 +31,30 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewMode
         initializeFragments()
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        hideFragment(HomeFragment.TAG)
-        hideFragment(ArchiveFragment.TAG)
-        hideFragment(SettingFragment.TAG)
+    private fun initializeBottomNavigation() {
+        navigation.setOnNavigationItemSelectedListener {
+            hideFragment(HomeFragment.TAG)
+            hideFragment(ArchiveFragment.TAG)
+            hideFragment(SettingFragment.TAG)
 
-        return when (item.itemId) {
-            R.id.navigation_home -> {
-                showFragment(HomeFragment.TAG)
-                true
-            }
-            R.id.navigation_archive -> {
-                showFragment(ArchiveFragment.TAG)
-                true
-            }
-            R.id.navigation_setting -> {
-                showFragment(SettingFragment.TAG)
-                true
-            }
-            else -> {
-                false
+            when (it.itemId) {
+                R.id.navigation_home -> {
+                    showFragment(HomeFragment.TAG)
+                    true
+                }
+                R.id.navigation_archive -> {
+                    showFragment(ArchiveFragment.TAG)
+                    true
+                }
+                R.id.navigation_setting -> {
+                    showFragment(SettingFragment.TAG)
+                    true
+                }
+                else -> {
+                    false
+                }
             }
         }
-    }
-
-    private fun initializeBottomNavigation() {
-        navigation.enableAnimation(false)
-        navigation.enableShiftingMode(false)
-        navigation.enableItemShiftingMode(false)
-        navigation.elevation = 0f
-        navigation.setTextVisibility(false)
-
-        navigation.itemIconTintList = null
-        navigation.itemHeight = dpToPixel(56f)
-        navigation.setIconsMarginTop(dpToPixel(16f))
-
-        navigation.onNavigationItemSelectedListener = this
     }
 
     private fun initializeFragments() {

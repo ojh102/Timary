@@ -1,70 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <data>
+    <data>
 
-    <variable
-      name="title"
-      type="String"/>
+        <variable
+            name="title"
+            type="String"/>
 
-    <variable
-      name="description"
-      type="String"/>
+        <variable
+            name="description"
+            type="String"/>
 
-  </data>
+    </data>
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_gradient_top_to_bottom">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_gradient_top_to_bottom"
+        android:fitsSystemWindows="true">
 
-    <androidx.appcompat.widget.AppCompatTextView
-      android:id="@+id/tv_title"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="64dp"
-      android:layout_marginLeft="16dp"
-      android:layout_marginRight="16dp"
-      android:text="@{title}"
-      android:textAppearance="@style/B28White"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@{title}"
+            android:textAppearance="@style/B28White"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-      android:id="@+id/tv_description"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:layout_marginLeft="16dp"
-      android:layout_marginRight="16dp"
-      android:lineSpacingMultiplier="1.2"
-      android:text="@{description}"
-      android:textAppearance="@style/N15White"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tv_title"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@{description}"
+            android:textAppearance="@style/N15White"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
-      android:id="@+id/iv_logo"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/group"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/group"/>
 
-    <com.airbnb.lottie.LottieAnimationView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:lottie_autoPlay="true"
-      app:lottie_fileName="lottie/loading.json"/>
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie/loading.json"/>
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

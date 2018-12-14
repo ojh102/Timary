@@ -50,13 +50,6 @@ class Navigator {
         }
 
         @JvmStatic
-        fun navigateToWebViewActivity(context: Context, url: String) {
-            context.startActivity(Intent(context, WebViewActivity::class.java).apply {
-                putExtra(KEY_URL, url)
-            })
-        }
-
-        @JvmStatic
         fun navigateToTermTextActivity(context: Context) {
             val title = context.getString(R.string.setting_term)
             val content = context.getString(R.string.term_content)
