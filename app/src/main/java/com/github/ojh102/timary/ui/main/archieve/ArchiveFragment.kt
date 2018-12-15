@@ -1,14 +1,12 @@
 package com.github.ojh102.timary.ui.main.archieve
 
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.TextAppearanceSpan
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentArchiveBinding
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
@@ -45,7 +43,7 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding, ArchiveContract.Arc
     private fun bindObservable() {
         bind(
                 viewModel.outputs.archiveCapsuleList()
-                        .observeOn(AndroidSchedulers.mainThread())
+                        .observeOn(schedulerProvider.ui())
                         .subscribeBy(
                                 onNext = {
                                     binding.headerText = SpannableString(context?.getString(R.string.format_archive_header, it.size))

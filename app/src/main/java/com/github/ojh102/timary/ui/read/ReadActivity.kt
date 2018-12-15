@@ -1,9 +1,9 @@
 package com.github.ojh102.timary.ui.read
 
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivityReadBinding
@@ -54,18 +54,20 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadContract.ReadViewMode
                         .subscribe(binding::setCapsule),
 
                 viewModel.outputs.clickDelete()
+                        .observeOn(schedulerProvider.ui())
                         .subscribeBy {
                             AlertDialog.Builder(this, R.style.TimaryDeleteAlertDialogStyle)
                                     .setTitle(getString(R.string.read_delete_title))
                                     .setMessage(getString(R.string.read_delete_message))
-                                    .setPositiveButton(getString(R.string.delete), { _, _ ->
+                                    .setPositiveButton(getString(R.string.delete)) { _, _ ->
                                         viewModel.inputs.deleteCapsule()
-                                    })
+                                    }
                                     .setNegativeButton(getString(R.string.cancel), null)
                                     .show()
                         },
 
                 viewModel.outputs.completeDeleteCapsule()
+                        .observeOn(schedulerProvider.ui())
                         .subscribeBy {
                             Navigator.navigateToCompleteActivity(this, CompleteType.DELETE, getString(R.string.format_delete_capsule_title, it))
                             finish()

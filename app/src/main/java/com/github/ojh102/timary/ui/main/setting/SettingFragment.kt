@@ -1,7 +1,6 @@
 package com.github.ojh102.timary.ui.main.setting
 
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSettingBinding
@@ -40,6 +39,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingContract.Set
     private fun bindObservable() {
         bind(
                 viewModel.outputs.settingItemList()
+                        .observeOn(schedulerProvider.ui())
                         .subscribe(settingAdapter::submitList)
         )
     }

@@ -1,15 +1,16 @@
 package com.github.ojh102.timary.base
 
+import android.content.Intent
+import android.os.Bundle
+import android.view.MenuItem
+import androidx.annotation.LayoutRes
+import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import android.content.Intent
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
-import android.os.Bundle
-import androidx.annotation.LayoutRes
-import androidx.appcompat.widget.Toolbar
-import android.view.MenuItem
+import com.github.ojh102.timary.util.rx.SchedulerProvider
 import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -18,9 +19,12 @@ import javax.inject.Inject
 abstract class BaseActivity<VB : ViewDataBinding, VM : ViewModel> : DaggerAppCompatActivity() {
 
     @Inject
-    protected lateinit var viewModelFactory: ViewModelProvider.Factory
-    protected lateinit var binding: VB
-    protected lateinit var viewModel: VM
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var binding: VB
+    lateinit var viewModel: VM
+
+    @Inject
+    lateinit var schedulerProvider: SchedulerProvider
 
     private val compositeDisposable by lazy {
         CompositeDisposable()

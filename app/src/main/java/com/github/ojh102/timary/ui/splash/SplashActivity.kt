@@ -25,6 +25,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashContract.Splash
     private fun bindObservable() {
         bind(
                 Completable.timer(2, TimeUnit.SECONDS)
+                        .observeOn(schedulerProvider.ui())
                         .subscribeBy {
                             Navigator.navigateToMainActivity(this)
                             finish()

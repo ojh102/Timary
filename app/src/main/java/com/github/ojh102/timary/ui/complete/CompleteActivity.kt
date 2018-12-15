@@ -31,6 +31,7 @@ class CompleteActivity : BaseActivity<ActivityCompleteBinding, CompleteContract.
 
                 viewModel.outputs.type()
                         .delay(3, TimeUnit.SECONDS)
+                        .observeOn(schedulerProvider.ui())
                         .subscribeBy {
                             if (it == CompleteType.SIGN_UP || it == CompleteType.WRITE) {
                                 Navigator.navigateToMainActivity(this)

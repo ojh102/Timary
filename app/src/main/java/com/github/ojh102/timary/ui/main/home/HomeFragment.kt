@@ -80,6 +80,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewMode
     private fun bindObservable() {
         bind(
                 viewModel.outputs.homeItemList()
+                        .observeOn(schedulerProvider.ui())
                         .subscribeBy(
                                 onNext = {
                                     homeAdapter.submitList(it)
@@ -87,6 +88,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewMode
                         ),
 
                 viewModel.outputs.clickWrite()
+                        .observeOn(schedulerProvider.ui())
                         .subscribeBy {
                             Navigator.navigateToWriteActivity(context)
                         }

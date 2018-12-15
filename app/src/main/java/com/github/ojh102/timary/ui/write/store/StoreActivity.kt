@@ -2,7 +2,6 @@ package com.github.ojh102.timary.ui.write.store
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivityStoreBinding
@@ -10,7 +9,6 @@ import com.github.ojh102.timary.ui.complete.CompleteType
 import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.TimaryParser
 import com.github.ojh102.timary.util.extension.toast
-import com.github.ojh102.timary.util.rx.IOTransfer
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_store.*
 import timber.log.Timber
@@ -53,11 +51,13 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
     private fun bindObservable() {
         bind(
                 viewModel.outputs.storeDate()
+                        .observeOn(schedulerProvider.ui())
                         .subscribeBy {
                             storeAdapter.submitList(it)
                         },
 
                 viewModel.outputs.clickStoreItem()
+                        .observeOn(schedulerProvider.ui())
                         .subscribe {
                             if (it.second == 0) {
                                 showDatePickerDialog()
@@ -67,7 +67,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
                         },
 
                 viewModel.outputs.completeStoreCapsule()
-                        .compose(IOTransfer())
+                        .observeOn(schedulerProvider.ui())
                         .subscribeBy(onNext = {
                             Navigator.navigateToCompleteActivity(
                                     context = this,

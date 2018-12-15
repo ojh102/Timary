@@ -55,6 +55,7 @@ class WriteActivity : BaseActivity<ActivityWriteBinding, WriteContract.WriteView
                         .withLatestFrom(viewModel.outputs.outputContent())
                         .map { it.second }
                         .filter { it.isNotBlank() }
+                        .observeOn(schedulerProvider.ui())
                         .subscribeBy {
                             Navigator.navigateToStoreActivity(this, it)
                         }

@@ -1,6 +1,5 @@
 package com.github.ojh102.timary.ui.write.store
 
-import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
