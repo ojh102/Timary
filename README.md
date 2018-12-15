@@ -19,22 +19,19 @@
 
 ## Libraries
 
-- Google
-  - [Support Library](https://developer.android.com/topic/libraries/support-library/revisions.html)
-  - [Databinding](https://developer.android.com/topic/libraries/data-binding/index.html)
-  - [Android Architecture Components ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html)
+- Jetpack
+  - [Support Libraries](https://developer.android.com/topic/libraries/support-library/)
+  - [Databinding](https://developer.android.com/topic/libraries/data-binding/)
+  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+  - [Paging](https://developer.android.com/topic/libraries/architecture/paging)
+  - [Dagger2](http://google.github.io/dagger/)
   - [Firebase Messaging](https://firebase.google.com/docs/cloud-messaging)
-
 
 - Reactive
   - [RxJava](https://github.com/ReactiveX/RxJava)
   - [RxAndroid](https://github.com/ReactiveX/RxAndroid) 
   - [RxRelay](https://github.com/JakeWharton/RxRelay)
   - [RxKotlin](https://github.com/ReactiveX/RxKotlin)
-
-- Dependency injection 
-
-  - [Dagger 2](http://google.github.io/dagger/)
 
 - Database
   - [Realm](https://realm.io/)
@@ -45,7 +42,6 @@
 
 - UI
   - [Lottie](https://github.com/airbnb/lottie-android)
-  - [BottomNavigationViewEx](https://github.com/ittianyu/BottomNavigationViewEx)
 
 
 License
