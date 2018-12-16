@@ -40,6 +40,7 @@ buildscript {
         dexcount_version = '0.8.2'
         fabric_version = '1.25.4'
         crashlytics_version = '2.9.7'
+        amplitude_version = '2.16.0'
 
         junit_version = '4.12'
         runner_version = '1.1.0-alpha4'

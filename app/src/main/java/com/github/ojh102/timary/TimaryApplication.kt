@@ -1,6 +1,6 @@
 package com.github.ojh102.timary
 
-import android.content.Context
+import com.amplitude.api.Amplitude
 import com.crashlytics.android.Crashlytics
 import com.facebook.stetho.Stetho
 import com.github.ojh102.timary.di.DaggerAppComponent
@@ -21,7 +21,11 @@ class TimaryApplication : DaggerApplication() {
         super.onCreate()
 
         FirebaseApp.initializeApp(this)
+
         Fabric.with(this, Crashlytics())
+
+        Amplitude.getInstance().initialize(this, BuildConfig.TIMARY_AMPLITUDE_KEY).enableForegroundTracking(this)
+
         Realm.init(this)
 
         if (BuildConfig.DEBUG) {

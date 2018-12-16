@@ -1,0 +1,2 @@
+-keep class com.google.android.gms.ads.** { *; }
+-dontwarn okio.**
