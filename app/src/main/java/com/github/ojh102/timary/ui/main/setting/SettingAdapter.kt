@@ -1,6 +1,8 @@
 package com.github.ojh102.timary.ui.main.setting
 
+import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -29,13 +31,44 @@ class SettingAdapter : ListAdapter<SettingItems, RecyclerView.ViewHolder>(object
         const val TYPE_DEEP_LINE = 103
     }
 
+    interface Callbacks {
+        fun onCheckedAlert(checked: Boolean)
+        fun onClickTerm()
+    }
+
+    private var callbacks: Callbacks? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         when (viewType) {
             TYPE_SWITCH -> {
-                return SwitchViewHolder(ViewSettingSwitchBinding.inflate(parent.inflater(), parent, false))
+                val viewHolder = SwitchViewHolder(ViewSettingSwitchBinding.inflate(parent.inflater(), parent, false))
+
+                viewHolder.setOnCheckedChnageListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
+                    val item = getItem(viewHolder.adapterPosition)
+
+                    when(item){
+                        is SettingItems.SwitchItem.Alert -> {
+                            callbacks?.onCheckedAlert(isChecked)
+                        }
+                    }
+                })
+
+                return viewHolder
             }
             TYPE_TITLE -> {
-                return TitleViewHolder(ViewSettingTitleBinding.inflate(parent.inflater(), parent, false))
+                val viewHolder = TitleViewHolder(ViewSettingTitleBinding.inflate(parent.inflater(), parent, false))
+
+                viewHolder.setOnClickListener(View.OnClickListener {
+                    val item = getItem(viewHolder.adapterPosition)
+
+                    when(item){
+                        is SettingItems.TitleItem.Term -> {
+                            callbacks?.onClickTerm()
+                        }
+                    }
+                })
+
+                return viewHolder
             }
             TYPE_LINE -> {
                 return LineViewHolder(ViewSettingLineBinding.inflate(parent.inflater(), parent, false))
@@ -81,6 +114,10 @@ class SettingAdapter : ListAdapter<SettingItems, RecyclerView.ViewHolder>(object
                 TYPE_DEEP_LINE
             }
         }
+    }
+
+    fun setCallbacks(callbacks: Callbacks) {
+        this.callbacks = callbacks
     }
 
 }

@@ -1,5 +1,7 @@
 package com.github.ojh102.timary.ui.main.setting
 
+import android.view.View
+import android.widget.CompoundButton
 import androidx.recyclerview.widget.RecyclerView
 import com.github.ojh102.timary.databinding.ViewSettingDeepLineBinding
 import com.github.ojh102.timary.databinding.ViewSettingLineBinding
@@ -12,12 +14,20 @@ class SwitchViewHolder(private val binding: ViewSettingSwitchBinding) : Recycler
         binding.switchItem = item
     }
 
+    fun setOnCheckedChnageListener(checkedChangeListener: CompoundButton.OnCheckedChangeListener) {
+        binding.onCheckedChangedListener = checkedChangeListener
+    }
+
 }
 
 class TitleViewHolder(private val binding: ViewSettingTitleBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: SettingItems.TitleItem) {
         binding.titleItem = item
+    }
+
+    fun setOnClickListener(clickListener: View.OnClickListener) {
+        binding.onClickListener = clickListener
     }
 
 }

@@ -13,29 +13,16 @@ class ClosedCapsuleViewHolder(
         timaryParser: TimaryParser
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    private val context by lazy(LazyThreadSafetyMode.NONE) {
-        binding.root.context
-    }
-
     init {
         binding.timaryParser = timaryParser
-
-        binding.capsuleClickListener = View.OnClickListener {
-            binding.capsule?.let {
-                val diffDay = it.dDay()
-                val dDay = if(diffDay < 1) {
-                    1
-                } else {
-                    diffDay.toInt()
-                }
-
-                context.toast(context.getString(R.string.format_click_capsule_close, dDay))
-            }
-        }
     }
 
     fun bind(item: Capsule) {
         binding.capsule = item
+    }
+
+    fun setOnClickListener(clickListener: View.OnClickListener) {
+        binding.capsuleClickListener = clickListener
     }
 
 }

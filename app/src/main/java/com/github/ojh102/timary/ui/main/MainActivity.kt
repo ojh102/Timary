@@ -4,6 +4,8 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.view.MenuItem
 import android.view.WindowManager
+import com.amplitude.api.Amplitude
+import com.github.ojh102.timary.BuildConfig
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivityMainBinding
@@ -14,6 +16,7 @@ import com.github.ojh102.timary.util.extension.addFragment
 import com.github.ojh102.timary.util.extension.dpToPixel
 import com.github.ojh102.timary.util.extension.hideFragment
 import com.github.ojh102.timary.util.extension.showFragment
+import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewModel>() {
@@ -29,6 +32,32 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewMode
 
         initializeBottomNavigation()
         initializeFragments()
+
+        bind(
+                viewModel.outputs.clickHome()
+                        .observeOn(schedulerProvider.ui())
+                        .subscribeBy(
+                                onNext = {
+                                    showFragment(HomeFragment.TAG)
+                                }
+                        ),
+
+                viewModel.outputs.clickArchive()
+                        .observeOn(schedulerProvider.ui())
+                        .subscribeBy(
+                                onNext = {
+                                    showFragment(ArchiveFragment.TAG)
+                                }
+                        ),
+
+                viewModel.outputs.clickSetting()
+                        .observeOn(schedulerProvider.ui())
+                        .subscribeBy(
+                                onNext = {
+                                    showFragment(SettingFragment.TAG)
+                                }
+                        )
+        )
     }
 
     private fun initializeBottomNavigation() {
@@ -39,15 +68,18 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewMode
 
             when (it.itemId) {
                 R.id.navigation_home -> {
-                    showFragment(HomeFragment.TAG)
+                    viewModel.inputs.onClickHome()
+
                     true
                 }
                 R.id.navigation_archive -> {
-                    showFragment(ArchiveFragment.TAG)
+                    viewModel.inputs.onClickArchive()
+
                     true
                 }
                 R.id.navigation_setting -> {
-                    showFragment(SettingFragment.TAG)
+                    viewModel.inputs.onClickSetting()
+
                     true
                 }
                 else -> {

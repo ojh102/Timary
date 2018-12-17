@@ -7,6 +7,8 @@ import android.text.style.TextAppearanceSpan
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentArchiveBinding
+import com.github.ojh102.timary.model.realm.Capsule
+import com.github.ojh102.timary.util.Navigator
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
@@ -38,6 +40,12 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding, ArchiveContract.Arc
             layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
             adapter = archiveAdapter
         }
+
+        archiveAdapter.setCallbacks(object : ArchiveAdapter.Callbacks {
+            override fun onClickArchiveCapsule(capsule: Capsule) {
+                viewModel.inputs.onClickArchiveCapsule(capsule)
+            }
+        })
     }
 
     private fun bindObservable() {
@@ -52,6 +60,16 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding, ArchiveContract.Arc
                                             }
 
                                     archiveAdapter.submitList(it)
+                                }
+                        ),
+
+                viewModel.outputs.navigateRead()
+                        .observeOn(schedulerProvider.ui())
+                        .subscribeBy(
+                                onNext = { capsuleId ->
+                                    context?.let {
+                                        Navigator.navigateToReadActivity(it, capsuleId)
+                                    }
                                 }
                         )
         )

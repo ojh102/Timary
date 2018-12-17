@@ -11,6 +11,7 @@ import com.github.ojh102.timary.util.TimaryParser
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.rxkotlin.withLatestFrom
 import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class WriteActivity : BaseActivity<ActivityWriteBinding, WriteContract.WriteViewModel>() {
@@ -52,9 +53,13 @@ class WriteActivity : BaseActivity<ActivityWriteBinding, WriteContract.WriteView
     private fun bindObservable() {
         bind(
                 viewModel.outputs.clickWrite()
+                        .throttleFirst(300, TimeUnit.MILLISECONDS)
                         .withLatestFrom(viewModel.outputs.outputContent())
                         .map { it.second }
                         .filter { it.isNotBlank() }
+                        .doOnNext {
+                            timaryLogger.btnStore()
+                        }
                         .observeOn(schedulerProvider.ui())
                         .subscribeBy {
                             Navigator.navigateToStoreActivity(this, it)

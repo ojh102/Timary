@@ -13,6 +13,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_store.*
 import timber.log.Timber
 import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreViewModel>() {
@@ -60,14 +61,24 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
                         .observeOn(schedulerProvider.ui())
                         .subscribe {
                             if (it.second == 0) {
+                                timaryLogger.btnCalendar()
                                 showDatePickerDialog()
                             } else {
+                                when(it.second) {
+                                    1 -> timaryLogger.btnNextSeason()
+                                    2 -> timaryLogger.btnLastDay()
+                                    3 -> timaryLogger.btnFirstDay()
+                                    4 -> timaryLogger.btnRandom()
+                                }
                                 binding.storeItem = it.first
                             }
                         },
 
                 viewModel.outputs.completeStoreCapsule()
                         .observeOn(schedulerProvider.ui())
+                        .doOnNext {
+                            timaryLogger.btnComplete(it.content)
+                        }
                         .subscribeBy(onNext = {
                             Navigator.navigateToCompleteActivity(
                                     context = this,

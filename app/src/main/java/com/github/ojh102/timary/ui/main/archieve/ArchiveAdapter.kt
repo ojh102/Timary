@@ -1,5 +1,6 @@
 package com.github.ojh102.timary.ui.main.archieve
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -23,15 +24,33 @@ class ArchiveAdapter(
 
 }) {
 
+    interface Callbacks {
+        fun onClickArchiveCapsule(capsule: Capsule)
+    }
+
+    private var callbacks: ArchiveAdapter.Callbacks? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArchiveCapsuleViewHolder {
-        return ArchiveCapsuleViewHolder(
+        val viewHolder = ArchiveCapsuleViewHolder(
                 binding = ViewCapsuleArchiveBinding.inflate(parent.inflater(), parent, false),
                 timaryParser = timaryParser
         )
+
+        viewHolder.setOnClickListener(View.OnClickListener {
+            val item = getItem(viewHolder.adapterPosition)
+
+            callbacks?.onClickArchiveCapsule(item)
+        })
+
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: ArchiveCapsuleViewHolder, position: Int) {
         holder.bind(getItem(position))
+    }
+
+    fun setCallbacks(callbacks: Callbacks) {
+        this.callbacks = callbacks
     }
 
 }

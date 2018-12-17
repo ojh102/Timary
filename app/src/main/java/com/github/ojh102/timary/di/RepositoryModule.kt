@@ -3,6 +3,7 @@ package com.github.ojh102.timary.di
 import android.content.Context
 import com.github.ojh102.timary.db.TimaryDB
 import com.github.ojh102.timary.db.TimarySharedPreferenceManager
+import com.github.ojh102.timary.log.TimaryLoggerApi
 import com.github.ojh102.timary.repository.CapsuleRepository
 import com.github.ojh102.timary.repository.SettingRepository
 import com.github.ojh102.timary.repository.StoreDateRepository
@@ -21,8 +22,8 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideSettingRepository(context: Context, timarySharedPreferenceManager: TimarySharedPreferenceManager): SettingRepository {
-        return SettingRepository(context, timarySharedPreferenceManager)
+    fun provideSettingRepository(context: Context, timarySharedPreferenceManager: TimarySharedPreferenceManager, timaryLogger: TimaryLoggerApi): SettingRepository {
+        return SettingRepository(context, timarySharedPreferenceManager, timaryLogger)
     }
 
     @Singleton

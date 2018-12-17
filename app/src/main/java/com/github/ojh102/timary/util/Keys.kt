@@ -1,6 +1,5 @@
 package com.github.ojh102.timary.util
 
-const val KEY_CAPSULE_NAME = "capsule_name"
 const val KEY_CAPSULE_CONTENT = "capsule_content"
 const val KEY_CAPSULE_ID = "capsule_id"
 
@@ -14,4 +13,3 @@ const val KEY_TEXT_TITLE = "text_title"
 const val KEY_TEXT_CONTENT = "text_content"
 
 const val KEY_SETTING_NOTIFICATION = "setting_notification"
-const val KEY_SETTING_PIN = "setting_pin"

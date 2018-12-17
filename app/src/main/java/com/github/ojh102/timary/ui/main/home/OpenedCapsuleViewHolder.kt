@@ -1,5 +1,6 @@
 package com.github.ojh102.timary.ui.main.home
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.github.ojh102.timary.databinding.ViewCapsuleOpenBinding
 import com.github.ojh102.timary.model.realm.Capsule
@@ -16,5 +17,9 @@ class OpenedCapsuleViewHolder(
 
     fun bind(item: Capsule) {
         binding.capsule = item
+    }
+
+    fun setOnClickListener(clickListener: View.OnClickListener) {
+        binding.clickListener = clickListener
     }
 }

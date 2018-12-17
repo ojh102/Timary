@@ -11,6 +11,7 @@ import com.github.ojh102.timary.ui.complete.CompleteType
 import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.TimaryParser
 import io.reactivex.rxkotlin.subscribeBy
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class ReadActivity : BaseActivity<ActivityReadBinding, ReadContract.ReadViewModel>() {
@@ -18,7 +19,8 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadContract.ReadViewMode
     override fun getLayoutRes() = R.layout.activity_read
     override fun getModelClass() = ReadContract.ReadViewModel::class.java
 
-    @Inject protected lateinit var timaryParser: TimaryParser
+    @Inject
+    protected lateinit var timaryParser: TimaryParser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +40,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadContract.ReadViewMode
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
+        return when(item?.itemId) {
             R.id.menu_delete -> {
                 viewModel.inputs.onClickDelete()
                 true
@@ -54,15 +56,22 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadContract.ReadViewMode
                         .subscribe(binding::setCapsule),
 
                 viewModel.outputs.clickDelete()
+                        .throttleFirst(300, TimeUnit.MILLISECONDS)
+                        .doOnNext {
+                            timaryLogger.btnDelete()
+                        }
                         .observeOn(schedulerProvider.ui())
                         .subscribeBy {
                             AlertDialog.Builder(this, R.style.TimaryDeleteAlertDialogStyle)
                                     .setTitle(getString(R.string.read_delete_title))
                                     .setMessage(getString(R.string.read_delete_message))
                                     .setPositiveButton(getString(R.string.delete)) { _, _ ->
+                                        timaryLogger.btnConfirmDelete()
                                         viewModel.inputs.deleteCapsule()
                                     }
-                                    .setNegativeButton(getString(R.string.cancel), null)
+                                    .setNegativeButton(getString(R.string.cancel)) { _, _ ->
+                                        timaryLogger.btnConfirmCancel()
+                                    }
                                     .show()
                         },
 

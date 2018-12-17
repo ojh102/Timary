@@ -1,10 +1,14 @@
 package com.github.ojh102.timary.ui.main.setting
 
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSettingBinding
+import com.github.ojh102.timary.util.Navigator
+import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_setting.*
+import javax.inject.Inject
 
 class SettingFragment : BaseFragment<FragmentSettingBinding, SettingContract.SettingViewModel>() {
 
@@ -14,7 +18,8 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingContract.Set
         fun newInstance() = SettingFragment()
     }
 
-    private val settingAdapter = SettingAdapter()
+    @Inject
+    lateinit var settingAdapter: SettingAdapter
 
     override fun getLayoutRes() = R.layout.fragment_setting
     override fun getModelClass() = SettingContract.SettingViewModel::class.java
@@ -31,16 +36,36 @@ class SettingFragment : BaseFragment<FragmentSettingBinding, SettingContract.Set
 
     private fun initializeRecyclerView() {
         rv_setting.apply {
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(context)
             adapter = settingAdapter
         }
+
+        settingAdapter.setCallbacks(object : SettingAdapter.Callbacks {
+            override fun onCheckedAlert(checked: Boolean) {
+                viewModel.inputs.onCheckedAlert(checked)
+            }
+
+            override fun onClickTerm() {
+                viewModel.inputs.onClickTerm()
+            }
+        })
     }
 
     private fun bindObservable() {
         bind(
                 viewModel.outputs.settingItemList()
                         .observeOn(schedulerProvider.ui())
-                        .subscribe(settingAdapter::submitList)
+                        .subscribe(settingAdapter::submitList),
+
+                viewModel.outputs.navigateToTerm()
+                        .observeOn(schedulerProvider.ui())
+                        .subscribeBy(
+                                onNext = {
+                                    context?.let { context ->
+                                        Navigator.navigateToTermTextActivity(context)
+                                    }
+                                }
+                        )
         )
     }
 }

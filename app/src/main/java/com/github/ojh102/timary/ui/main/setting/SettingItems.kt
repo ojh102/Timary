@@ -1,23 +1,22 @@
 package com.github.ojh102.timary.ui.main.setting
 
-import android.view.View
-import android.widget.CompoundButton
-
 
 sealed class SettingItems(val id: Int) {
-    class SwitchItem(
+    sealed class SwitchItem(
             id: Int,
             val title: String,
             val description: String,
-            var isChecked: Boolean = true,
-            val onCheckedChangedListener: CompoundButton.OnCheckedChangeListener
-    ) : SettingItems(id)
+            var isChecked: Boolean = true
+    ) : SettingItems(id) {
+        class Alert(id: Int, title: String, description: String, isChecked: Boolean): SwitchItem(id, title, description, isChecked)
+    }
 
-    class TitleItem(
+    sealed class TitleItem(
             id: Int,
-            val title: String,
-            val onClickListener: View.OnClickListener
-    ) : SettingItems(id)
+            val title: String
+    ) : SettingItems(id) {
+        class Term(id: Int, title: String) : TitleItem(id, title)
+    }
 
     class LineItem(id: Int) : SettingItems(id)
 

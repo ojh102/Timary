@@ -10,6 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.github.ojh102.timary.log.TimaryLoggerApi
 import com.github.ojh102.timary.util.rx.SchedulerProvider
 import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
@@ -25,6 +26,9 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : ViewModel> : DaggerAppCom
 
     @Inject
     lateinit var schedulerProvider: SchedulerProvider
+
+    @Inject
+    lateinit var timaryLogger: TimaryLoggerApi
 
     private val compositeDisposable by lazy {
         CompositeDisposable()
