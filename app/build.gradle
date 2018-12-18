@@ -106,6 +106,16 @@ android {
         variant.outputs.all {
             outputFileName = getApkName(variant.buildType.name)
         }
+
+        variant.outputs.each { output ->
+            tasks.findAll {
+                it.name.startsWith("crashlyticsUploadDistribution${variant.name.capitalize()}")
+            }.each {
+                it.doFirst {
+                    ext.betaDistributionApkFilePath = System.getenv('BITRISE_SIGNED_APK_PATH')
+                }
+            }
+        }
     }
 }
 
