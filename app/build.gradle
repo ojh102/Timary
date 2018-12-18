@@ -49,7 +49,7 @@ android {
             ext.crashlyticsApiKey = System.getenv("TIMARY_DEBUG_FABRIC_API_KEY")
             ext.crashlyticsApiSecret = System.getenv("TIMARY_DEBUG_FABRIC_API_SECRET")
 
-            buildConfigField("String", "TIMARY_AMPLITUDE_KEY", "\"\"")
+            buildConfigField("String", "TIMARY_AMPLITUDE_KEY", "\"20a78add5e3fc949c080625019af1ede\"")
 
             signingConfig signingConfigs.debug
             applicationIdSuffix ".debug"
@@ -64,7 +64,7 @@ android {
             ext.crashlyticsApiKey = System.getenv("TIMARY_QA_FABRIC_API_KEY")
             ext.crashlyticsApiSecret = System.getenv("TIMARY_QA_FABRIC_API_SECRET")
 
-            buildConfigField("String", "TIMARY_AMPLITUDE_KEY", "\"\"")
+            buildConfigField("String", "TIMARY_AMPLITUDE_KEY", "\"20a78add5e3fc949c080625019af1ede\"")
 
             signingConfig signingConfigs.debug
             applicationIdSuffix ".qa"

@@ -62,7 +62,8 @@ class TimaryLogger @Inject constructor(
     override fun btnComplete(text: String) {
         try {
             val lengthJson = JSONObject().apply {
-                put("length", text)
+                put("length", text.length)
+                put(text, text)
             }
 
             Amplitude.getInstance().logEvent(resources.getString(R.string.btnComplete), lengthJson)
