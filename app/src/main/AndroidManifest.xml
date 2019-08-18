@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  package="com.github.ojh102.timary">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.github.ojh102.timary">
 
-  <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
-  <application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
-    android:name=".TimaryApplication"
-    android:supportsRtl="true"
-    android:theme="@style/AppTheme.NoActionBar"
-    tools:ignore="GoogleAppIndexingWarning">
+    <application
+        android:name=".TimaryApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
 
-    <activity
-      android:name=".ui.splash.SplashActivity"
-      android:screenOrientation="portrait">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
+        <activity
+            android:name=".ui.TimaryActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity
-      android:name=".ui.main.MainActivity"
-      android:screenOrientation="portrait"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait" />
 
-    <activity
-      android:name=".ui.write.content.WriteActivity"
-      android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.write.content.WriteActivity"
+            android:screenOrientation="portrait" />
 
-    <activity
-      android:name=".ui.complete.CompleteActivity"
-      android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.complete.CompleteActivity"
+            android:screenOrientation="portrait" />
 
-    <activity
-      android:name=".ui.read.ReadActivity"
-      android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.read.ReadActivity"
+            android:screenOrientation="portrait" />
 
-    <activity
-      android:name=".ui.write.store.StoreActivity"
-      android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.write.store.StoreActivity"
+            android:screenOrientation="portrait" />
 
-    <activity
-      android:name=".ui.common.WebViewActivity"
-      android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.common.WebViewActivity"
+            android:screenOrientation="portrait" />
 
-    <activity
-      android:name=".ui.common.TextActivity"
-      android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.common.TextActivity"
+            android:screenOrientation="portrait" />
 
-    <service android:name=".service.TimaryFirebaseMessagingService">
-      <intent-filter>
-        <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-      </intent-filter>
-    </service>
+        <service android:name=".service.TimaryFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
-    <service android:name=".service.TimaryFirebaseInstanceIdService">
-      <intent-filter>
-        <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-      </intent-filter>
-    </service>
+        <service android:name=".service.TimaryFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
 
-    <meta-data
-      android:name="com.google.firebase.messaging.default_notification_icon"
-      android:resource="@drawable/icon_home_off"/>
-    <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-         notification message. See README(https://goo.gl/6BKBk7) for more. -->
-    <meta-data
-      android:name="com.google.firebase.messaging.default_notification_color"
-      android:resource="@color/colorAccent"/>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/icon_home_off" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
 
-  </application>
+    </application>
 
 </manifest>
