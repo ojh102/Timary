@@ -8,7 +8,7 @@ import com.github.ojh102.timary.util.KEY_SETTING_NOTIFICATION
 import io.reactivex.Single
 import javax.inject.Inject
 
-class SettingRepository @Inject constructor(
+internal class SettingRepository @Inject constructor(
     private val context: Context,
     private val timarySharedPreferenceManager: TimarySharedPreferenceManager
 ) {

@@ -3,7 +3,7 @@ package com.github.ojh102.timary.db
 import android.content.SharedPreferences
 import javax.inject.Inject
 
-class TimarySharedPreferenceManager @Inject constructor(
+internal class TimarySharedPreferenceManager @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) {
 

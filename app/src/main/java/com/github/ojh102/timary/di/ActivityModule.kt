@@ -17,28 +17,4 @@ internal interface ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [TimaryActivityModule::class])
     fun bindTimaryActivity(): TimaryActivity
-
-    @ActivityScope
-    @ContributesAndroidInjector()
-    fun contributeSplashActivity(): SplashActivity
-
-    @ActivityScope
-    @ContributesAndroidInjector()
-    fun contributeMainActivity(): MainActivity
-
-    @ActivityScope
-    @ContributesAndroidInjector()
-    fun contributeWriteActivity(): WriteActivity
-
-    @ActivityScope
-    @ContributesAndroidInjector(modules = [StoreActivityModule::class])
-    fun contributeStoreActivity(): StoreActivity
-
-    @ActivityScope
-    @ContributesAndroidInjector()
-    fun contributeReadActivity(): ReadActivity
-
-    @ActivityScope
-    @ContributesAndroidInjector()
-    fun contributeCompleteActivity(): CompleteActivity
 }

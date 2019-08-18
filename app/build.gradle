@@ -8,7 +8,6 @@ apply plugin: 'kotlin-kapt'
 kapt {
     correctErrorTypes = true
 }
-apply plugin: 'realm-android'
 apply plugin: 'io.fabric'
 apply from: '../versioning.gradle'
 apply from: teamConfig('staticCodeAnalysis/ktlint.gradle')

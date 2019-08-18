@@ -6,7 +6,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class CapsuleRepository @Inject constructor(
+internal class CapsuleRepository @Inject constructor(
     private val timaryDB: TimaryDB
 ) {
 

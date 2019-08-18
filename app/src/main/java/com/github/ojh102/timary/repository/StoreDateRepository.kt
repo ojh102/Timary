@@ -9,7 +9,7 @@ import java.util.Calendar
 import java.util.Random
 import javax.inject.Inject
 
-class StoreDateRepository @Inject constructor(
+internal class StoreDateRepository @Inject constructor(
     private val context: Context
 ) {
 
