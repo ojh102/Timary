@@ -3,7 +3,6 @@ package com.github.ojh102.timary
 import com.crashlytics.android.Crashlytics
 import com.facebook.stetho.Stetho
 import com.github.ojh102.timary.di.DaggerAppComponent
-import com.google.firebase.FirebaseApp
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import io.fabric.sdk.android.Fabric
@@ -18,8 +17,6 @@ class TimaryApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
-
-        FirebaseApp.initializeApp(this)
 
         Fabric.with(this, Crashlytics())
 

@@ -119,16 +119,18 @@ android {
     }
 }
 
-realm {
-    kotlinExtensionsEnabled = true
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines_version"
 
     // Jetpack
     implementation "androidx.appcompat:appcompat:$rootProject.appcompat_version"
@@ -147,15 +149,8 @@ dependencies {
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
     implementation "androidx.navigation:navigation-fragment:$rootProject.navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigation_version"
-    implementation "com.google.android.gms:play-services-oss-licenses:$rootProject.oss_licenses_version"
     kapt "androidx.room:room-compiler:$rootProject.room_version"
     kapt "androidx.databinding:databinding-compiler:$rootProject.android_gradle_version"
-
-    // Firebase
-    implementation "com.google.firebase:firebase-core:$rootProject.firebase_version"
-    implementation "com.google.firebase:firebase-messaging:$rootProject.firebase_messaging_version"
-    implementation "com.google.firebase:firebase-dynamic-links:$rootProject.firebase_dynamic_link_version"
-
 
     // DI
     implementation "com.google.dagger:dagger:$rootProject.dagger_version"
@@ -163,13 +158,6 @@ dependencies {
     implementation "com.google.dagger:dagger-android:$rootProject.dagger_version"
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger_version"
-
-    // Network
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofit_version"
-    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp_version"
 
     // Rx
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rx_java_version"
@@ -188,7 +176,6 @@ dependencies {
     implementation("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlytics_version") {
         transitive = true
     }
-
 
     // Lottie
     implementation "com.airbnb.android:lottie:$rootProject.lottie_version"
