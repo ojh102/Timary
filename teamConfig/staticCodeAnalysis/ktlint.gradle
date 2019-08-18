@@ -1,0 +1,26 @@
+repositories {
+    jcenter()
+}
+
+configurations {
+    ktlint
+}
+
+dependencies {
+    ktlint "com.pinterest:ktlint:$rootProject.ktlint_version"
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = 'com.pinterest.ktlint.Main'
+
+    args "src/main/**/*.kt", "--reporter=plain", "--reporter=checkstyle,output=$projectDir/build/reports/ktlint/ktlint.xml"
+}
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style violations."
+    classpath = configurations.ktlint
+    main = 'com.pinterest.ktlint.Main'
+    args "-F", "src/**/*.kt"
+}

@@ -14,7 +14,6 @@ import javax.inject.Singleton
     AndroidSupportInjectionModule::class,
     ActivityModule::class,
     FragmentModule::class,
-    ServiceModule::class,
     ViewModelModule::class,
     DBModule::class,
     RepositoryModule::class,
@@ -31,5 +30,4 @@ interface AppComponent : AndroidInjector<DaggerApplication> {
     }
 
     fun inject(application: TimaryApplication)
-
 }

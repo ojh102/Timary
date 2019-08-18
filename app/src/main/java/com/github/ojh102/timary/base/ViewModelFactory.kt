@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 class ViewModelFactory @Inject constructor(
-        private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+    private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 
 ) : ViewModelProvider.Factory {
 
@@ -27,9 +27,8 @@ class ViewModelFactory @Inject constructor(
         @Suppress("UNCHECKED_CAST")
         try {
             return creator.get() as T
-        } catch (e : Exception) {
+        } catch (e: Exception) {
             throw RuntimeException(e)
         }
-
     }
 }

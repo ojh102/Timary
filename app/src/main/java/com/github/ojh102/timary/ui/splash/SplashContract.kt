@@ -14,5 +14,4 @@ interface SplashContract {
         val inputs: Inputs = this
         val outputs: Outputs = this
     }
-
 }

@@ -1,8 +1,8 @@
 package com.github.ojh102.timary.base
 
-import androidx.lifecycle.ViewModel
 import android.content.Intent
 import androidx.annotation.CheckResult
+import androidx.lifecycle.ViewModel
 import com.github.ojh102.timary.util.RequestCode
 import com.github.ojh102.timary.util.ResultCode
 import com.jakewharton.rxrelay2.PublishRelay
@@ -42,5 +42,4 @@ abstract class BaseViewModel : ViewModel() {
     fun bind(vararg disposables: Disposable) {
         compositeDisposable.addAll(*disposables)
     }
-
 }

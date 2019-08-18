@@ -2,7 +2,6 @@ package com.github.ojh102.timary.ui.main.setting
 
 import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.db.TimarySharedPreferenceManager
-import com.github.ojh102.timary.log.TimaryLoggerApi
 import com.github.ojh102.timary.repository.SettingRepository
 import com.github.ojh102.timary.util.KEY_SETTING_NOTIFICATION
 import com.jakewharton.rxrelay2.PublishRelay
@@ -28,9 +27,8 @@ interface SettingContract {
     }
 
     class SettingViewModel @Inject constructor(
-            private val settingRepository: SettingRepository,
-            private val timaryLogger: TimaryLoggerApi,
-            private val timarySharedPreferenceManager: TimarySharedPreferenceManager
+        private val settingRepository: SettingRepository,
+        private val timarySharedPreferenceManager: TimarySharedPreferenceManager
     ) : BaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
@@ -42,22 +40,20 @@ interface SettingContract {
 
         init {
             bind(
-                    outputs.checkedAlert()
-                            .doOnNext { timaryLogger.btnAlert() }
-                            .subscribeBy(
-                                    onNext = {
-                                        timarySharedPreferenceManager.setBoolean(KEY_SETTING_NOTIFICATION, it)
-                                    }
-                            ),
+                outputs.checkedAlert()
+                    .subscribeBy(
+                        onNext = {
+                            timarySharedPreferenceManager.setBoolean(KEY_SETTING_NOTIFICATION, it)
+                        }
+                    ),
 
-                    outputs.clickTerm()
-                            .throttleFirst(300, TimeUnit.MILLISECONDS)
-                            .doOnNext { timaryLogger.btnTerms() }
-                            .subscribeBy(
-                                    onNext = {
-                                       inputs.onNavigateToTerm()
-                                    }
-                            )
+                outputs.clickTerm()
+                    .throttleFirst(300, TimeUnit.MILLISECONDS)
+                    .subscribeBy(
+                        onNext = {
+                            inputs.onNavigateToTerm()
+                        }
+                    )
             )
         }
 
@@ -89,5 +85,4 @@ interface SettingContract {
             return navigateTermRelay
         }
     }
-
 }

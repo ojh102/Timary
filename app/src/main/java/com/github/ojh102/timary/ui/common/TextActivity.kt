@@ -1,8 +1,8 @@
 package com.github.ojh102.timary.ui.common
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.util.KEY_TEXT_CONTENT
 import com.github.ojh102.timary.util.KEY_TEXT_TITLE

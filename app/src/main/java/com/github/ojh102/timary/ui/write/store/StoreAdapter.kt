@@ -5,7 +5,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.github.ojh102.timary.databinding.ViewStoreBinding
 import com.github.ojh102.timary.util.extension.inflater
-import java.util.*
+import java.util.Calendar
+import java.util.Random
 import javax.inject.Inject
 
 class StoreAdapter @Inject constructor() : ListAdapter<StoreItem, StoreViewHolder>(object : DiffUtil.ItemCallback<StoreItem>() {
@@ -17,14 +18,13 @@ class StoreAdapter @Inject constructor() : ListAdapter<StoreItem, StoreViewHolde
     override fun areContentsTheSame(oldItem: StoreItem, newItem: StoreItem): Boolean {
         return oldItem == newItem
     }
-
 }) {
 
     interface Callbacks {
         fun onItemSelect(item: StoreItem, position: Int)
     }
 
-    var callbacks : Callbacks? = null
+    var callbacks: Callbacks? = null
 
     lateinit var items: MutableList<StoreItem>
 
@@ -37,7 +37,7 @@ class StoreAdapter @Inject constructor() : ListAdapter<StoreItem, StoreViewHolde
                     it.setSelected(false)
                 }
 
-                if(position == items.size - 1) {
+                if (position == items.size - 1) {
                     items[position].date = createRandomDate()
                 }
 
@@ -81,5 +81,4 @@ class StoreAdapter @Inject constructor() : ListAdapter<StoreItem, StoreViewHolde
 
         return targetCal.timeInMillis
     }
-
 }

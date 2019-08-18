@@ -1,11 +1,8 @@
 package com.github.ojh102.timary.ui.main
 
 import com.github.ojh102.timary.base.BaseViewModel
-import com.github.ojh102.timary.log.TimaryLogger
-import com.github.ojh102.timary.log.TimaryLoggerApi
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
-import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
 interface MainContract {
@@ -22,9 +19,7 @@ interface MainContract {
         fun clickSetting(): Observable<Unit>
     }
 
-    class MainViewModel @Inject constructor(
-            private val timaryLogger: TimaryLoggerApi
-    ) : BaseViewModel(), Inputs, Outputs {
+    class MainViewModel @Inject constructor() : BaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
         val outputs: Outputs = this
@@ -32,31 +27,6 @@ interface MainContract {
         private val clickHomeRelay = PublishRelay.create<Unit>()
         private val clickArchiveRelay = PublishRelay.create<Unit>()
         private val clickSettingRelay = PublishRelay.create<Unit>()
-
-        init {
-            bind(
-                    clickHome()
-                            .subscribeBy(
-                                    onNext = {
-                                        timaryLogger.btnTapHome()
-                                    }
-                            ),
-
-                    clickArchive()
-                            .subscribeBy(
-                                    onNext = {
-                                        timaryLogger.btnTapArchive()
-                                    }
-                            ),
-
-                    clickSetting()
-                            .subscribeBy(
-                                    onNext = {
-                                        timaryLogger.btnTapSetting()
-                                    }
-                            )
-            )
-        }
 
         override fun onClickHome() {
             clickHomeRelay.accept(Unit)
@@ -82,5 +52,4 @@ interface MainContract {
             return clickSettingRelay
         }
     }
-
 }

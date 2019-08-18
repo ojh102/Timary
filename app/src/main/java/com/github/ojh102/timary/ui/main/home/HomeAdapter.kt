@@ -12,15 +12,16 @@ import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.util.TimaryParser
 import com.github.ojh102.timary.util.extension.inflater
 
-class HomeAdapter(private val timaryParser: TimaryParser) : ListAdapter<HomeItems, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<HomeItems>() {
-    override fun areItemsTheSame(oldItem: HomeItems, newItem: HomeItems): Boolean {
-        return oldItem.id == newItem.id
-    }
+class HomeAdapter(private val timaryParser: TimaryParser) :
+    ListAdapter<HomeItems, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<HomeItems>() {
+        override fun areItemsTheSame(oldItem: HomeItems, newItem: HomeItems): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-    override fun areContentsTheSame(oldItem: HomeItems, newItem: HomeItems): Boolean {
-        return oldItem.id == newItem.id
-    }
-}) {
+        override fun areContentsTheSame(oldItem: HomeItems, newItem: HomeItems): Boolean {
+            return oldItem.id == newItem.id
+        }
+    }) {
 
     companion object {
         const val TYPE_HEADER = 100
@@ -36,7 +37,7 @@ class HomeAdapter(private val timaryParser: TimaryParser) : ListAdapter<HomeItem
     private var callbacks: Callbacks? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType) {
+        return when (viewType) {
             TYPE_HEADER -> {
                 HomeHeaderViewHolder(ViewHomeHeaderBinding.inflate(parent.inflater(), parent, false), timaryParser)
             }
@@ -57,7 +58,7 @@ class HomeAdapter(private val timaryParser: TimaryParser) : ListAdapter<HomeItem
                 viewHolder.setOnClickListener(View.OnClickListener {
                     val item = getItem(viewHolder.adapterPosition)
 
-                    if(item is HomeItems.StoredCapsule.OpenedCapsule) {
+                    if (item is HomeItems.StoredCapsule.OpenedCapsule) {
                         val capsule = item.capsule
 
                         callbacks?.onClickOpenedCapsule(capsule)
@@ -73,7 +74,7 @@ class HomeAdapter(private val timaryParser: TimaryParser) : ListAdapter<HomeItem
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(holder) {
+        when (holder) {
             is HomeHeaderViewHolder -> {
                 holder.bind((getItem(position) as HomeItems.Header))
             }
@@ -88,7 +89,7 @@ class HomeAdapter(private val timaryParser: TimaryParser) : ListAdapter<HomeItem
 
     override fun getItemViewType(position: Int): Int {
         val item = getItem(position)
-        return when(item) {
+        return when (item) {
             is HomeItems.Header -> {
                 TYPE_HEADER
             }
@@ -102,7 +103,6 @@ class HomeAdapter(private val timaryParser: TimaryParser) : ListAdapter<HomeItem
     }
 
     fun setCallbacks(callbacks: Callbacks) {
-         this.callbacks = callbacks
+        this.callbacks = callbacks
     }
-
 }

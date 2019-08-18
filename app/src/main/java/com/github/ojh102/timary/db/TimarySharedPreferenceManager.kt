@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 
 class TimarySharedPreferenceManager @Inject constructor(
-        private val sharedPreferences: SharedPreferences
+    private val sharedPreferences: SharedPreferences
 ) {
 
     fun setBoolean(key: String, value: Boolean) {
@@ -14,5 +14,4 @@ class TimarySharedPreferenceManager @Inject constructor(
     fun getBoolean(key: String, defaultValue: Boolean = false): Boolean {
         return sharedPreferences.getBoolean(key, defaultValue)
     }
-
 }

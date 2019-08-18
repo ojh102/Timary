@@ -11,9 +11,7 @@ import javax.inject.Inject
 
 interface CompleteContract {
 
-    interface Inputs {
-
-    }
+    interface Inputs
 
     interface Outputs {
         fun title(): Observable<String>
@@ -21,7 +19,7 @@ interface CompleteContract {
         fun type(): Observable<CompleteType>
     }
 
-    class CompleteViewModel @Inject constructor(): BaseViewModel(), Inputs, Outputs {
+    class CompleteViewModel @Inject constructor() : BaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
         val outputs: Outputs = this
@@ -39,7 +37,6 @@ interface CompleteContract {
                         it.getStringExtra(KEY_COMPLETE_DESCRIPTION)?.let {
                             this.descriptionRelay.accept(it)
                         }
-
                     }
         }
 
@@ -54,7 +51,5 @@ interface CompleteContract {
         override fun type(): Observable<CompleteType> {
             return typeRelay
         }
-
     }
-
 }

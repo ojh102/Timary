@@ -5,8 +5,6 @@ import android.content.Context
 import android.content.res.Resources
 import androidx.lifecycle.ViewModelProvider
 import com.github.ojh102.timary.base.ViewModelFactory
-import com.github.ojh102.timary.log.TimaryLogger
-import com.github.ojh102.timary.log.TimaryLoggerApi
 import com.github.ojh102.timary.util.TimaryParser
 import com.github.ojh102.timary.util.rx.AppSchedulerProvider
 import com.github.ojh102.timary.util.rx.SchedulerProvider
@@ -30,10 +28,6 @@ class AppModule {
         @Singleton
         @Binds
         fun bindSchedulerProvider(schedulerProvider: AppSchedulerProvider): SchedulerProvider
-
-        @Singleton
-        @Binds
-        fun bindTimaryLogger(timaryLogger: TimaryLogger): TimaryLoggerApi
     }
 
     @Singleton
@@ -47,5 +41,4 @@ class AppModule {
     fun provideResoucre(context: Context): Resources {
         return context.resources
     }
-
 }

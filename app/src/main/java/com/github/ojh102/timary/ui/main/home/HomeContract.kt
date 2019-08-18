@@ -3,10 +3,8 @@ package com.github.ojh102.timary.ui.main.home
 import android.content.res.Resources
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
-import com.github.ojh102.timary.log.TimaryLoggerApi
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.repository.CapsuleRepository
-import com.github.ojh102.timary.util.extension.toast
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
@@ -35,9 +33,8 @@ interface HomeContract {
     }
 
     class HomeViewModel @Inject constructor(
-            private val capsuleRepository: CapsuleRepository,
-            private val timaryLogger: TimaryLoggerApi,
-            private val resources: Resources
+        private val capsuleRepository: CapsuleRepository,
+        private val resources: Resources
     ) : BaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
@@ -55,7 +52,6 @@ interface HomeContract {
             bind(
                     clickWrite()
                             .throttleFirst(300, TimeUnit.MILLISECONDS)
-                            .doOnNext { timaryLogger.btnWrite() }
                             .subscribeBy(
                                     onNext = {
                                         inputs.onNavigateToWrite()
@@ -64,11 +60,10 @@ interface HomeContract {
 
                     clickClosedCapsule()
                             .throttleFirst(300, TimeUnit.MILLISECONDS)
-                            .doOnNext { timaryLogger.btnClosed() }
                             .subscribeBy(
                                     onNext = {
                                         val diffDay = it.dDay()
-                                        val dDay = if(diffDay < 1) {
+                                        val dDay = if (diffDay < 1) {
                                             1
                                         } else {
                                             diffDay.toInt()
@@ -82,7 +77,6 @@ interface HomeContract {
 
                     clickOpenedCapsule()
                             .throttleFirst(300, TimeUnit.MILLISECONDS)
-                            .doOnNext { timaryLogger.btnOpened() }
                             .subscribeBy(
                                     onNext = {
                                         inputs.onNavigateToRead(it.id)
@@ -94,7 +88,7 @@ interface HomeContract {
         override fun homeItemList(): Observable<List<HomeItems>> {
             return capsuleRepository.getHomeCapsuleList().map { capsuleList ->
                 capsuleList.map { capsule ->
-                    if(capsule.isOpened()) {
+                    if (capsule.isOpened()) {
                         HomeItems.StoredCapsule.OpenedCapsule(capsule)
                     } else {
                         HomeItems.StoredCapsule.ClosedCapsule(capsule)

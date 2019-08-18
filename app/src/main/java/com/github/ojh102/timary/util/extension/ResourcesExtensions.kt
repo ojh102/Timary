@@ -4,7 +4,7 @@ import android.content.Context
 
 fun Context?.hasResource(resId: Int): Boolean {
     return try {
-        if(this == null) {
+        if (this == null) {
             return false
         }
         this.resources.getResourceName(resId)
@@ -15,7 +15,7 @@ fun Context?.hasResource(resId: Int): Boolean {
 }
 
 fun Context?.dpToPixel(dpValue: Float): Int {
-    if(this == null) {
+    if (this == null) {
         return 0
     }
     val scale = resources.displayMetrics.density

@@ -5,8 +5,8 @@ import com.github.ojh102.timary.databinding.ViewHomeHeaderBinding
 import com.github.ojh102.timary.util.TimaryParser
 
 class HomeHeaderViewHolder(
-        private val binding: ViewHomeHeaderBinding,
-        timaryParser: TimaryParser
+    private val binding: ViewHomeHeaderBinding,
+    timaryParser: TimaryParser
 ) : RecyclerView.ViewHolder(binding.root) {
 
     init {
@@ -16,5 +16,4 @@ class HomeHeaderViewHolder(
     fun bind(item: HomeItems.Header) {
         binding.headerItem = item
     }
-
 }

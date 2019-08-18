@@ -1,11 +1,18 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+androidExtensions {
+    experimental = true
+}
 apply plugin: 'kotlin-kapt'
+kapt {
+    correctErrorTypes = true
+}
 apply plugin: 'realm-android'
 apply plugin: 'io.fabric'
-apply plugin: 'com.getkeepsafe.dexcount'
 apply from: '../versioning.gradle'
+apply from: teamConfig('staticCodeAnalysis/ktlint.gradle')
+apply from: teamConfig('staticCodeAnalysis/detekt.gradle')
 
 android {
     compileSdkVersion rootProject.ext.compile_sdk_version
@@ -48,9 +55,6 @@ android {
         debug {
             ext.crashlyticsApiKey = System.getenv("TIMARY_DEBUG_FABRIC_API_KEY")
             ext.crashlyticsApiSecret = System.getenv("TIMARY_DEBUG_FABRIC_API_SECRET")
-
-            buildConfigField("String", "TIMARY_AMPLITUDE_KEY", "\"20a78add5e3fc949c080625019af1ede\"")
-
             signingConfig signingConfigs.debug
             applicationIdSuffix ".debug"
 
@@ -63,8 +67,6 @@ android {
         qa {
             ext.crashlyticsApiKey = System.getenv("TIMARY_QA_FABRIC_API_KEY")
             ext.crashlyticsApiSecret = System.getenv("TIMARY_QA_FABRIC_API_SECRET")
-
-            buildConfigField("String", "TIMARY_AMPLITUDE_KEY", "\"20a78add5e3fc949c080625019af1ede\"")
 
             signingConfig signingConfigs.debug
             applicationIdSuffix ".qa"
@@ -84,8 +86,6 @@ android {
         release {
             ext.crashlyticsApiKey = System.getenv("TIMARY_RELEASE_FABRIC_API_KEY")
             ext.crashlyticsApiSecret = System.getenv("TIMARY_RELEASE_FABRIC_API_SECRET")
-
-            buildConfigField("String", "TIMARY_AMPLITUDE_KEY", "\"${System.getenv("TIMARY_AMPLITUDE_KEY")}\"")
 
             signingConfig null
 
@@ -126,27 +126,36 @@ realm {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
+
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlin_version"
 
     // Jetpack
     implementation "androidx.appcompat:appcompat:$rootProject.appcompat_version"
-    implementation "androidx.vectordrawable:vectordrawable:$rootProject.vectordrawable_version"
+    implementation "androidx.fragment:fragment:$rootProject.fragment_version"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.fragment_version"
     implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerview_version"
     implementation "androidx.annotation:annotation:$rootProject.annotation_version"
     implementation "com.google.android.material:material:$rootProject.material_version"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraint_layout_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycle_version"
     implementation "androidx.paging:paging-runtime:$rootProject.paging_version"
+    implementation "androidx.room:room-runtime:$rootProject.room_version"
+    implementation "androidx.room:room-rxjava2:$rootProject.room_version"
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
-    implementation "android.arch.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
-    implementation "android.arch.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
-    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycle_version"
+    implementation "androidx.navigation:navigation-fragment:$rootProject.navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigation_version"
+    implementation "com.google.android.gms:play-services-oss-licenses:$rootProject.oss_licenses_version"
+    kapt "androidx.room:room-compiler:$rootProject.room_version"
     kapt "androidx.databinding:databinding-compiler:$rootProject.android_gradle_version"
 
     // Firebase
     implementation "com.google.firebase:firebase-core:$rootProject.firebase_version"
     implementation "com.google.firebase:firebase-messaging:$rootProject.firebase_messaging_version"
+    implementation "com.google.firebase:firebase-dynamic-links:$rootProject.firebase_dynamic_link_version"
+
 
     // DI
     implementation "com.google.dagger:dagger:$rootProject.dagger_version"
@@ -159,7 +168,6 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofit_version"
-    implementation "com.squareup.okio:okio:$rootProject.okio_version"
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp_version"
 
@@ -173,43 +181,28 @@ dependencies {
     // Date
     implementation "com.jakewharton.threetenabp:threetenabp:$rootProject.threetenabp_version"
 
-    // Analytics
-    implementation "com.amplitude:android-sdk:$rootProject.amplitude_version"
-
     // Debug
     implementation "com.jakewharton.timber:timber:$rootProject.timber_version"
     implementation "com.facebook.stetho:stetho:$rootProject.stetho_version"
     implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho_version"
-
-    implementation("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlytics_version@aar") {
+    implementation("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlytics_version") {
         transitive = true
     }
+
 
     // Lottie
     implementation "com.airbnb.android:lottie:$rootProject.lottie_version"
 
     // Test
-    testImplementation 'org.threeten:threetenbp:1.3.8'
     testImplementation "junit:junit:$rootProject.junit_version"
-    androidTestImplementation "androidx.test:runner:$rootProject.runner_version"
+    testImplementation "org.threeten:threetenbp:$rootProject.threetenabp_test_version"
+    androidTestImplementation "org.threeten:threetenbp:$rootProject.threetenabp_test_version"
+    androidTestImplementation "junit:junit:$rootProject.junit_version"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.room_version"
+    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext_junit_version}"
+    androidTestImplementation "androidx.test:rules:$rootProject.rules_version"
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.arch_core_testing_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_version"
-}
-
-import com.crashlytics.tools.utils.PropertiesUtils
-
-File crashlyticsProperties = new File("${project.projectDir.absolutePath}/fabric.properties")
-android.applicationVariants.all { variant ->
-    def variantSuffix = variant.name.capitalize()
-    def generateResourcesTask = project.tasks.getByName("fabricGenerateResources${variantSuffix}")
-    def generatePropertiesTask = task("fabricGenerateProperties${variantSuffix}") << {
-        Properties properties = new Properties()
-        println "...copying apiSecret for ${variant.name}"
-        properties.put("apiSecret", variant.buildType.ext.crashlyticsApiSecret)
-        println "...copying apiKey for ${variant.name}"
-        properties.put("apiKey", variant.buildType.ext.crashlyticsApiKey)
-        PropertiesUtils.injectPropertyInFile(crashlyticsProperties, properties, "")
-    }
-    generateResourcesTask.dependsOn generatePropertiesTask
 }
 
 apply plugin: 'com.google.gms.google-services'

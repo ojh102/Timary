@@ -6,7 +6,6 @@ import com.github.ojh102.timary.util.TimaryParser
 import dagger.Module
 import dagger.Provides
 
-
 @Module
 class HomeFragmentModule {
 

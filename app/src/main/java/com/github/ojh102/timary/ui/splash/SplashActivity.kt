@@ -32,5 +32,4 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashContract.Splash
                         }
         )
     }
-
 }

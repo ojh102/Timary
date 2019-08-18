@@ -15,5 +15,4 @@ class TimaryProgressDialog(context: Context) : AppCompatDialog(context) {
         setContentView(R.layout.dialog_progress)
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
-
 }

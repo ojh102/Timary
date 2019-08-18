@@ -40,7 +40,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadContract.ReadViewMode
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when(item?.itemId) {
+        return when (item?.itemId) {
             R.id.menu_delete -> {
                 viewModel.inputs.onClickDelete()
                 true
@@ -57,21 +57,15 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadContract.ReadViewMode
 
                 viewModel.outputs.clickDelete()
                         .throttleFirst(300, TimeUnit.MILLISECONDS)
-                        .doOnNext {
-                            timaryLogger.btnDelete()
-                        }
                         .observeOn(schedulerProvider.ui())
                         .subscribeBy {
                             AlertDialog.Builder(this, R.style.TimaryDeleteAlertDialogStyle)
                                     .setTitle(getString(R.string.read_delete_title))
                                     .setMessage(getString(R.string.read_delete_message))
                                     .setPositiveButton(getString(R.string.delete)) { _, _ ->
-                                        timaryLogger.btnConfirmDelete()
                                         viewModel.inputs.deleteCapsule()
                                     }
-                                    .setNegativeButton(getString(R.string.cancel)) { _, _ ->
-                                        timaryLogger.btnConfirmCancel()
-                                    }
+                                    .setNegativeButton(getString(R.string.cancel)) { _, _ -> }
                                     .show()
                         },
 
@@ -83,5 +77,4 @@ class ReadActivity : BaseActivity<ActivityReadBinding, ReadContract.ReadViewMode
                         }
         )
     }
-
 }

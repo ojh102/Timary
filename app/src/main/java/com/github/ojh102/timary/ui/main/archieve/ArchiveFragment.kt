@@ -74,5 +74,4 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding, ArchiveContract.Arc
                         )
         )
     }
-
 }

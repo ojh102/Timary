@@ -7,8 +7,8 @@ import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSettingBinding
 import com.github.ojh102.timary.util.Navigator
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.android.synthetic.main.fragment_setting.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.fragment_setting.*
 
 class SettingFragment : BaseFragment<FragmentSettingBinding, SettingContract.SettingViewModel>() {
 

@@ -21,5 +21,4 @@ open class Capsule : RealmObject() {
     fun isOpened(): Boolean {
         return dDay() <= 0f
     }
-
 }

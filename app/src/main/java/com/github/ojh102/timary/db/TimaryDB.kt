@@ -7,7 +7,7 @@ import io.realm.RealmConfiguration
 import javax.inject.Inject
 
 class TimaryDB @Inject constructor(
-        private val realmConfiguration: RealmConfiguration
+    private val realmConfiguration: RealmConfiguration
 ) {
 
     fun getHomeCapsuleList(): Observable<List<Capsule>> {
@@ -47,5 +47,4 @@ class TimaryDB @Inject constructor(
             it.where(Capsule::class.java).equalTo(FIELD_ID, id).findFirst()?.deleteFromRealm()
         }
     }
-
 }

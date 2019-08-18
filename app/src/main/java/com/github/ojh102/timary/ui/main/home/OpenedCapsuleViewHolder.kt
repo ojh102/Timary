@@ -7,8 +7,8 @@ import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.util.TimaryParser
 
 class OpenedCapsuleViewHolder(
-        private val binding: ViewCapsuleOpenBinding,
-        timaryParser: TimaryParser
+    private val binding: ViewCapsuleOpenBinding,
+    timaryParser: TimaryParser
 ) : RecyclerView.ViewHolder(binding.root) {
 
     init {

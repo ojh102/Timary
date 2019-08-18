@@ -26,8 +26,8 @@ interface StoreContract {
     }
 
     class StoreViewModel @Inject constructor(
-            private val storeDateRepository: StoreDateRepository,
-            private val capsuleRepository: CapsuleRepository
+        private val storeDateRepository: StoreDateRepository,
+        private val capsuleRepository: CapsuleRepository
     ) : BaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
@@ -49,7 +49,7 @@ interface StoreContract {
         override fun storeCapsule(storeItem: StoreItem) {
             val capsule = Capsule().apply {
                 id = System.currentTimeMillis()
-                content = contentRelay.value
+                content = contentRelay.value!!
                 targetDate = storeItem.date
                 writtenDate = System.currentTimeMillis()
             }
@@ -74,5 +74,4 @@ interface StoreContract {
             return clickStoreItemRelay
         }
     }
-
 }

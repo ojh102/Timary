@@ -62,5 +62,4 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CompleteContract.CompleteViewModel::class)
     abstract fun bindCompleteViewModel(completeViewModel: CompleteContract.CompleteViewModel): ViewModel
-
 }

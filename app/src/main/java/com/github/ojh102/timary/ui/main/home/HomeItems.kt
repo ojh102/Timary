@@ -6,8 +6,8 @@ sealed class HomeItems(val id: Long) {
     data class Header(val storedCapsuleSize: Int) : HomeItems(storedCapsuleSize.toLong())
 
     sealed class StoredCapsule(val capsule: Capsule) : HomeItems(capsule.id) {
-        class ClosedCapsule(capsule: Capsule): StoredCapsule(capsule)
+        class ClosedCapsule(capsule: Capsule) : StoredCapsule(capsule)
 
-        class OpenedCapsule(capsule: Capsule): StoredCapsule(capsule)
+        class OpenedCapsule(capsule: Capsule) : StoredCapsule(capsule)
     }
 }

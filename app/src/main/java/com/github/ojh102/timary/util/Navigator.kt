@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.ui.common.TextActivity
-import com.github.ojh102.timary.ui.common.WebViewActivity
 import com.github.ojh102.timary.ui.complete.CompleteActivity
 import com.github.ojh102.timary.ui.complete.CompleteType
 import com.github.ojh102.timary.ui.main.MainActivity
@@ -72,5 +71,4 @@ class Navigator {
             })
         }
     }
-
 }

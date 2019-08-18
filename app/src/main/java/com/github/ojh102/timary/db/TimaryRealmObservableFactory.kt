@@ -4,8 +4,13 @@ import com.github.ojh102.timary.util.rx.RealmIOTransfer
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposables
-import io.realm.*
-import java.util.*
+import io.realm.Realm
+import io.realm.RealmChangeListener
+import io.realm.RealmConfiguration
+import io.realm.RealmList
+import io.realm.RealmModel
+import io.realm.RealmResults
+import java.util.IdentityHashMap
 
 object TimaryRealmObservableFactory {
 
@@ -32,16 +37,16 @@ object TimaryRealmObservableFactory {
     private val BACK_PRESSURE_STRATEGY = BackpressureStrategy.LATEST
 
     fun <E : RealmModel> from(
-            realmConfiguration: RealmConfiguration,
-            query: (realm: Realm) -> RealmResults<E>
+        realmConfiguration: RealmConfiguration,
+        query: (realm: Realm) -> RealmResults<E>
     ): Observable<E> {
         return from(realmConfiguration, query, null)
     }
 
     fun <E : RealmModel> from(
-            realmConfiguration: RealmConfiguration,
-            query: (realm: Realm) -> RealmResults<E>,
-            defaultValue: E?
+        realmConfiguration: RealmConfiguration,
+        query: (realm: Realm) -> RealmResults<E>,
+        defaultValue: E?
     ): Observable<E> {
 
         return Observable.create<E> { emitter ->
@@ -50,7 +55,7 @@ object TimaryRealmObservableFactory {
             resultsRefs.get()!!.acquireReference(realmResults)
 
             val listener = RealmChangeListener<RealmResults<E>> {
-                if(!emitter.isDisposed) {
+                if (!emitter.isDisposed) {
                     realmResults.first(defaultValue)?.let {
                         emitter.onNext(observableRealm.copyFromRealm(it))
                     }
@@ -68,13 +73,12 @@ object TimaryRealmObservableFactory {
             realmResults.first(defaultValue)?.let {
                 emitter.onNext(observableRealm.copyFromRealm(it))
             }
-
         }.compose(RealmIOTransfer())
     }
 
     fun <E : RealmModel> fromList(
-            realmConfiguration: RealmConfiguration,
-            query: (realm: Realm) -> RealmResults<E>
+        realmConfiguration: RealmConfiguration,
+        query: (realm: Realm) -> RealmResults<E>
 
     ): Observable<List<E>> {
 
@@ -85,7 +89,7 @@ object TimaryRealmObservableFactory {
             resultsRefs.get()!!.acquireReference(realmResults)
 
             val listener = RealmChangeListener<RealmResults<E>> {
-                if(!emitter.isDisposed) {
+                if (!emitter.isDisposed) {
                     emitter.onNext(observableRealm.copyFromRealm(realmResults))
                 }
             }
@@ -99,7 +103,6 @@ object TimaryRealmObservableFactory {
             })
 
             emitter.onNext(observableRealm.copyFromRealm(realmResults))
-
         }.compose(RealmIOTransfer())
     }
 
@@ -111,7 +114,7 @@ object TimaryRealmObservableFactory {
         fun acquireReference(obj: K) {
             val count = references[obj]
 
-            if(count == null) {
+            if (count == null) {
                 references[obj] = 1
             } else {
                 references[obj] = count + 1
@@ -129,5 +132,4 @@ object TimaryRealmObservableFactory {
             }
         }
     }
-
 }

@@ -36,5 +36,4 @@ abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector()
     abstract fun contributeCompleteActivity(): CompleteActivity
-
 }

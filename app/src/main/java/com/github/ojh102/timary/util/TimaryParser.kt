@@ -7,7 +7,8 @@ import android.text.Spanned
 import android.text.style.TextAppearanceSpan
 import com.github.ojh102.timary.R
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 class TimaryParser(private val context: Context) {
 
@@ -99,7 +100,6 @@ class TimaryParser(private val context: Context) {
         }
     }
 
-
     fun dateToTitleWithLine(writtenDate: Long): String {
         if (writtenDate == 0L) {
             return ""
@@ -162,7 +162,6 @@ class TimaryParser(private val context: Context) {
             setSpan(TextAppearanceSpan(context, R.style.B16Grape), 0, numString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
     }
-
 
     private fun getCalendar(date: Long): Calendar {
         return Calendar.getInstance().apply {

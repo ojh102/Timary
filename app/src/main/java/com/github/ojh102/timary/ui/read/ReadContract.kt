@@ -25,8 +25,8 @@ interface ReadContract {
     }
 
     class ReadViewModel @Inject constructor(
-            private val capsuleRepository: CapsuleRepository,
-            private val timaryParser: TimaryParser
+        private val capsuleRepository: CapsuleRepository,
+        private val timaryParser: TimaryParser
     ) : BaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
@@ -58,9 +58,9 @@ interface ReadContract {
 
         override fun deleteCapsule() {
             bind(
-                    capsuleRepository.deleteCapsuleById(capsuleRelay.value.id)
+                    capsuleRepository.deleteCapsuleById(capsuleRelay.value!!.id)
                             .subscribeBy {
-                                completeDeleteCapsuleRelay.accept(timaryParser.dateToTitleWithLine(capsuleRelay.value.writtenDate))
+                                completeDeleteCapsuleRelay.accept(timaryParser.dateToTitleWithLine(capsuleRelay.value!!.writtenDate))
                             }
             )
         }
@@ -69,5 +69,4 @@ interface ReadContract {
             return completeDeleteCapsuleRelay
         }
     }
-
 }

@@ -7,7 +7,7 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 class CapsuleRepository @Inject constructor(
-        private val timaryDB: TimaryDB
+    private val timaryDB: TimaryDB
 ) {
 
     fun getHomeCapsuleList(): Observable<List<Capsule>> {
@@ -29,5 +29,4 @@ class CapsuleRepository @Inject constructor(
     fun deleteCapsuleById(id: Long): Completable {
         return timaryDB.deleteCapsuleById(id)
     }
-
 }

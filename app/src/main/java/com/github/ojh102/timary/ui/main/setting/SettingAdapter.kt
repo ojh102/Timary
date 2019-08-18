@@ -21,7 +21,6 @@ class SettingAdapter : ListAdapter<SettingItems, RecyclerView.ViewHolder>(object
     override fun areContentsTheSame(oldItem: SettingItems, newItem: SettingItems): Boolean {
         return oldItem.id == newItem.id
     }
-
 }) {
 
     companion object {
@@ -46,7 +45,7 @@ class SettingAdapter : ListAdapter<SettingItems, RecyclerView.ViewHolder>(object
                 viewHolder.setOnCheckedChnageListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
                     val item = getItem(viewHolder.adapterPosition)
 
-                    when(item){
+                    when (item) {
                         is SettingItems.SwitchItem.Alert -> {
                             callbacks?.onCheckedAlert(isChecked)
                         }
@@ -61,7 +60,7 @@ class SettingAdapter : ListAdapter<SettingItems, RecyclerView.ViewHolder>(object
                 viewHolder.setOnClickListener(View.OnClickListener {
                     val item = getItem(viewHolder.adapterPosition)
 
-                    when(item){
+                    when (item) {
                         is SettingItems.TitleItem.Term -> {
                             callbacks?.onClickTerm()
                         }
@@ -83,7 +82,7 @@ class SettingAdapter : ListAdapter<SettingItems, RecyclerView.ViewHolder>(object
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(holder) {
+        when (holder) {
             is SwitchViewHolder -> {
                 holder.bind(getItem(position) as SettingItems.SwitchItem)
             }
@@ -100,7 +99,7 @@ class SettingAdapter : ListAdapter<SettingItems, RecyclerView.ViewHolder>(object
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(getItem(position)) {
+        return when (getItem(position)) {
             is SettingItems.SwitchItem -> {
                 TYPE_SWITCH
             }
@@ -119,5 +118,4 @@ class SettingAdapter : ListAdapter<SettingItems, RecyclerView.ViewHolder>(object
     fun setCallbacks(callbacks: Callbacks) {
         this.callbacks = callbacks
     }
-
 }

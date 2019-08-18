@@ -1,7 +1,6 @@
 package com.github.ojh102.timary.ui.main.archieve
 
 import com.github.ojh102.timary.base.BaseViewModel
-import com.github.ojh102.timary.log.TimaryLoggerApi
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.repository.CapsuleRepository
 import com.jakewharton.rxrelay2.PublishRelay
@@ -24,8 +23,7 @@ interface ArchiveContract {
     }
 
     class ArchiveViewModel @Inject constructor(
-            private val capsuleRepository: CapsuleRepository,
-            private val timaryLogger: TimaryLoggerApi
+        private val capsuleRepository: CapsuleRepository
     ) : BaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
@@ -38,7 +36,6 @@ interface ArchiveContract {
             bind(
                     outputs.clickArchiveCapsule()
                             .throttleFirst(300, TimeUnit.MILLISECONDS)
-                            .doOnNext { timaryLogger.btnArchived() }
                             .subscribeBy(
                                     onNext = {
                                         inputs.onNavigateRead(it.id)

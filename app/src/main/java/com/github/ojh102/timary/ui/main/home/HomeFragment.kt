@@ -14,9 +14,13 @@ import com.github.ojh102.timary.util.extension.dpToPixel
 import com.github.ojh102.timary.util.extension.toast
 import com.google.android.material.appbar.AppBarLayout
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.*
+import java.util.Date
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.fragment_home.appbar
+import kotlinx.android.synthetic.main.fragment_home.cursor
+import kotlinx.android.synthetic.main.fragment_home.rv_capsule
+import kotlinx.android.synthetic.main.fragment_home.tv_date
+import kotlinx.android.synthetic.main.fragment_home.tv_write
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewModel>() {
 
@@ -117,7 +121,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewMode
                             context?.let {
                                 Navigator.navigateToReadActivity(it, capsuleId)
                             }
-
                         },
 
                 viewModel.outputs.navigateToWrite()
@@ -129,5 +132,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewMode
                         }
         )
     }
-
 }

@@ -8,8 +8,8 @@ import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.util.TimaryParser
 
 class ArchiveCapsuleViewHolder(
-        private val binding: ViewCapsuleArchiveBinding,
-        timaryParser: TimaryParser
+    private val binding: ViewCapsuleArchiveBinding,
+    timaryParser: TimaryParser
 ) : RecyclerView.ViewHolder(binding.root) {
 
     init {
@@ -23,5 +23,4 @@ class ArchiveCapsuleViewHolder(
     fun setOnClickListener(clickListener: View.OnClickListener) {
         binding.clickListener = clickListener
     }
-
 }

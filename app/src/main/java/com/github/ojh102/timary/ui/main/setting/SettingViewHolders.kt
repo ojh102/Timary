@@ -17,7 +17,6 @@ class SwitchViewHolder(private val binding: ViewSettingSwitchBinding) : Recycler
     fun setOnCheckedChnageListener(checkedChangeListener: CompoundButton.OnCheckedChangeListener) {
         binding.onCheckedChangedListener = checkedChangeListener
     }
-
 }
 
 class TitleViewHolder(private val binding: ViewSettingTitleBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -29,21 +28,16 @@ class TitleViewHolder(private val binding: ViewSettingTitleBinding) : RecyclerVi
     fun setOnClickListener(clickListener: View.OnClickListener) {
         binding.onClickListener = clickListener
     }
-
 }
 
 class LineViewHolder(private val binding: ViewSettingLineBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: SettingItems.LineItem) {
-
     }
-
 }
 
 class DeepLineViewHolder(private val binding: ViewSettingDeepLineBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: SettingItems.DeepLineItem) {
-
     }
-
 }

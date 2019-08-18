@@ -1,11 +1,11 @@
 package com.github.ojh102.timary.ui.common
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.util.KEY_URL
 import kotlinx.android.synthetic.main.activity_webview.*
@@ -51,5 +51,4 @@ class WebViewActivity : AppCompatActivity() {
             finish()
         }
     }
-
 }

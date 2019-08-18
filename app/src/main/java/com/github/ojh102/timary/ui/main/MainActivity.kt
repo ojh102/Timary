@@ -1,11 +1,7 @@
 package com.github.ojh102.timary.ui.main
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import android.view.MenuItem
 import android.view.WindowManager
-import com.amplitude.api.Amplitude
-import com.github.ojh102.timary.BuildConfig
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivityMainBinding
@@ -13,11 +9,10 @@ import com.github.ojh102.timary.ui.main.archieve.ArchiveFragment
 import com.github.ojh102.timary.ui.main.home.HomeFragment
 import com.github.ojh102.timary.ui.main.setting.SettingFragment
 import com.github.ojh102.timary.util.extension.addFragment
-import com.github.ojh102.timary.util.extension.dpToPixel
 import com.github.ojh102.timary.util.extension.hideFragment
 import com.github.ojh102.timary.util.extension.showFragment
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.navigation
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewModel>() {
 
@@ -97,5 +92,4 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewMode
         hideFragment(ArchiveFragment.TAG)
         hideFragment(SettingFragment.TAG)
     }
-
 }

@@ -21,5 +21,4 @@ abstract class FragmentModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [SettingFragmentModule::class])
     abstract fun contributeSettingFragment(): SettingFragment
-
 }

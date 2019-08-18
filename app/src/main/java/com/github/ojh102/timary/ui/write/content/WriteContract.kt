@@ -42,5 +42,4 @@ interface WriteContract {
             return clickWriteRelay
         }
     }
-
 }

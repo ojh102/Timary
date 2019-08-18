@@ -1,19 +1,18 @@
 package com.github.ojh102.timary.ui.main.setting
 
-
 sealed class SettingItems(val id: Int) {
     sealed class SwitchItem(
-            id: Int,
-            val title: String,
-            val description: String,
-            var isChecked: Boolean = true
+        id: Int,
+        val title: String,
+        val description: String,
+        var isChecked: Boolean = true
     ) : SettingItems(id) {
-        class Alert(id: Int, title: String, description: String, isChecked: Boolean): SwitchItem(id, title, description, isChecked)
+        class Alert(id: Int, title: String, description: String, isChecked: Boolean) : SwitchItem(id, title, description, isChecked)
     }
 
     sealed class TitleItem(
-            id: Int,
-            val title: String
+        id: Int,
+        val title: String
     ) : SettingItems(id) {
         class Term(id: Int, title: String) : TitleItem(id, title)
     }

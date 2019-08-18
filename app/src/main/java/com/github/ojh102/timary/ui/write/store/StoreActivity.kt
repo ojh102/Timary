@@ -10,11 +10,10 @@ import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.TimaryParser
 import com.github.ojh102.timary.util.extension.toast
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.android.synthetic.main.activity_store.*
-import timber.log.Timber
-import java.util.*
-import java.util.concurrent.TimeUnit
+import java.util.Calendar
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.activity_store.rv_store
+import timber.log.Timber
 
 class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreViewModel>() {
 
@@ -61,24 +60,14 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
                         .observeOn(schedulerProvider.ui())
                         .subscribe {
                             if (it.second == 0) {
-                                timaryLogger.btnCalendar()
                                 showDatePickerDialog()
                             } else {
-                                when(it.second) {
-                                    1 -> timaryLogger.btnNextSeason()
-                                    2 -> timaryLogger.btnLastDay()
-                                    3 -> timaryLogger.btnFirstDay()
-                                    4 -> timaryLogger.btnRandom()
-                                }
                                 binding.storeItem = it.first
                             }
                         },
 
                 viewModel.outputs.completeStoreCapsule()
                         .observeOn(schedulerProvider.ui())
-                        .doOnNext {
-                            timaryLogger.btnComplete(it.content)
-                        }
                         .subscribeBy(onNext = {
                             Navigator.navigateToCompleteActivity(
                                     context = this,
@@ -105,7 +94,6 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
             }
 
             binding.storeItem = StoreItem(getString(R.string.store_calendar_selected), selectedCal.timeInMillis)
-
         }, cal[Calendar.YEAR], cal[Calendar.MONTH], cal[Calendar.DAY_OF_MONTH]).apply {
             setCancelable(false)
             setButton(DatePickerDialog.BUTTON_NEGATIVE, null, { _, _ -> })
@@ -114,5 +102,4 @@ class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreView
 
         dialog.show()
     }
-
 }
