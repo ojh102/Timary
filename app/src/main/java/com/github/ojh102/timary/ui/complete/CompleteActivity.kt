@@ -8,7 +8,7 @@ import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
 import android.view.animation.TranslateAnimation
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseActivity
+import com.github.ojh102.timary.base.LegacyBaseActivity
 import com.github.ojh102.timary.databinding.ActivityCompleteBinding
 import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.extension.afterMeasured
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_complete.iv_logo
 import kotlinx.android.synthetic.main.activity_complete.tv_description
 import kotlinx.android.synthetic.main.activity_complete.tv_title
 
-class CompleteActivity : BaseActivity<ActivityCompleteBinding, CompleteContract.CompleteViewModel>() {
+class CompleteActivity : LegacyBaseActivity<ActivityCompleteBinding, CompleteContract.CompleteViewModel>() {
 
     override fun getLayoutRes() = R.layout.activity_complete
 

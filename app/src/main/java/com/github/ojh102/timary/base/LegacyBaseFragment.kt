@@ -16,7 +16,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
-abstract class BaseFragment<VB : ViewDataBinding, VM : ViewModel> : DaggerFragment() {
+@Deprecated("use BaseFragment class instead")
+abstract class LegacyBaseFragment<VB : ViewDataBinding, VM : ViewModel> : DaggerFragment() {
 
     @Inject
     lateinit var viewModelFactoty: ViewModelProvider.Factory

@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.ui.read
 
-import com.github.ojh102.timary.base.BaseViewModel
+import com.github.ojh102.timary.base.LegacyBaseViewModel
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.repository.CapsuleRepository
 import com.github.ojh102.timary.util.KEY_CAPSULE_ID
@@ -27,7 +27,7 @@ interface ReadContract {
     class ReadViewModel @Inject constructor(
         private val capsuleRepository: CapsuleRepository,
         private val timaryParser: TimaryParser
-    ) : BaseViewModel(), Inputs, Outputs {
+    ) : LegacyBaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
         val outputs: Outputs = this

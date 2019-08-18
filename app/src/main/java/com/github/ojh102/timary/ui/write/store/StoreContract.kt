@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.ui.write.store
 
-import com.github.ojh102.timary.base.BaseViewModel
+import com.github.ojh102.timary.base.LegacyBaseViewModel
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.repository.CapsuleRepository
 import com.github.ojh102.timary.repository.StoreDateRepository
@@ -28,7 +28,7 @@ interface StoreContract {
     class StoreViewModel @Inject constructor(
         private val storeDateRepository: StoreDateRepository,
         private val capsuleRepository: CapsuleRepository
-    ) : BaseViewModel(), Inputs, Outputs {
+    ) : LegacyBaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
         val outputs: Outputs = this

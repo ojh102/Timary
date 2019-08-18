@@ -3,14 +3,14 @@ package com.github.ojh102.timary.ui.main.setting
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseFragment
+import com.github.ojh102.timary.base.LegacyBaseFragment
 import com.github.ojh102.timary.databinding.FragmentSettingBinding
 import com.github.ojh102.timary.util.Navigator
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_setting.*
 
-class SettingFragment : BaseFragment<FragmentSettingBinding, SettingContract.SettingViewModel>() {
+class SettingFragment : LegacyBaseFragment<FragmentSettingBinding, SettingContract.SettingViewModel>() {
 
     companion object {
         const val TAG = "setting"

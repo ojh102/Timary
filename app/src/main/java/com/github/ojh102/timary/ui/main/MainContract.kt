@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.ui.main
 
-import com.github.ojh102.timary.base.BaseViewModel
+import com.github.ojh102.timary.base.LegacyBaseViewModel
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -19,7 +19,7 @@ interface MainContract {
         fun clickSetting(): Observable<Unit>
     }
 
-    class MainViewModel @Inject constructor() : BaseViewModel(), Inputs, Outputs {
+    class MainViewModel @Inject constructor() : LegacyBaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
         val outputs: Outputs = this

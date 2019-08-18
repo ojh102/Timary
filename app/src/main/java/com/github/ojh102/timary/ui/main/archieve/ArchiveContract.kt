@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.ui.main.archieve
 
-import com.github.ojh102.timary.base.BaseViewModel
+import com.github.ojh102.timary.base.LegacyBaseViewModel
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.repository.CapsuleRepository
 import com.jakewharton.rxrelay2.PublishRelay
@@ -24,7 +24,7 @@ interface ArchiveContract {
 
     class ArchiveViewModel @Inject constructor(
         private val capsuleRepository: CapsuleRepository
-    ) : BaseViewModel(), Inputs, Outputs {
+    ) : LegacyBaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
         val outputs: Outputs = this

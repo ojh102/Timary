@@ -5,7 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseActivity
+import com.github.ojh102.timary.base.LegacyBaseActivity
 import com.github.ojh102.timary.databinding.ActivityReadBinding
 import com.github.ojh102.timary.ui.complete.CompleteType
 import com.github.ojh102.timary.util.Navigator
@@ -14,7 +14,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class ReadActivity : BaseActivity<ActivityReadBinding, ReadContract.ReadViewModel>() {
+class ReadActivity : LegacyBaseActivity<ActivityReadBinding, ReadContract.ReadViewModel>() {
 
     override fun getLayoutRes() = R.layout.activity_read
     override fun getModelClass() = ReadContract.ReadViewModel::class.java

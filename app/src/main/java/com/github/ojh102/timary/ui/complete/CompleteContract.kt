@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.ui.complete
 
-import com.github.ojh102.timary.base.BaseViewModel
+import com.github.ojh102.timary.base.LegacyBaseViewModel
 import com.github.ojh102.timary.util.KEY_COMPLETE_DESCRIPTION
 import com.github.ojh102.timary.util.KEY_COMPLETE_TITLE
 import com.github.ojh102.timary.util.KEY_COMPLETE_TYPE
@@ -19,7 +19,7 @@ interface CompleteContract {
         fun type(): Observable<CompleteType>
     }
 
-    class CompleteViewModel @Inject constructor() : BaseViewModel(), Inputs, Outputs {
+    class CompleteViewModel @Inject constructor() : LegacyBaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
         val outputs: Outputs = this

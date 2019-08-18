@@ -2,7 +2,7 @@ package com.github.ojh102.timary.ui.main.home
 
 import android.content.res.Resources
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseViewModel
+import com.github.ojh102.timary.base.LegacyBaseViewModel
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.repository.CapsuleRepository
 import com.jakewharton.rxrelay2.PublishRelay
@@ -35,7 +35,7 @@ interface HomeContract {
     class HomeViewModel @Inject constructor(
         private val capsuleRepository: CapsuleRepository,
         private val resources: Resources
-    ) : BaseViewModel(), Inputs, Outputs {
+    ) : LegacyBaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
         val outputs: Outputs = this

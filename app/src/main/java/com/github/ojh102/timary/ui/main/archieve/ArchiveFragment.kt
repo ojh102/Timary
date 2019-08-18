@@ -5,14 +5,14 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.TextAppearanceSpan
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseFragment
+import com.github.ojh102.timary.base.LegacyBaseFragment
 import com.github.ojh102.timary.databinding.FragmentArchiveBinding
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.util.Navigator
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
-class ArchiveFragment : BaseFragment<FragmentArchiveBinding, ArchiveContract.ArchiveViewModel>() {
+class ArchiveFragment : LegacyBaseFragment<FragmentArchiveBinding, ArchiveContract.ArchiveViewModel>() {
 
     companion object {
         val TAG = "Archive"

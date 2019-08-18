@@ -10,7 +10,8 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class BaseViewModel : ViewModel() {
+@Deprecated("use BaseViewModel class instead")
+abstract class LegacyBaseViewModel : ViewModel() {
 
     private val intentRelay = PublishRelay.create<Intent>()
     private val activityResultRelay = PublishRelay.create<Triple<Int, Int, Intent?>>()

@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.ui.write.content
 
-import com.github.ojh102.timary.base.BaseViewModel
+import com.github.ojh102.timary.base.LegacyBaseViewModel
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
@@ -18,7 +18,7 @@ interface WriteContract {
         fun clickWrite(): Observable<Unit>
     }
 
-    class WriteViewModel @Inject constructor() : BaseViewModel(), Inputs, Outputs {
+    class WriteViewModel @Inject constructor() : LegacyBaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
         val outputs: Outputs = this

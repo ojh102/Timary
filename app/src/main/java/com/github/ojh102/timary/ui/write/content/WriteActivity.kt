@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseActivity
+import com.github.ojh102.timary.base.LegacyBaseActivity
 import com.github.ojh102.timary.databinding.ActivityWriteBinding
 import com.github.ojh102.timary.util.Navigator
 import com.github.ojh102.timary.util.TimaryParser
@@ -14,7 +14,7 @@ import java.util.Date
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class WriteActivity : BaseActivity<ActivityWriteBinding, WriteContract.WriteViewModel>() {
+class WriteActivity : LegacyBaseActivity<ActivityWriteBinding, WriteContract.WriteViewModel>() {
 
     override fun getLayoutRes() = R.layout.activity_write
     override fun getModelClass() = WriteContract.WriteViewModel::class.java

@@ -16,7 +16,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
-abstract class BaseActivity<VB : ViewDataBinding, VM : ViewModel> : DaggerAppCompatActivity() {
+@Deprecated("use BaseActivity class instead")
+abstract class LegacyBaseActivity<VB : ViewDataBinding, VM : ViewModel> : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -42,7 +43,7 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : ViewModel> : DaggerAppCom
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(getModelClass())
 
         viewModel.let {
-            if (it is BaseViewModel) {
+            if (it is LegacyBaseViewModel) {
                 it.intent(intent)
             }
         }
@@ -57,7 +58,7 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : ViewModel> : DaggerAppCom
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         viewModel.let {
-            if (it is BaseViewModel) {
+            if (it is LegacyBaseViewModel) {
                 it.activityResult(requestCode, resultCode, data)
             }
         }

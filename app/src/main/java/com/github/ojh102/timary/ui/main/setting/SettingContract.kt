@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.ui.main.setting
 
-import com.github.ojh102.timary.base.BaseViewModel
+import com.github.ojh102.timary.base.LegacyBaseViewModel
 import com.github.ojh102.timary.db.TimarySharedPreferenceManager
 import com.github.ojh102.timary.repository.SettingRepository
 import com.github.ojh102.timary.util.KEY_SETTING_NOTIFICATION
@@ -29,7 +29,7 @@ interface SettingContract {
     class SettingViewModel @Inject constructor(
         private val settingRepository: SettingRepository,
         private val timarySharedPreferenceManager: TimarySharedPreferenceManager
-    ) : BaseViewModel(), Inputs, Outputs {
+    ) : LegacyBaseViewModel(), Inputs, Outputs {
 
         val inputs: Inputs = this
         val outputs: Outputs = this

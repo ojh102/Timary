@@ -3,7 +3,7 @@ package com.github.ojh102.timary.ui.main
 import android.os.Bundle
 import android.view.WindowManager
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseActivity
+import com.github.ojh102.timary.base.LegacyBaseActivity
 import com.github.ojh102.timary.databinding.ActivityMainBinding
 import com.github.ojh102.timary.ui.main.archieve.ArchiveFragment
 import com.github.ojh102.timary.ui.main.home.HomeFragment
@@ -14,7 +14,7 @@ import com.github.ojh102.timary.util.extension.showFragment
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_main.navigation
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainContract.MainViewModel>() {
+class MainActivity : LegacyBaseActivity<ActivityMainBinding, MainContract.MainViewModel>() {
 
     override fun getLayoutRes() = R.layout.activity_main
     override fun getModelClass() = MainContract.MainViewModel::class.java

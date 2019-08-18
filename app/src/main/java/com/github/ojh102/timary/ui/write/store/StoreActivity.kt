@@ -3,7 +3,7 @@ package com.github.ojh102.timary.ui.write.store
 import android.app.DatePickerDialog
 import android.os.Bundle
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseActivity
+import com.github.ojh102.timary.base.LegacyBaseActivity
 import com.github.ojh102.timary.databinding.ActivityStoreBinding
 import com.github.ojh102.timary.ui.complete.CompleteType
 import com.github.ojh102.timary.util.Navigator
@@ -15,7 +15,7 @@ import javax.inject.Inject
 import kotlinx.android.synthetic.main.activity_store.rv_store
 import timber.log.Timber
 
-class StoreActivity : BaseActivity<ActivityStoreBinding, StoreContract.StoreViewModel>() {
+class StoreActivity : LegacyBaseActivity<ActivityStoreBinding, StoreContract.StoreViewModel>() {
 
     override fun getLayoutRes() = R.layout.activity_store
     override fun getModelClass() = StoreContract.StoreViewModel::class.java

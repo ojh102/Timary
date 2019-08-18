@@ -5,7 +5,7 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.base.BaseFragment
+import com.github.ojh102.timary.base.LegacyBaseFragment
 import com.github.ojh102.timary.databinding.FragmentHomeBinding
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.util.Navigator
@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_home.rv_capsule
 import kotlinx.android.synthetic.main.fragment_home.tv_date
 import kotlinx.android.synthetic.main.fragment_home.tv_write
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeContract.HomeViewModel>() {
+class HomeFragment : LegacyBaseFragment<FragmentHomeBinding, HomeContract.HomeViewModel>() {
 
     companion object {
         const val TAG = "home"
