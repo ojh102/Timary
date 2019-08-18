@@ -10,7 +10,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_setting.*
 
-class SettingFragment : LegacyBaseFragment<FragmentSettingBinding, SettingContract.SettingViewModel>() {
+internal class SettingFragment : LegacyBaseFragment<FragmentSettingBinding, SettingContract.SettingViewModel>() {
 
     companion object {
         const val TAG = "setting"

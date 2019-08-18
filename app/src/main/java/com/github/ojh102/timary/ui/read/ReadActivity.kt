@@ -14,7 +14,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class ReadActivity : LegacyBaseActivity<ActivityReadBinding, ReadContract.ReadViewModel>() {
+internal class ReadActivity : LegacyBaseActivity<ActivityReadBinding, ReadContract.ReadViewModel>() {
 
     override fun getLayoutRes() = R.layout.activity_read
     override fun getModelClass() = ReadContract.ReadViewModel::class.java

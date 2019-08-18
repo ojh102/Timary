@@ -11,7 +11,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-interface SettingContract {
+internal interface SettingContract {
 
     interface Inputs {
         fun onCheckedAlert(checked: Boolean)

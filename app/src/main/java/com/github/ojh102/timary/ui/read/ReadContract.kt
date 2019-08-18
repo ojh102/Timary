@@ -11,7 +11,7 @@ import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
-interface ReadContract {
+internal interface ReadContract {
 
     interface Inputs {
         fun onClickDelete()

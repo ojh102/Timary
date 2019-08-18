@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
-            name="inputs"
-            type="com.github.ojh102.timary.ui.splash.SplashContract.Inputs"/>
+            name="viewModel"
+            type="com.github.ojh102.timary.ui.splash.SplashViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:fitsSystemWindows="true"
-        tools:context=".ui.splash.SplashActivity">
+        tools:context=".ui.splash.SplashFragment">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/logo"
@@ -25,7 +26,7 @@
             app:layout_constraintBottom_toTopOf="@+id/line_logo"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:srcCompat="@drawable/positive"/>
+            app:srcCompat="@drawable/positive" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/line_logo"
@@ -35,7 +36,7 @@
             android:src="@drawable/line_radius"
             app:layout_constraintBottom_toTopOf="@+id/iv_title"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_title"
@@ -45,7 +46,7 @@
             app:layout_constraintBottom_toTopOf="@+id/container_title"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:srcCompat="@drawable/logo_type_timary"/>
+            app:srcCompat="@drawable/logo_type_timary" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container_title"
@@ -64,7 +65,7 @@
                 android:textAppearance="@style/N14Heather"
                 app:layout_constraintBottom_toTopOf="@+id/tv_title_sub"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_title_sub"
@@ -74,7 +75,7 @@
                 android:textAppearance="@style/B18Heather"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

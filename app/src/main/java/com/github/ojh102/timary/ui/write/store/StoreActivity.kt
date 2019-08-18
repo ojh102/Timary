@@ -15,7 +15,7 @@ import javax.inject.Inject
 import kotlinx.android.synthetic.main.activity_store.rv_store
 import timber.log.Timber
 
-class StoreActivity : LegacyBaseActivity<ActivityStoreBinding, StoreContract.StoreViewModel>() {
+internal class StoreActivity : LegacyBaseActivity<ActivityStoreBinding, StoreContract.StoreViewModel>() {
 
     override fun getLayoutRes() = R.layout.activity_store
     override fun getModelClass() = StoreContract.StoreViewModel::class.java

@@ -12,7 +12,7 @@ import com.github.ojh102.timary.util.Navigator
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
-class ArchiveFragment : LegacyBaseFragment<FragmentArchiveBinding, ArchiveContract.ArchiveViewModel>() {
+internal class ArchiveFragment : LegacyBaseFragment<FragmentArchiveBinding, ArchiveContract.ArchiveViewModel>() {
 
     companion object {
         val TAG = "Archive"

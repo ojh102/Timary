@@ -12,7 +12,7 @@ import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
-interface StoreContract {
+internal interface StoreContract {
 
     interface Inputs {
         fun onClickStoreItem(storeItem: StoreItem, position: Int)

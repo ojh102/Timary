@@ -10,7 +10,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-internal abstract class DBModule {
+internal class DBModule {
     companion object {
         private const val TAG = "timary"
         private const val PREF_NAME = "$TAG.pref"

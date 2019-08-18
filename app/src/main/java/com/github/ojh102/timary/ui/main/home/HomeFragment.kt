@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_home.rv_capsule
 import kotlinx.android.synthetic.main.fragment_home.tv_date
 import kotlinx.android.synthetic.main.fragment_home.tv_write
 
-class HomeFragment : LegacyBaseFragment<FragmentHomeBinding, HomeContract.HomeViewModel>() {
+internal class HomeFragment : LegacyBaseFragment<FragmentHomeBinding, HomeContract.HomeViewModel>() {
 
     companion object {
         const val TAG = "home"
