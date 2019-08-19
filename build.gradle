@@ -1,7 +1,7 @@
 buildscript {
     ext {
         compile_sdk_version = 28
-        min_sdk_version = 21
+        min_sdk_version = 23
         target_sdk_version = 28
 
         android_gradle_version = '3.5.0-rc03'
@@ -67,6 +67,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:$android_gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.gms:google-services:$google_service_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
         classpath "io.fabric.tools:gradle:$fabric_version"
     }
 }

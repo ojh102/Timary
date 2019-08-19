@@ -6,7 +6,7 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.ui.common.TextActivity
 import com.github.ojh102.timary.ui.complete.CompleteActivity
 import com.github.ojh102.timary.ui.complete.CompleteType
-import com.github.ojh102.timary.ui.main.MainActivity
+import com.github.ojh102.timary.ui.main.MainFragment
 import com.github.ojh102.timary.ui.read.ReadActivity
 import com.github.ojh102.timary.ui.write.content.WriteActivity
 import com.github.ojh102.timary.ui.write.store.StoreActivity
@@ -17,7 +17,7 @@ class Navigator {
 
         @JvmStatic
         fun navigateToMainActivity(context: Context) {
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, MainFragment::class.java)
             context.startActivity(intent)
         }
 

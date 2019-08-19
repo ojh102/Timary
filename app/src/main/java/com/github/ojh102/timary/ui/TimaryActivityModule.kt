@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import com.github.ojh102.timary.annotation.ActivityScope
 import com.github.ojh102.timary.annotation.FragmentScope
 import com.github.ojh102.timary.annotation.ViewModelKey
+import com.github.ojh102.timary.ui.main.MainFragment
+import com.github.ojh102.timary.ui.main.MainFragmentModule
 import com.github.ojh102.timary.ui.splash.SplashFragment
 import com.github.ojh102.timary.ui.splash.SplashFragmentModule
 import dagger.Binds
@@ -22,4 +24,8 @@ internal interface TimaryActivityModule {
     @ContributesAndroidInjector(modules = [SplashFragmentModule::class])
     @FragmentScope
     fun bindSplashFragment(): SplashFragment
+
+    @ContributesAndroidInjector(modules = [MainFragmentModule::class])
+    @FragmentScope
+    fun bindMainFragment(): MainFragment
 }

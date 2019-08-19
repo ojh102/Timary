@@ -6,22 +6,26 @@
     <data>
 
         <variable
+            name="item"
+            type="com.github.ojh102.timary.base.BaseItem" />
+
+        <variable
             name="titleItem"
-            type="com.github.ojh102.timary.ui.main.setting.SettingItems.TitleItem"/>
+            type="com.github.ojh102.timary.ui.main.setting.SettingItems.TitleItem" />
 
         <variable
             name="onClickListener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
         android:background="@color/white"
         android:foreground="?android:selectableItemBackground"
-        android:onClick="@{onClickListener}">
+        android:onClick="@{onClickListener}"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
@@ -32,7 +36,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="개인정보 보호약관"/>
+            tools:text="개인정보 보호약관" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

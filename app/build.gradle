@@ -8,6 +8,7 @@ apply plugin: 'kotlin-kapt'
 kapt {
     correctErrorTypes = true
 }
+apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'io.fabric'
 apply from: '../versioning.gradle'
 apply from: teamConfig('staticCodeAnalysis/ktlint.gradle')

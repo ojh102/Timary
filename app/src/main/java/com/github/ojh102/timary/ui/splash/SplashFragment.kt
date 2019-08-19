@@ -6,7 +6,6 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSplashBinding
-import com.github.ojh102.timary.util.extension.toast
 
 internal class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
@@ -26,8 +25,7 @@ internal class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     private fun setupNavigation() {
         viewModel.navigateToMain.observe(this, EventObserver {
-            
+            navController.navigate(SplashFragmentDirections.actionSplashFragmentToMainFragment().actionId)
         })
     }
-
 }
