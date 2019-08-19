@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.ui.main.home
+package com.github.ojh102.timary.ui.legacy.home
 
 import android.view.View
 import android.view.ViewGroup

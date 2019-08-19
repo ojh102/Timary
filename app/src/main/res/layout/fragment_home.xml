@@ -6,7 +6,7 @@
 
     <variable
       name="inputs"
-      type="com.github.ojh102.timary.ui.main.home.HomeContract.Inputs"/>
+      type="com.github.ojh102.timary.ui.legacy.home.HomeContract.Inputs"/>
 
     <variable
       name="today"

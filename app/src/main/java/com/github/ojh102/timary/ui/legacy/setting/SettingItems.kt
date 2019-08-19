@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.ui.main.setting
+package com.github.ojh102.timary.ui.legacy.setting
 
 sealed class SettingItems(val id: Int) {
     sealed class SwitchItem(

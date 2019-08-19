@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.ui.main.home
+package com.github.ojh102.timary.ui.legacy.home
 
 import com.github.ojh102.timary.model.realm.Capsule
 

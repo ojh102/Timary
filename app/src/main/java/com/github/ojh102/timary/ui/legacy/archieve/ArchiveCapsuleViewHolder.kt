@@ -1,13 +1,13 @@
-package com.github.ojh102.timary.ui.main.home
+package com.github.ojh102.timary.ui.legacy.archieve
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.github.ojh102.timary.databinding.ViewCapsuleCloseBinding
+import com.github.ojh102.timary.databinding.ViewCapsuleArchiveBinding
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.util.TimaryParser
 
-class ClosedCapsuleViewHolder(
-    private val binding: ViewCapsuleCloseBinding,
+class ArchiveCapsuleViewHolder(
+    private val binding: ViewCapsuleArchiveBinding,
     timaryParser: TimaryParser
 ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -20,6 +20,6 @@ class ClosedCapsuleViewHolder(
     }
 
     fun setOnClickListener(clickListener: View.OnClickListener) {
-        binding.capsuleClickListener = clickListener
+        binding.clickListener = clickListener
     }
 }

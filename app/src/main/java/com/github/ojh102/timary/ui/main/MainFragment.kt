@@ -2,6 +2,7 @@ package com.github.ojh102.timary.ui.main
 
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.fragment.app.viewModels
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentMainBinding
@@ -9,8 +10,12 @@ import com.github.ojh102.timary.databinding.FragmentMainBinding
 internal class MainFragment : BaseFragment<FragmentMainBinding>() {
     override val layoutRes = R.layout.fragment_main
 
+    private val viewModel by viewModels<MainViewModel> { viewModelFactory }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        binding.viewModel = viewModel
 
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         activity?.window?.setBackgroundDrawableResource(R.drawable.background_gradient_left_to_right)

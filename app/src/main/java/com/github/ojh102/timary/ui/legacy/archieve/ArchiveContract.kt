@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.ui.main.archieve
+package com.github.ojh102.timary.ui.legacy.archieve
 
 import com.github.ojh102.timary.base.LegacyBaseViewModel
 import com.github.ojh102.timary.model.realm.Capsule

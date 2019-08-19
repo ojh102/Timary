@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.ui.main.setting
+package com.github.ojh102.timary.ui.legacy.setting
 
 import com.github.ojh102.timary.base.LegacyBaseViewModel
 import com.github.ojh102.timary.db.TimarySharedPreferenceManager

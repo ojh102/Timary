@@ -3,7 +3,7 @@ package com.github.ojh102.timary.repository
 import android.content.Context
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.db.TimarySharedPreferenceManager
-import com.github.ojh102.timary.ui.main.setting.SettingItems
+import com.github.ojh102.timary.ui.legacy.setting.SettingItems
 import com.github.ojh102.timary.util.KEY_SETTING_NOTIFICATION
 import io.reactivex.Single
 import javax.inject.Inject

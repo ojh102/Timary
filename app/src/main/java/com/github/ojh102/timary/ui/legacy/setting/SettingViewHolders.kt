@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.ui.main.setting
+package com.github.ojh102.timary.ui.legacy.setting
 
 import android.view.View
 import android.widget.CompoundButton

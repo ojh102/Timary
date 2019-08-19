@@ -7,7 +7,7 @@
 
     <variable
       name="inputs"
-      type="com.github.ojh102.timary.ui.main.setting.SettingContract.Inputs"/>
+      type="com.github.ojh102.timary.ui.legacy.setting.SettingContract.Inputs"/>
 
   </data>
 
