@@ -27,7 +27,7 @@ internal class SettingFragment : LegacyBaseFragment<FragmentSettingBinding, Sett
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        binding.inputs = viewModel
+//        binding.inputs = viewModel
 
         initializeRecyclerView()
 

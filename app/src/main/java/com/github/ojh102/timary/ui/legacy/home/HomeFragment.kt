@@ -42,7 +42,7 @@ internal class HomeFragment : LegacyBaseFragment<FragmentHomeBinding, HomeContra
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        binding.inputs = viewModel
+//        binding.inputs = viewModel
 
         initializeAppbar()
         initializeRecyclerView()
@@ -51,7 +51,7 @@ internal class HomeFragment : LegacyBaseFragment<FragmentHomeBinding, HomeContra
     }
 
     private fun initializeAppbar() {
-        binding.today = timaryParser.dateToTitleWithLine(Date().time)
+//        binding.today = timaryParser.dateToTitleWithLine(Date().time)
 
         appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, _ ->
             val offsetPercentage = (1 - (appBarLayout.y / appBarLayout.totalScrollRange) * -1)

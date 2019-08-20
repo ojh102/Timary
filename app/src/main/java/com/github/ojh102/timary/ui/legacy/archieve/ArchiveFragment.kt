@@ -54,10 +54,10 @@ internal class ArchiveFragment : LegacyBaseFragment<FragmentArchiveBinding, Arch
                         .observeOn(schedulerProvider.ui())
                         .subscribeBy(
                                 onNext = {
-                                    binding.headerText = SpannableString(context?.getString(R.string.format_archive_header, it.size))
-                                            .apply {
-                                                setSpan(TextAppearanceSpan(context, R.style.B16Grape), 0, it.size.toString().length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-                                            }
+//                                    binding.headerText = SpannableString(context?.getString(R.string.format_archive_header, it.size))
+//                                            .apply {
+//                                                setSpan(TextAppearanceSpan(context, R.style.B16Grape), 0, it.size.toString().length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+//                                            }
 
                                     archiveAdapter.submitList(it)
                                 }

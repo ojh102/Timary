@@ -3,6 +3,8 @@ package com.github.ojh102.timary.ui.main
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
@@ -13,6 +15,10 @@ internal class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     private val viewModel by viewModels<MainViewModel> { viewModelFactory }
 
+    private val childNavController: NavController by lazy {
+        Navigation.findNavController(view!!.findViewById(R.id.navigation_main_fragment))
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -20,7 +26,6 @@ internal class MainFragment : BaseFragment<FragmentMainBinding>() {
 
         initWindow()
         initBottomNav()
-
     }
 
     private fun initWindow() {
@@ -30,7 +35,8 @@ internal class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     private fun initBottomNav() {
         binding.bottomNavigation.run {
-            setupWithNavController()
+            setupWithNavController(childNavController)
+            setOnNavigationItemReselectedListener { }
         }
     }
 }

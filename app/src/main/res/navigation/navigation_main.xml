@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph_home">
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.github.ojh102.timary.ui.main.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/archiveFragment"
+        android:name="com.github.ojh102.timary.ui.main.archive.ArchiveFragment"
+        android:label="ArchiveFragment"
+        tools:layout="@layout/fragment_archive" />
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.github.ojh102.timary.ui.main.setting.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting" />
 
 </navigation>

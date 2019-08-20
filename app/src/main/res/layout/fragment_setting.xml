@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <data>
-    <import type="com.github.ojh102.timary.R"/>
+    <data>
 
-    <variable
-      name="inputs"
-      type="com.github.ojh102.timary.ui.legacy.setting.SettingContract.Inputs"/>
+        <import type="com.github.ojh102.timary.R" />
 
-  </data>
+        <variable
+            name="viewModel"
+            type="com.github.ojh102.timary.ui.main.setting.SettingViewModel" />
+    </data>
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-    <androidx.appcompat.widget.AppCompatTextView
-      android:id="@+id/tv_setting"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="60dp"
-      android:layout_marginLeft="16dp"
-      android:text="@string/setting"
-      android:textAppearance="@style/B28"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:textGradientEnd="@{R.color.deepPurple}"
-      app:textGradientStart="@{R.color.lightPurple}"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="60dp"
+            android:text="@string/setting"
+            android:textAppearance="@style/B28"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textGradientEnd="@{R.color.deepPurple}"
+            app:textGradientStart="@{R.color.lightPurple}" />
 
-    <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/rv_setting"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:layout_marginTop="12dp"
-      android:background="@color/settingDeepGrey"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tv_setting"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_setting"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/settingDeepGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_setting" />
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

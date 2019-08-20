@@ -6,6 +6,12 @@ import com.github.ojh102.timary.annotation.FragmentScope
 import com.github.ojh102.timary.annotation.ViewModelKey
 import com.github.ojh102.timary.ui.main.MainFragment
 import com.github.ojh102.timary.ui.main.MainFragmentModule
+import com.github.ojh102.timary.ui.main.archive.ArchiveFragment
+import com.github.ojh102.timary.ui.main.archive.ArchiveFragmentModule
+import com.github.ojh102.timary.ui.main.home.HomeFragment
+import com.github.ojh102.timary.ui.main.home.HomeFragmentModule
+import com.github.ojh102.timary.ui.main.setting.SettingFragment
+import com.github.ojh102.timary.ui.main.setting.SettingFragmentModule
 import com.github.ojh102.timary.ui.splash.SplashFragment
 import com.github.ojh102.timary.ui.splash.SplashFragmentModule
 import dagger.Binds
@@ -28,4 +34,16 @@ internal interface TimaryActivityModule {
     @ContributesAndroidInjector(modules = [MainFragmentModule::class])
     @FragmentScope
     fun bindMainFragment(): MainFragment
+
+    @ContributesAndroidInjector(modules = [HomeFragmentModule::class])
+    @FragmentScope
+    fun bindHomeFragment(): HomeFragment
+
+    @ContributesAndroidInjector(modules = [ArchiveFragmentModule::class])
+    @FragmentScope
+    fun bindArchiveFragment(): ArchiveFragment
+
+    @ContributesAndroidInjector(modules = [SettingFragmentModule::class])
+    @FragmentScope
+    fun bindSettingFragment(): SettingFragment
 }

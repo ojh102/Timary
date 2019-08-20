@@ -1,158 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <data>
+    <data>
 
-    <variable
-      name="inputs"
-      type="com.github.ojh102.timary.ui.legacy.home.HomeContract.Inputs"/>
+        <variable
+            name="viewModel"
+            type="com.github.ojh102.timary.ui.main.home.HomeViewModel" />
+    </data>
 
-    <variable
-      name="today"
-      type="String"/>
-  </data>
-
-  <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
-
-      <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_gradient_left_to_right">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-          android:id="@+id/collapsing_toolbar"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-          <!-- parallax layout start-->
-          <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="212dp"
-            app:layout_collapseMode="parallax"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-              android:id="@+id/tv_date"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="60dp"
-              android:layout_marginLeft="16dp"
-              android:text="@{today}"
-              android:textAppearance="@style/B28White"
-              app:layout_constraintLeft_toLeftOf="parent"
-              app:layout_constraintTop_toTopOf="parent"/>
-
-          </androidx.constraintlayout.widget.ConstraintLayout>
-          <!-- parallax layout end -->
-
-          <!-- collapse layout start-->
-          <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_gravity="bottom"
-            android:contentInsetEnd="0dp"
-            android:contentInsetLeft="0dp"
-            android:contentInsetRight="0dp"
-            android:contentInsetStart="0dp"
-            android:elevation="0dp"
-            app:contentInsetEnd="0dp"
-            app:contentInsetLeft="0dp"
-            app:contentInsetRight="0dp"
-            app:contentInsetStart="0dp"
-            app:layout_collapseMode="pin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-              <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> inputs.onClickWrite()}"
+                android:background="@drawable/background_gradient_left_to_right">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <!-- parallax layout start-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="212dp"
+                        app:layout_collapseMode="parallax"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="60dp"
+                            android:text="@{viewModel.today}"
+                            android:textAppearance="@style/B28White"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!-- parallax layout end -->
+
+                    <!-- collapse layout start-->
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_gravity="bottom"
+                        android:contentInsetStart="0dp"
+                        android:contentInsetLeft="0dp"
+                        android:contentInsetEnd="0dp"
+                        android:contentInsetRight="0dp"
+                        android:elevation="0dp"
+                        app:contentInsetEnd="0dp"
+                        app:contentInsetLeft="0dp"
+                        app:contentInsetRight="0dp"
+                        app:contentInsetStart="0dp"
+                        app:layout_collapseMode="pin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:onClick="@{() -> viewModel.onClickWrite()}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent">
+
+                                <View
+                                    android:id="@+id/cursor"
+                                    android:layout_width="4dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginLeft="32dp"
+                                    android:background="@drawable/cursor_white"
+                                    app:layout_constraintBottom_toBottomOf="@+id/tv_write"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/tv_write" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/tv_write"
+                                    android:layout_width="0dp"
+                                    android:layout_height="64dp"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/home_hint"
+                                    android:textAppearance="@style/B16White30"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintLeft_toLeftOf="@+id/cursor"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.appcompat.widget.Toolbar>
+                    <!-- collapse layout end-->
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent">
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_write_label">
 
-                <View
-                  android:id="@+id/cursor"
-                  android:layout_width="4dp"
-                  android:layout_height="28dp"
-                  android:layout_marginLeft="32dp"
-                  android:background="@drawable/cursor_white"
-                  app:layout_constraintBottom_toBottomOf="@+id/tv_write"
-                  app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintTop_toTopOf="@+id/tv_write"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                  android:id="@+id/tv_write"
-                  android:layout_width="0dp"
-                  android:layout_height="64dp"
-                  android:gravity="center_vertical"
-                  android:text="@string/home_hint"
-                  android:textAppearance="@style/B16White30"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintLeft_toLeftOf="@+id/cursor"
-                  app:layout_constraintTop_toTopOf="parent"/>
-              </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_capsule"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-          </androidx.appcompat.widget.Toolbar>
-          <!-- collapse layout end-->
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-          <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="bottom"/>
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
-      </com.google.android.material.appbar.AppBarLayout>
-
-      <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_write_label">
-
-        <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/rv_capsule"
-          android:layout_width="0dp"
-          android:layout_height="0dp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintLeft_toLeftOf="parent"
-          app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toTopOf="parent"/>
-
-      </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
