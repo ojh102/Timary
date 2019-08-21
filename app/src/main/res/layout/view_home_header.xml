@@ -4,7 +4,7 @@
   <data>
     <variable
       name="headerItem"
-      type="com.github.ojh102.timary.ui.legacy.home.HomeItems.Header"/>
+      type="com.github.ojh102.timary.ui.legacy.main.home.HomeItems.Header"/>
 
     <variable
       name="timaryParser"

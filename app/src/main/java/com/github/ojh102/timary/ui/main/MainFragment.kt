@@ -5,6 +5,7 @@ import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment

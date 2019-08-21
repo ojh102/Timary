@@ -7,7 +7,7 @@
 
     <variable
       name="storeItem"
-      type="com.github.ojh102.timary.ui.write.store.StoreItem"/>
+      type="com.github.ojh102.timary.ui.legacy.write.store.StoreItem"/>
 
     <variable
       name="position"
@@ -15,7 +15,7 @@
 
     <variable
       name="itemSelectedListener"
-      type="com.github.ojh102.timary.ui.write.store.StoreViewHolder.OnItemSelectedListener"/>
+      type="com.github.ojh102.timary.ui.legacy.write.store.StoreViewHolder.OnItemSelectedListener"/>
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout

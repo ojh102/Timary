@@ -20,7 +20,7 @@ internal abstract class BaseFragment<VB : ViewDataBinding> : DaggerFragment() {
 
     lateinit var binding: VB
 
-    protected val navController: NavController
+    protected open val navController: NavController
         get() = NavHostFragment.findNavController(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

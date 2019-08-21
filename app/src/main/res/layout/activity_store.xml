@@ -8,11 +8,11 @@
 
         <variable
             name="inputs"
-            type="com.github.ojh102.timary.ui.write.store.StoreContract.Inputs"/>
+            type="com.github.ojh102.timary.ui.legacy.write.store.StoreContract.Inputs"/>
 
         <variable
             name="storeItem"
-            type="com.github.ojh102.timary.ui.write.store.StoreItem"/>
+            type="com.github.ojh102.timary.ui.legacy.write.store.StoreItem"/>
 
         <variable
             name="timaryParser"

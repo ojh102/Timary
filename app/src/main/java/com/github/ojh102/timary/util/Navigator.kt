@@ -3,13 +3,13 @@ package com.github.ojh102.timary.util
 import android.content.Context
 import android.content.Intent
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.ui.common.TextActivity
-import com.github.ojh102.timary.ui.complete.CompleteActivity
-import com.github.ojh102.timary.ui.complete.CompleteType
+import com.github.ojh102.timary.ui.legacy.common.TextActivity
+import com.github.ojh102.timary.ui.legacy.complete.CompleteActivity
+import com.github.ojh102.timary.ui.legacy.complete.CompleteType
 import com.github.ojh102.timary.ui.main.MainFragment
-import com.github.ojh102.timary.ui.read.ReadActivity
-import com.github.ojh102.timary.ui.write.content.WriteActivity
-import com.github.ojh102.timary.ui.write.store.StoreActivity
+import com.github.ojh102.timary.ui.legacy.read.ReadActivity
+import com.github.ojh102.timary.ui.legacy.write.content.WriteActivity
+import com.github.ojh102.timary.ui.legacy.write.store.StoreActivity
 
 class Navigator {
 

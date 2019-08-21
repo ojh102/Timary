@@ -14,6 +14,8 @@ import com.github.ojh102.timary.ui.main.setting.SettingFragment
 import com.github.ojh102.timary.ui.main.setting.SettingFragmentModule
 import com.github.ojh102.timary.ui.splash.SplashFragment
 import com.github.ojh102.timary.ui.splash.SplashFragmentModule
+import com.github.ojh102.timary.ui.write.WriteFragment
+import com.github.ojh102.timary.ui.write.WriteFragmentModule
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -46,4 +48,8 @@ internal interface TimaryActivityModule {
     @ContributesAndroidInjector(modules = [SettingFragmentModule::class])
     @FragmentScope
     fun bindSettingFragment(): SettingFragment
+
+    @ContributesAndroidInjector(modules = [WriteFragmentModule::class])
+    @FragmentScope
+    fun bindWriteFragment(): WriteFragment
 }

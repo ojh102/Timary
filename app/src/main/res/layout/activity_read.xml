@@ -8,7 +8,7 @@
 
         <variable
             name="inputs"
-            type="com.github.ojh102.timary.ui.read.ReadContract.Inputs"/>
+            type="com.github.ojh102.timary.ui.legacy.read.ReadContract.Inputs"/>
 
         <variable
             name="capsule"

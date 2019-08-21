@@ -2,7 +2,7 @@ package com.github.ojh102.timary.repository
 
 import android.content.Context
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.ui.write.store.StoreItem
+import com.github.ojh102.timary.ui.legacy.write.store.StoreItem
 import com.github.ojh102.timary.util.Season
 import io.reactivex.Single
 import java.util.Calendar

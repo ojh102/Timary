@@ -28,27 +28,27 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.write.content.WriteActivity"
+            android:name="com.github.ojh102.timary.ui.legacy.write.content.WriteActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.complete.CompleteActivity"
+            android:name="com.github.ojh102.timary.ui.legacy.complete.CompleteActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.read.ReadActivity"
+            android:name="com.github.ojh102.timary.ui.legacy.read.ReadActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.write.store.StoreActivity"
+            android:name="com.github.ojh102.timary.ui.legacy.write.store.StoreActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.common.WebViewActivity"
+            android:name="com.github.ojh102.timary.ui.legacy.common.WebViewActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.common.TextActivity"
+            android:name="com.github.ojh102.timary.ui.legacy.common.TextActivity"
             android:screenOrientation="portrait" />
 
         <service android:name=".service.TimaryFirebaseMessagingService">

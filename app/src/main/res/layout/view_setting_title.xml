@@ -11,7 +11,7 @@
 
         <variable
             name="titleItem"
-            type="com.github.ojh102.timary.ui.legacy.setting.SettingItems.TitleItem" />
+            type="com.github.ojh102.timary.ui.legacy.main.setting.SettingItems.TitleItem" />
 
         <variable
             name="onClickListener"

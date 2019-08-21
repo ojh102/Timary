@@ -8,12 +8,8 @@
         <import type="com.github.ojh102.timary.R"/>
 
         <variable
-            name="inputs"
-            type="com.github.ojh102.timary.ui.legacy.write.content.WriteContract.Inputs"/>
-
-        <variable
-            name="today"
-            type="String"/>
+            name="viewModel"
+            type="com.github.ojh102.timary.ui.write.WriteViewModel"/>
 
     </data>
 
@@ -38,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginLeft="16dp"
-            android:text="@{today}"
+            android:text="@{viewModel.today}"
             android:textAppearance="@style/B28"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
@@ -65,7 +61,7 @@
                 android:background="@null"
                 android:hint="@string/write_hint"
                 android:lineSpacingMultiplier="1.2"
-                android:onTextChanged="@{(text, start, before, count) -> inputs.inputContent(text.toString)}"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.onContentTextChanged(text.toString)}"
                 android:textAppearance="@style/N16Black"
                 android:textColorHint="@color/heather"
                 android:textCursorDrawable="@drawable/cursor_heather"/>
