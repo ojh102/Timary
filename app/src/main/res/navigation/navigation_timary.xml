@@ -29,5 +29,17 @@
         android:id="@+id/writeFragment"
         android:name="com.github.ojh102.timary.ui.write.content.WriteFragment"
         android:label="WriteFragment"
-        tools:layout="@layout/fragment_write" />
+        tools:layout="@layout/fragment_write">
+        <action
+            android:id="@+id/action_writeFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/storeFragment"
+        android:name="com.github.ojh102.timary.ui.write.store.StoreFragment"
+        android:label="StoreFragment">
+        <argument
+            android:name="content"
+            app:argType="string" />
+    </fragment>
 </navigation>

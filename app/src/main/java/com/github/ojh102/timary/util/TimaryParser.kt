@@ -9,8 +9,9 @@ import com.github.ojh102.timary.R
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import javax.inject.Inject
 
-class TimaryParser(private val context: Context) {
+class TimaryParser @Inject constructor(private val context: Context) {
 
     fun dateToYear(date: Long): String {
         if (date == 0L) {
@@ -126,7 +127,7 @@ class TimaryParser(private val context: Context) {
         }
 
         return SimpleDateFormat(
-                context.getString(R.string.format_date_month_day), Locale.KOREAN
+            context.getString(R.string.format_date_month_day), Locale.KOREAN
         ).format(getCalendar(date).time)
     }
 
@@ -145,10 +146,10 @@ class TimaryParser(private val context: Context) {
 
         val spannableString = SpannableString(context.getString(R.string.format_store_capsule, argText))
         spannableString.setSpan(
-                TextAppearanceSpan(context, R.style.B15GreyishBrown),
-                text.length + 1,
-                argText.length,
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            TextAppearanceSpan(context, R.style.B15GreyishBrown),
+            text.length + 1,
+            argText.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
 
         return spannableString

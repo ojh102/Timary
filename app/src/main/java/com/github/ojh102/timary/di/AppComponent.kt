@@ -1,6 +1,8 @@
 package com.github.ojh102.timary.di
 
+import android.app.Application
 import android.content.Context
+import com.github.ojh102.timary.TimaryApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -19,9 +21,13 @@ import javax.inject.Singleton
     ]
 )
 internal interface AppComponent : AndroidInjector<DaggerApplication> {
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: Application): Builder
 
-    @Component.Factory
-    interface Factory {
-        fun create(@BindsInstance applicationContext: Context): AppComponent
+        fun build(): AppComponent
     }
+
+    fun inject(application: TimaryApplication)
 }

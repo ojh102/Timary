@@ -34,7 +34,7 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         initRecyclerView()
 
         viewModel.navigateToWrite.observe(this, EventObserver {
-            navController.navigate(MainFragmentDirections.actionMainFragmentToWriteFragment())
+            navController.navigate(it)
         })
     }
 

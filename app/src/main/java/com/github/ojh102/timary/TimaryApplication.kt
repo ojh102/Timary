@@ -11,7 +11,7 @@ import timber.log.Timber
 internal class TimaryApplication : DaggerApplication() {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.factory().create(applicationContext)
+        return DaggerAppComponent.builder().application(this).build()
     }
 
     override fun onCreate() {

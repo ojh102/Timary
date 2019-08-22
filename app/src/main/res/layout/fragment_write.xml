@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.github.ojh102.timary.R"/>
+        <import type="com.github.ojh102.timary.R" />
 
         <variable
             name="viewModel"
-            type="com.github.ojh102.timary.ui.write.content.WriteViewModel"/>
+            type="com.github.ojh102.timary.ui.write.content.WriteViewModel" />
 
     </data>
 
@@ -26,21 +26,21 @@
             android:layout_height="?android:actionBarSize"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_write"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
             android:text="@{viewModel.today}"
             android:textAppearance="@style/B28"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:textGradientEnd="@{R.color.deepPurple}"
             app:textGradientStart="@{R.color.lightPurple}"
-            tools:text="2018년\n1월7일의 기억"/>
+            tools:text="2018년\n1월7일의 기억" />
 
         <ScrollView
             android:layout_width="0dp"
@@ -57,14 +57,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:paddingBottom="32dp"
                 android:background="@null"
                 android:hint="@string/write_hint"
+                android:inputType="text"
                 android:lineSpacingMultiplier="1.2"
-                android:onTextChanged="@{(text, start, before, count) -> viewModel.onContentTextChanged(text.toString)}"
+                android:paddingBottom="32dp"
+                android:text="@={viewModel._contentText}"
                 android:textAppearance="@style/N16Black"
                 android:textColorHint="@color/heather"
-                android:textCursorDrawable="@drawable/cursor_heather"/>
+                android:textCursorDrawable="@drawable/cursor_heather" />
 
         </ScrollView>
 

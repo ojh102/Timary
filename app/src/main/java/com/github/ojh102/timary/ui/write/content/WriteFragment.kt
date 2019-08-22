@@ -39,7 +39,7 @@ internal class WriteFragment : BaseFragment<FragmentWriteBinding>() {
 
     private fun initNavigation() {
         viewModel.navigateToStore.observe(this, EventObserver {
-
+            navController.navigate(it)
         })
     }
 }

@@ -20,13 +20,6 @@ import io.reactivex.functions.Action
 class BindingAdapter {
 
     companion object {
-
-        @JvmStatic
-        @BindingAdapter("android:text")
-        fun setText(textView: TextView, @StringRes resId: Int) {
-            textView.setText(resId)
-        }
-
         @JvmStatic
         @BindingAdapter("android:textColor")
         fun setTextColor(textView: TextView, colorOrResId: Int) {
@@ -82,15 +75,6 @@ class BindingAdapter {
                 ViewCompat.setBackground(view, AppCompatResources.getDrawable(view.context, colorOrResId))
             } else {
                 ViewCompat.setBackground(view, ColorDrawable(colorOrResId))
-            }
-        }
-
-        @JvmStatic
-        @BindingAdapter("android:onEditorAction")
-        fun setOnEditorAction(textView: TextView, onEditorAction: Action) {
-            textView.setOnEditorActionListener { _, _, _ ->
-                onEditorAction.run()
-                false
             }
         }
     }

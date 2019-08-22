@@ -3,8 +3,10 @@ package com.github.ojh102.timary.ui.main.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavDirections
 import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.base.BaseViewModel
+import com.github.ojh102.timary.ui.main.MainFragmentDirections
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.asFlow
@@ -18,15 +20,15 @@ internal class HomeViewModel @Inject constructor() : BaseViewModel() {
     private val _today: MutableLiveData<String> = MutableLiveData()
     val today: LiveData<String> = _today
 
-    private val _navigateToWrite: MutableLiveData<Event<Unit>> = MutableLiveData()
-    val navigateToWrite: LiveData<Event<Unit>> = _navigateToWrite
+    private val _navigateToWrite: MutableLiveData<Event<NavDirections>> = MutableLiveData()
+    val navigateToWrite: LiveData<Event<NavDirections>> = _navigateToWrite
 
     private val action = BroadcastChannel<HomeAction>(1)
 
     init {
         viewModelScope.launch {
             clickWrite().collect {
-                _navigateToWrite.value = Event(Unit)
+                _navigateToWrite.value = Event(MainFragmentDirections.actionMainFragmentToWriteFragment())
             }
         }
     }
