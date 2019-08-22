@@ -63,6 +63,6 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun initRecyclerView() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 }

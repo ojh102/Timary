@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.ui.write
+package com.github.ojh102.timary.ui.write.content
 
 import androidx.lifecycle.ViewModel
 import com.github.ojh102.timary.annotation.ViewModelKey

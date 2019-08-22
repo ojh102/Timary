@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/writeFragment"
-        android:name="com.github.ojh102.timary.ui.write.WriteFragment"
+        android:name="com.github.ojh102.timary.ui.write.content.WriteFragment"
         android:label="WriteFragment"
         tools:layout="@layout/fragment_write" />
 </navigation>
