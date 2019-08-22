@@ -37,9 +37,18 @@
     <fragment
         android:id="@+id/storeFragment"
         android:name="com.github.ojh102.timary.ui.write.store.StoreFragment"
-        android:label="StoreFragment">
+        android:label="StoreFragment"
+        tools:layout="@layout/fragment_store">
         <argument
             android:name="content"
             app:argType="string" />
+        <action
+            android:id="@+id/action_storeFragment_to_completeFragment"
+            app:destination="@id/completeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/completeFragment"
+        android:name="com.github.ojh102.timary.ui.complete.CompleteFragment"
+        android:label="CompleteFragment"
+        tools:layout="@layout/fragment_complete" />
 </navigation>

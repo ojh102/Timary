@@ -43,7 +43,7 @@ internal interface StoreContract {
         }
 
         override fun storeDate(): Single<List<StoreItem>> {
-            return storeDateRepository.getStoreDateList()
+            return storeDateRepository.observableStoreDateList()
         }
 
         override fun storeCapsule(storeItem: StoreItem) {

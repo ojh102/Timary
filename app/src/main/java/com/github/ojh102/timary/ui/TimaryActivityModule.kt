@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import com.github.ojh102.timary.annotation.ActivityScope
 import com.github.ojh102.timary.annotation.FragmentScope
 import com.github.ojh102.timary.annotation.ViewModelKey
+import com.github.ojh102.timary.ui.complete.CompleteFragment
+import com.github.ojh102.timary.ui.complete.CompleteFragmentModule
 import com.github.ojh102.timary.ui.main.MainFragment
 import com.github.ojh102.timary.ui.main.MainFragmentModule
 import com.github.ojh102.timary.ui.main.archive.ArchiveFragment
@@ -58,4 +60,8 @@ internal interface TimaryActivityModule {
     @ContributesAndroidInjector(modules = [StoreFragmentModule::class])
     @FragmentScope
     fun bindStoreFragment(): StoreFragment
+
+    @ContributesAndroidInjector(modules = [CompleteFragmentModule::class])
+    @FragmentScope
+    fun bindCompleteFragment(): CompleteFragment
 }

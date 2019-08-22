@@ -76,7 +76,7 @@
             android:layout_marginBottom="12dp"
             android:gravity="center_horizontal"
             android:lineSpacingMultiplier="1.2"
-            android:text="@{viewModel.storeItem == null ? null : timaryParser.getStoreText(viewModel.storeItem.text, viewModel.storeItem.date)}"
+            android:text="@{viewModel.currentStoreItem == null ? null : timaryParser.getStoreText(viewModel.currentStoreItem.text, viewModel.currentStoreItem.date)}"
             android:textAppearance="@style/N15GreyishBrown" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -87,7 +87,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:enabled="@{viewModel.storeItem != null}"
+            android:enabled="@{viewModel.currentStoreItem != null}"
             android:onClick="@{() -> viewModel.storeCapsule()}"
             android:text="@string/store_memory" />
 

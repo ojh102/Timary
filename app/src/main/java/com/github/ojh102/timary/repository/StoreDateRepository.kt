@@ -13,7 +13,7 @@ internal class StoreDateRepository @Inject constructor(
     private val context: Context
 ) {
 
-    fun getStoreDateList(): Single<List<StoreItem>> {
+    fun observableStoreDateList(): Single<List<StoreItem>> {
         val items = mutableListOf<StoreItem>()
 
         items.add(StoreItem(context.getString(R.string.store_calendar), 0L))
@@ -23,6 +23,18 @@ internal class StoreDateRepository @Inject constructor(
         items.add(getRandomDay())
 
         return Single.just(items)
+    }
+
+    fun storeDateList(): List<StoreItem> {
+        val items = mutableListOf<StoreItem>()
+
+        items.add(StoreItem(context.getString(R.string.store_calendar), 0L))
+        items.add(getNextSeason())
+        items.add(getLastDayOfYear())
+        items.add(getFirstDayOfYear())
+        items.add(getRandomDay())
+
+        return items
     }
 
     private fun getNextSeason(): StoreItem {
