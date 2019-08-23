@@ -44,11 +44,24 @@
             app:argType="string" />
         <action
             android:id="@+id/action_storeFragment_to_completeFragment"
-            app:destination="@id/completeFragment" />
+            app:destination="@id/completeFragment"
+            app:popUpTo="@id/writeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/completeFragment"
         android:name="com.github.ojh102.timary.ui.complete.CompleteFragment"
         android:label="CompleteFragment"
-        tools:layout="@layout/fragment_complete" />
+        tools:layout="@layout/fragment_complete">
+        <argument
+            android:name="type"
+            app:argType="com.github.ojh102.timary.ui.legacy.complete.CompleteType" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

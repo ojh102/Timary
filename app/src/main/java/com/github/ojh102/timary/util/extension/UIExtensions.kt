@@ -61,15 +61,16 @@ fun ViewGroup?.inflater(): LayoutInflater {
 
 fun View.showKeyboard(delay: Long = 300) {
     Handler().postDelayed({
+        requestFocus()
         val imm = context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(this, SHOW_IMPLICIT)
     }, delay)
 }
 
-fun View.hideSoftKeyboard(delay: Long = 300) {
+fun View.hideKeyboard(delay: Long = 300) {
     Handler().postDelayed({
         val imm = context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromInputMethod(windowToken, 0)
+        imm.hideSoftInputFromWindow(windowToken, 0)
     }, delay)
 }
 

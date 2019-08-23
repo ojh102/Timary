@@ -10,15 +10,20 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.model.realm.Capsule
 import com.github.ojh102.timary.repository.StoreDateRepository
+import com.github.ojh102.timary.ui.legacy.complete.CompleteType
 import com.github.ojh102.timary.ui.legacy.write.store.StoreItem
+import com.github.ojh102.timary.util.TimaryParser
 import kotlinx.coroutines.launch
 import java.util.Calendar
 import javax.inject.Inject
 
 internal class StoreViewModel @Inject constructor(
     private val storeDateRepository: StoreDateRepository,
-    private val context: Context
+    private val context: Context,
+    private val timaryParser: TimaryParser
+
 ) : BaseViewModel() {
+
     private val _content = MutableLiveData<String>()
     val content: LiveData<String> = _content
 
@@ -49,9 +54,14 @@ internal class StoreViewModel @Inject constructor(
                 writtenDate = System.currentTimeMillis()
             }
 
-            //TODO store
             viewModelScope.launch {
-                _navigateToComplete.value = Event(StoreFragmentDirections.actionStoreFragmentToCompleteFragment())
+                _navigateToComplete.value = Event(
+                    StoreFragmentDirections.actionStoreFragmentToCompleteFragment(
+                        CompleteType.WRITE,
+                        timaryParser.completeWriteText(capsule.targetDate),
+                        null
+                    )
+                )
             }
         }
     }

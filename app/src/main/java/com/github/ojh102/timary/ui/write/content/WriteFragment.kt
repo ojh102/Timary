@@ -6,6 +6,7 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentWriteBinding
+import com.github.ojh102.timary.util.extension.hideKeyboard
 
 internal class WriteFragment : BaseFragment<FragmentWriteBinding>() {
     override val layoutRes = R.layout.fragment_write
@@ -39,6 +40,7 @@ internal class WriteFragment : BaseFragment<FragmentWriteBinding>() {
 
     private fun initNavigation() {
         viewModel.navigateToStore.observe(this, EventObserver {
+            binding.tvWrite.hideKeyboard()
             navController.navigate(it)
         })
     }
