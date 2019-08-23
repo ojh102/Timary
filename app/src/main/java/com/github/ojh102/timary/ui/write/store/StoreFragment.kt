@@ -42,6 +42,8 @@ internal class StoreFragment : BaseFragment<FragmentStoreBinding>() {
         viewModel.storeItems.observe(this, Observer { storeAdapter.submitList(it) })
         viewModel.showDatePicker.observe(this, EventObserver { showDatePickerDialog() })
         viewModel.navigateToComplete.observe(this, EventObserver { navController.navigate(it) })
+
+        viewModel.argument(args)
     }
 
     private fun initRecyclerView() {

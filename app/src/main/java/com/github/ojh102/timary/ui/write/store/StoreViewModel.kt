@@ -34,6 +34,10 @@ internal class StoreViewModel @Inject constructor(
     private val _navigateToComplete = MutableLiveData<Event<NavDirections>>()
     val navigateToComplete: LiveData<Event<NavDirections>> = _navigateToComplete
 
+    fun argument(argument: StoreFragmentArgs) {
+        _content.value = argument.content
+    }
+
     fun storeCapsule() {
         val storeContent = content.value!!
 
