@@ -6,7 +6,7 @@ import com.github.ojh102.timary.model.Capsule
 
 @Database(
     entities = [Capsule::class],
-    version = 0
+    version = 1
 )
 internal abstract class TimaryRoomDatabase : RoomDatabase() {
     abstract fun capsuleDao(): CapsuleDao

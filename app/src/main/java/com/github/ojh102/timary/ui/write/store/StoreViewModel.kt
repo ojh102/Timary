@@ -8,19 +8,24 @@ import androidx.navigation.NavDirections
 import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
-import com.github.ojh102.timary.model.realm.Capsule
+import com.github.ojh102.timary.model.Capsule
+import com.github.ojh102.timary.repository.LocalRepository
 import com.github.ojh102.timary.repository.StoreDateRepository
 import com.github.ojh102.timary.ui.legacy.complete.CompleteType
 import com.github.ojh102.timary.ui.legacy.write.store.StoreItem
 import com.github.ojh102.timary.util.TimaryParser
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Calendar
 import javax.inject.Inject
 
 internal class StoreViewModel @Inject constructor(
     private val storeDateRepository: StoreDateRepository,
     private val context: Context,
-    private val timaryParser: TimaryParser
+    private val timaryParser: TimaryParser,
+    private val localRepository: LocalRepository
 
 ) : BaseViewModel() {
 
@@ -47,14 +52,17 @@ internal class StoreViewModel @Inject constructor(
         val storeContent = content.value!!
 
         currentStoreItem.value?.let {
-            val capsule = Capsule().apply {
-                id = System.currentTimeMillis()
-                content = storeContent
-                targetDate = it.date
+            val capsule = Capsule(
+                content = storeContent,
+                targetDate = it.date,
                 writtenDate = System.currentTimeMillis()
-            }
+            )
 
             viewModelScope.launch {
+                withContext(Dispatchers.IO) {
+                    localRepository.createOrUpdateCapsule(capsule)
+                }
+
                 _navigateToComplete.value = Event(
                     StoreFragmentDirections.actionStoreFragmentToCompleteFragment(
                         CompleteType.WRITE,

@@ -1,13 +1,15 @@
 package com.github.ojh102.timary.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "capsule")
 internal data class Capsule(
-    val id: Long,
     val content: String,
     val targetDate: Long,
-    val writtenDate: Long
+    val writtenDate: Long,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0L
 ) {
     fun dDay(): Float {
         val diff = targetDate - System.currentTimeMillis()
