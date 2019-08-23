@@ -140,6 +140,7 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$rootProject.coroutines_version"
 
     // Jetpack
     implementation "androidx.appcompat:appcompat:$rootProject.appcompat_version"

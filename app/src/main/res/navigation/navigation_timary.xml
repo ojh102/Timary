@@ -54,9 +54,6 @@
         android:label="CompleteFragment"
         tools:layout="@layout/fragment_complete">
         <argument
-            android:name="type"
-            app:argType="com.github.ojh102.timary.ui.legacy.complete.CompleteType" />
-        <argument
             android:name="title"
             app:argType="string" />
         <argument

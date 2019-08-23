@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.ojh102.timary.databinding.ViewHomeHeaderBinding
 import com.github.ojh102.timary.util.TimaryParser
 
-class HomeHeaderViewHolder(
+internal class HomeHeaderViewHolder(
     private val binding: ViewHomeHeaderBinding,
     timaryParser: TimaryParser
 ) : RecyclerView.ViewHolder(binding.root) {

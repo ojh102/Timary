@@ -1,13 +1,14 @@
 package com.github.ojh102.timary.ui.legacy.main.home
 
-import com.github.ojh102.timary.model.realm.Capsule
+import com.github.ojh102.timary.model.Capsule
 
-sealed class HomeItems(val id: Long) {
+
+internal sealed class HomeItems(val id: Long) {
     data class Header(val storedCapsuleSize: Int) : HomeItems(storedCapsuleSize.toLong())
 
-    sealed class StoredCapsule(val capsule: Capsule) : HomeItems(capsule.id) {
-        class ClosedCapsule(capsule: Capsule) : StoredCapsule(capsule)
+    sealed class StoredCapsule(open val capsule: Capsule) : HomeItems(capsule.id) {
+        data class ClosedCapsule(override val capsule: Capsule) : StoredCapsule(capsule)
 
-        class OpenedCapsule(capsule: Capsule) : StoredCapsule(capsule)
+        data class OpenedCapsule(override val capsule: Capsule) : StoredCapsule(capsule)
     }
 }

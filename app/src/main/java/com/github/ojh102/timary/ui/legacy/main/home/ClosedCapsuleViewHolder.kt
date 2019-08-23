@@ -3,10 +3,10 @@ package com.github.ojh102.timary.ui.legacy.main.home
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.github.ojh102.timary.databinding.ViewCapsuleCloseBinding
-import com.github.ojh102.timary.model.realm.Capsule
+import com.github.ojh102.timary.model.Capsule
 import com.github.ojh102.timary.util.TimaryParser
 
-class ClosedCapsuleViewHolder(
+internal class ClosedCapsuleViewHolder(
     private val binding: ViewCapsuleCloseBinding,
     timaryParser: TimaryParser
 ) : RecyclerView.ViewHolder(binding.root) {

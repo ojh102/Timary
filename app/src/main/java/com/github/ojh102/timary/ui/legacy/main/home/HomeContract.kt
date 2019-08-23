@@ -89,9 +89,9 @@ internal interface HomeContract {
             return capsuleRepository.getHomeCapsuleList().map { capsuleList ->
                 capsuleList.map { capsule ->
                     if (capsule.isOpened()) {
-                        HomeItems.StoredCapsule.OpenedCapsule(capsule)
+                        HomeItems.StoredCapsule.OpenedCapsule(capsule as com.github.ojh102.timary.model.Capsule)
                     } else {
-                        HomeItems.StoredCapsule.ClosedCapsule(capsule)
+                        HomeItems.StoredCapsule.ClosedCapsule(capsule as com.github.ojh102.timary.model.Capsule)
                     }
                 }.toMutableList<HomeItems>().apply {
                     add(0, HomeItems.Header(size))

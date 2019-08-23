@@ -16,6 +16,7 @@ import com.github.ojh102.timary.ui.legacy.write.store.StoreItem
 import com.github.ojh102.timary.util.TimaryParser
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Calendar
@@ -58,19 +59,14 @@ internal class StoreViewModel @Inject constructor(
                 writtenDate = System.currentTimeMillis()
             )
 
-            viewModelScope.launch {
-                withContext(Dispatchers.IO) {
-                    localRepository.createOrUpdateCapsule(capsule)
-                }
+            GlobalScope.launch(Dispatchers.IO) { localRepository.createOrUpdateCapsule(capsule) }
 
-                _navigateToComplete.value = Event(
-                    StoreFragmentDirections.actionStoreFragmentToCompleteFragment(
-                        CompleteType.WRITE,
-                        timaryParser.completeWriteText(capsule.targetDate),
-                        null
-                    )
+            _navigateToComplete.value = Event(
+                StoreFragmentDirections.actionStoreFragmentToCompleteFragment(
+                    timaryParser.completeWriteText(capsule.targetDate),
+                    null
                 )
-            }
+            )
         }
     }
 

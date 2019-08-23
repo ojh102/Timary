@@ -5,17 +5,22 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentHomeBinding
+import com.github.ojh102.timary.model.Capsule
+import com.github.ojh102.timary.ui.legacy.main.home.HomeAdapter
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
 import com.github.ojh102.timary.util.extension.toPx
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_home.cursor
+import javax.inject.Inject
 
 internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val layoutRes = R.layout.fragment_home
@@ -25,6 +30,9 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val viewModel by viewModels<HomeViewModel> { viewModelFactory }
 
+    @Inject
+    lateinit var homeAdapter: HomeAdapter
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -33,9 +41,13 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         initToolbar()
         initRecyclerView()
 
+        viewModel.homeItems.observe(this) { homeAdapter.submitList(it) }
+
         viewModel.navigateToWrite.observe(this, EventObserver {
             navController.navigate(it)
         })
+
+        viewModel.loadCapsules()
     }
 
     private fun initToolbar() {
@@ -63,6 +75,17 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun initRecyclerView() {
+        binding.rvCapsule.run {
+            layoutManager = LinearLayoutManager(context)
+            adapter = homeAdapter
+        }
 
+        homeAdapter.setCallbacks(object : HomeAdapter.Callbacks {
+            override fun onClickOpenedCapsule(capsule: Capsule) {
+            }
+
+            override fun onClickClosedCapsule(capsule: Capsule) {
+            }
+        })
     }
 }

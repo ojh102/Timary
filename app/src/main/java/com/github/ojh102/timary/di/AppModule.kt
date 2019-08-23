@@ -16,15 +16,19 @@ import javax.inject.Singleton
 internal interface AppModule {
     @Module
     class ProvideModule {
-
+        @Provides
+        @Singleton
+        fun provideTimaryParser(context: Context): TimaryParser {
+            return TimaryParser(context)
+        }
     }
 
-    @Singleton
     @Binds
+    @Singleton
     fun bindContext(application: Application): Context
 
-    @Singleton
     @Binds
+    @Singleton
     fun bindSchedulerProvider(schedulerProvider: AppSchedulerProvider): SchedulerProvider
 
     @Binds

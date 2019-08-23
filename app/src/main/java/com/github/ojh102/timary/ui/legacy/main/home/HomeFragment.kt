@@ -82,12 +82,12 @@ internal class HomeFragment : LegacyBaseFragment<FragmentHomeBinding, HomeContra
         }
 
         homeAdapter.setCallbacks(object : HomeAdapter.Callbacks {
-            override fun onClickClosedCapsule(capsule: Capsule) {
-                viewModel.inputs.onClickClosedCapsule(capsule)
+            override fun onClickClosedCapsule(capsule: com.github.ojh102.timary.model.Capsule) {
+//                viewModel.inputs.onClickClosedCapsule(capsule)
             }
 
-            override fun onClickOpenedCapsule(capsule: Capsule) {
-                viewModel.inputs.onClickOpenedCapsule(capsule)
+            override fun onClickOpenedCapsule(capsule: com.github.ojh102.timary.model.Capsule) {
+//                viewModel.inputs.onClickOpenedCapsule(capsule)
             }
         })
     }

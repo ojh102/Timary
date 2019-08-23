@@ -10,6 +10,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentMainBinding
+import com.github.ojh102.timary.ui.legacy.main.home.HomeAdapter
+import javax.inject.Inject
 
 internal class MainFragment : BaseFragment<FragmentMainBinding>() {
     override val layoutRes = R.layout.fragment_main

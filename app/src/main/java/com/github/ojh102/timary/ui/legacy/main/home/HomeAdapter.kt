@@ -8,18 +8,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.ojh102.timary.databinding.ViewCapsuleCloseBinding
 import com.github.ojh102.timary.databinding.ViewCapsuleOpenBinding
 import com.github.ojh102.timary.databinding.ViewHomeHeaderBinding
-import com.github.ojh102.timary.model.realm.Capsule
+import com.github.ojh102.timary.model.Capsule
 import com.github.ojh102.timary.util.TimaryParser
 import com.github.ojh102.timary.util.extension.inflater
+import javax.inject.Inject
 
-class HomeAdapter(private val timaryParser: TimaryParser) :
+internal class HomeAdapter @Inject constructor(private val timaryParser: TimaryParser) :
     ListAdapter<HomeItems, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<HomeItems>() {
         override fun areItemsTheSame(oldItem: HomeItems, newItem: HomeItems): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: HomeItems, newItem: HomeItems): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.hashCode() == newItem.hashCode()
         }
     }) {
 
