@@ -24,6 +24,15 @@ android {
         versionCode buildVersionCode()
         versionName buildVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"]
+            }
+        }
     }
 
     dataBinding {
@@ -145,6 +154,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycle_version"
     implementation "androidx.paging:paging-runtime:$rootProject.paging_version"
     implementation "androidx.room:room-runtime:$rootProject.room_version"
+    implementation "androidx.room:room-ktx:$rootProject.room_version"
     implementation "androidx.room:room-rxjava2:$rootProject.room_version"
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
     implementation "androidx.navigation:navigation-fragment:$rootProject.navigation_version"
