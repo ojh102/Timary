@@ -21,10 +21,9 @@ internal class TextFragment : BaseFragment<FragmentTextBinding>() {
         binding.viewModel = viewModel
 
         initToolbar()
+        initView()
 
-        viewModel.content.observe(this) { binding.tvContent.text = it }
-
-        viewModel.argument(args)
+        viewModel.arguments(args)
     }
 
     private fun initToolbar() {
@@ -35,5 +34,9 @@ internal class TextFragment : BaseFragment<FragmentTextBinding>() {
         }
 
         viewModel.title.observe(this) { binding.toolbar.title = it }
+    }
+
+    private fun initView() {
+        viewModel.content.observe(this) { binding.tvContent.text = it }
     }
 }

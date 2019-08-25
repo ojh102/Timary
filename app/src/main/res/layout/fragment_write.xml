@@ -43,10 +43,9 @@
             app:textGradientStart="@{R.color.lightPurple}"
             tools:text="2018년\n1월7일의 기억" />
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -56,19 +55,22 @@
                 android:id="@+id/edit_write_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
                 android:layout_marginLeft="32dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="32dp"
                 android:background="@null"
+                android:gravity="top|start"
                 android:hint="@string/write_hint"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:lineSpacingMultiplier="1.2"
                 android:paddingBottom="32dp"
-                android:text="@={viewModel._contentText}"
+                android:text="@={viewModel.contentText}"
                 android:textAppearance="@style/N16Black"
                 android:textColorHint="@color/heather"
                 android:textCursorDrawable="@drawable/cursor_heather" />
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

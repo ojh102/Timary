@@ -19,15 +19,12 @@ internal class WriteViewModel @Inject constructor() : BaseViewModel() {
     private val _navigateToStore = MutableLiveData<Event<NavDirections>>()
     val navigateToStore: LiveData<Event<NavDirections>> = _navigateToStore
 
-    val _contentText = MutableLiveData<String>()
-    val contentText = _contentText
+    val contentText = MutableLiveData<String>()
 
     fun clickWrite() {
-        viewModelScope.launch {
-            contentText.value?.let {
-                if (it.isNotBlank()) {
-                    _navigateToStore.value = Event(WriteFragmentDirections.actionWriteFragmentToStoreFragment(it))
-                }
+        contentText.value?.let {
+            if (it.isNotBlank()) {
+                _navigateToStore.value = Event(WriteFragmentDirections.actionWriteFragmentToStoreFragment(it))
             }
         }
     }

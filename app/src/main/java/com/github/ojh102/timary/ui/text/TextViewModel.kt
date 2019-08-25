@@ -12,7 +12,7 @@ internal class TextViewModel @Inject constructor() : BaseViewModel() {
     private val _content = MutableLiveData<String>()
     val content: LiveData<String> = _content
 
-    fun argument(args: TextFragmentArgs) {
+    fun arguments(args: TextFragmentArgs) {
         _title.value = args.title
         _content.value = args.content
     }
