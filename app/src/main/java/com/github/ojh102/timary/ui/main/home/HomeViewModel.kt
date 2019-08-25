@@ -13,8 +13,8 @@ import com.github.ojh102.timary.ui.main.MainFragmentDirections
 import com.github.ojh102.timary.util.TimaryParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.threeten.bp.LocalDate
 import javax.inject.Inject
 
@@ -35,20 +35,10 @@ internal class HomeViewModel @Inject constructor(
 
         viewModelScope.launch(Dispatchers.IO) {
             localRepository.getHomeCapsules()
+                .map { createHomeItems(it) }
                 .collect {
-                    val items = it.map { capsule ->
-                        if (capsule.isOpened()) {
-                            HomeItems.StoredCapsule.OpenedCapsule(capsule)
-                        } else {
-                            HomeItems.StoredCapsule.ClosedCapsule(capsule)
-                        }
-                    }
-                        .toMutableList<HomeItems>().apply {
-                            add(0, HomeItems.Header(size))
-                        }
-
-                    withContext(Dispatchers.Main) {
-                        _homeItems.value = items
+                    launch(Dispatchers.Main) {
+                        _homeItems.value = it
                     }
                 }
         }
@@ -64,5 +54,18 @@ internal class HomeViewModel @Inject constructor(
 
     fun onClickClosedCapsule(capsule: Capsule) {
         _toast.value = Event(context.getString(R.string.format_click_capsule_close, capsule.dDay()))
+    }
+
+    private fun createHomeItems(capsules: List<Capsule>): List<HomeItems> {
+        return capsules.map { capsule ->
+            if (capsule.isOpened()) {
+                HomeItems.StoredCapsule.OpenedCapsule(capsule)
+            } else {
+                HomeItems.StoredCapsule.ClosedCapsule(capsule)
+            }
+        }
+            .toMutableList<HomeItems>().apply {
+                add(0, HomeItems.Header(size))
+            }
     }
 }
