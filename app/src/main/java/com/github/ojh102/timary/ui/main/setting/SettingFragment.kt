@@ -10,7 +10,6 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSettingBinding
-import com.github.ojh102.timary.ui.legacy.main.setting.SettingAdapter
 import javax.inject.Inject
 
 internal class SettingFragment : BaseFragment<FragmentSettingBinding>() {

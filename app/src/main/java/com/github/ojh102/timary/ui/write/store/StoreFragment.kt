@@ -2,8 +2,6 @@ package com.github.ojh102.timary.ui.write.store
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.widget.LinearLayout
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
@@ -12,8 +10,6 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentStoreBinding
-import com.github.ojh102.timary.ui.legacy.write.store.StoreAdapter
-import com.github.ojh102.timary.ui.legacy.write.store.StoreItem
 import com.github.ojh102.timary.util.TimaryParser
 import java.util.Calendar
 import javax.inject.Inject

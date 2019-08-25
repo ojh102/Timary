@@ -9,8 +9,7 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentArchiveBinding
-import com.github.ojh102.timary.model.Capsule
-import com.github.ojh102.timary.ui.legacy.main.archieve.ArchiveAdapter
+import com.github.ojh102.timary.data.entitiy.Capsule
 import javax.inject.Inject
 
 internal class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {

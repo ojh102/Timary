@@ -1,17 +1,17 @@
 package com.github.ojh102.timary.di
 
-import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.room.Room
-import com.github.ojh102.timary.db.TimaryDB
-import com.github.ojh102.timary.db.TimarySharedPreferenceManager
-import com.github.ojh102.timary.db.room.CapsuleDao
-import com.github.ojh102.timary.db.room.TimaryRoomDatabase
-import com.github.ojh102.timary.repository.CapsuleDataSource
-import com.github.ojh102.timary.repository.CapsuleDataSourceImpl
-import com.github.ojh102.timary.repository.LocalRepository
-import com.github.ojh102.timary.repository.LocalRepositoryImpl
+import com.github.ojh102.timary.data.dao.CapsuleDao
+import com.github.ojh102.timary.data.room.TimaryRoomDatabase
+import com.github.ojh102.timary.data.datasource.CapsuleDataSource
+import com.github.ojh102.timary.data.datasource.CapsuleDataSourceImpl
+import com.github.ojh102.timary.data.datasource.SettingDataSource
+import com.github.ojh102.timary.data.datasource.SettingDataSourceImpl
+import com.github.ojh102.timary.data.repository.LocalRepository
+import com.github.ojh102.timary.data.repository.LocalRepositoryImpl
+import com.github.ojh102.timary.data.datasource.StoreDateDataSource
+import com.github.ojh102.timary.data.datasource.StoreDateDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -21,29 +21,10 @@ import javax.inject.Singleton
 internal interface DBModule {
     companion object {
         private const val DB_NAME = "timary"
-        private const val PREF_NAME = "$DB_NAME.pref"
     }
 
     @Module
     class ProvideModule {
-        @Provides
-        @Singleton
-        fun provideSharedPreferences(application: Application): SharedPreferences {
-            return application.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-        }
-
-        @Provides
-        @Singleton
-        fun provideTimarySharePreferencesManager(sharedPreferences: SharedPreferences): TimarySharedPreferenceManager {
-            return TimarySharedPreferenceManager(sharedPreferences)
-        }
-
-        @Provides
-        @Singleton
-        fun provideTimaryDB(): TimaryDB {
-            return TimaryDB()
-        }
-
         @Provides
         @Singleton
         fun provideRoomDatabase(context: Context): TimaryRoomDatabase {
@@ -65,5 +46,9 @@ internal interface DBModule {
 
     @Binds
     @Singleton
-    fun localRepository(localRepositoryImpl: LocalRepositoryImpl): LocalRepository
+    fun storeDateDataSource(storeDateDataSourceImpl: StoreDateDataSourceImpl): StoreDateDataSource
+
+    @Binds
+    @Singleton
+    fun settignDataSource(settingDataSourceImpl: SettingDataSourceImpl): SettingDataSource
 }

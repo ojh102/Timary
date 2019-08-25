@@ -13,11 +13,3 @@ fun Context?.hasResource(resId: Int): Boolean {
         false
     }
 }
-
-fun Context?.dpToPixel(dpValue: Float): Int {
-    if (this == null) {
-        return 0
-    }
-    val scale = resources.displayMetrics.density
-    return (dpValue * scale + 0.5f).toInt()
-}

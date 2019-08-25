@@ -11,13 +11,12 @@ import androidx.navigation.NavDirections
 import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
-import com.github.ojh102.timary.model.Capsule
-import com.github.ojh102.timary.repository.LocalRepository
+import com.github.ojh102.timary.data.entitiy.Capsule
+import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 import javax.inject.Inject
 
 internal class ArchiveViewModel @Inject constructor(

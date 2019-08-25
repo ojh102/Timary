@@ -23,38 +23,6 @@ fun Context.toast(message: String?, duration: Int = Toast.LENGTH_SHORT) {
     }
 }
 
-fun AppCompatActivity.addFragment(@IdRes containerViewId: Int, fragment: androidx.fragment.app.Fragment, tag: String) {
-    supportFragmentManager.beginTransaction()
-            .add(containerViewId, fragment, tag)
-            .commitNow()
-}
-
-fun AppCompatActivity.showFragment(tag: String) {
-    supportFragmentManager.findFragmentByTag(tag)?.let {
-        supportFragmentManager.beginTransaction()
-                .show(it)
-                .commitNow()
-    }
-}
-
-fun AppCompatActivity.hideFragment(tag: String) {
-    supportFragmentManager.findFragmentByTag(tag)?.let {
-        supportFragmentManager.beginTransaction()
-                .hide(it)
-                .commitNow()
-    }
-}
-
-fun AppCompatActivity.startActivityWithTransition(intent: Intent, vararg views: View) {
-
-    val pairs = views.map {
-        Pair.create(it, it.transitionName)
-    }.toTypedArray()
-
-    val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, *pairs)
-    startActivity(intent, options.toBundle())
-}
-
 fun ViewGroup?.inflater(): LayoutInflater {
     return LayoutInflater.from(this?.context)
 }

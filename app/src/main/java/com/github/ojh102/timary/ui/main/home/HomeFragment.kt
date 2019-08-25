@@ -7,21 +7,17 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.NavController
-import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentHomeBinding
-import com.github.ojh102.timary.model.Capsule
-import com.github.ojh102.timary.ui.legacy.main.home.HomeAdapter
-import com.github.ojh102.timary.ui.main.MainFragmentDirections
+import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.util.extension.toPx
 import com.github.ojh102.timary.util.extension.toast
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_home.cursor
-import timber.log.Timber
 import javax.inject.Inject
 
 internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
@@ -45,9 +41,7 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         viewModel.homeItems.observe(this) { homeAdapter.submitList(it) }
         viewModel.toast.observe(this, EventObserver { context?.toast(it) })
-        viewModel.navigateToWrite.observe(this, EventObserver {
-            navController.navigate(it)
-        })
+        viewModel.navDirections.observe(this, EventObserver { navController.navigate(it) })
 
         viewModel.loadCapsules()
     }

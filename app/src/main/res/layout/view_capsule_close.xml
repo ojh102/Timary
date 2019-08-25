@@ -5,11 +5,9 @@
 
     <data>
 
-        <import type="com.github.ojh102.timary.util.Navigator" />
-
         <variable
             name="capsule"
-            type="com.github.ojh102.timary.model.Capsule" />
+            type="com.github.ojh102.timary.data.entitiy.Capsule" />
 
         <variable
             name="capsuleClickListener"

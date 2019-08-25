@@ -140,7 +140,6 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$rootProject.coroutines_version"
 
     // Jetpack
     implementation "androidx.appcompat:appcompat:$rootProject.appcompat_version"
@@ -156,7 +155,6 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$rootProject.paging_version"
     implementation "androidx.room:room-runtime:$rootProject.room_version"
     implementation "androidx.room:room-ktx:$rootProject.room_version"
-    implementation "androidx.room:room-rxjava2:$rootProject.room_version"
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
     implementation "androidx.navigation:navigation-fragment:$rootProject.navigation_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigation_version"
@@ -167,16 +165,8 @@ dependencies {
     // DI
     implementation "com.google.dagger:dagger:$rootProject.dagger_version"
     implementation "com.google.dagger:dagger-android-support:$rootProject.dagger_version"
-    implementation "com.google.dagger:dagger-android:$rootProject.dagger_version"
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger_version"
-
-    // Rx
-    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rx_java_version"
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rx_android_version"
-    implementation "io.reactivex.rxjava2:rxkotlin:$rootProject.rx_kotlin_version"
-    implementation "com.jakewharton.rxrelay2:rxrelay:$rootProject.rx_relay_version"
-    implementation "com.github.tbruyelle:rxpermissions:$rootProject.rx_permissions_verison"
 
     // Date
     implementation "com.jakewharton.threetenabp:threetenabp:$rootProject.threetenabp_version"

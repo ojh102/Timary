@@ -6,16 +6,15 @@ import android.graphics.drawable.ColorDrawable
 import android.text.method.MovementMethod
 import android.view.View
 import android.widget.TextView
-import androidx.annotation.StringRes
 import androidx.annotation.StyleRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.doOnPreDraw
 import androidx.core.widget.TextViewCompat
 import androidx.databinding.BindingAdapter
 import com.github.ojh102.timary.util.extension.afterMeasured
 import com.github.ojh102.timary.util.extension.hasResource
-import io.reactivex.functions.Action
 
 class BindingAdapter {
 

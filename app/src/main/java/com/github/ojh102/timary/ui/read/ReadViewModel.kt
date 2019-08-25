@@ -8,13 +8,12 @@ import androidx.navigation.NavDirections
 import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
-import com.github.ojh102.timary.model.Capsule
-import com.github.ojh102.timary.repository.LocalRepository
+import com.github.ojh102.timary.data.entitiy.Capsule
+import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.util.TimaryParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 internal class ReadViewModel @Inject constructor(

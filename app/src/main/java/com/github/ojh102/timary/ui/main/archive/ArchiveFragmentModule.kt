@@ -3,7 +3,6 @@ package com.github.ojh102.timary.ui.main.archive
 import androidx.lifecycle.ViewModel
 import com.github.ojh102.timary.annotation.ViewModelKey
 import com.github.ojh102.timary.annotation.FragmentScope
-import com.github.ojh102.timary.ui.legacy.main.archieve.ArchiveAdapter
 import com.github.ojh102.timary.util.TimaryParser
 import dagger.Binds
 import dagger.Module

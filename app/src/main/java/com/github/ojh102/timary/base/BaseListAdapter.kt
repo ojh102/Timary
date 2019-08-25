@@ -12,12 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.ojh102.timary.BR
 
 internal abstract class BaseListAdapter<T : BaseItem>(
+    private val viewModel: BaseViewModel,
     diffCallback: DiffUtil.ItemCallback<T> = BaseDiffItemCallback()
 ) : ListAdapter<T, BaseViewHolder<T>>(diffCallback) {
-
-    protected var viewModel: ViewModel? = null
-
-    private var itemClickListener: ((View, T) -> Unit)? = null
 
     abstract fun layoutIdByViewType(viewType: Int): Int
 
@@ -27,12 +24,6 @@ internal abstract class BaseListAdapter<T : BaseItem>(
         val binding = createDataBinding(parent, inflater, layoutIdByViewType(viewType))
 
         val viewHolder = createViewHolder(binding, viewType)
-
-        binding.setVariable(BR.clickListener, View.OnClickListener {
-            if (viewHolder.adapterPosition != RecyclerView.NO_POSITION) {
-                itemClickListener?.invoke(it, getItem(viewHolder.adapterPosition))
-            }
-        })
 
         binding.setVariable(BR.viewModel, viewModel)
 
@@ -57,13 +48,5 @@ internal abstract class BaseListAdapter<T : BaseItem>(
 
     open fun createDataBinding(parent: ViewGroup, inflater: LayoutInflater, layoutIdByViewType: Int): ViewDataBinding {
         return DataBindingUtil.inflate(inflater, layoutIdByViewType, parent, false)
-    }
-
-    fun setCallbacks(viewModel: ViewModel) {
-        this.viewModel = viewModel
-    }
-
-    fun setItemClickListener(itemClickListener: (View, T) -> Unit) {
-        this.itemClickListener = itemClickListener
     }
 }

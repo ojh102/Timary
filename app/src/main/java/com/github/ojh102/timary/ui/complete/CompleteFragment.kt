@@ -14,10 +14,6 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentCompleteBinding
-import com.github.ojh102.timary.util.extension.afterMeasured
-import kotlinx.android.synthetic.main.activity_complete.iv_logo
-import kotlinx.android.synthetic.main.activity_complete.tv_description
-import kotlinx.android.synthetic.main.activity_complete.tv_title
 
 internal class CompleteFragment : BaseFragment<FragmentCompleteBinding>() {
     override val layoutRes = R.layout.fragment_complete
