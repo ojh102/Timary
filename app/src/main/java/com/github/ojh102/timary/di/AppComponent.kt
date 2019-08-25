@@ -1,7 +1,6 @@
 package com.github.ojh102.timary.di
 
 import android.app.Application
-import android.content.Context
 import com.github.ojh102.timary.TimaryApplication
 import dagger.BindsInstance
 import dagger.Component

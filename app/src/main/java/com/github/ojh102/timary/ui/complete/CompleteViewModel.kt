@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.base.BaseViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 internal class CompleteViewModel @Inject constructor() : BaseViewModel() {
     private val _title = MutableLiveData<String>()

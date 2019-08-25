@@ -11,10 +11,10 @@ import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 internal class ReadViewModel @Inject constructor(
     private val context: Context,

@@ -3,7 +3,6 @@ package com.github.ojh102.timary.ui.write.store
 import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,10 +10,8 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentStoreBinding
-import org.threeten.bp.LocalDate
-import timber.log.Timber
 import java.util.Calendar
-import javax.inject.Inject
+import org.threeten.bp.LocalDate
 
 internal class StoreFragment : BaseFragment<FragmentStoreBinding>() {
     override val layoutRes = R.layout.fragment_store

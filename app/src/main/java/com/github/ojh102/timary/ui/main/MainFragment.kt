@@ -3,7 +3,6 @@ package com.github.ojh102.timary.ui.main
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.github.ojh102.timary.R

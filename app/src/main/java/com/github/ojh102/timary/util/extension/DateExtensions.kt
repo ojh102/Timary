@@ -2,10 +2,19 @@ package com.github.ojh102.timary.util.extension
 
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.util.ResourcesUtil
+import java.util.Locale
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
-import java.util.Locale
+
+object DateExtensions
+
+enum class Season(val month: Int, val day: Int) {
+    SPRING(1, 4),
+    SUMMER(4, 5),
+    AUTUMN(7, 7),
+    WINTER(10, 7);
+}
 
 internal fun LocalDate.yyMMdd(): String {
     return DateTimeFormatter.ofPattern(ResourcesUtil.getString(R.string.format_date), Locale.KOREAN).format(this)
@@ -59,7 +68,6 @@ internal fun LocalDate.dDay(startDay: LocalDate = LocalDate.now()): Int {
     return ChronoUnit.DAYS.between(startDay, this).toInt()
 }
 
-
 internal fun archiveText(targetDate: LocalDate): String {
     return String.format(ResourcesUtil.getString(R.string.format_dday_archive), getTextFromEventDay(targetDate))
 }
@@ -85,9 +93,14 @@ private fun getTextFromEventDay(targetDate: LocalDate): String {
     }
 }
 
-enum class Season(val month: Int, val day: Int) {
-    SPRING(1, 4),
-    SUMMER(4, 5),
-    AUTUMN(7, 7),
-    WINTER(10, 7);
+internal fun Season.loacalDate(): LocalDate {
+    val now = LocalDate.now()
+
+    val targetYear = if (now.monthValue >= month && now.dayOfMonth >= day) {
+        now.year + 1
+    } else {
+        now.year
+    }
+
+    return LocalDate.of(targetYear, month + 1, day)
 }

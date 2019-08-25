@@ -8,7 +8,6 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentReadBinding
-import javax.inject.Inject
 
 internal class ReadFragment : BaseFragment<FragmentReadBinding>() {
     override val layoutRes = R.layout.fragment_read
@@ -16,7 +15,6 @@ internal class ReadFragment : BaseFragment<FragmentReadBinding>() {
     private val viewModel by viewModels<ReadViewModel> { viewModelFactory }
 
     private val args by navArgs<ReadFragmentArgs>()
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

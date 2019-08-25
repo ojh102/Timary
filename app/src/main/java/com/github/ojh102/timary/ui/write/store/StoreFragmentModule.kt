@@ -12,7 +12,6 @@ internal interface StoreFragmentModule {
     @Module
     class ProvideModule
 
-
     @Binds
     @FragmentScope
     @IntoMap

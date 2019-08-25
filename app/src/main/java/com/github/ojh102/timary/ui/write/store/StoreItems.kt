@@ -7,8 +7,8 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.data.SelectableItem
 import com.github.ojh102.timary.util.ResourcesUtil
 import com.github.ojh102.timary.util.extension.yyMMdd
-import org.threeten.bp.LocalDate
 import java.util.Random
+import org.threeten.bp.LocalDate
 
 internal sealed class StoreItems(
     open val text: String,

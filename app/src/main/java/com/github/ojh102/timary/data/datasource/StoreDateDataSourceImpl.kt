@@ -4,9 +4,9 @@ import android.content.Context
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.ui.write.store.StoreItems
 import com.github.ojh102.timary.util.extension.Season
-import org.threeten.bp.LocalDate
-import java.util.Random
+import com.github.ojh102.timary.util.extension.loacalDate
 import javax.inject.Inject
+import org.threeten.bp.LocalDate
 
 internal class StoreDateDataSourceImpl @Inject constructor(
     private val context: Context
@@ -26,26 +26,23 @@ internal class StoreDateDataSourceImpl @Inject constructor(
     }
 
     private fun getNextSeason(): StoreItems.Event {
+        val spring = Season.SPRING.loacalDate()
+        val summer = Season.SUMMER.loacalDate()
+        val autumn = Season.AUTUMN.loacalDate()
+        val winter = Season.WINTER.loacalDate()
 
-        val spring = getNextEventDay(Season.SPRING.month, Season.SPRING.day)
-        val summer = getNextEventDay(Season.SUMMER.month, Season.SUMMER.day)
-        val autumn = getNextEventDay(Season.AUTUMN.month, Season.AUTUMN.day)
-        val winter = getNextEventDay(Season.WINTER.month, Season.WINTER.day)
-
-        val targetSeason = listOf(spring, summer, autumn, winter).min()
-
-        return when (targetSeason) {
+        return when (val targetSeason = listOf(spring, summer, autumn, winter).min()) {
             spring -> {
-                StoreItems.Event (context.getString(R.string.store_spring), targetSeason)
+                StoreItems.Event(context.getString(R.string.store_spring), targetSeason)
             }
             summer -> {
-                StoreItems.Event (context.getString(R.string.store_summer), targetSeason)
+                StoreItems.Event(context.getString(R.string.store_summer), targetSeason)
             }
             autumn -> {
-                StoreItems.Event (context.getString(R.string.store_autumn), targetSeason)
+                StoreItems.Event(context.getString(R.string.store_autumn), targetSeason)
             }
             winter -> {
-                StoreItems.Event (context.getString(R.string.store_winter), targetSeason)
+                StoreItems.Event(context.getString(R.string.store_winter), targetSeason)
             }
             else -> {
                 throw IllegalStateException("what the fuck")
@@ -53,8 +50,8 @@ internal class StoreDateDataSourceImpl @Inject constructor(
         }
     }
 
-    private fun getLastDayOfYear(): StoreItems.Event  {
-        return StoreItems.Event (
+    private fun getLastDayOfYear(): StoreItems.Event {
+        return StoreItems.Event(
             context.getString(R.string.store_last_day),
             LocalDate.of(
                 LocalDate.now().year,
@@ -64,8 +61,8 @@ internal class StoreDateDataSourceImpl @Inject constructor(
         )
     }
 
-    private fun getFirstDayOfYear(): StoreItems.Event  {
-        return StoreItems.Event (
+    private fun getFirstDayOfYear(): StoreItems.Event {
+        return StoreItems.Event(
             context.getString(R.string.store_first_day),
             LocalDate.of(
                 LocalDate.now().year + 1,
@@ -73,17 +70,5 @@ internal class StoreDateDataSourceImpl @Inject constructor(
                 1
             )
         )
-    }
-
-    private fun getNextEventDay(targetMonth: Int, targetDay: Int): LocalDate {
-        val now = LocalDate.now()
-
-        val targetYear = if (now.monthValue >= targetMonth && now.dayOfMonth >= targetDay) {
-            now.year + 1
-        } else {
-            now.year
-        }
-
-        return LocalDate.of(targetYear, targetMonth + 1, targetDay)
     }
 }

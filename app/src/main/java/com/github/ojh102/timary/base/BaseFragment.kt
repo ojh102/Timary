@@ -9,7 +9,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import com.github.ojh102.timary.R
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject

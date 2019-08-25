@@ -10,7 +10,6 @@ import androidx.annotation.StyleRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
-import androidx.core.view.doOnPreDraw
 import androidx.core.widget.TextViewCompat
 import androidx.databinding.BindingAdapter
 import com.github.ojh102.timary.util.extension.afterMeasured

@@ -12,12 +12,12 @@ import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
 import com.github.ojh102.timary.util.extension.dDay
 import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDate
-import javax.inject.Inject
 
 internal class HomeViewModel @Inject constructor(
     private val context: Context,
@@ -45,15 +45,15 @@ internal class HomeViewModel @Inject constructor(
     }
 
     fun onClickWrite() {
-        _navDirection.value = Event(MainFragmentDirections.actionMainFragmentToWriteFragment())
+        navDirections.value = Event(MainFragmentDirections.actionMainFragmentToWriteFragment())
     }
 
     fun onClickOpenedCapsule(item: HomeItems.StoredCapsule.OpenedCapsule) {
-        _navDirection.value = Event(MainFragmentDirections.actionMainFragmentToReadFragment(item.capsule.id))
+        navDirections.value = Event(MainFragmentDirections.actionMainFragmentToReadFragment(item.capsule.id))
     }
 
     fun onClickClosedCapsule(item: HomeItems.StoredCapsule.ClosedCapsule) {
-        _toast.value = Event(context.getString(R.string.format_click_capsule_close, item.capsule.targetDate.dDay()))
+        toast.value = Event(context.getString(R.string.format_click_capsule_close, item.capsule.targetDate.dDay()))
     }
 
     private fun createHomeItems(capsules: List<Capsule>): List<HomeItems> {

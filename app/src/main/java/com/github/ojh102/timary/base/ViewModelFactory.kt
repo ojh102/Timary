@@ -22,13 +22,11 @@ class ViewModelFactory @Inject constructor(
             }
         }
 
-        if (creator == null) throw IllegalArgumentException("Unknown model class " + modelClass)
+        if (creator == null) {
+            throw IllegalArgumentException("Unknown model class $modelClass")
+        }
 
         @Suppress("UNCHECKED_CAST")
-        try {
-            return creator.get() as T
-        } catch (e: Exception) {
-            throw RuntimeException(e)
-        }
+        return creator.get() as T
     }
 }

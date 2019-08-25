@@ -1,14 +1,11 @@
 package com.github.ojh102.timary.base
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.github.ojh102.timary.BR
 
 internal abstract class BaseListAdapter<T : BaseItem>(

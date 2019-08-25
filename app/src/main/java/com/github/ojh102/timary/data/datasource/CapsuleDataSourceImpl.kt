@@ -2,8 +2,8 @@ package com.github.ojh102.timary.data.datasource
 
 import com.github.ojh102.timary.data.dao.CapsuleDao
 import com.github.ojh102.timary.data.entitiy.Capsule
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 internal class CapsuleDataSourceImpl @Inject constructor(
     private val capsuleDao: CapsuleDao

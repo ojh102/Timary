@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.ojh102.timary.base.ViewModelFactory
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import javax.inject.Singleton
 
 @Module(includes = [AppModule.ProvideModule::class])

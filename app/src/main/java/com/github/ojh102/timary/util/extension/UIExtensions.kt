@@ -2,19 +2,11 @@ package com.github.ojh102.timary.util.extension
 
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
-import android.content.Intent
 import android.os.Handler
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
-import android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT
 import android.widget.Toast
-import androidx.annotation.IdRes
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
 
 fun Context?.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     if (this == null) {

@@ -8,7 +8,6 @@ import com.github.ojh102.timary.base.BaseItem
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.util.ResourcesUtil
 
-
 internal sealed class HomeItems(val id: Long) : BaseItem(id.toString()) {
     data class Header(val storedCapsuleSize: Int) : HomeItems(storedCapsuleSize.toLong()) {
         fun headerText(): CharSequence {

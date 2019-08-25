@@ -10,12 +10,11 @@ import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.util.extension.completeWriteText
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDate
-import timber.log.Timber
-import javax.inject.Inject
 
 internal class StoreViewModel @Inject constructor(
     private val context: Context,

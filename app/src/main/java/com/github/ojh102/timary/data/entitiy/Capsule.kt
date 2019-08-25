@@ -2,10 +2,7 @@ package com.github.ojh102.timary.data.entitiy
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.github.ojh102.timary.R
-import com.github.ojh102.timary.util.ResourcesUtil
 import com.github.ojh102.timary.util.extension.dDay
-import com.github.ojh102.timary.util.extension.monthDayText
 import org.threeten.bp.LocalDate
 
 @Entity(tableName = "capsule")

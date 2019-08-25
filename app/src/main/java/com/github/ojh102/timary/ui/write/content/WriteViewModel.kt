@@ -2,14 +2,12 @@ package com.github.ojh102.timary.ui.write.content
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
-import kotlinx.coroutines.launch
-import org.threeten.bp.LocalDate
 import javax.inject.Inject
+import org.threeten.bp.LocalDate
 
 internal class WriteViewModel @Inject constructor() : BaseViewModel() {
 

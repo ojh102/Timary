@@ -6,9 +6,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.base.BaseViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 internal class SplashViewModel @Inject constructor() : BaseViewModel() {
     private val _navigateToMain = MutableLiveData<Event<NavDirections>>()
@@ -21,5 +21,4 @@ internal class SplashViewModel @Inject constructor() : BaseViewModel() {
             _navigateToMain.value = Event(SplashFragmentDirections.actionSplashFragmentToMainFragment())
         }
     }
-
 }

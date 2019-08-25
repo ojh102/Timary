@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-internal abstract class BaseActivity<VB: ViewDataBinding> : DaggerAppCompatActivity() {
+internal abstract class BaseActivity<VB : ViewDataBinding> : DaggerAppCompatActivity() {
     protected abstract val layoutRes: Int
 
     @Inject
