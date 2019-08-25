@@ -27,11 +27,11 @@
             android:id="@+id/tv_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
             android:layout_marginTop="18dp"
             android:text="@{DateExtensionsKt.yearText(item.capsule.writtenDate)}"
             android:textAppearance="@style/B12Heather"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2018년" />
 
@@ -39,11 +39,11 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
             android:layout_marginTop="2dp"
             android:text="@{DateExtensionsKt.dateMemoryText(item.capsule.writtenDate)}"
             android:textAppearance="@style/B16Heather"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_year"
             tools:text="첫 날의 기억" />
 
@@ -51,11 +51,11 @@
             android:id="@+id/tv_d_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
             android:layout_marginTop="10dp"
             android:text="@{DateExtensionsKt.archiveText(item.capsule.targetDate)}"
             android:textAppearance="@style/B14CapsuleGrey"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:text="봄이 시작되는 첫 날 꺼낸 기억" />
 
@@ -63,14 +63,14 @@
             android:id="@+id/tv_content"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
             android:ellipsize="end"
             android:maxLines="2"
             android:text="@{item.capsule.content}"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_d_day"
             tools:text="asdas dasdfas hjdfaskjdfhasdjkfl hsakldfh aksldfhlksadfh klashfd klsahfdlk ashdfkl ashfdl slakfdh aslf hlkasfd hlkas h" />
 
@@ -79,8 +79,8 @@
             android:layout_height="0.5dp"
             android:background="@color/linePurple"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

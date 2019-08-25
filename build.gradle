@@ -15,7 +15,7 @@ buildscript {
         annotation_version = '1.0.2'
         constraint_layout_version = '2.0.0-beta2'
         lifecycle_version = '2.2.0-alpha03'
-        room_version = '2.2.0-alpha02'
+        room_version = '2.2.0-beta01'
         paging_version = '2.1.0'
         ktxVersion = '1.2.0-alpha03'
         navigation_version = '2.2.0-alpha01'

@@ -24,8 +24,8 @@
             android:layout_marginTop="84dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/line_logo"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/positive" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -35,8 +35,8 @@
             android:layout_marginBottom="4dp"
             android:src="@drawable/line_radius"
             app:layout_constraintBottom_toTopOf="@+id/iv_title"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_title"
@@ -44,8 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="22dp"
             app:layout_constraintBottom_toTopOf="@+id/container_title"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/logo_type_timary" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,8 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_title"
@@ -64,8 +64,8 @@
                 android:text="@string/splash_title"
                 android:textAppearance="@style/N14Heather"
                 app:layout_constraintBottom_toTopOf="@+id/tv_title_sub"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_title_sub"
@@ -74,8 +74,8 @@
                 android:text="@string/app_name_kor"
                 android:textAppearance="@style/B18Heather"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
