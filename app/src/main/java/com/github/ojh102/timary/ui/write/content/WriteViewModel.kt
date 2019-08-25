@@ -11,6 +11,7 @@ import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
+import org.threeten.bp.LocalDate
 import java.util.Date
 import javax.inject.Inject
 
@@ -18,7 +19,7 @@ internal class WriteViewModel @Inject constructor(
     val timaryParser: TimaryParser
 ) : BaseViewModel() {
 
-    private val _today = MutableLiveData<String>().apply { value = timaryParser.dateToTitleWithLine(Date().time) }
+    private val _today = MutableLiveData<String>().apply { value = timaryParser.dateToTitleWithLine(LocalDate.now()) }
     val today: LiveData<String> = _today
 
     private val _navigateToStore = MutableLiveData<Event<NavDirections>>()

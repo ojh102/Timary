@@ -5,18 +5,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.github.ojh102.timary.databinding.ViewStoreBinding
 import com.github.ojh102.timary.util.extension.inflater
-import java.util.Calendar
+import org.threeten.bp.LocalDate
 import java.util.Random
 import javax.inject.Inject
 
 internal class StoreAdapter @Inject constructor() : ListAdapter<StoreItem, StoreViewHolder>(object : DiffUtil.ItemCallback<StoreItem>() {
 
     override fun areItemsTheSame(oldItem: StoreItem, newItem: StoreItem): Boolean {
-        return oldItem == newItem
+        return oldItem.text == newItem.text
     }
 
     override fun areContentsTheSame(oldItem: StoreItem, newItem: StoreItem): Boolean {
-        return oldItem == newItem
+        return oldItem.hashCode() == newItem.hashCode()
     }
 }) {
 
@@ -64,21 +64,20 @@ internal class StoreAdapter @Inject constructor() : ListAdapter<StoreItem, Store
         }
     }
 
-    private fun createRandomDate(): Long {
-        val curCal = Calendar.getInstance()
+    private fun createRandomDate(): LocalDate {
+        val now = LocalDate.now()
 
-        val year = curCal.get(Calendar.YEAR)
+        val year = now.year
 
         val random = Random().apply { setSeed(System.currentTimeMillis()) }
 
         val ranMonth = random.nextInt(12)
         val ranDay = random.nextInt(29)
 
-        val targetCal = Calendar.getInstance()
-        targetCal.set(year, ranMonth, ranDay)
-        targetCal.before(curCal)
-        targetCal.set(year + 1, ranMonth, ranDay)
-
-        return targetCal.timeInMillis
+        return LocalDate.of(
+            year + 1,
+            ranMonth + 1,
+            ranDay + 1
+        )
     }
 }

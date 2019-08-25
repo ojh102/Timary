@@ -18,6 +18,7 @@ import com.github.ojh102.timary.util.extension.toPx
 import com.github.ojh102.timary.util.extension.toast
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_home.cursor
+import kotlinx.android.synthetic.main.fragment_home.tv_date
 import javax.inject.Inject
 
 internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
@@ -47,6 +48,10 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun initToolbar() {
+        binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, _ ->
+            binding.tvDate.alpha = (1 - (appBarLayout.y / appBarLayout.totalScrollRange) * -1)
+        })
+
         cursor.run {
             animation = AlphaAnimation(0f, 1f).apply {
                 repeatCount = Animation.INFINITE

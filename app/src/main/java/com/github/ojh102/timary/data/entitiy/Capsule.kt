@@ -2,24 +2,23 @@ package com.github.ojh102.timary.data.entitiy
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.github.ojh102.timary.base.BaseItem
+import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.temporal.ChronoUnit
 
 @Entity(tableName = "capsule")
 internal data class Capsule(
     val content: String,
-    val targetDate: Long,
-    val writtenDate: Long,
+    val targetDate: LocalDate,
+    val writtenDate: LocalDate,
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L
 ) {
-    fun dDay(): Float {
-        val diff = targetDate - System.currentTimeMillis()
-        val diffDay = (diff.toFloat() / (24 * 60 * 60 * 1000))
-
-        return diffDay
+    fun dDay(): Int {
+        return ChronoUnit.DAYS.between(LocalDate.now(), targetDate).toInt()
     }
 
     fun isOpened(): Boolean {
-        return dDay() <= 0f
+        return dDay() <= 0
     }
 }

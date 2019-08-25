@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="4dp"
-            android:text="@{timaryParser.dateToTitleWithLine(viewModel.capsule.writtenDate)}"
+            android:text="@{viewModel.capsule == null ? null : timaryParser.dateToTitleWithLine(viewModel.capsule.writtenDate)}"
             android:textAppearance="@style/B28"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"

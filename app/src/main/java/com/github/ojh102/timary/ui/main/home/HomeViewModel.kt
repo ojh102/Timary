@@ -4,31 +4,35 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavDirections
 import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
+import com.github.ojh102.timary.util.TimaryParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.threeten.bp.LocalDate
 import javax.inject.Inject
 
 internal class HomeViewModel @Inject constructor(
     private val context: Context,
+    private val timaryParser: TimaryParser,
     private val localRepository: LocalRepository
 ) : BaseViewModel() {
 
-    private val _today: MutableLiveData<String> = MutableLiveData()
+    private val _today = MutableLiveData<String>()
     val today: LiveData<String> = _today
 
     private val _homeItems = MutableLiveData<List<HomeItems>>()
     val homeItems: LiveData<List<HomeItems>> = _homeItems
 
     fun loadCapsules() {
+        _today.value = timaryParser.dateToTitleWithLine(LocalDate.now())
+
         viewModelScope.launch(Dispatchers.IO) {
             localRepository.getCapsules()
                 .collect {
@@ -59,15 +63,6 @@ internal class HomeViewModel @Inject constructor(
     }
 
     fun onClickClosedCapsule(capsule: Capsule) {
-        val diffDay = capsule.dDay()
-        val dDay = if (diffDay < 1) {
-            1
-        } else {
-            diffDay.toInt()
-        }
-
-        val message = context.getString(R.string.format_click_capsule_close, dDay)
-
-        _toast.value = Event(message)
+        _toast.value = Event(context.getString(R.string.format_click_capsule_close, capsule.dDay()))
     }
 }

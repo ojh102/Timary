@@ -6,33 +6,22 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.TextAppearanceSpan
 import com.github.ojh102.timary.R
-import java.text.SimpleDateFormat
-import java.util.Calendar
+import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.temporal.ChronoUnit
 import java.util.Locale
 import javax.inject.Inject
 
 class TimaryParser @Inject constructor(private val context: Context) {
 
-    fun dateToYear(date: Long): String {
-        if (date == 0L) {
-            return ""
-        }
-
-        val calendar = getCalendar(date)
-        val year = calendar[Calendar.YEAR]
-
-        return context.getString(R.string.format_year, year)
+    fun dateToYear(date: LocalDate): String {
+        return context.getString(R.string.format_year, date.year)
     }
 
-    fun dateToCapsuleTitle(writtenDate: Long): String {
-        if (writtenDate == 0L) {
-            return ""
-        }
-
-        val calendar = getCalendar(writtenDate)
-
-        val month = calendar[Calendar.MONTH]
-        val day = calendar[Calendar.DAY_OF_MONTH]
+    fun dateToCapsuleTitle(writtenDate: LocalDate): String {
+        val month = writtenDate.monthValue
+        val day = writtenDate.dayOfMonth
 
         val datText = if (month == 0 && day == 1) {
             context.getString(R.string.capsule_first_day)
@@ -45,44 +34,28 @@ class TimaryParser @Inject constructor(private val context: Context) {
         return context.getString(R.string.format_capsule_title_format, datText)
     }
 
-    fun dDay(targetDate: Long): Float {
-        val diff = targetDate - System.currentTimeMillis()
-        val diffDay = (diff.toFloat() / (24 * 60 * 60 * 1000))
-
-        return diffDay
+    fun dDay(targetDate: LocalDate): Int {
+        return ChronoUnit.DAYS.between(LocalDate.now(), targetDate).toInt()
     }
 
-    fun dateToCapsuleDday(targetDate: Long): String {
-        if (targetDate == 0L) {
-            return ""
-        }
-
+    fun dateToCapsuleDday(targetDate: LocalDate): String {
         val diffDay = dDay(targetDate)
 
         val dDay = when {
             diffDay <= 0 -> context.getString(R.string.today)
-            (diffDay < 1 && diffDay > 0) -> "1"
-            else -> diffDay.toInt().toString()
+            else -> diffDay.toString()
         }
 
         return context.getString(R.string.format_dday, getTextFromEventDay(targetDate), dDay)
     }
 
-    fun dateToArchiveDay(targetDate: Long): String {
-        if (targetDate == 0L) {
-            return ""
-        }
-
+    fun dateToArchiveDay(targetDate: LocalDate): String {
         return context.getString(R.string.format_dday_archive, getTextFromEventDay(targetDate))
     }
 
-    fun getTextFromEventDay(targetDate: Long): String {
-        val cal = Calendar.getInstance().apply {
-            timeInMillis = targetDate
-        }
-
-        val targetMonth = cal.get(Calendar.MONTH)
-        val targetDay = cal.get(Calendar.DAY_OF_MONTH)
+    fun getTextFromEventDay(targetDate: LocalDate): String {
+        val targetMonth = targetDate.month.value
+        val targetDay = targetDate.dayOfMonth
 
         return if (targetMonth == Season.SPRING.month && targetDay == Season.SPRING.day) {
             context.getString(R.string.store_spring)
@@ -101,45 +74,25 @@ class TimaryParser @Inject constructor(private val context: Context) {
         }
     }
 
-    fun dateToTitleWithLine(writtenDate: Long): String {
-        if (writtenDate == 0L) {
-            return ""
-        }
-
-        val calendar = getCalendar(writtenDate)
-        val sdf = SimpleDateFormat(context.getString(R.string.format_date_title_memory_with_line), Locale.KOREAN)
-        return sdf.format(calendar.time)
+    fun dateToTitleWithLine(writtenDate: LocalDate): String {
+        return DateTimeFormatter
+            .ofPattern(context.getString(R.string.format_date_title_memory_with_line), Locale.KOREAN)
+            .format(writtenDate)
     }
 
-    fun dateToText(date: Long): String {
-        if (date == 0L) {
-            return ""
-        }
-
-        val calendar = getCalendar(date)
-        val sdf = SimpleDateFormat(context.getString(R.string.format_date), Locale.KOREAN)
-        return sdf.format(calendar.time)
+    fun dateToText(date: LocalDate): String {
+        return DateTimeFormatter.ofPattern(context.getString(R.string.format_date), Locale.KOREAN).format(date)
     }
 
-    fun dateToTextMonthDay(date: Long): String {
-        if (date == 0L) {
-            return ""
-        }
-
-        return SimpleDateFormat(
-            context.getString(R.string.format_date_month_day), Locale.KOREAN
-        ).format(getCalendar(date).time)
+    fun dateToTextMonthDay(localDate: LocalDate): String {
+        return DateTimeFormatter.ofPattern(context.getString(R.string.format_date_month_day), Locale.KOREAN).format(localDate)
     }
 
-    fun completeWriteText(targetDate: Long): String {
-        if (targetDate == 0L) {
-            return ""
-        }
-
+    fun completeWriteText(targetDate: LocalDate): String {
         return context.getString(R.string.format_write_capsule_title, dateToText(targetDate))
     }
 
-    fun getStoreText(text: String, date: Long): CharSequence {
+    fun getStoreText(text: String, date: LocalDate): CharSequence {
         val dateText = dateToText(date)
 
         val argText = "$text $dateText"
@@ -161,12 +114,6 @@ class TimaryParser @Inject constructor(private val context: Context) {
 
         return SpannableString(text).apply {
             setSpan(TextAppearanceSpan(context, R.style.B16Grape), 0, numString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        }
-    }
-
-    private fun getCalendar(date: Long): Calendar {
-        return Calendar.getInstance().apply {
-            timeInMillis = date
         }
     }
 }

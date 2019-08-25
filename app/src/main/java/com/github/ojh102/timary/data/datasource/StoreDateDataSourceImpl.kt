@@ -4,6 +4,8 @@ import android.content.Context
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.ui.write.store.StoreItem
 import com.github.ojh102.timary.util.Season
+import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalDateTime
 import java.util.Calendar
 import java.util.Random
 import javax.inject.Inject
@@ -16,7 +18,7 @@ internal class StoreDateDataSourceImpl @Inject constructor(
     override fun storeItems(): List<StoreItem> {
         val items = mutableListOf<StoreItem>()
 
-        items.add(StoreItem(context.getString(R.string.store_calendar), 0L))
+        items.add(StoreItem(context.getString(R.string.store_calendar), LocalDate.MIN))
         items.add(getNextSeason())
         items.add(getLastDayOfYear())
         items.add(getFirstDayOfYear())
@@ -56,49 +58,49 @@ internal class StoreDateDataSourceImpl @Inject constructor(
     private fun getLastDayOfYear(): StoreItem {
         return StoreItem(
             context.getString(R.string.store_last_day),
-            Calendar.getInstance().apply { set(get(Calendar.YEAR), 11, 31) }.timeInMillis
+            LocalDate.of(
+                LocalDate.now().year,
+                12,
+                31
+            )
         )
     }
 
     private fun getFirstDayOfYear(): StoreItem {
         return StoreItem(
             context.getString(R.string.store_first_day),
-            Calendar.getInstance().apply { set(get(Calendar.YEAR) + 1, 0, 1) }.timeInMillis
+            LocalDate.of(
+                LocalDate.now().year + 1,
+                1,
+                1
+            )
         )
     }
 
     private fun getRandomDay(): StoreItem {
-        val curCal = Calendar.getInstance()
-
-        val year = curCal.get(Calendar.YEAR)
-
         val random = Random().apply { setSeed(System.currentTimeMillis()) }
 
         val ranMonth = random.nextInt(12)
         val ranDay = random.nextInt(29)
 
-        val targetCal = Calendar.getInstance()
-        targetCal.set(year, ranMonth, ranDay)
-        targetCal.before(curCal)
-        targetCal.set(year + 1, ranMonth, ranDay)
+        val targetDate = LocalDate.of(
+            LocalDate.now().year + 1,
+            ranMonth + 1,
+            ranDay
+        )
 
-        return StoreItem(context.getString(R.string.store_random), targetCal.timeInMillis)
+        return StoreItem(context.getString(R.string.store_random), targetDate)
     }
 
-    private fun getNextEventDay(targetMonth: Int, targetDay: Int): Long {
-        return Calendar.getInstance().apply {
+    private fun getNextEventDay(targetMonth: Int, targetDay: Int): LocalDate {
+        val now = LocalDate.now()
 
-            val curYear = get(Calendar.YEAR)
-            val curMon = get(Calendar.MONTH)
-            val curDay = get(Calendar.DAY_OF_MONTH)
+        val targetYear = if (now.monthValue >= targetMonth && now.dayOfMonth >= targetDay) {
+            now.year + 1
+        } else {
+            now.year
+        }
 
-            val targetYear = if (curMon >= targetMonth && curDay >= targetDay) {
-                curYear + 1
-            } else {
-                curYear
-            }
-
-            set(targetYear, targetMonth, targetDay)
-        }.timeInMillis
+        return LocalDate.of(targetYear, targetMonth + 1, targetDay)
     }
 }

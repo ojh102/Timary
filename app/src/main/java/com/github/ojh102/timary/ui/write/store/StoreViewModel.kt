@@ -13,6 +13,7 @@ import com.github.ojh102.timary.util.TimaryParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.threeten.bp.LocalDate
 import java.util.Calendar
 import javax.inject.Inject
 
@@ -49,7 +50,7 @@ internal class StoreViewModel @Inject constructor(
             val capsule = Capsule(
                 content = storeContent,
                 targetDate = it.date,
-                writtenDate = System.currentTimeMillis()
+                writtenDate = LocalDate.now()
             )
 
             GlobalScope.launch(Dispatchers.IO) { localRepository.createOrUpdateCapsule(capsule) }
@@ -73,8 +74,7 @@ internal class StoreViewModel @Inject constructor(
         _currentStoreItem.value = item
     }
 
-    fun onSelectDatePicker(calendar: Calendar) {
-        _currentStoreItem.value =
-            StoreItem(context.getString(R.string.store_calendar_selected), calendar.timeInMillis)
+    fun onSelectDatePicker(localDate: LocalDate) {
+        _currentStoreItem.value = StoreItem(context.getString(R.string.store_calendar_selected), localDate)
     }
 }

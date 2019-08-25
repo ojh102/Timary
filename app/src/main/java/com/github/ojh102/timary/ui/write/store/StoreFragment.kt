@@ -11,6 +11,7 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentStoreBinding
 import com.github.ojh102.timary.util.TimaryParser
+import org.threeten.bp.LocalDate
 import java.util.Calendar
 import javax.inject.Inject
 
@@ -66,11 +67,7 @@ internal class StoreFragment : BaseFragment<FragmentStoreBinding>() {
         }
 
         val dialog = DatePickerDialog(context, DatePickerDialog.OnDateSetListener { _, year, month, day ->
-            val selectedCal = Calendar.getInstance().apply {
-                set(year, month, day)
-            }
-
-            viewModel.onSelectDatePicker(selectedCal)
+            viewModel.onSelectDatePicker(LocalDate.of(year, month + 1, day))
         }, cal[Calendar.YEAR], cal[Calendar.MONTH], cal[Calendar.DAY_OF_MONTH]).apply {
             setCancelable(false)
             setButton(DatePickerDialog.BUTTON_NEGATIVE, null, { _, _ -> })
