@@ -20,28 +20,24 @@
 ## Libraries
 
 - Jetpack
-  - [Support Libraries](https://developer.android.com/topic/libraries/support-library/)
   - [Databinding](https://developer.android.com/topic/libraries/data-binding/)
-  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-  - [Paging](https://developer.android.com/topic/libraries/architecture/paging)
+  - [Lifcecycle & ViewModel](https://developer.android.com/jetpack/androidx/releases/lifecycle)
+  - [Paging](https://developer.android.com/jetpack/androidx/releases/paging)
+  - [Room](https://developer.android.com/jetpack/androidx/releases/room)
+  - [Navigation)(https://developer.android.com/jetpack/androidx/releases/navigation)
+  
+- Async Operation
+  - [Coroutine](https://github.com/Kotlin/kotlinx.coroutines/tree/master/ui/kotlinx-coroutines-android)
+  
+- DI
   - [Dagger2](http://google.github.io/dagger/)
-  - [Firebase Messaging](https://firebase.google.com/docs/cloud-messaging)
 
-- Reactive
-  - [RxJava](https://github.com/ReactiveX/RxJava)
-  - [RxAndroid](https://github.com/ReactiveX/RxAndroid) 
-  - [RxRelay](https://github.com/JakeWharton/RxRelay)
-  - [RxKotlin](https://github.com/ReactiveX/RxKotlin)
-
-- Database
-  - [Realm](https://realm.io/)
-
-- Debugging
+- ETC
+  - [Lottie](https://github.com/airbnb/lottie-android)
+  - [ThreeTenABP](https://github.com/JakeWharton/ThreeTenABP)
   - [Timber](https://github.com/JakeWharton/timber)
   - [Stetho](https://github.com/facebook/stetho)
-
-- UI
-  - [Lottie](https://github.com/airbnb/lottie-android)
+  
 
 
 License
