@@ -16,11 +16,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 
-fun Context.toast(message: String?, duration: Int = Toast.LENGTH_SHORT) {
-    message?.let {
-        val toast = Toast.makeText(this, message, duration)
-        toast.show()
+fun Context?.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+    if (this == null) {
+        return
     }
+
+    val toast = Toast.makeText(this, message, duration)
+    toast.show()
 }
 
 fun ViewGroup?.inflater(): LayoutInflater {

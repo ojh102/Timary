@@ -38,27 +38,18 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         initToolbar()
         initRecyclerView()
-
-        viewModel.homeItems.observe(this) { homeAdapter.submitList(it) }
-        viewModel.toast.observe(this, EventObserver { context?.toast(it) })
-        viewModel.navDirections.observe(this, EventObserver { navController.navigate(it) })
+        initObserve()
 
         viewModel.loadCapsules()
     }
 
+    private fun initObserve() {
+        viewModel.homeItems.observe(this) { homeAdapter.submitList(it) }
+        viewModel.toast.observe(this, EventObserver { context.toast(it) })
+        viewModel.navDirections.observe(this, EventObserver { navController.navigate(it) })
+    }
+
     private fun initToolbar() {
-        binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, _ ->
-            val offsetPercentage = (1 - (appBarLayout.y / appBarLayout.totalScrollRange) * -1)
-
-            binding.tvDate.alpha = offsetPercentage
-
-            val bottomMargin = 16.toPx * offsetPercentage
-
-            val layoutParams = binding.tvWrite.layoutParams as ConstraintLayout.LayoutParams
-            layoutParams.bottomMargin = bottomMargin.toInt()
-            binding.tvWrite.layoutParams = layoutParams
-        })
-
         cursor.run {
             animation = AlphaAnimation(0f, 1f).apply {
                 repeatCount = Animation.INFINITE
