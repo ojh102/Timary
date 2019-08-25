@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filterIsInstance
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.observeOn
 import kotlinx.coroutines.flow.onEach
@@ -51,18 +52,24 @@ internal class HomeViewModel @Inject constructor(
     }
 
     fun loadCapsules() {
-        viewModelScope.launch {
-            _homeItems.value = withContext(Dispatchers.IO) {
-                localRepository.getCapsules().map { capsule ->
-                    if (capsule.isOpened()) {
-                        HomeItems.StoredCapsule.OpenedCapsule(capsule)
-                    } else {
-                        HomeItems.StoredCapsule.ClosedCapsule(capsule)
+        viewModelScope.launch(Dispatchers.IO) {
+            localRepository.getCapsules()
+                .collect {
+                    val items = it.map { capsule ->
+                        if (capsule.isOpened()) {
+                            HomeItems.StoredCapsule.OpenedCapsule(capsule)
+                        } else {
+                            HomeItems.StoredCapsule.ClosedCapsule(capsule)
+                        }
                     }
-                }.toMutableList<HomeItems>().apply {
-                    add(0, HomeItems.Header(size))
+                        .toMutableList<HomeItems>().apply {
+                            add(0, HomeItems.Header(size))
+                        }
+
+                    withContext(Dispatchers.Main) {
+                        _homeItems.value = items
+                    }
                 }
-            }
         }
     }
 
