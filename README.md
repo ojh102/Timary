@@ -24,7 +24,7 @@
   - [Lifcecycle & ViewModel](https://developer.android.com/jetpack/androidx/releases/lifecycle)
   - [Paging](https://developer.android.com/jetpack/androidx/releases/paging)
   - [Room](https://developer.android.com/jetpack/androidx/releases/room)
-  - [Navigation)(https://developer.android.com/jetpack/androidx/releases/navigation)
+  - [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation)
   
 - Async Operation
   - [Coroutine](https://github.com/Kotlin/kotlinx.coroutines/tree/master/ui/kotlinx-coroutines-android)
