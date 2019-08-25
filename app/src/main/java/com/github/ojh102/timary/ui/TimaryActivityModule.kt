@@ -14,6 +14,8 @@ import com.github.ojh102.timary.ui.main.home.HomeFragment
 import com.github.ojh102.timary.ui.main.home.HomeFragmentModule
 import com.github.ojh102.timary.ui.main.setting.SettingFragment
 import com.github.ojh102.timary.ui.main.setting.SettingFragmentModule
+import com.github.ojh102.timary.ui.read.ReadFragment
+import com.github.ojh102.timary.ui.read.ReadFragmentModule
 import com.github.ojh102.timary.ui.splash.SplashFragment
 import com.github.ojh102.timary.ui.splash.SplashFragmentModule
 import com.github.ojh102.timary.ui.text.TextFragment
@@ -66,6 +68,10 @@ internal interface TimaryActivityModule {
     @ContributesAndroidInjector(modules = [CompleteFragmentModule::class])
     @FragmentScope
     fun bindCompleteFragment(): CompleteFragment
+
+    @ContributesAndroidInjector(modules = [ReadFragmentModule::class])
+    @FragmentScope
+    fun bindReadFragment(): ReadFragment
 
     @ContributesAndroidInjector(modules = [TextFragmentModule::class])
     @FragmentScope

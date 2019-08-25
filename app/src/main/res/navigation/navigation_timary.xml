@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_mainFragment_to_textFragment"
             app:destination="@id/textFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_readFragment"
+            app:destination="@id/readFragment" />
     </fragment>
     <fragment
         android:id="@+id/writeFragment"
@@ -75,4 +78,8 @@
             android:name="content"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/readFragment"
+        android:name="com.github.ojh102.timary.ui.read.ReadFragment"
+        android:label="ReadFragment" />
 </navigation>

@@ -38,11 +38,11 @@ internal class ArchiveFragment : LegacyBaseFragment<FragmentArchiveBinding, Arch
             adapter = archiveAdapter
         }
 
-        archiveAdapter.setCallbacks(object : ArchiveAdapter.Callbacks {
-            override fun onClickArchiveCapsule(capsule: Capsule) {
-                viewModel.inputs.onClickArchiveCapsule(capsule)
-            }
-        })
+//        archiveAdapter.setCallbacks(object : ArchiveAdapter.Callbacks {
+//            override fun onClickArchiveCapsule(capsule: Capsule) {
+//                viewModel.inputs.onClickArchiveCapsule(capsule)
+//            }
+//        })
     }
 
     private fun bindObservable() {
@@ -56,7 +56,7 @@ internal class ArchiveFragment : LegacyBaseFragment<FragmentArchiveBinding, Arch
 //                                                setSpan(TextAppearanceSpan(context, R.style.B16Grape), 0, it.size.toString().length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 //                                            }
 
-                                    archiveAdapter.submitList(it)
+//                                    archiveAdapter.submitList(it)
                                 }
                         ),
 

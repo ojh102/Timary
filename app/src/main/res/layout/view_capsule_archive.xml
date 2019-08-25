@@ -9,7 +9,7 @@
 
         <variable
             name="capsule"
-            type="com.github.ojh102.timary.model.realm.Capsule"/>
+            type="com.github.ojh102.timary.model.Capsule"/>
 
         <variable
             name="timaryParser"

@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.github.ojh102.timary.databinding.ViewCapsuleArchiveBinding
-import com.github.ojh102.timary.model.realm.Capsule
+import com.github.ojh102.timary.model.Capsule
 import com.github.ojh102.timary.util.TimaryParser
 import com.github.ojh102.timary.util.extension.inflater
 
-class ArchiveAdapter(
+internal class ArchiveAdapter(
     private val timaryParser: TimaryParser
 ) : ListAdapter<Capsule, ArchiveCapsuleViewHolder>(object : DiffUtil.ItemCallback<Capsule>() {
 
@@ -18,7 +18,7 @@ class ArchiveAdapter(
     }
 
     override fun areContentsTheSame(oldItem: Capsule, newItem: Capsule): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.hashCode() == newItem.hashCode()
     }
 }) {
 
