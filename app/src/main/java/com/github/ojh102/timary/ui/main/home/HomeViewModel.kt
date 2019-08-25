@@ -1,34 +1,32 @@
 package com.github.ojh102.timary.ui.main.home
 
+import android.content.Context
+import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.github.ojh102.timary.Event
+import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
+import com.github.ojh102.timary.model.Capsule
 import com.github.ojh102.timary.repository.LocalRepository
 import com.github.ojh102.timary.ui.legacy.main.home.HomeItems
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.channels.ConflatedBroadcastChannel
+import kotlinx.coroutines.channels.filter
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.flow.filterIsInstance
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.observeOn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.subscribe
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
 internal class HomeViewModel @Inject constructor(
-
+    private val context: Context,
     private val localRepository: LocalRepository
 ) : BaseViewModel() {
 
@@ -41,14 +39,8 @@ internal class HomeViewModel @Inject constructor(
     private val _homeItems = MutableLiveData<List<HomeItems>>()
     val homeItems: LiveData<List<HomeItems>> = _homeItems
 
-    private val action = BroadcastChannel<HomeAction>(1)
-
     init {
-        viewModelScope.launch {
-            clickWrite().collect {
-                _navigateToWrite.value = Event(MainFragmentDirections.actionMainFragmentToWriteFragment())
-            }
-        }
+
     }
 
     fun loadCapsules() {
@@ -74,10 +66,23 @@ internal class HomeViewModel @Inject constructor(
     }
 
     fun onClickWrite() {
-        viewModelScope.launch { action.send(HomeAction.ClickWrite) }
+        _navigateToWrite.value = Event(MainFragmentDirections.actionMainFragmentToWriteFragment())
     }
 
-    private fun clickWrite() = action().filterIsInstance<HomeAction.ClickWrite>()
+    fun onClickOpenedCapsule(capsule: Capsule) {
 
-    private fun action() = action.asFlow()
+    }
+
+    fun onClickClosedCapsule(capsule: Capsule) {
+        val diffDay = capsule.dDay()
+        val dDay = if (diffDay < 1) {
+            1
+        } else {
+            diffDay.toInt()
+        }
+
+        val message = context.getString(R.string.format_click_capsule_close, dDay)
+
+        _toast.value = Event(message)
+    }
 }
