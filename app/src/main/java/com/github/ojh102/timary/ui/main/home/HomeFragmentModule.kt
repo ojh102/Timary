@@ -12,13 +12,7 @@ import dagger.multibindings.IntoMap
 @Module(includes = [HomeFragmentModule.ProvideModule::class])
 internal interface HomeFragmentModule {
     @Module
-    class ProvideModule {
-        @Provides
-        @FragmentScope
-        fun provideHomeAdapter(timaryParser: TimaryParser): HomeAdapter {
-            return HomeAdapter(timaryParser)
-        }
-    }
+    class ProvideModule
 
     @Binds
     @FragmentScope

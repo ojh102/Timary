@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-            name="headerItem"
+            name="item"
             type="com.github.ojh102.timary.ui.main.home.HomeItems.Header" />
 
         <variable
-            name="timaryParser"
-            type="com.github.ojh102.timary.util.TimaryParser" />
+            name="viewModel"
+            type="com.github.ojh102.timary.ui.main.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:lineSpacingMultiplier="1.2"
-            android:text="@{timaryParser.getHeaderText(headerItem.storedCapsuleSize)}"
+            android:text="@{item.headerText()}"
             android:textAppearance="@style/N16Grape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

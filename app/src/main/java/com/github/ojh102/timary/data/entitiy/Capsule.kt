@@ -2,9 +2,11 @@ package com.github.ojh102.timary.data.entitiy
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.github.ojh102.timary.R
+import com.github.ojh102.timary.util.ResourcesUtil
+import com.github.ojh102.timary.util.extension.dDay
+import com.github.ojh102.timary.util.extension.monthDayText
 import org.threeten.bp.LocalDate
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.temporal.ChronoUnit
 
 @Entity(tableName = "capsule")
 internal data class Capsule(
@@ -14,11 +16,7 @@ internal data class Capsule(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L
 ) {
-    fun dDay(): Int {
-        return ChronoUnit.DAYS.between(LocalDate.now(), targetDate).toInt()
-    }
-
     fun isOpened(): Boolean {
-        return dDay() <= 0
+        return targetDate.dDay() <= 0
     }
 }

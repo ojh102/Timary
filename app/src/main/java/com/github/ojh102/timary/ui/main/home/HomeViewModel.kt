@@ -11,6 +11,7 @@ import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
 import com.github.ojh102.timary.util.TimaryParser
+import com.github.ojh102.timary.util.extension.dDay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
@@ -48,12 +49,12 @@ internal class HomeViewModel @Inject constructor(
         _navDirection.value = Event(MainFragmentDirections.actionMainFragmentToWriteFragment())
     }
 
-    fun onClickOpenedCapsule(capsule: Capsule) {
-        _navDirection.value = Event(MainFragmentDirections.actionMainFragmentToReadFragment(capsule.id))
+    fun onClickOpenedCapsule(item: HomeItems.StoredCapsule.OpenedCapsule) {
+        _navDirection.value = Event(MainFragmentDirections.actionMainFragmentToReadFragment(item.capsule.id))
     }
 
-    fun onClickClosedCapsule(capsule: Capsule) {
-        _toast.value = Event(context.getString(R.string.format_click_capsule_close, capsule.dDay()))
+    fun onClickClosedCapsule(item: HomeItems.StoredCapsule.ClosedCapsule) {
+        _toast.value = Event(context.getString(R.string.format_click_capsule_close, item.capsule.targetDate.dDay()))
     }
 
     private fun createHomeItems(capsules: List<Capsule>): List<HomeItems> {

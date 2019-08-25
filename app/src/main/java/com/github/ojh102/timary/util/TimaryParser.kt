@@ -34,21 +34,6 @@ class TimaryParser @Inject constructor(private val context: Context) {
         return context.getString(R.string.format_capsule_title_format, datText)
     }
 
-    fun dDay(targetDate: LocalDate): Int {
-        return ChronoUnit.DAYS.between(LocalDate.now(), targetDate).toInt()
-    }
-
-    fun dateToCapsuleDday(targetDate: LocalDate): String {
-        val diffDay = dDay(targetDate)
-
-        val dDay = when {
-            diffDay <= 0 -> context.getString(R.string.today)
-            else -> diffDay.toString()
-        }
-
-        return context.getString(R.string.format_dday, getTextFromEventDay(targetDate), dDay)
-    }
-
     fun dateToArchiveDay(targetDate: LocalDate): String {
         return context.getString(R.string.format_dday_archive, getTextFromEventDay(targetDate))
     }
@@ -106,15 +91,6 @@ class TimaryParser @Inject constructor(private val context: Context) {
         )
 
         return spannableString
-    }
-
-    fun getHeaderText(num: Int): CharSequence {
-        val numString = num.toString()
-        val text = context.getString(R.string.format_home_header, num)
-
-        return SpannableString(text).apply {
-            setSpan(TextAppearanceSpan(context, R.style.B16Grape), 0, numString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        }
     }
 }
 

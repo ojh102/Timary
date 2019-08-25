@@ -26,8 +26,7 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val viewModel by viewModels<HomeViewModel> { viewModelFactory }
 
-    @Inject
-    lateinit var homeAdapter: HomeAdapter
+    private val homeAdapter by lazy { HomeAdapter(viewModel) }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -68,15 +67,5 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             layoutManager = LinearLayoutManager(context)
             adapter = homeAdapter
         }
-
-        homeAdapter.setCallbacks(object : HomeAdapter.Callbacks {
-            override fun onClickOpenedCapsule(capsule: Capsule) {
-                viewModel.onClickOpenedCapsule(capsule)
-            }
-
-            override fun onClickClosedCapsule(capsule: Capsule) {
-                viewModel.onClickClosedCapsule(capsule)
-            }
-        })
     }
 }
