@@ -23,9 +23,6 @@ import javax.inject.Inject
 internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val layoutRes = R.layout.fragment_home
 
-    override val navController: NavController
-        get() = activity!!.findNavController(R.id.nav_host_fragment)
-
     private val viewModel by viewModels<HomeViewModel> { viewModelFactory }
 
     @Inject

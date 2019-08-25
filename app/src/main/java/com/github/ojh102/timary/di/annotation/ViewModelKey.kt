@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.annotation
+package com.github.ojh102.timary.di.annotation
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

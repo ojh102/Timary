@@ -15,10 +15,6 @@ internal class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     private val viewModel by viewModels<MainViewModel> { viewModelFactory }
 
-    private val childNavController: NavController by lazy {
-        Navigation.findNavController(view!!.findViewById(R.id.navigation_main_fragment))
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -35,7 +31,7 @@ internal class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     private fun initBottomNav() {
         binding.bottomNavigation.run {
-            setupWithNavController(childNavController)
+            setupWithNavController(Navigation.findNavController(view!!.findViewById(R.id.navigation_main_fragment)))
             setOnNavigationItemReselectedListener { }
         }
     }

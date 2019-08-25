@@ -15,9 +15,6 @@ import javax.inject.Inject
 internal class SettingFragment : BaseFragment<FragmentSettingBinding>() {
     override val layoutRes = R.layout.fragment_setting
 
-    override val navController: NavController
-        get() = activity!!.findNavController(R.id.nav_host_fragment)
-
     private val viewModel by viewModels<SettingViewModel> { viewModelFactory }
 
     @Inject

@@ -1,9 +1,9 @@
 package com.github.ojh102.timary.ui
 
 import androidx.lifecycle.ViewModel
-import com.github.ojh102.timary.annotation.ActivityScope
-import com.github.ojh102.timary.annotation.FragmentScope
-import com.github.ojh102.timary.annotation.ViewModelKey
+import com.github.ojh102.timary.di.annotation.ActivityScope
+import com.github.ojh102.timary.di.annotation.FragmentScope
+import com.github.ojh102.timary.di.annotation.ViewModelKey
 import com.github.ojh102.timary.ui.complete.CompleteFragment
 import com.github.ojh102.timary.ui.complete.CompleteFragmentModule
 import com.github.ojh102.timary.ui.main.MainFragment

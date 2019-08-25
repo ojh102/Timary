@@ -15,9 +15,6 @@ import javax.inject.Inject
 internal class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {
     override val layoutRes = R.layout.fragment_archive
 
-    override val navController: NavController
-        get() = activity!!.findNavController(R.id.nav_host_fragment)
-
     private val viewModel by viewModels<ArchiveViewModel> { viewModelFactory }
 
     @Inject

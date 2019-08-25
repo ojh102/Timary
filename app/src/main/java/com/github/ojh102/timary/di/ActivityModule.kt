@@ -1,7 +1,7 @@
 package com.github.ojh102.timary.di
 
 import android.content.Context
-import com.github.ojh102.timary.annotation.ActivityScope
+import com.github.ojh102.timary.di.annotation.ActivityScope
 import com.github.ojh102.timary.ui.TimaryActivity
 import com.github.ojh102.timary.ui.TimaryActivityModule
 import com.github.ojh102.timary.util.TimaryParser

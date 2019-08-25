@@ -2,6 +2,7 @@ package com.github.ojh102.timary.data.entitiy
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.github.ojh102.timary.base.BaseItem
 
 @Entity(tableName = "capsule")
 internal data class Capsule(
