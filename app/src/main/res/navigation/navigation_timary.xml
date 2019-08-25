@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_mainFragment_to_writeFragment"
             app:destination="@id/writeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_textFragment"
+            app:destination="@id/textFragment" />
     </fragment>
     <fragment
         android:id="@+id/writeFragment"
@@ -60,5 +63,16 @@
             android:name="description"
             app:argType="string"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/textFragment"
+        android:name="com.github.ojh102.timary.ui.text.TextFragment"
+        android:label="TextFragment">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="content"
+            app:argType="string" />
     </fragment>
 </navigation>

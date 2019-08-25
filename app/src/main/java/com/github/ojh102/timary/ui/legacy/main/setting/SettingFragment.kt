@@ -41,10 +41,6 @@ internal class SettingFragment : LegacyBaseFragment<FragmentSettingBinding, Sett
         }
 
         settingAdapter.setCallbacks(object : SettingAdapter.Callbacks {
-            override fun onCheckedAlert(checked: Boolean) {
-                viewModel.inputs.onCheckedAlert(checked)
-            }
-
             override fun onClickTerm() {
                 viewModel.inputs.onClickTerm()
             }
