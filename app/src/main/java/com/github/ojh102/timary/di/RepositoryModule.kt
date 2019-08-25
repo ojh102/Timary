@@ -1,35 +1,14 @@
 package com.github.ojh102.timary.di
 
-import android.content.Context
-import com.github.ojh102.timary.db.TimaryDB
-import com.github.ojh102.timary.db.TimarySharedPreferenceManager
-import com.github.ojh102.timary.log.TimaryLoggerApi
-import com.github.ojh102.timary.repository.CapsuleRepository
-import com.github.ojh102.timary.repository.SettingRepository
-import com.github.ojh102.timary.repository.StoreDateRepository
+import com.github.ojh102.timary.data.repository.LocalRepository
+import com.github.ojh102.timary.data.repository.LocalRepositoryImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class RepositoryModule {
-
+internal interface RepositoryModule {
+    @Binds
     @Singleton
-    @Provides
-    fun provideCapsuleRepository(timaryDB: TimaryDB): CapsuleRepository {
-        return CapsuleRepository(timaryDB)
-    }
-
-    @Singleton
-    @Provides
-    fun provideSettingRepository(context: Context, timarySharedPreferenceManager: TimarySharedPreferenceManager, timaryLogger: TimaryLoggerApi): SettingRepository {
-        return SettingRepository(context, timarySharedPreferenceManager, timaryLogger)
-    }
-
-    @Singleton
-    @Provides
-    fun provideStoreDateRepository(context: Context): StoreDateRepository {
-        return StoreDateRepository(context)
-    }
-
+    fun localRepository(localRepositoryImpl: LocalRepositoryImpl): LocalRepository
 }

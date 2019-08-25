@@ -1,54 +1,52 @@
 package com.github.ojh102.timary.di
 
-import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
-import com.github.ojh102.timary.db.TimaryDB
-import com.github.ojh102.timary.db.TimaryRealmMigration
-import com.github.ojh102.timary.db.TimaryRealmScheme
-import com.github.ojh102.timary.db.TimarySharedPreferenceManager
+import androidx.room.Room
+import com.github.ojh102.timary.data.dao.CapsuleDao
+import com.github.ojh102.timary.data.datasource.CapsuleDataSource
+import com.github.ojh102.timary.data.datasource.CapsuleDataSourceImpl
+import com.github.ojh102.timary.data.datasource.SettingDataSource
+import com.github.ojh102.timary.data.datasource.SettingDataSourceImpl
+import com.github.ojh102.timary.data.datasource.StoreDateDataSource
+import com.github.ojh102.timary.data.datasource.StoreDateDataSourceImpl
+import com.github.ojh102.timary.data.room.TimaryRoomDatabase
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import io.realm.RealmConfiguration
 import javax.inject.Singleton
 
-@Module
-class DBModule {
-
+@Module(includes = [DBModule.ProvideModule::class])
+internal interface DBModule {
     companion object {
-        private const val TAG = "timary"
-        private const val PREF_NAME = "$TAG.pref"
-        private const val REALM_NAME = "$TAG.realm"
-        private const val REALM_SCHEME_VERSION = 1L
+        private const val DB_NAME = "timary"
     }
 
-    @Singleton
-    @Provides
-    fun provideSharedPreferences(application: Application): SharedPreferences {
-        return application.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-    }
-
-    @Singleton
-    @Provides
-    fun provideTimarySharePreferencesManager(sharedPreferences: SharedPreferences): TimarySharedPreferenceManager {
-        return TimarySharedPreferenceManager(sharedPreferences)
-    }
-
-    @Singleton
-    @Provides
-    fun provideRealmConfiguration(): RealmConfiguration {
-        return RealmConfiguration.Builder()
-                .schemaVersion(REALM_SCHEME_VERSION)
-                .name(REALM_NAME)
-                .modules(TimaryRealmScheme())
-                .migration(TimaryRealmMigration())
-                .compactOnLaunch()
+    @Module
+    class ProvideModule {
+        @Provides
+        @Singleton
+        fun provideRoomDatabase(context: Context): TimaryRoomDatabase {
+            return Room.databaseBuilder(context, TimaryRoomDatabase::class.java, DB_NAME)
+                .fallbackToDestructiveMigration()
                 .build()
+        }
+
+        @Provides
+        @Singleton
+        fun provideCapsuleDao(roomDatabase: TimaryRoomDatabase): CapsuleDao {
+            return roomDatabase.capsuleDao()
+        }
     }
 
+    @Binds
     @Singleton
-    @Provides
-    fun provideTimaryDB(realmConfiguration: RealmConfiguration): TimaryDB {
-        return TimaryDB(realmConfiguration)
-    }
+    fun capsuleDataSource(capsuleDataSourceImpl: CapsuleDataSourceImpl): CapsuleDataSource
+
+    @Binds
+    @Singleton
+    fun storeDateDataSource(storeDateDataSourceImpl: StoreDateDataSourceImpl): StoreDateDataSource
+
+    @Binds
+    @Singleton
+    fun settignDataSource(settingDataSourceImpl: SettingDataSourceImpl): SettingDataSource
 }

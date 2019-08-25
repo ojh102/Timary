@@ -1,24 +1,11 @@
 package com.github.ojh102.timary.ui.main.setting
 
+import com.github.ojh102.timary.R
+import com.github.ojh102.timary.base.BaseItem
+import com.github.ojh102.timary.util.ResourcesUtil
 
-sealed class SettingItems(val id: Int) {
-    sealed class SwitchItem(
-            id: Int,
-            val title: String,
-            val description: String,
-            var isChecked: Boolean = true
-    ) : SettingItems(id) {
-        class Alert(id: Int, title: String, description: String, isChecked: Boolean): SwitchItem(id, title, description, isChecked)
+internal sealed class SettingItems(val id: String) : BaseItem(id) {
+    sealed class TitleItem(val title: String) : SettingItems(title) {
+        object Term : TitleItem(ResourcesUtil.getString(R.string.setting_term))
     }
-
-    sealed class TitleItem(
-            id: Int,
-            val title: String
-    ) : SettingItems(id) {
-        class Term(id: Int, title: String) : TitleItem(id, title)
-    }
-
-    class LineItem(id: Int) : SettingItems(id)
-
-    class DeepLineItem(id: Int) : SettingItems(id)
 }

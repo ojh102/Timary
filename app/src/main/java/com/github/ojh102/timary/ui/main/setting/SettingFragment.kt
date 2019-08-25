@@ -1,71 +1,42 @@
 package com.github.ojh102.timary.ui.main.setting
 
 import android.os.Bundle
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSettingBinding
-import com.github.ojh102.timary.util.Navigator
-import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.android.synthetic.main.fragment_setting.*
-import javax.inject.Inject
 
-class SettingFragment : BaseFragment<FragmentSettingBinding, SettingContract.SettingViewModel>() {
+internal class SettingFragment : BaseFragment<FragmentSettingBinding>() {
+    override val layoutRes = R.layout.fragment_setting
 
-    companion object {
-        const val TAG = "setting"
+    private val viewModel by viewModels<SettingViewModel> { viewModelFactory }
 
-        fun newInstance() = SettingFragment()
-    }
-
-    @Inject
-    lateinit var settingAdapter: SettingAdapter
-
-    override fun getLayoutRes() = R.layout.fragment_setting
-    override fun getModelClass() = SettingContract.SettingViewModel::class.java
+    private val settingAdapter by lazy { SettingAdapter(viewModel) }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        binding.inputs = viewModel
+        binding.viewModel = viewModel
 
-        initializeRecyclerView()
+        initRecyclerView()
+        initNavigation()
 
-        bindObservable()
+        viewModel.loadSettingItems()
     }
 
-    private fun initializeRecyclerView() {
-        rv_setting.apply {
+    private fun initRecyclerView() {
+        binding.rvSetting.run {
             layoutManager = LinearLayoutManager(context)
             adapter = settingAdapter
         }
 
-        settingAdapter.setCallbacks(object : SettingAdapter.Callbacks {
-            override fun onCheckedAlert(checked: Boolean) {
-                viewModel.inputs.onCheckedAlert(checked)
-            }
-
-            override fun onClickTerm() {
-                viewModel.inputs.onClickTerm()
-            }
-        })
+        viewModel.settingItems.observe(this) { settingAdapter.submitList(it) }
     }
 
-    private fun bindObservable() {
-        bind(
-                viewModel.outputs.settingItemList()
-                        .observeOn(schedulerProvider.ui())
-                        .subscribe(settingAdapter::submitList),
-
-                viewModel.outputs.navigateToTerm()
-                        .observeOn(schedulerProvider.ui())
-                        .subscribeBy(
-                                onNext = {
-                                    context?.let { context ->
-                                        Navigator.navigateToTermTextActivity(context)
-                                    }
-                                }
-                        )
-        )
+    private fun initNavigation() {
+        viewModel.navigateToTerm.observe(this, EventObserver { navController.navigate(it) })
     }
 }

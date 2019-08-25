@@ -4,58 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import com.github.ojh102.timary.log.TimaryLoggerApi
-import com.github.ojh102.timary.util.rx.SchedulerProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import com.github.ojh102.timary.R
 import dagger.android.support.DaggerFragment
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
-abstract class BaseFragment<VB : ViewDataBinding, VM : ViewModel> : DaggerFragment() {
+internal abstract class BaseFragment<VB : ViewDataBinding> : DaggerFragment() {
+    protected abstract val layoutRes: Int
 
     @Inject
-    lateinit var viewModelFactoty: ViewModelProvider.Factory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
     lateinit var binding: VB
-    lateinit var viewModel: VM
 
-    @Inject
-    lateinit var schedulerProvider: SchedulerProvider
-
-    @Inject
-    lateinit var timaryLogger: TimaryLoggerApi
-
-    private val compositeDisposable by lazy {
-        CompositeDisposable()
-    }
-
-    @LayoutRes
-    protected abstract fun getLayoutRes(): Int
-
-    protected abstract fun getModelClass(): Class<VM>
+    protected open val navController: NavController
+        get() = activity!!.findNavController(R.id.nav_host_fragment)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
+        binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
+
+        binding.lifecycleOwner = viewLifecycleOwner
+
         return binding.root
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, viewModelFactoty).get(getModelClass())
-    }
-
-    override fun onDestroyView() {
-        compositeDisposable.clear()
-        super.onDestroyView()
-    }
-
-    protected fun bind(vararg disposables: Disposable) {
-        compositeDisposable.addAll(*disposables)
-    }
-
 }

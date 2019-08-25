@@ -10,18 +10,16 @@ import dagger.android.support.DaggerApplication
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [
-    AndroidSupportInjectionModule::class,
-    ActivityModule::class,
-    FragmentModule::class,
-    ServiceModule::class,
-    ViewModelModule::class,
-    DBModule::class,
-    RepositoryModule::class,
-    AppModule::class
-])
-interface AppComponent : AndroidInjector<DaggerApplication> {
-
+@Component(
+    modules = [
+        AndroidSupportInjectionModule::class,
+        AppModule::class,
+        ActivityModule::class,
+        DBModule::class,
+        RepositoryModule::class
+    ]
+)
+internal interface AppComponent : AndroidInjector<DaggerApplication> {
     @Component.Builder
     interface Builder {
         @BindsInstance
@@ -31,5 +29,4 @@ interface AppComponent : AndroidInjector<DaggerApplication> {
     }
 
     fun inject(application: TimaryApplication)
-
 }

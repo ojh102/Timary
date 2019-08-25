@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/timary_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.github.ojh102.timary.ui.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.github.ojh102.timary.ui.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_writeFragment"
+            app:destination="@id/writeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_textFragment"
+            app:destination="@id/textFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_readFragment"
+            app:destination="@id/readFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/writeFragment"
+        android:name="com.github.ojh102.timary.ui.write.content.WriteFragment"
+        android:label="WriteFragment"
+        tools:layout="@layout/fragment_write">
+        <action
+            android:id="@+id/action_writeFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/storeFragment"
+        android:name="com.github.ojh102.timary.ui.write.store.StoreFragment"
+        android:label="StoreFragment"
+        tools:layout="@layout/fragment_store">
+        <argument
+            android:name="content"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_storeFragment_to_completeFragment"
+            app:destination="@id/completeFragment"
+            app:popUpTo="@id/writeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/completeFragment"
+        android:name="com.github.ojh102.timary.ui.complete.CompleteFragment"
+        android:label="CompleteFragment"
+        tools:layout="@layout/fragment_complete">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/textFragment"
+        android:name="com.github.ojh102.timary.ui.text.TextFragment"
+        android:label="TextFragment"
+        tools:layout="@layout/fragment_text">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="content"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/readFragment"
+        android:name="com.github.ojh102.timary.ui.read.ReadFragment"
+        android:label="ReadFragment"
+        tools:layout="@layout/fragment_read">
+        <argument
+            android:name="capsuleId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_readFragment_to_completeFragment"
+            app:destination="@id/completeFragment"
+            app:popUpTo="@id/readFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

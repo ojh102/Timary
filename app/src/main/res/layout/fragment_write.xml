@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.github.ojh102.timary.R" />
+
+        <variable
+            name="viewModel"
+            type="com.github.ojh102.timary.ui.write.content.WriteViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.legacy.write.content.WriteActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@{viewModel.today}"
+            android:textAppearance="@style/B28"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:textGradientEnd="@{R.color.deepPurple}"
+            app:textGradientStart="@{R.color.lightPurple}"
+            tools:text="2018년\n1월7일의 기억" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_write">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_write_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="32dp"
+                android:background="@null"
+                android:gravity="top|start"
+                android:hint="@string/write_hint"
+                android:inputType="textMultiLine"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingBottom="32dp"
+                android:text="@={viewModel.contentText}"
+                android:textAppearance="@style/N16Black"
+                android:textColorHint="@color/heather"
+                android:textCursorDrawable="@drawable/cursor_heather">
+
+                <requestFocus />
+
+            </androidx.appcompat.widget.AppCompatEditText>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
