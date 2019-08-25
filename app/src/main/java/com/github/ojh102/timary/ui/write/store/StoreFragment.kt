@@ -37,6 +37,7 @@ internal class StoreFragment : BaseFragment<FragmentStoreBinding>() {
         binding.viewModel = viewModel
         binding.timaryParser = timaryParser
 
+        initToolbar()
         initRecyclerView()
 
         viewModel.storeItems.observe(this, Observer { storeAdapter.submitList(it) })
@@ -44,6 +45,10 @@ internal class StoreFragment : BaseFragment<FragmentStoreBinding>() {
         viewModel.navigateToComplete.observe(this, EventObserver { navController.navigate(it) })
 
         viewModel.argument(args)
+    }
+
+    private fun initToolbar() {
+        binding.toolbar.setNavigationOnClickListener { navController.popBackStack() }
     }
 
     private fun initRecyclerView() {
