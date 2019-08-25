@@ -14,6 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDate
+import timber.log.Timber
 import javax.inject.Inject
 
 internal class StoreViewModel @Inject constructor(
@@ -25,11 +26,11 @@ internal class StoreViewModel @Inject constructor(
     private val _content = MutableLiveData<String>()
     val content: LiveData<String> = _content
 
-    private val _storeItems = MutableLiveData<List<StoreItem>>().apply { value = localRepository.storeItems() }
-    val storeItems: LiveData<List<StoreItem>> = _storeItems
+    private val _storeItems = MutableLiveData<List<StoreItems>>().apply { value = localRepository.storeItems() }
+    val storeItems: LiveData<List<StoreItems>> = _storeItems
 
-    private val _currentStoreItem = MutableLiveData<StoreItem>()
-    val currentStoreItem: LiveData<StoreItem> = _currentStoreItem
+    private val _currentStoreItem = MutableLiveData<StoreItems>()
+    val currentStoreItem: LiveData<StoreItems> = _currentStoreItem
 
     private val _showDatePicker = MutableLiveData<Event<Unit>>()
     val showDatePicker: LiveData<Event<Unit>> = _showDatePicker
@@ -62,17 +63,37 @@ internal class StoreViewModel @Inject constructor(
         }
     }
 
-    fun onClickStoreItem(item: StoreItem, position: Int) {
-        if (position == 0) {
-            _showDatePicker.value = Event(Unit)
-
-            return
+    fun onSelectStoreItem(item: StoreItems) {
+        when (item) {
+            is StoreItems.DatePicker -> {
+                _showDatePicker.value = Event(Unit)
+            }
+            is StoreItems.Event -> {
+                updateCurrentItems(item, getPositionByStoreItem(item))
+            }
+            is StoreItems.Random -> {
+                updateCurrentItems(StoreItems.createRandomItem(), getPositionByStoreItem(item))
+            }
         }
-
-        _currentStoreItem.value = item
     }
 
     fun onSelectDatePicker(localDate: LocalDate) {
-        _currentStoreItem.value = StoreItem(context.getString(R.string.store_calendar_selected), localDate)
+        updateCurrentItems(StoreItems.DatePicker(context.getString(R.string.store_calendar_selected), localDate), 0)
+    }
+
+    private fun getPositionByStoreItem(item: StoreItems): Int {
+        return storeItems.value!!.indexOfFirst { it == item }
+    }
+
+    private fun updateCurrentItems(item: StoreItems, position: Int) {
+        _currentStoreItem.value = item
+
+        _storeItems.value = storeItems.value!!.toMutableList().mapIndexed { index, storeItem ->
+            if (index == position) {
+                item.apply { isSelected = true }
+            } else {
+                storeItem.apply { isSelected = false }
+            }
+        }
     }
 }

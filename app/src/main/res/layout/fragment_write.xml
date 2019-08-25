@@ -17,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:fitsSystemWindows="true"
         tools:context=".ui.legacy.write.content.WriteActivity">
 
         <androidx.appcompat.widget.Toolbar
@@ -68,7 +67,11 @@
                 android:text="@={viewModel.contentText}"
                 android:textAppearance="@style/N16Black"
                 android:textColorHint="@color/heather"
-                android:textCursorDrawable="@drawable/cursor_heather" />
+                android:textCursorDrawable="@drawable/cursor_heather">
+
+                <requestFocus />
+
+            </androidx.appcompat.widget.AppCompatEditText>
 
         </androidx.core.widget.NestedScrollView>
 

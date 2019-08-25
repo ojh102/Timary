@@ -25,15 +25,11 @@ fun Context?.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     toast.show()
 }
 
-fun ViewGroup?.inflater(): LayoutInflater {
-    return LayoutInflater.from(this?.context)
-}
-
 fun View.showKeyboard(delay: Long = 300) {
     Handler().postDelayed({
         requestFocus()
         val imm = context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(this, SHOW_IMPLICIT)
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
     }, delay)
 }
 

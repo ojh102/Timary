@@ -1,14 +1,5 @@
 package com.github.ojh102.timary.data
 
-open class SelectableItem {
+import com.github.ojh102.timary.base.BaseItem
 
-    private var isSelected: Boolean = false
-
-    fun isSelected(): Boolean {
-        return isSelected
-    }
-
-    fun setSelected(isSelected: Boolean) {
-        this.isSelected = isSelected
-    }
-}
+internal open class SelectableItem(override val itemId: String, open var isSelected: Boolean = false) : BaseItem(itemId)

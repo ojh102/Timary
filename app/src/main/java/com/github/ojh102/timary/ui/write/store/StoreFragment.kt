@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.EventObserver
@@ -11,6 +12,7 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentStoreBinding
 import org.threeten.bp.LocalDate
+import timber.log.Timber
 import java.util.Calendar
 import javax.inject.Inject
 
@@ -21,8 +23,7 @@ internal class StoreFragment : BaseFragment<FragmentStoreBinding>() {
 
     private val args by navArgs<StoreFragmentArgs>()
 
-    @Inject
-    lateinit var storeAdapter: StoreAdapter
+    private val storeAdapter by lazy { StoreAdapter(viewModel) }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -32,7 +33,10 @@ internal class StoreFragment : BaseFragment<FragmentStoreBinding>() {
         initToolbar()
         initRecyclerView()
 
-        viewModel.storeItems.observe(this, Observer { storeAdapter.submitList(it) })
+        viewModel.storeItems.observe(this) {
+            storeAdapter.submitList(it)
+            storeAdapter.notifyDataSetChanged()
+        }
         viewModel.showDatePicker.observe(this, EventObserver { showDatePickerDialog() })
         viewModel.navigateToComplete.observe(this, EventObserver { navController.navigate(it) })
 
@@ -47,12 +51,6 @@ internal class StoreFragment : BaseFragment<FragmentStoreBinding>() {
         binding.rvStore.run {
             layoutManager = LinearLayoutManager(context)
             adapter = storeAdapter
-        }
-
-        storeAdapter.callbacks = object : StoreAdapter.Callbacks {
-            override fun onItemSelect(item: StoreItem, position: Int) {
-                viewModel.onClickStoreItem(item, position)
-            }
         }
     }
 

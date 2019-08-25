@@ -5,7 +5,7 @@ import com.github.ojh102.timary.data.datasource.SettingDataSource
 import com.github.ojh102.timary.data.datasource.StoreDateDataSource
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.ui.main.setting.SettingItems
-import com.github.ojh102.timary.ui.write.store.StoreItem
+import com.github.ojh102.timary.ui.write.store.StoreItems
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -34,7 +34,7 @@ internal class LocalRepositoryImpl @Inject constructor(
         capsuleDataSource.createOrUpdate(capsule)
     }
 
-    override fun storeItems(): List<StoreItem> {
+    override fun storeItems(): List<StoreItems> {
         return storeDateDataSource.storeItems()
     }
 

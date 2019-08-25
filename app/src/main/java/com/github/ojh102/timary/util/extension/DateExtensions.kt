@@ -1,8 +1,5 @@
 package com.github.ojh102.timary.util.extension
 
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.TextAppearanceSpan
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.util.ResourcesUtil
 import org.threeten.bp.LocalDate

@@ -6,16 +6,13 @@
     <data>
 
         <variable
-            name="storeItem"
-            type="com.github.ojh102.timary.ui.write.store.StoreItem" />
+            name="item"
+            type="com.github.ojh102.timary.ui.write.store.StoreItems" />
 
         <variable
-            name="position"
-            type="int" />
+            name="viewModel"
+            type="com.github.ojh102.timary.ui.write.store.StoreViewModel" />
 
-        <variable
-            name="itemSelectedListener"
-            type="com.github.ojh102.timary.ui.write.store.StoreViewHolder.OnItemSelectedListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,10 +24,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/item_store_background"
-            android:checked="@{storeItem.isSelected()}"
+            android:checked="@{item.selected}"
             android:gravity="center"
-            android:onClick="@{() -> itemSelectedListener.onItemSelect(storeItem, position)}"
-            android:text="@{storeItem.text}"
+            android:onClick="@{() -> viewModel.onSelectStoreItem(item)}"
+            android:text="@{item.text}"
             android:textAlignment="gravity"
             android:textAppearance="@style/N16"
             android:textColor="@drawable/item_store_text"

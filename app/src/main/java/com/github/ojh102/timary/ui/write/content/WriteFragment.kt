@@ -50,6 +50,6 @@ internal class WriteFragment : BaseFragment<FragmentWriteBinding>() {
     }
 
     private fun initView() {
-        binding.tvWrite.showKeyboard()
+        binding.tvWrite.showKeyboard(0L)
     }
 }
