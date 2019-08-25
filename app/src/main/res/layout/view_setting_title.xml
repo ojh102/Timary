@@ -7,15 +7,12 @@
 
         <variable
             name="item"
-            type="com.github.ojh102.timary.base.BaseItem" />
-
-        <variable
-            name="titleItem"
             type="com.github.ojh102.timary.ui.main.setting.SettingItems.TitleItem" />
 
         <variable
-            name="onClickListener"
-            type="android.view.View.OnClickListener" />
+            name="viewModel"
+            type="com.github.ojh102.timary.ui.main.setting.SettingViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +21,7 @@
         android:layout_marginTop="1dp"
         android:background="@color/white"
         android:foreground="?android:selectableItemBackground"
-        android:onClick="@{onClickListener}"
+        android:onClick="@{() -> viewModel.onClickTerm()}"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
@@ -32,7 +29,7 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{titleItem.title}"
+            android:text="@{item.title}"
             android:textAppearance="@style/N16SettingBlack"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

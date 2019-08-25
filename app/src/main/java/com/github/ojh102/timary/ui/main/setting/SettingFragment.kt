@@ -3,22 +3,18 @@ package com.github.ojh102.timary.ui.main.setting
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSettingBinding
-import javax.inject.Inject
 
 internal class SettingFragment : BaseFragment<FragmentSettingBinding>() {
     override val layoutRes = R.layout.fragment_setting
 
     private val viewModel by viewModels<SettingViewModel> { viewModelFactory }
 
-    @Inject
-    lateinit var settingAdapter: SettingAdapter
+    private val settingAdapter by lazy { SettingAdapter(viewModel) }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -26,8 +22,7 @@ internal class SettingFragment : BaseFragment<FragmentSettingBinding>() {
         binding.viewModel = viewModel
 
         initRecyclerView()
-
-        viewModel.navigateToTerm.observe(this, EventObserver { navController.navigate(it) })
+        initNavigation()
 
         viewModel.loadSettingItems()
     }
@@ -38,12 +33,10 @@ internal class SettingFragment : BaseFragment<FragmentSettingBinding>() {
             adapter = settingAdapter
         }
 
-        settingAdapter.setCallbacks(object : SettingAdapter.Callbacks {
-            override fun onClickTerm() {
-                viewModel.onClickTerm()
-            }
-        })
-
         viewModel.settingItems.observe(this) { settingAdapter.submitList(it) }
+    }
+
+    private fun initNavigation() {
+        viewModel.navigateToTerm.observe(this, EventObserver { navController.navigate(it) })
     }
 }

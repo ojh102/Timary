@@ -21,8 +21,7 @@ internal class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {
         binding.viewModel = viewModel
 
         initRecyclerView()
-
-        viewModel.navigateToRead.observe(this, EventObserver { navController.navigate(it) })
+        initNavigation()
 
         viewModel.loadArchiveCapsules()
     }
@@ -34,5 +33,9 @@ internal class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {
         }
 
         viewModel.archiveItems.observe(this) { archiveAdapter.submitList(it) }
+    }
+
+    private fun initNavigation() {
+        viewModel.navigateToRead.observe(this, EventObserver { navController.navigate(it) })
     }
 }

@@ -17,12 +17,12 @@ internal class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
         binding.viewModel = viewModel
 
-        setupNavigation()
+        initNavigation()
 
         viewModel.initSplash()
     }
 
-    private fun setupNavigation() {
+    private fun initNavigation() {
         viewModel.navigateToMain.observe(this, EventObserver {
             navController.navigate(it)
         })

@@ -35,15 +35,10 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         initToolbar()
         initRecyclerView()
-        initObserve()
+        initNavigation()
+        initToast()
 
         viewModel.loadCapsules()
-    }
-
-    private fun initObserve() {
-        viewModel.homeItems.observe(this) { homeAdapter.submitList(it) }
-        viewModel.toast.observe(this, EventObserver { context.toast(it) })
-        viewModel.navDirections.observe(this, EventObserver { navController.navigate(it) })
     }
 
     private fun initToolbar() {
@@ -67,5 +62,15 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             layoutManager = LinearLayoutManager(context)
             adapter = homeAdapter
         }
+
+        viewModel.homeItems.observe(this) { homeAdapter.submitList(it) }
+    }
+
+    private fun initNavigation() {
+        viewModel.navDirections.observe(this, EventObserver { navController.navigate(it) })
+    }
+
+    private fun initToast() {
+        viewModel.toast.observe(this, EventObserver { context.toast(it) })
     }
 }

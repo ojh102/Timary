@@ -11,13 +11,7 @@ import dagger.multibindings.IntoMap
 @Module(includes = [SettingFragmentModule.ProvideModule::class])
 internal interface SettingFragmentModule {
     @Module
-    class ProvideModule {
-        @Provides
-        @FragmentScope
-        fun provideSettingAdapter(): SettingAdapter {
-            return SettingAdapter()
-        }
-    }
+    class ProvideModule
 
     @Binds
     @FragmentScope
