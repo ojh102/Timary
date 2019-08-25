@@ -12,12 +12,8 @@
             type="com.github.ojh102.timary.ui.read.ReadViewModel" />
 
         <variable
-            name="capsule"
-            type="com.github.ojh102.timary.model.Capsule" />
-
-        <variable
             name="timaryParser"
-            type="com.github.ojh102.timary.util.TimaryParser"/>
+            type="com.github.ojh102.timary.util.TimaryParser" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +28,8 @@
             android:layout_height="?android:actionBarSize"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_read"
@@ -40,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="4dp"
-            android:text="@{timaryParser.dateToTitleWithLine(capsule.writtenDate)}"
+            android:text="@{timaryParser.dateToTitleWithLine(viewModel.capsule.writtenDate)}"
             android:textAppearance="@style/B28"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
@@ -65,7 +62,7 @@
                 android:layout_marginRight="32dp"
                 android:lineSpacingMultiplier="1.2"
                 android:paddingBottom="32dp"
-                android:text="@{capsule.content}"
+                android:text="@{viewModel.capsule.content}"
                 android:textAppearance="@style/N16Black"
                 tools:text="adsadsasdafasdfsadfsadfsadf asdad asd sad assd ass" />
 

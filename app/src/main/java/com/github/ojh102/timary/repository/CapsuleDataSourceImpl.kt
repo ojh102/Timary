@@ -17,6 +17,10 @@ internal class CapsuleDataSourceImpl @Inject constructor(
         return capsuleDao.get(id)
     }
 
+    override suspend fun delete(id: Long) {
+        capsuleDao.delete(id)
+    }
+
     override suspend fun createOrUpdate(capsule: Capsule) {
         return capsuleDao.createOrUpdate(capsule)
     }

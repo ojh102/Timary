@@ -70,7 +70,8 @@
     <fragment
         android:id="@+id/textFragment"
         android:name="com.github.ojh102.timary.ui.text.TextFragment"
-        android:label="TextFragment">
+        android:label="TextFragment"
+        tools:layout="@layout/fragment_text">
         <argument
             android:name="title"
             app:argType="string" />
@@ -81,5 +82,15 @@
     <fragment
         android:id="@+id/readFragment"
         android:name="com.github.ojh102.timary.ui.read.ReadFragment"
-        android:label="ReadFragment" />
+        android:label="ReadFragment"
+        tools:layout="@layout/fragment_read">
+        <argument
+            android:name="capsuleId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_readFragment_to_completeFragment"
+            app:destination="@id/completeFragment"
+            app:popUpTo="@id/readFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

@@ -55,6 +55,6 @@ internal class ArchiveViewModel @Inject constructor(
     }
 
     fun onClickArchiveCapsule(capsule: Capsule) {
-        _navigateToRead.value = Event(MainFragmentDirections.actionMainFragmentToReadFragment())
+        _navigateToRead.value = Event(MainFragmentDirections.actionMainFragmentToReadFragment(capsule.id))
     }
 }

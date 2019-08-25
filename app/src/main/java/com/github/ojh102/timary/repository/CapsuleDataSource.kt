@@ -7,4 +7,5 @@ internal interface CapsuleDataSource {
     suspend fun gets(): Flow<List<Capsule>>
     suspend fun get(id: Long): Flow<Capsule>
     suspend fun createOrUpdate(capsule: Capsule)
+    suspend fun delete(id: Long)
 }

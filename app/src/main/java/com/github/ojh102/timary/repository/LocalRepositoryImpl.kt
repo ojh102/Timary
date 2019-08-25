@@ -19,6 +19,10 @@ internal class LocalRepositoryImpl @Inject constructor(
         return capsuleDataSource.get(id)
     }
 
+    override suspend fun deleteCapsule(id: Long) {
+        return capsuleDataSource.delete(id)
+    }
+
     override suspend fun createOrUpdateCapsule(capsule: Capsule) {
         capsuleDataSource.createOrUpdate(capsule)
     }

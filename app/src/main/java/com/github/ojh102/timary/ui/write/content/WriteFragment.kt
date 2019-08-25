@@ -26,8 +26,6 @@ internal class WriteFragment : BaseFragment<FragmentWriteBinding>() {
         binding.toolbar.run {
             inflateMenu(R.menu.menu_write)
 
-            setNavigationOnClickListener { navController.popBackStack() }
-
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.menu_write -> {
@@ -37,6 +35,8 @@ internal class WriteFragment : BaseFragment<FragmentWriteBinding>() {
 
                 false
             }
+
+            setNavigationOnClickListener { navController.popBackStack() }
         }
     }
 
