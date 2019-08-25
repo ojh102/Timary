@@ -34,7 +34,7 @@ internal class HomeViewModel @Inject constructor(
         _today.value = timaryParser.dateToTitleWithLine(LocalDate.now())
 
         viewModelScope.launch(Dispatchers.IO) {
-            localRepository.getCapsules()
+            localRepository.getHomeCapsules()
                 .collect {
                     val items = it.map { capsule ->
                         if (capsule.isOpened()) {

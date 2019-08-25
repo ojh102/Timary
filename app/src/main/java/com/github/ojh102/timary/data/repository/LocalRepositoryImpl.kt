@@ -14,8 +14,12 @@ internal class LocalRepositoryImpl @Inject constructor(
     private val storeDateDataSource: StoreDateDataSource,
     private val settingDataSource: SettingDataSource
 ) : LocalRepository {
-    override suspend fun getCapsules(): Flow<List<Capsule>> {
-        return capsuleDataSource.gets()
+    override suspend fun getArchivedCapsules(): Flow<List<Capsule>> {
+        return capsuleDataSource.getArchivedCapsules()
+    }
+
+    override suspend fun getHomeCapsules(): Flow<List<Capsule>> {
+        return capsuleDataSource.getHomeCapsules()
     }
 
     override suspend fun getCapsule(id: Long): Flow<Capsule> {

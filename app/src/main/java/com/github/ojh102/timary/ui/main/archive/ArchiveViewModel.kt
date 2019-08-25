@@ -34,7 +34,7 @@ internal class ArchiveViewModel @Inject constructor(
 
     fun loadArchiveCapsules() {
         viewModelScope.launch(Dispatchers.IO) {
-            localRepository.getCapsules()
+            localRepository.getArchivedCapsules()
                 .collect {
                     launch(Dispatchers.Main) {
                         _headerText.value = SpannableString(context.getString(R.string.format_archive_header, it.size))

@@ -9,8 +9,12 @@ internal class CapsuleDataSourceImpl @Inject constructor(
     private val capsuleDao: CapsuleDao
 ) : CapsuleDataSource {
 
-    override suspend fun gets(): Flow<List<Capsule>> {
-        return capsuleDao.gets()
+    override suspend fun getArchivedCapsules(): Flow<List<Capsule>> {
+        return capsuleDao.getArchivedCapsules()
+    }
+
+    override suspend fun getHomeCapsules(): Flow<List<Capsule>> {
+        return capsuleDao.getHomeCapsules()
     }
 
     override suspend fun get(id: Long): Flow<Capsule> {
