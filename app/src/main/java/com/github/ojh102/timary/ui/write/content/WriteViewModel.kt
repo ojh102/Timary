@@ -6,20 +6,14 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.base.BaseViewModel
-import com.github.ojh102.timary.util.TimaryParser
-import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.channels.ConflatedBroadcastChannel
-import kotlinx.coroutines.channels.consumeEach
+import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDate
-import java.util.Date
 import javax.inject.Inject
 
-internal class WriteViewModel @Inject constructor(
-    val timaryParser: TimaryParser
-) : BaseViewModel() {
+internal class WriteViewModel @Inject constructor() : BaseViewModel() {
 
-    private val _today = MutableLiveData<String>().apply { value = timaryParser.dateToTitleWithLine(LocalDate.now()) }
+    private val _today = MutableLiveData<String>().apply { value = LocalDate.now().dateMemoryWithLineText() }
     val today: LiveData<String> = _today
 
     private val _navigateToStore = MutableLiveData<Event<NavDirections>>()

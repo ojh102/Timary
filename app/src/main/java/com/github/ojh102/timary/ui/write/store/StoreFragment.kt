@@ -10,7 +10,6 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentStoreBinding
-import com.github.ojh102.timary.util.TimaryParser
 import org.threeten.bp.LocalDate
 import java.util.Calendar
 import javax.inject.Inject
@@ -23,16 +22,12 @@ internal class StoreFragment : BaseFragment<FragmentStoreBinding>() {
     private val args by navArgs<StoreFragmentArgs>()
 
     @Inject
-    lateinit var timaryParser: TimaryParser
-
-    @Inject
     lateinit var storeAdapter: StoreAdapter
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         binding.viewModel = viewModel
-        binding.timaryParser = timaryParser
 
         initToolbar()
         initRecyclerView()
@@ -66,14 +61,14 @@ internal class StoreFragment : BaseFragment<FragmentStoreBinding>() {
             add(Calendar.DAY_OF_MONTH, 1)
         }
 
-        val dialog = DatePickerDialog(context, DatePickerDialog.OnDateSetListener { _, year, month, day ->
-            viewModel.onSelectDatePicker(LocalDate.of(year, month + 1, day))
-        }, cal[Calendar.YEAR], cal[Calendar.MONTH], cal[Calendar.DAY_OF_MONTH]).apply {
-            setCancelable(false)
-            setButton(DatePickerDialog.BUTTON_NEGATIVE, null, { _, _ -> })
-            datePicker.minDate = cal.timeInMillis
+        context?.let {
+            DatePickerDialog(it, DatePickerDialog.OnDateSetListener { _, year, month, day ->
+                viewModel.onSelectDatePicker(LocalDate.of(year, month + 1, day))
+            }, cal[Calendar.YEAR], cal[Calendar.MONTH], cal[Calendar.DAY_OF_MONTH]).apply {
+                setCancelable(false)
+                setButton(DatePickerDialog.BUTTON_NEGATIVE, null) { _, _ -> }
+                datePicker.minDate = cal.timeInMillis
+            }.show()
         }
-
-        dialog.show()
     }
 }

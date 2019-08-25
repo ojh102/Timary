@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import com.github.ojh102.timary.base.ViewModelFactory
-import com.github.ojh102.timary.util.TimaryParser
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -13,13 +12,7 @@ import javax.inject.Singleton
 @Module(includes = [AppModule.ProvideModule::class])
 internal interface AppModule {
     @Module
-    class ProvideModule {
-        @Provides
-        @Singleton
-        fun provideTimaryParser(context: Context): TimaryParser {
-            return TimaryParser(context)
-        }
-    }
+    class ProvideModule
 
     @Binds
     fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

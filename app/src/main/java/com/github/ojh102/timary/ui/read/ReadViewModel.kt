@@ -10,7 +10,7 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
-import com.github.ojh102.timary.util.TimaryParser
+import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -18,7 +18,6 @@ import javax.inject.Inject
 
 internal class ReadViewModel @Inject constructor(
     private val context: Context,
-    private val timaryParser: TimaryParser,
     private val localRepository: LocalRepository
 ) : BaseViewModel() {
     private val _capsule = MutableLiveData<Capsule>()
@@ -53,7 +52,7 @@ internal class ReadViewModel @Inject constructor(
                     ReadFragmentDirections.actionReadFragmentToCompleteFragment(
                         context.getString(
                             R.string.format_delete_capsule_title,
-                            timaryParser.dateToTitleWithLine(capsule.value!!.writtenDate)
+                            capsule.value!!.writtenDate.dateMemoryWithLineText()
                         ),
                         null
                     )

@@ -3,7 +3,6 @@ package com.github.ojh102.timary.ui.main.home
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseListAdapter
 import com.github.ojh102.timary.base.BaseViewModel
-import com.github.ojh102.timary.util.TimaryParser
 import java.lang.IllegalArgumentException
 import javax.inject.Inject
 

@@ -7,13 +7,11 @@
 
         <import type="com.github.ojh102.timary.R" />
 
+        <import type="com.github.ojh102.timary.util.extension.DateExtensionsKt" />
+
         <variable
             name="viewModel"
             type="com.github.ojh102.timary.ui.read.ReadViewModel" />
-
-        <variable
-            name="timaryParser"
-            type="com.github.ojh102.timary.util.TimaryParser" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="4dp"
-            android:text="@{viewModel.capsule == null ? null : timaryParser.dateToTitleWithLine(viewModel.capsule.writtenDate)}"
+            android:text="@{viewModel.capsule == null ? null : DateExtensionsKt.dateMemoryWithLineText(viewModel.capsule.writtenDate)}"
             android:textAppearance="@style/B28"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"

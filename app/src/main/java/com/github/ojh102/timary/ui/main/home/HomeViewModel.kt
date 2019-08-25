@@ -10,8 +10,8 @@ import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
-import com.github.ojh102.timary.util.TimaryParser
 import com.github.ojh102.timary.util.extension.dDay
+import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
@@ -21,7 +21,6 @@ import javax.inject.Inject
 
 internal class HomeViewModel @Inject constructor(
     private val context: Context,
-    private val timaryParser: TimaryParser,
     private val localRepository: LocalRepository
 ) : BaseViewModel() {
 
@@ -32,7 +31,7 @@ internal class HomeViewModel @Inject constructor(
     val homeItems: LiveData<List<HomeItems>> = _homeItems
 
     fun loadCapsules() {
-        _today.value = timaryParser.dateToTitleWithLine(LocalDate.now())
+        _today.value = LocalDate.now().dateMemoryWithLineText()
 
         viewModelScope.launch(Dispatchers.IO) {
             localRepository.getHomeCapsules()

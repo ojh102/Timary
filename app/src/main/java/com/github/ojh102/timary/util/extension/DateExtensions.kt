@@ -1,12 +1,18 @@
 package com.github.ojh102.timary.util.extension
 
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.TextAppearanceSpan
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.util.ResourcesUtil
-import com.github.ojh102.timary.util.Season
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
 import java.util.Locale
+
+internal fun LocalDate.yyMMdd(): String {
+    return DateTimeFormatter.ofPattern(ResourcesUtil.getString(R.string.format_date), Locale.KOREAN).format(this)
+}
 
 internal fun LocalDate.yearText(): String {
     return String.format(ResourcesUtil.getString(R.string.format_year), this.year)
@@ -25,6 +31,16 @@ internal fun LocalDate.dateMemoryText(): String {
     }
 
     return String.format(ResourcesUtil.getString(R.string.format_capsule_title_format), dateText)
+}
+
+internal fun LocalDate.dateMemoryWithLineText(): String {
+    return DateTimeFormatter
+        .ofPattern(ResourcesUtil.getString(R.string.format_date_title_memory_with_line), Locale.KOREAN)
+        .format(this)
+}
+
+internal fun LocalDate.completeWriteText(): String {
+    return String.format(ResourcesUtil.getString(R.string.format_write_capsule_title), yyMMdd())
 }
 
 internal fun LocalDate.dDayCountText(): String {
@@ -51,7 +67,6 @@ internal fun archiveText(targetDate: LocalDate): String {
     return String.format(ResourcesUtil.getString(R.string.format_dday_archive), getTextFromEventDay(targetDate))
 }
 
-
 private fun getTextFromEventDay(targetDate: LocalDate): String {
     val targetMonth = targetDate.month.value
     val targetDay = targetDate.dayOfMonth
@@ -71,4 +86,11 @@ private fun getTextFromEventDay(targetDate: LocalDate): String {
     } else {
         targetDate.monthDayText()
     }
+}
+
+enum class Season(val month: Int, val day: Int) {
+    SPRING(1, 4),
+    SUMMER(4, 5),
+    AUTUMN(7, 7),
+    WINTER(10, 7);
 }

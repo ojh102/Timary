@@ -10,10 +10,6 @@
         <variable
             name="viewModel"
             type="com.github.ojh102.timary.ui.write.store.StoreViewModel" />
-
-        <variable
-            name="timaryParser"
-            type="com.github.ojh102.timary.util.TimaryParser" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,7 +70,7 @@
             android:layout_marginBottom="12dp"
             android:gravity="center_horizontal"
             android:lineSpacingMultiplier="1.2"
-            android:text="@{viewModel.currentStoreItem == null ? null : timaryParser.getStoreText(viewModel.currentStoreItem.text, viewModel.currentStoreItem.date)}"
+            android:text="@{viewModel.currentStoreItem.storeText()}"
             android:textAppearance="@style/N15GreyishBrown"
             app:layout_constraintBottom_toTopOf="@+id/btn_store"
             app:layout_constraintLeft_toLeftOf="parent"

@@ -9,17 +9,15 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
-import com.github.ojh102.timary.util.TimaryParser
+import com.github.ojh102.timary.util.extension.completeWriteText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDate
-import java.util.Calendar
 import javax.inject.Inject
 
 internal class StoreViewModel @Inject constructor(
     private val context: Context,
-    private val timaryParser: TimaryParser,
     private val localRepository: LocalRepository
 
 ) : BaseViewModel() {
@@ -57,7 +55,7 @@ internal class StoreViewModel @Inject constructor(
 
             _navigateToComplete.value = Event(
                 StoreFragmentDirections.actionStoreFragmentToCompleteFragment(
-                    timaryParser.completeWriteText(capsule.targetDate),
+                    capsule.targetDate.completeWriteText(),
                     null
                 )
             )

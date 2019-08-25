@@ -8,7 +8,6 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentReadBinding
-import com.github.ojh102.timary.util.TimaryParser
 import javax.inject.Inject
 
 internal class ReadFragment : BaseFragment<FragmentReadBinding>() {
@@ -18,14 +17,11 @@ internal class ReadFragment : BaseFragment<FragmentReadBinding>() {
 
     private val args by navArgs<ReadFragmentArgs>()
 
-    @Inject
-    lateinit var timaryParser: TimaryParser
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         binding.viewModel = viewModel
-        binding.timaryParser = timaryParser
 
         initToolbar()
 
