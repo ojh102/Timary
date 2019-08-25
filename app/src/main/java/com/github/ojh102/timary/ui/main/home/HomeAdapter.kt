@@ -7,9 +7,7 @@ import com.github.ojh102.timary.util.TimaryParser
 import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
-internal class HomeAdapter @Inject constructor(
-    private val viewModel: BaseViewModel
-) : BaseListAdapter<HomeItems>(viewModel) {
+internal class HomeAdapter @Inject constructor(viewModel: BaseViewModel) : BaseListAdapter<HomeItems>(viewModel) {
 
     companion object {
         const val TYPE_HEADER = 100

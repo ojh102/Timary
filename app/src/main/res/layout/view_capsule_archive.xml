@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="capsule"
-            type="com.github.ojh102.timary.data.entitiy.Capsule"/>
+
+        <import type="com.github.ojh102.timary.util.extension.DateExtensionsKt" />
 
         <variable
-            name="timaryParser"
-            type="com.github.ojh102.timary.util.TimaryParser"/>
+            name="item"
+            type="com.github.ojh102.timary.ui.main.archive.ArchiveItems.ArchiveItem" />
 
         <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener"/>
+            name="viewModel"
+            type="com.github.ojh102.timary.ui.main.archive.ArchiveViewModel" />
 
     </data>
 
@@ -22,58 +21,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:selectableItemBackground"
-        android:onClick="@{clickListener}">
+        android:onClick="@{() -> viewModel.onClickArchiveCapsule(item)}">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:layout_marginLeft="18dp"
-            android:text="@{timaryParser.dateToYear(capsule.writtenDate)}"
+            android:layout_marginTop="18dp"
+            android:text="@{DateExtensionsKt.yearText(item.capsule.writtenDate)}"
             android:textAppearance="@style/B12Heather"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="2018년"/>
+            tools:text="2018년" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginLeft="18dp"
-            android:text="@{timaryParser.dateToCapsuleTitle(capsule.writtenDate)}"
+            android:layout_marginTop="2dp"
+            android:text="@{DateExtensionsKt.dateMemoryText(item.capsule.writtenDate)}"
             android:textAppearance="@style/B16Heather"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_year"
-            tools:text="첫 날의 기억"/>
+            tools:text="첫 날의 기억" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_d_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="18dp"
-            android:text="@{timaryParser.dateToArchiveDay(capsule.targetDate)}"
+            android:layout_marginTop="10dp"
+            android:text="@{DateExtensionsKt.archiveText(item.capsule.targetDate)}"
             android:textAppearance="@style/B14CapsuleGrey"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            tools:text="봄이 시작되는 첫 날 꺼낸 기억"/>
+            tools:text="봄이 시작되는 첫 날 꺼낸 기억" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_content"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="24dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="@{capsule.content}"
+            android:text="@{item.capsule.content}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_d_day"
-            tools:text="asdas dasdfas hjdfaskjdfhasdjkfl hsakldfh aksldfhlksadfh klashfd klsahfdlk ashdfkl ashfdl slakfdh aslf hlkasfd hlkas h"/>
+            tools:text="asdas dasdfas hjdfaskjdfhasdjkfl hsakldfh aksldfhlksadfh klashfd klsahfdlk ashdfkl ashfdl slakfdh aslf hlkasfd hlkas h" />
 
         <View
             android:layout_width="0dp"
@@ -81,7 +80,7 @@
             android:background="@color/linePurple"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

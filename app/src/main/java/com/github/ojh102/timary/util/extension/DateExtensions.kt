@@ -46,6 +46,12 @@ internal fun LocalDate.dDay(startDay: LocalDate = LocalDate.now()): Int {
     return ChronoUnit.DAYS.between(startDay, this).toInt()
 }
 
+
+internal fun archiveText(targetDate: LocalDate): String {
+    return String.format(ResourcesUtil.getString(R.string.format_dday_archive), getTextFromEventDay(targetDate))
+}
+
+
 private fun getTextFromEventDay(targetDate: LocalDate): String {
     val targetMonth = targetDate.month.value
     val targetDay = targetDate.dayOfMonth
