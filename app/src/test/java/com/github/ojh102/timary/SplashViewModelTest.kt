@@ -2,6 +2,7 @@ package com.github.ojh102.timary
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.github.ojh102.timary.ui.splash.SplashViewModel
+import com.github.ojh102.timary.utils.LiveDataTestUtil.getValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertNotNull
 import org.junit.Before
@@ -34,7 +35,6 @@ internal class SplashViewModelTest {
 
         coroutineRule.resumeDispatcher()
 
-        assertNotNull(splashViewModel.navigateToMain.value)
+        assertNotNull(getValue(splashViewModel.navDirections))
     }
-
 }

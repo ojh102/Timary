@@ -23,7 +23,7 @@ internal class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     }
 
     private fun initNavigation() {
-        viewModel.navigateToMain.observe(this, EventObserver {
+        viewModel.navDirections.observe(this, EventObserver {
             navController.navigate(it)
         })
     }

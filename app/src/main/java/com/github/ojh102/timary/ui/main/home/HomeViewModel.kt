@@ -1,6 +1,5 @@
 package com.github.ojh102.timary.ui.main.home
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -10,6 +9,7 @@ import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
+import com.github.ojh102.timary.util.ResourcesProvider
 import com.github.ojh102.timary.util.extension.dDay
 import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
 import javax.inject.Inject
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDate
 
 internal class HomeViewModel @Inject constructor(
-    private val context: Context,
+    private val resourcesProvider: ResourcesProvider,
     private val localRepository: LocalRepository
 ) : BaseViewModel() {
 
@@ -53,7 +53,7 @@ internal class HomeViewModel @Inject constructor(
     }
 
     fun onClickClosedCapsule(item: HomeItems.StoredCapsule.ClosedCapsule) {
-        toast.value = Event(context.getString(R.string.format_click_capsule_close, item.capsule.targetDate.dDay()))
+        toast.value = Event(String.format(resourcesProvider.getString(R.string.format_click_capsule_close), item.capsule.targetDate.dDay()))
     }
 
     private fun createHomeItems(capsules: List<Capsule>): List<HomeItems> {
