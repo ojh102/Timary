@@ -184,14 +184,16 @@ dependencies {
 
     // Test
     testImplementation "junit:junit:$rootProject.junit_version"
+    testImplementation "org.mockito:mockito-core:$rootProject.mockito_version"
+    testImplementation "org.mockito:mockito-inline:$rootProject.mockito_version"
+    testImplementation "org.hamcrest:hamcrest-all:$rootProject.hamcrest_version"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.arch_testing_version"
+    testImplementation "org.robolectric:robolectric:$rootProject.robolectric_version"
+    testImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_version"
+    testImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espresso_version"
+    testImplementation "androidx.test.espresso:espresso-intents:$rootProject.espresso_version"
+    testImplementation "com.google.truth:truth:$rootProject.truth_version"
     testImplementation "org.threeten:threetenbp:$rootProject.threetenabp_test_version"
-    androidTestImplementation "org.threeten:threetenbp:$rootProject.threetenabp_test_version"
-    androidTestImplementation "junit:junit:$rootProject.junit_version"
-    androidTestImplementation "androidx.room:room-testing:$rootProject.room_version"
-    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext_junit_version}"
-    androidTestImplementation "androidx.test:rules:$rootProject.rules_version"
-    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.arch_core_testing_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_version"
 }
 
 apply plugin: 'com.google.gms.google-services'
