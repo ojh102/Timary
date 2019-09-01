@@ -188,6 +188,8 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:$rootProject.mockito_version"
     testImplementation "org.hamcrest:hamcrest-all:$rootProject.hamcrest_version"
     testImplementation "androidx.arch.core:core-testing:$rootProject.arch_testing_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutines_version"
     testImplementation "org.robolectric:robolectric:$rootProject.robolectric_version"
     testImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_version"
     testImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espresso_version"
