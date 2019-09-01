@@ -1,6 +1,5 @@
 package com.github.ojh102.timary.ui.read
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -10,14 +9,15 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
+import com.github.ojh102.timary.util.ResourcesProvider
 import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 internal class ReadViewModel @Inject constructor(
-    private val context: Context,
+    val resourcesProvider: ResourcesProvider,
     private val localRepository: LocalRepository
 ) : BaseViewModel() {
     private val _capsule = MutableLiveData<Capsule>()
@@ -50,9 +50,9 @@ internal class ReadViewModel @Inject constructor(
             launch(Dispatchers.Main) {
                 _navigateToComplete.value = Event(
                     ReadFragmentDirections.actionReadFragmentToCompleteFragment(
-                        context.getString(
-                            R.string.format_delete_capsule_title,
-                            capsule.value!!.writtenDate.dateMemoryWithLineText()
+                        String.format(
+                            resourcesProvider.getString(R.string.format_delete_capsule_title),
+                            capsule.value!!.writtenDate.dateMemoryWithLineText(resourcesProvider)
                         ),
                         null
                     )

@@ -1,6 +1,7 @@
 package com.github.ojh102.timary.util.extension
 
 import com.github.ojh102.timary.R
+import com.github.ojh102.timary.util.ResourcesProvider
 import com.github.ojh102.timary.util.ResourcesUtil
 import java.util.Locale
 import org.threeten.bp.LocalDate
@@ -39,9 +40,9 @@ internal fun LocalDate.dateMemoryText(): String {
     return String.format(ResourcesUtil.getString(R.string.format_capsule_title_format), dateText)
 }
 
-internal fun LocalDate.dateMemoryWithLineText(): String {
+internal fun LocalDate.dateMemoryWithLineText(resourcesProvider: ResourcesProvider): String {
     return DateTimeFormatter
-        .ofPattern(ResourcesUtil.getString(R.string.format_date_title_memory_with_line), Locale.KOREAN)
+        .ofPattern(resourcesProvider.getString(R.string.format_date_title_memory_with_line), Locale.KOREAN)
         .format(this)
 }
 

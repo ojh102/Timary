@@ -31,7 +31,7 @@ internal class HomeViewModel @Inject constructor(
     val homeItems: LiveData<List<HomeItems>> = _homeItems
 
     fun loadCapsules() {
-        _today.value = LocalDate.now().dateMemoryWithLineText()
+        _today.value = LocalDate.now().dateMemoryWithLineText(resourcesProvider)
 
         viewModelScope.launch(Dispatchers.IO) {
             localRepository.getHomeCapsules()

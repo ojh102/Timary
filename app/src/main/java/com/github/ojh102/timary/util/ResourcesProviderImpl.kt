@@ -5,7 +5,12 @@ import javax.inject.Inject
 
 internal class ResourcesProviderImpl @Inject constructor(
     private val context: Context
-): ResourcesProvider {
+) : ResourcesProvider {
+
+    override fun getContext(): Context {
+        return context
+    }
+
     override fun getString(resId: Int): String {
         return context.getString(resId)
     }

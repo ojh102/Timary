@@ -13,6 +13,7 @@ import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
+import com.github.ojh102.timary.util.ResourcesProvider
 import com.github.ojh102.timary.util.ResourcesUtil
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +22,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 internal class ArchiveViewModel @Inject constructor(
+    private val resourcesProvider: ResourcesProvider,
     private val localRepository: LocalRepository
 
 ) : BaseViewModel() {
@@ -56,10 +58,10 @@ internal class ArchiveViewModel @Inject constructor(
     }
 
     private fun getHeaderText(size: Int): CharSequence {
-        return SpannableString(String.format(ResourcesUtil.getString(R.string.format_archive_header), size))
+        return SpannableString(String.format(resourcesProvider.getString(R.string.format_archive_header), size))
             .apply {
                 setSpan(
-                    TextAppearanceSpan(ResourcesUtil.getContext(), R.style.B16Grape),
+                    TextAppearanceSpan(resourcesProvider.getContext(), R.style.B16Grape),
                     0,
                     size.toString().length,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
