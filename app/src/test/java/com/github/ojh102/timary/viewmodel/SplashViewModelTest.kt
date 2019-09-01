@@ -1,8 +1,9 @@
-package com.github.ojh102.timary
+package com.github.ojh102.timary.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.github.ojh102.timary.MainCoroutineRule
 import com.github.ojh102.timary.ui.splash.SplashViewModel
-import com.github.ojh102.timary.utils.LiveDataTestUtil.getValue
+import com.github.ojh102.timary.LiveDataTestUtil.getValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertNotNull
 import org.junit.Before

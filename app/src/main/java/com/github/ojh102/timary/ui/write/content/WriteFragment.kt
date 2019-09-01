@@ -31,7 +31,7 @@ internal class WriteFragment : BaseFragment<FragmentWriteBinding>() {
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.menu_write -> {
-                        viewModel.clickWrite()
+                        viewModel.onClickWrite()
                     }
                 }
 

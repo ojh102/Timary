@@ -22,7 +22,7 @@ internal class WriteViewModel @Inject constructor(
 
     val contentText = MutableLiveData<String>()
 
-    fun clickWrite() {
+    fun onClickWrite() {
         contentText.value?.let {
             if (it.isNotBlank()) {
                 _navigateToStore.value = Event(WriteFragmentDirections.actionWriteFragmentToStoreFragment(it))

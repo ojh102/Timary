@@ -1,4 +1,4 @@
-package com.github.ojh102.timary.utils
+package com.github.ojh102.timary
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
