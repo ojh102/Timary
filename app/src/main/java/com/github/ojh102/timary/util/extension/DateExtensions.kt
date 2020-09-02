@@ -3,10 +3,10 @@ package com.github.ojh102.timary.util.extension
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.util.ResourcesProvider
 import com.github.ojh102.timary.util.ResourcesUtil
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.util.Locale
-import org.threeten.bp.LocalDate
-import org.threeten.bp.format.DateTimeFormatter
-import org.threeten.bp.temporal.ChronoUnit
 
 enum class Season(val month: Int, val day: Int) {
     SPRING(1, 4),

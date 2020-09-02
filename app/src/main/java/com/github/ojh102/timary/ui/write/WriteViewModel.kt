@@ -7,8 +7,8 @@ import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.util.ResourcesProvider
 import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
+import java.time.LocalDate
 import javax.inject.Inject
-import org.threeten.bp.LocalDate
 
 internal class WriteViewModel @Inject constructor(
     private val resourcesProvider: ResourcesProvider

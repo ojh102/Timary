@@ -9,7 +9,6 @@ kapt {
     correctErrorTypes = true
 }
 apply plugin: "androidx.navigation.safeargs.kotlin"
-apply plugin: 'io.fabric'
 apply from: '../versioning.gradle'
 apply from: teamConfig('git/git-hooks.gradle')
 apply from: teamConfig('staticCodeAnalysis/ktlint.gradle')
@@ -34,10 +33,12 @@ android {
                         "room.expandProjection":"true"]
             }
         }
+
+        multiDexEnabled true
     }
 
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding true
     }
 
     compileOptions {
@@ -138,6 +139,8 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$rootProject.desugar_jdk_libs_version"
+
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines_version"
@@ -153,7 +156,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycle_version"
-    implementation "androidx.paging:paging-runtime:$rootProject.paging_version"
     implementation "androidx.room:room-runtime:$rootProject.room_version"
     implementation "androidx.room:room-ktx:$rootProject.room_version"
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
@@ -169,16 +171,10 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger_version"
 
-    // Date
-    implementation "com.jakewharton.threetenabp:threetenabp:$rootProject.threetenabp_version"
-
     // Debug
     implementation "com.jakewharton.timber:timber:$rootProject.timber_version"
     implementation "com.facebook.stetho:stetho:$rootProject.stetho_version"
     implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho_version"
-    implementation("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlytics_version") {
-        transitive = true
-    }
 
     // Lottie
     implementation "com.airbnb.android:lottie:$rootProject.lottie_version"

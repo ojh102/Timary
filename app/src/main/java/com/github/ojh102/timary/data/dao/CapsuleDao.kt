@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import com.github.ojh102.timary.data.entitiy.Capsule
 import kotlinx.coroutines.flow.Flow
-import org.threeten.bp.LocalDate
+import java.time.LocalDate
 
 @Dao
 internal abstract class CapsuleDao : BaseDao<Capsule>() {

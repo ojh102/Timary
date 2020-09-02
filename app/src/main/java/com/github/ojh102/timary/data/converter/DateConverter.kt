@@ -1,17 +1,17 @@
 package com.github.ojh102.timary.data.converter
 
 import androidx.room.TypeConverter
-import org.threeten.bp.LocalDate
-import org.threeten.bp.format.DateTimeFormatter
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 internal class DateConverter {
     @TypeConverter
-    fun fromLocaleDate(value: LocalDate): String {
+    fun fromLocalDate(value: LocalDate): String {
         return DateTimeFormatter.ISO_LOCAL_DATE.format(value)
     }
 
     @TypeConverter
-    fun toLocaleDate(value: String): LocalDate {
-        return DateTimeFormatter.ISO_LOCAL_DATE.parse(value, LocalDate.FROM)
+    fun toLocalDate(value: String): LocalDate {
+        return LocalDate.parse(value)
     }
 }

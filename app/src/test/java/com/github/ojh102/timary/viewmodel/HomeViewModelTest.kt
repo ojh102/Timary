@@ -19,7 +19,7 @@ import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
-import org.threeten.bp.LocalDate
+import java.time.LocalDate
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
