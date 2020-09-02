@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <template
     format="4"
-    revision="2"
-    name="Activity"
-    description="Creates an MVVM package with an activity and its View/ViewModel"
-    minApi="3"
-    minBuildApi="3">
+    revision="1"
+    name="Fragment"
+    description="Creates a Fragment"
+    minApi="23"
+    minBuildApi="23">
 
-    <category value="MVVM" />
+    <category value="Timary" />
 
     <parameter
         id="className"
-        name="Activity Name"
+        name="Fragment Name"
         type="string"
-        constraints="activity|nonempty|unique"
-        default="BlankActivity"
-        help="The name of the activity class to create" />
+        constraints="nonempty|unique"
+        default="BlankFragment"
+        help="The name of the fragment class to create" />
 
     <parameter
-        id="activityName"
-        name="Activity Layout Name"
+        id="fragmentName"
+        name="Fragment Layout Name"
         type="string"
         constraints="layout|nonempty|unique"
-        default="activity_blank"
-        suggest="activity_${classToResource(className)}"
+        default="fragment_blank"
+        suggest="fragment_${classToResource(className)}"
         help="The name of the layout to create" />
 
     <parameter

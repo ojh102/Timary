@@ -1,3 +1,5 @@
+def deployDir = System.getenv("BITRISE_DEPLOY_DIR") ?: "$projectDir/build"
+
 repositories {
     jcenter()
 }
@@ -7,7 +9,7 @@ configurations {
 }
 
 dependencies {
-    detekt "io.gitlab.arturbosch.detekt:detekt-cli:$rootProject.detekt_version"
+    detekt "io.gitlab.arturbosch.detekt:detekt-cli:$detekt_version"
 }
 
 task detekt(type: JavaExec) {
@@ -17,8 +19,8 @@ task detekt(type: JavaExec) {
     def input = "$projectDir/src/main/java "
     def config = "$rootDir/teamConfig/staticCodeAnalysis/detekt.yml"
     def excludes = ".*test.*,.*/resources/.*"
-    def output = "$projectDir/build/reports/detekt/detekt.html"
-    def outputXml = "$projectDir/build/reports/detekt/detekt.xml"
+    def output = "$deployDir/reports/detekt/detekt.html"
+    def outputXml = "$deployDir/reports/detekt/detekt.xml"
     def params = ['-i', input, '-c', config, '-ex', excludes, '-r', "html:$output", "-r", "xml:$outputXml"]
 
     println("PARAMS = $params")

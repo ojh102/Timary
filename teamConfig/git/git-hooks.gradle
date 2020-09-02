@@ -6,11 +6,10 @@ static def isLinuxOrMacOs() {
 task copyGitHooks(type: Copy) {
     description 'Copies the git hooks from teamConfig/git/git-hooks to the .git folder.'
     from("${rootDir}/teamConfig/git/git-hooks/") {
-        include '**/*.sh'
-        rename '(.*).sh', '$1'
+        include '**/*'
+        rename '(.*)', '$1'
     }
     into "${rootDir}/.git/hooks"
-    onlyIf { isLinuxOrMacOs() }
 }
 
 task installGitHooks(type: Exec) {
