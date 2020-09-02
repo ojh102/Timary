@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.github.ojh102.timary.ui.write.store.StoreViewModel" />
+            type="com.github.ojh102.timary.ui.store.StoreViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

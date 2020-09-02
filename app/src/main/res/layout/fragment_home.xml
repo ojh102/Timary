@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.github.ojh102.timary.ui.main.home.HomeViewModel" />
+            type="com.github.ojh102.timary.ui.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

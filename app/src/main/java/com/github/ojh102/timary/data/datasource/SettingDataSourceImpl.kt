@@ -1,6 +1,6 @@
 package com.github.ojh102.timary.data.datasource
 
-import com.github.ojh102.timary.ui.main.setting.SettingItems
+import com.github.ojh102.timary.ui.setting.SettingItems
 import javax.inject.Inject
 
 internal class SettingDataSourceImpl @Inject constructor() : SettingDataSource {

@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/writeFragment"
-        android:name="com.github.ojh102.timary.ui.write.content.WriteFragment"
+        android:name="com.github.ojh102.timary.ui.write.WriteFragment"
         android:label="WriteFragment"
         tools:layout="@layout/fragment_write">
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/storeFragment"
-        android:name="com.github.ojh102.timary.ui.write.store.StoreFragment"
+        android:name="com.github.ojh102.timary.ui.store.StoreFragment"
         android:label="StoreFragment"
         tools:layout="@layout/fragment_store">
         <argument

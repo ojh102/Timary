@@ -6,19 +6,19 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.github.ojh102.timary.ui.main.home.HomeFragment"
+        android:name="com.github.ojh102.timary.ui.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/archiveFragment"
-        android:name="com.github.ojh102.timary.ui.main.archive.ArchiveFragment"
+        android:name="com.github.ojh102.timary.ui.archive.ArchiveFragment"
         android:label="ArchiveFragment"
         tools:layout="@layout/fragment_archive" />
 
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.github.ojh102.timary.ui.main.setting.SettingFragment"
+        android:name="com.github.ojh102.timary.ui.setting.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting" />
 

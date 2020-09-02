@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.github.ojh102.timary.LiveDataTestUtil.getValue
 import com.github.ojh102.timary.MainCoroutineRule
 import com.github.ojh102.timary.data.entitiy.Capsule
-import com.github.ojh102.timary.ui.write.content.WriteViewModel
+import com.github.ojh102.timary.ui.write.WriteViewModel
 import com.github.ojh102.timary.util.ResourcesProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertNotNull

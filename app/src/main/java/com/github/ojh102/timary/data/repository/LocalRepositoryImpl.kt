@@ -4,8 +4,8 @@ import com.github.ojh102.timary.data.datasource.CapsuleDataSource
 import com.github.ojh102.timary.data.datasource.SettingDataSource
 import com.github.ojh102.timary.data.datasource.StoreDateDataSource
 import com.github.ojh102.timary.data.entitiy.Capsule
-import com.github.ojh102.timary.ui.main.setting.SettingItems
-import com.github.ojh102.timary.ui.write.store.StoreItems
+import com.github.ojh102.timary.ui.setting.SettingItems
+import com.github.ojh102.timary.ui.store.StoreItems
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 

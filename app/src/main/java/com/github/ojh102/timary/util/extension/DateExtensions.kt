@@ -8,8 +8,6 @@ import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
 
-object DateExtensions
-
 enum class Season(val month: Int, val day: Int) {
     SPRING(1, 4),
     SUMMER(4, 5),
@@ -94,7 +92,7 @@ private fun getTextFromEventDay(targetDate: LocalDate): String {
     }
 }
 
-internal fun Season.loacalDate(): LocalDate {
+internal fun Season.localDate(): LocalDate {
     val now = LocalDate.now()
 
     val targetYear = if (now.monthValue >= month && now.dayOfMonth >= day) {

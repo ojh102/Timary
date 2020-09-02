@@ -2,9 +2,9 @@ package com.github.ojh102.timary.data.datasource
 
 import android.content.Context
 import com.github.ojh102.timary.R
-import com.github.ojh102.timary.ui.write.store.StoreItems
+import com.github.ojh102.timary.ui.store.StoreItems
 import com.github.ojh102.timary.util.extension.Season
-import com.github.ojh102.timary.util.extension.loacalDate
+import com.github.ojh102.timary.util.extension.localDate
 import javax.inject.Inject
 import org.threeten.bp.LocalDate
 
@@ -26,10 +26,10 @@ internal class StoreDateDataSourceImpl @Inject constructor(
     }
 
     private fun getNextSeason(): StoreItems.Event {
-        val spring = Season.SPRING.loacalDate()
-        val summer = Season.SUMMER.loacalDate()
-        val autumn = Season.AUTUMN.loacalDate()
-        val winter = Season.WINTER.loacalDate()
+        val spring = Season.SPRING.localDate()
+        val summer = Season.SUMMER.localDate()
+        val autumn = Season.AUTUMN.localDate()
+        val winter = Season.WINTER.localDate()
 
         return when (val targetSeason = listOf(spring, summer, autumn, winter).min()) {
             spring -> {

@@ -1,8 +1,8 @@
 package com.github.ojh102.timary.data.repository
 
 import com.github.ojh102.timary.data.entitiy.Capsule
-import com.github.ojh102.timary.ui.main.setting.SettingItems
-import com.github.ojh102.timary.ui.write.store.StoreItems
+import com.github.ojh102.timary.ui.setting.SettingItems
+import com.github.ojh102.timary.ui.store.StoreItems
 import kotlinx.coroutines.flow.Flow
 
 internal interface LocalRepository {

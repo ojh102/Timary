@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.github.ojh102.timary.ui.main.archive.ArchiveViewModel" />
+            type="com.github.ojh102.timary.ui.archive.ArchiveViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
