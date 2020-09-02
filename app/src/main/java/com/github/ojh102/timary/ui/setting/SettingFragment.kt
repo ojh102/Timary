@@ -8,11 +8,13 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSettingBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.reflect.KClass
 
-internal class SettingFragment : BaseFragment<FragmentSettingBinding>() {
-    override val layoutRes = R.layout.fragment_setting
-
-    private val viewModel by viewModels<SettingViewModel> { viewModelFactory }
+@AndroidEntryPoint
+internal class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>() {
+    override val layoutResId = R.layout.fragment_setting
+    override val viewModelClass = SettingViewModel::class
 
     private val settingAdapter by lazy { SettingAdapter(viewModel) }
 

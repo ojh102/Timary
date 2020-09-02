@@ -8,11 +8,13 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentReadBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.reflect.KClass
 
-internal class ReadFragment : BaseFragment<FragmentReadBinding>() {
-    override val layoutRes = R.layout.fragment_read
-
-    private val viewModel by viewModels<ReadViewModel> { viewModelFactory }
+@AndroidEntryPoint
+internal class ReadFragment : BaseFragment<FragmentReadBinding, ReadViewModel>() {
+    override val layoutResId = R.layout.fragment_read
+    override val viewModelClass = ReadViewModel::class
 
     private val args by navArgs<ReadFragmentArgs>()
 

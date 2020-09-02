@@ -9,6 +9,7 @@ kapt {
     correctErrorTypes = true
 }
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'dagger.hilt.android.plugin'
 apply from: '../versioning.gradle'
 apply from: teamConfig('git/git-hooks.gradle')
 apply from: teamConfig('staticCodeAnalysis/ktlint.gradle')
@@ -27,7 +28,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [
+                arguments += [
                         "room.schemaLocation":"$projectDir/schemas".toString(),
                         "room.incremental":"true",
                         "room.expandProjection":"true"]
@@ -41,7 +42,12 @@ android {
         dataBinding true
     }
 
+    hilt {
+        enableTransformForLocalTests = true
+    }
+
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -64,28 +70,21 @@ android {
 
     buildTypes {
         debug {
-            ext.crashlyticsApiKey = System.getenv("TIMARY_DEBUG_FABRIC_API_KEY")
-            ext.crashlyticsApiSecret = System.getenv("TIMARY_DEBUG_FABRIC_API_SECRET")
             signingConfig signingConfigs.debug
             applicationIdSuffix ".debug"
 
             debuggable true
             zipAlignEnabled false
             minifyEnabled false
-            multiDexEnabled true
         }
 
         qa {
-            ext.crashlyticsApiKey = System.getenv("TIMARY_QA_FABRIC_API_KEY")
-            ext.crashlyticsApiSecret = System.getenv("TIMARY_QA_FABRIC_API_SECRET")
-
             signingConfig signingConfigs.debug
             applicationIdSuffix ".qa"
 
             debuggable true
             zipAlignEnabled true
             minifyEnabled true
-            multiDexEnabled false
             shrinkResources true
             crunchPngs true
 
@@ -95,15 +94,11 @@ android {
         }
 
         release {
-            ext.crashlyticsApiKey = System.getenv("TIMARY_RELEASE_FABRIC_API_KEY")
-            ext.crashlyticsApiSecret = System.getenv("TIMARY_RELEASE_FABRIC_API_SECRET")
-
             signingConfig null
 
             debuggable false
             zipAlignEnabled true
             minifyEnabled true
-            multiDexEnabled false
             shrinkResources true
             crunchPngs true
 
@@ -113,19 +108,9 @@ android {
         }
     }
 
-    applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = getApkName(variant.buildType.name)
-        }
-
-        variant.outputs.each { output ->
-            tasks.findAll {
-                it.name.startsWith("crashlyticsUploadDistribution${variant.name.capitalize()}")
-            }.each {
-                it.doFirst {
-                    ext.betaDistributionApkFilePath = System.getenv('BITRISE_SIGNED_APK_PATH')
-                }
-            }
+    sourceSets {
+        main {
+            assets.srcDirs += files("$projectDir/schemas".toString())
         }
     }
 }
@@ -167,9 +152,16 @@ dependencies {
 
     // DI
     implementation "com.google.dagger:dagger:$rootProject.dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger_version"
+    implementation "androidx.hilt:hilt-common:$rootProject.dagger_hilt_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$rootProject.dagger_hilt_version"
+    implementation "com.google.dagger:hilt-android:$rootProject.dagger_hilt_android_version"
+    testImplementation "com.google.dagger:hilt-android-testing:$rootProject.dagger_hilt_android_version"
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger_version"
+    kapt "androidx.hilt:hilt-compiler:$rootProject.dagger_hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$rootProject.dagger_hilt_android_version"
+    kaptTest "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
+    kaptTest "androidx.hilt:hilt-compiler:$rootProject.dagger_hilt_version"
+    kaptTest "com.google.dagger:hilt-android-compiler:$rootProject.dagger_hilt_android_version"
 
     // Debug
     implementation "com.jakewharton.timber:timber:$rootProject.timber_version"

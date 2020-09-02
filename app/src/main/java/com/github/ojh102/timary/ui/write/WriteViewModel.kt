@@ -1,5 +1,6 @@
 package com.github.ojh102.timary.ui.write
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
@@ -10,7 +11,7 @@ import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
 import java.time.LocalDate
 import javax.inject.Inject
 
-internal class WriteViewModel @Inject constructor(
+internal class WriteViewModel @ViewModelInject constructor(
     private val resourcesProvider: ResourcesProvider
 ) : BaseViewModel() {
 

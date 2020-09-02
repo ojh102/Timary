@@ -6,11 +6,13 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSplashBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.reflect.KClass
 
-internal class SplashFragment : BaseFragment<FragmentSplashBinding>() {
-    override val layoutRes = R.layout.fragment_splash
-
-    private val viewModel by viewModels<SplashViewModel> { viewModelFactory }
+@AndroidEntryPoint
+internal class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>() {
+    override val layoutResId = R.layout.fragment_splash
+    override val viewModelClass = SplashViewModel::class
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

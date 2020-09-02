@@ -14,11 +14,13 @@ import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentCompleteBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.reflect.KClass
 
-internal class CompleteFragment : BaseFragment<FragmentCompleteBinding>() {
-    override val layoutRes = R.layout.fragment_complete
-
-    private val viewModel by viewModels<CompleteViewModel> { viewModelFactory }
+@AndroidEntryPoint
+internal class CompleteFragment : BaseFragment<FragmentCompleteBinding, CompleteViewModel>() {
+    override val layoutResId = R.layout.fragment_complete
+    override val viewModelClass = CompleteViewModel::class
 
     private val args by navArgs<CompleteFragmentArgs>()
 

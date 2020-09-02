@@ -8,11 +8,13 @@ import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentWriteBinding
 import com.github.ojh102.timary.util.extension.hideKeyboard
 import com.github.ojh102.timary.util.extension.showKeyboard
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.reflect.KClass
 
-internal class WriteFragment : BaseFragment<FragmentWriteBinding>() {
-    override val layoutRes = R.layout.fragment_write
-
-    private val viewModel by viewModels<WriteViewModel> { viewModelFactory }
+@AndroidEntryPoint
+internal class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
+    override val layoutResId = R.layout.fragment_write
+    override val viewModelClass = WriteViewModel::class
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

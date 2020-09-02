@@ -1,44 +1,92 @@
 package com.github.ojh102.timary.data.repository
 
-import com.github.ojh102.timary.data.datasource.CapsuleDataSource
-import com.github.ojh102.timary.data.datasource.SettingDataSource
-import com.github.ojh102.timary.data.datasource.StoreDateDataSource
+import android.content.Context
+import com.github.ojh102.timary.R
+import com.github.ojh102.timary.data.dao.CapsuleDao
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.ui.setting.SettingItems
 import com.github.ojh102.timary.ui.store.StoreItems
+import com.github.ojh102.timary.util.extension.Season
+import com.github.ojh102.timary.util.extension.localDate
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
+import java.time.LocalDate
 
 internal class LocalRepositoryImpl @Inject constructor(
-    private val capsuleDataSource: CapsuleDataSource,
-    private val storeDateDataSource: StoreDateDataSource,
-    private val settingDataSource: SettingDataSource
+    @ApplicationContext private val context: Context,
+    private val capsuleDao: CapsuleDao
 ) : LocalRepository {
     override suspend fun getArchivedCapsules(): Flow<List<Capsule>> {
-        return capsuleDataSource.getArchivedCapsules()
+        return capsuleDao.getArchivedCapsules()
     }
 
     override suspend fun getHomeCapsules(): Flow<List<Capsule>> {
-        return capsuleDataSource.getHomeCapsules()
+        return capsuleDao.getHomeCapsules()
     }
 
     override suspend fun getCapsule(id: Long): Flow<Capsule> {
-        return capsuleDataSource.get(id)
+        return capsuleDao.get(id)
     }
 
     override suspend fun deleteCapsule(id: Long) {
-        return capsuleDataSource.delete(id)
+        return capsuleDao.delete(id)
     }
 
     override suspend fun createOrUpdateCapsule(capsule: Capsule) {
-        capsuleDataSource.createOrUpdate(capsule)
+        capsuleDao.createOrUpdate(capsule)
     }
 
     override fun storeItems(): List<StoreItems> {
-        return storeDateDataSource.storeItems()
+        val items = mutableListOf<StoreItems>()
+
+        items.add(StoreItems.DatePicker(context.getString(R.string.store_calendar), LocalDate.MIN))
+        items.add(getNextSeason())
+        items.add(getLastDayOfYear())
+        items.add(getFirstDayOfYear())
+        items.add(StoreItems.createRandomItem())
+
+        return items
     }
 
     override fun settingItems(): List<SettingItems> {
-        return settingDataSource.settingItems()
+        return listOf(SettingItems.TitleItem.Term)
+    }
+
+    private fun getNextSeason(): StoreItems.Event {
+        val spring = Season.SPRING.localDate()
+        val summer = Season.SUMMER.localDate()
+        val autumn = Season.AUTUMN.localDate()
+        val winter = Season.WINTER.localDate()
+
+        return when (val targetSeason = listOf(spring, summer, autumn, winter).minOrNull()) {
+            spring -> StoreItems.Event(context.getString(R.string.store_spring), targetSeason)
+            summer -> StoreItems.Event(context.getString(R.string.store_summer), targetSeason)
+            autumn -> StoreItems.Event(context.getString(R.string.store_autumn), targetSeason)
+            winter -> StoreItems.Event(context.getString(R.string.store_winter), targetSeason)
+            else -> throw IllegalStateException("what the fuck")
+        }
+    }
+
+    private fun getLastDayOfYear(): StoreItems.Event {
+        return StoreItems.Event(
+            context.getString(R.string.store_last_day),
+            LocalDate.of(
+                LocalDate.now().year,
+                12,
+                31
+            )
+        )
+    }
+
+    private fun getFirstDayOfYear(): StoreItems.Event {
+        return StoreItems.Event(
+            context.getString(R.string.store_first_day),
+            LocalDate.of(
+                LocalDate.now().year + 1,
+                1,
+                1
+            )
+        )
     }
 }

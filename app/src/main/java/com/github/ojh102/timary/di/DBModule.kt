@@ -3,50 +3,31 @@ package com.github.ojh102.timary.di
 import android.content.Context
 import androidx.room.Room
 import com.github.ojh102.timary.data.dao.CapsuleDao
-import com.github.ojh102.timary.data.datasource.CapsuleDataSource
-import com.github.ojh102.timary.data.datasource.CapsuleDataSourceImpl
-import com.github.ojh102.timary.data.datasource.SettingDataSource
-import com.github.ojh102.timary.data.datasource.SettingDataSourceImpl
-import com.github.ojh102.timary.data.datasource.StoreDateDataSource
-import com.github.ojh102.timary.data.datasource.StoreDateDataSourceImpl
 import com.github.ojh102.timary.data.room.TimaryRoomDatabase
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@Module(includes = [DBModule.ProvideModule::class])
-internal interface DBModule {
+@Module
+@InstallIn(SingletonComponent::class)
+internal class DBModule {
     companion object {
         private const val DB_NAME = "timary"
     }
 
-    @Module
-    class ProvideModule {
-        @Provides
-        @Singleton
-        fun provideRoomDatabase(context: Context): TimaryRoomDatabase {
-            return Room.databaseBuilder(context, TimaryRoomDatabase::class.java, DB_NAME)
-                .fallbackToDestructiveMigration()
-                .build()
-        }
-
-        @Provides
-        @Singleton
-        fun provideCapsuleDao(roomDatabase: TimaryRoomDatabase): CapsuleDao {
-            return roomDatabase.capsuleDao()
-        }
+    @Provides
+    @Singleton
+    fun provideRoomDatabase(@ApplicationContext context: Context): TimaryRoomDatabase {
+        return Room.databaseBuilder(context, TimaryRoomDatabase::class.java, DB_NAME)
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
-    @Binds
-    @Singleton
-    fun capsuleDataSource(capsuleDataSourceImpl: CapsuleDataSourceImpl): CapsuleDataSource
-
-    @Binds
-    @Singleton
-    fun storeDateDataSource(storeDateDataSourceImpl: StoreDateDataSourceImpl): StoreDateDataSource
-
-    @Binds
-    @Singleton
-    fun settignDataSource(settingDataSourceImpl: SettingDataSourceImpl): SettingDataSource
+    @Provides
+    fun provideCapsuleDao(roomDatabase: TimaryRoomDatabase): CapsuleDao {
+        return roomDatabase.capsuleDao()
+    }
 }

@@ -1,6 +1,7 @@
 package com.github.ojh102.timary.ui.setting
 
 import android.content.Context
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
@@ -9,10 +10,11 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-internal class SettingViewModel @Inject constructor(
-    private val context: Context,
+internal class SettingViewModel @ViewModelInject constructor(
+    @ApplicationContext private val context: Context,
     private val localRepository: LocalRepository
 ) : BaseViewModel() {
     private val _settingItems = MutableLiveData<List<SettingItems>>()

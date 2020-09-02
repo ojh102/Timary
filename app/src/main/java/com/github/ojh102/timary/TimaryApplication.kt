@@ -1,18 +1,13 @@
 package com.github.ojh102.timary
 
+import android.app.Application
 import com.facebook.stetho.Stetho
-import com.github.ojh102.timary.di.DaggerAppComponent
 import com.github.ojh102.timary.util.ResourcesUtil
-import dagger.android.AndroidInjector
-import dagger.android.support.DaggerApplication
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
-internal class TimaryApplication : DaggerApplication() {
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.builder().application(this).build()
-    }
-
+@HiltAndroidApp
+internal class TimaryApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 

@@ -3,6 +3,7 @@ package com.github.ojh102.timary.ui.archive
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.TextAppearanceSpan
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -20,7 +21,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-internal class ArchiveViewModel @Inject constructor(
+internal class ArchiveViewModel @ViewModelInject constructor(
     private val resourcesProvider: ResourcesProvider,
     private val localRepository: LocalRepository
 

@@ -1,6 +1,7 @@
 package com.github.ojh102.timary.ui.store
 
 import android.content.Context
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
@@ -10,14 +11,15 @@ import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.util.extension.completeWriteText
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 
-internal class StoreViewModel @Inject constructor(
-    private val context: Context,
+internal class StoreViewModel @ViewModelInject constructor(
+    @ApplicationContext private val context: Context,
     private val localRepository: LocalRepository
 
 ) : BaseViewModel() {

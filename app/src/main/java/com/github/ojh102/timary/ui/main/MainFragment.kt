@@ -8,11 +8,13 @@ import androidx.navigation.ui.setupWithNavController
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.reflect.KClass
 
-internal class MainFragment : BaseFragment<FragmentMainBinding>() {
-    override val layoutRes = R.layout.fragment_main
-
-    private val viewModel by viewModels<MainViewModel> { viewModelFactory }
+@AndroidEntryPoint
+internal class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
+    override val layoutResId = R.layout.fragment_main
+    override val viewModelClass = MainViewModel::class
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

@@ -12,12 +12,14 @@ import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentHomeBinding
 import com.github.ojh102.timary.util.extension.toast
 import com.google.android.material.appbar.AppBarLayout
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.cursor
+import kotlin.reflect.KClass
 
-internal class HomeFragment : BaseFragment<FragmentHomeBinding>() {
-    override val layoutRes = R.layout.fragment_home
-
-    private val viewModel by viewModels<HomeViewModel> { viewModelFactory }
+@AndroidEntryPoint
+internal class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
+    override val layoutResId = R.layout.fragment_home
+    override val viewModelClass = HomeViewModel::class
 
     private val homeAdapter by lazy { HomeAdapter(viewModel) }
 

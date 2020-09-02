@@ -1,5 +1,6 @@
 package com.github.ojh102.timary.ui.read
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -16,7 +17,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-internal class ReadViewModel @Inject constructor(
+internal class ReadViewModel @ViewModelInject constructor(
     val resourcesProvider: ResourcesProvider,
     private val localRepository: LocalRepository
 ) : BaseViewModel() {

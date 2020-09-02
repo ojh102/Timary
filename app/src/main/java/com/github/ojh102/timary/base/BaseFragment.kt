@@ -6,28 +6,32 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.github.ojh102.timary.BR
 import com.github.ojh102.timary.R
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
+import kotlin.reflect.KClass
 
-internal abstract class BaseFragment<VB : ViewDataBinding> : DaggerFragment() {
-    protected abstract val layoutRes: Int
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+internal abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
+    protected abstract val layoutResId: Int
+    protected abstract val viewModelClass: KClass<VM>
 
     lateinit var binding: VB
 
+    protected val viewModel by lazy(LazyThreadSafetyMode.NONE) {
+        ViewModelProvider(viewModelStore, defaultViewModelProviderFactory).get(viewModelClass.java)
+    }
+
     protected open val navController: NavController
-        get() = activity!!.findNavController(R.id.nav_host_fragment)
+        get() = requireActivity().findNavController(R.id.nav_host_fragment)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
+        binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
 
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.setVariable(BR.viewModel, viewModel)
 
         return binding.root
     }
