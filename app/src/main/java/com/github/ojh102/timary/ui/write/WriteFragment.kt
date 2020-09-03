@@ -1,7 +1,6 @@
 package com.github.ojh102.timary.ui.write
 
 import android.os.Bundle
-import androidx.fragment.app.viewModels
 import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
@@ -9,7 +8,6 @@ import com.github.ojh102.timary.databinding.FragmentWriteBinding
 import com.github.ojh102.timary.util.extension.hideKeyboard
 import com.github.ojh102.timary.util.extension.showKeyboard
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 internal class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
@@ -45,10 +43,13 @@ internal class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel
     }
 
     private fun initNavigation() {
-        viewModel.navigateToStore.observe(this, EventObserver {
-            binding.tvWrite.hideKeyboard(0L)
-            navController.navigate(it)
-        })
+        viewModel.navigateToStore.observe(
+            this,
+            EventObserver {
+                binding.tvWrite.hideKeyboard(0L)
+                navController.navigate(it)
+            }
+        )
     }
 
     private fun initView() {

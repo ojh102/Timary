@@ -1,13 +1,11 @@
 package com.github.ojh102.timary.ui.splash
 
 import android.os.Bundle
-import androidx.fragment.app.viewModels
 import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSplashBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 internal class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>() {
@@ -25,8 +23,11 @@ internal class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewMo
     }
 
     private fun initNavigation() {
-        viewModel.navDirections.observe(this, EventObserver {
-            navController.navigate(it)
-        })
+        viewModel.navDirections.observe(
+            this,
+            EventObserver {
+                navController.navigate(it)
+            }
+        )
     }
 }

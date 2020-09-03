@@ -61,5 +61,4 @@ internal class WriteViewModelTest {
 
         assertNotNull(getValue(writeViewModel.navigateToStore))
     }
-
 }

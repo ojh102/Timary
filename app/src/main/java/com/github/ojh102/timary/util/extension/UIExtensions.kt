@@ -18,27 +18,35 @@ fun Context?.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
 }
 
 fun View.showKeyboard(delay: Long = 300) {
-    Handler().postDelayed({
-        requestFocus()
-        val imm = context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
-    }, delay)
+    Handler().postDelayed(
+        {
+            requestFocus()
+            val imm = context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+        },
+        delay
+    )
 }
 
 fun View.hideKeyboard(delay: Long = 300) {
-    Handler().postDelayed({
-        val imm = context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(windowToken, 0)
-    }, delay)
+    Handler().postDelayed(
+        {
+            val imm = context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(windowToken, 0)
+        },
+        delay
+    )
 }
 
 inline fun <T : View> T.afterMeasured(crossinline f: T.() -> Unit) {
-    viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-        override fun onGlobalLayout() {
-            if (measuredWidth > 0 && measuredHeight > 0) {
-                viewTreeObserver.removeOnGlobalLayoutListener(this)
-                f()
+    viewTreeObserver.addOnGlobalLayoutListener(
+        object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                if (measuredWidth > 0 && measuredHeight > 0) {
+                    viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    f()
+                }
             }
         }
-    })
+    )
 }

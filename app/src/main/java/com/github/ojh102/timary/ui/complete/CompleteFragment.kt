@@ -8,14 +8,12 @@ import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
 import android.view.animation.TranslateAnimation
 import androidx.core.view.doOnPreDraw
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentCompleteBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 internal class CompleteFragment : BaseFragment<FragmentCompleteBinding, CompleteViewModel>() {
@@ -63,8 +61,14 @@ internal class CompleteFragment : BaseFragment<FragmentCompleteBinding, Complete
 
         binding.ivLogo.doOnPreDraw {
             binding.ivLogo.animation = ScaleAnimation(
-                1f, 0.8f, 1f, 0.8f,
-                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f
+                1f,
+                0.8f,
+                1f,
+                0.8f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f
             ).apply {
                 repeatCount = Animation.INFINITE
                 repeatMode = Animation.REVERSE

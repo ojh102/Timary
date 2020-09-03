@@ -21,11 +21,9 @@ internal class FakeLocalRepository : LocalRepository {
     }
 
     override suspend fun deleteCapsule(id: Long) {
-
     }
 
     override suspend fun createOrUpdateCapsule(capsule: Capsule) {
-
     }
 
     override fun storeItems(): List<StoreItems> {

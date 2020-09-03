@@ -1,7 +1,6 @@
 package com.github.ojh102.timary.ui.setting
 
 import android.os.Bundle
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.EventObserver
@@ -9,7 +8,6 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentSettingBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 internal class SettingFragment : BaseFragment<FragmentSettingBinding, SettingViewModel>() {

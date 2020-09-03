@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.R
@@ -12,9 +13,6 @@ import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.util.extension.completeWriteText
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 
@@ -53,7 +51,7 @@ internal class StoreViewModel @ViewModelInject constructor(
                 writtenDate = LocalDate.now()
             )
 
-            GlobalScope.launch(Dispatchers.IO) { localRepository.createOrUpdateCapsule(capsule) }
+            viewModelScope.launch { localRepository.createOrUpdateCapsule(capsule) }
 
             _navigateToComplete.value = Event(
                 StoreFragmentDirections.actionStoreFragmentToCompleteFragment(

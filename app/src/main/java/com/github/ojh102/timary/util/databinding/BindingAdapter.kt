@@ -15,65 +15,55 @@ import androidx.databinding.BindingAdapter
 import com.github.ojh102.timary.util.extension.afterMeasured
 import com.github.ojh102.timary.util.extension.hasResource
 
-class BindingAdapter {
-
-    companion object {
-        @JvmStatic
-        @BindingAdapter("android:textColor")
-        fun setTextColor(textView: TextView, colorOrResId: Int) {
-            if (textView.context.hasResource(colorOrResId)) {
-                val resId = if (colorOrResId == 0) {
-                    null
-                } else {
-                    AppCompatResources.getColorStateList(textView.context, colorOrResId)
-                }
-
-                textView.setTextColor(resId)
-            } else {
-                textView.setTextColor(colorOrResId)
-            }
+@BindingAdapter("android:textColor")
+internal fun setTextColor(textView: TextView, colorOrResId: Int) {
+    if (textView.context.hasResource(colorOrResId)) {
+        val resId = if (colorOrResId == 0) {
+            null
+        } else {
+            AppCompatResources.getColorStateList(textView.context, colorOrResId)
         }
 
-        @JvmStatic
-        @BindingAdapter("textGradientStart", "textGradientEnd")
-        fun setGradientText(textView: TextView, startColorRes: Int, endColorRes: Int) {
-            textView.afterMeasured {
-                paint.shader = LinearGradient(
-                        0f,
-                        0f,
-                        width.toFloat(),
-                        height.toFloat(),
-                        ContextCompat.getColor(context, startColorRes),
-                        ContextCompat.getColor(context, endColorRes),
-                        Shader.TileMode.CLAMP
-                )
-            }
-        }
+        textView.setTextColor(resId)
+    } else {
+        textView.setTextColor(colorOrResId)
+    }
+}
 
-        @JvmStatic
-        @BindingAdapter("android:textAppearance")
-        fun setTextAppearance(textView: TextView, @StyleRes resId: Int) {
-            if (resId == 0) {
-                return
-            }
+@BindingAdapter("textGradientStart", "textGradientEnd")
+internal fun setGradientText(textView: TextView, startColorRes: Int, endColorRes: Int) {
+    textView.afterMeasured {
+        paint.shader = LinearGradient(
+            0f,
+            0f,
+            width.toFloat(),
+            height.toFloat(),
+            ContextCompat.getColor(context, startColorRes),
+            ContextCompat.getColor(context, endColorRes),
+            Shader.TileMode.CLAMP
+        )
+    }
+}
 
-            TextViewCompat.setTextAppearance(textView, resId)
-        }
+@BindingAdapter("android:textAppearance")
+internal fun setTextAppearance(textView: TextView, @StyleRes resId: Int) {
+    if (resId == 0) {
+        return
+    }
 
-        @JvmStatic
-        @BindingAdapter("movementMethod")
-        fun setMovementMethod(textView: TextView, movementMethod: MovementMethod) {
-            textView.movementMethod = movementMethod
-        }
+    TextViewCompat.setTextAppearance(textView, resId)
+}
 
-        @JvmStatic
-        @BindingAdapter("android:background")
-        fun setBackground(view: View, colorOrResId: Int) {
-            if (view.context.hasResource(colorOrResId)) {
-                ViewCompat.setBackground(view, AppCompatResources.getDrawable(view.context, colorOrResId))
-            } else {
-                ViewCompat.setBackground(view, ColorDrawable(colorOrResId))
-            }
-        }
+@BindingAdapter("movementMethod")
+internal fun setMovementMethod(textView: TextView, movementMethod: MovementMethod) {
+    textView.movementMethod = movementMethod
+}
+
+@BindingAdapter("android:background")
+internal fun setBackground(view: View, colorOrResId: Int) {
+    if (view.context.hasResource(colorOrResId)) {
+        ViewCompat.setBackground(view, AppCompatResources.getDrawable(view.context, colorOrResId))
+    } else {
+        ViewCompat.setBackground(view, ColorDrawable(colorOrResId))
     }
 }

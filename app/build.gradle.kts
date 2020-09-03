@@ -210,4 +210,8 @@ dependencies {
     testImplementation(Libs.Test.mockitoInline)
     testImplementation(Libs.Test.robolectric)
     testImplementation(Libs.Test.truth)
+    testImplementation(Libs.Test.hiltAndroidTesting)
+    kaptTest(Libs.Test.daggerCompiler)
+    kaptTest(Libs.Test.hiltCompiler)
+    kaptTest(Libs.Test.hiltAndroidCompiler)
 }

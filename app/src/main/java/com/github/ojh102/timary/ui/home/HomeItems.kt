@@ -8,8 +8,8 @@ import com.github.ojh102.timary.base.BaseItem
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.util.ResourcesUtil
 
-internal sealed class HomeItems(val id: Long) : BaseItem(id.toString()) {
-    data class Header(val storedCapsuleSize: Int) : HomeItems(storedCapsuleSize.toLong()) {
+internal sealed class HomeItems : BaseItem {
+    data class Header(val storedCapsuleSize: Int, override val itemId: String = storedCapsuleSize.toString()) : HomeItems() {
         fun headerText(): CharSequence {
             val text = String.format(ResourcesUtil.getString(R.string.format_home_header), storedCapsuleSize)
 
@@ -24,7 +24,7 @@ internal sealed class HomeItems(val id: Long) : BaseItem(id.toString()) {
         }
     }
 
-    sealed class StoredCapsule(open val capsule: Capsule) : HomeItems(capsule.id) {
+    sealed class StoredCapsule(open val capsule: Capsule, override val itemId: String = capsule.id.toString()) : HomeItems() {
         data class ClosedCapsule(override val capsule: Capsule) : StoredCapsule(capsule)
 
         data class OpenedCapsule(override val capsule: Capsule) : StoredCapsule(capsule)

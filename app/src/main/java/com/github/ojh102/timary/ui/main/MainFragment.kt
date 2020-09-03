@@ -2,14 +2,12 @@ package com.github.ojh102.timary.ui.main
 
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 internal class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {

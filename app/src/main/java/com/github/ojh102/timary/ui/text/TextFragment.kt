@@ -1,14 +1,12 @@
 package com.github.ojh102.timary.ui.text
 
 import android.os.Bundle
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentTextBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 internal class TextFragment : BaseFragment<FragmentTextBinding, TextViewModel>() {

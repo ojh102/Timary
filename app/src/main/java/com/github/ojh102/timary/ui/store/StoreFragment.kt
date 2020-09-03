@@ -2,7 +2,6 @@ package com.github.ojh102.timary.ui.store
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +12,6 @@ import com.github.ojh102.timary.databinding.FragmentStoreBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
 import java.util.Calendar
-import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 internal class StoreFragment : BaseFragment<FragmentStoreBinding, StoreViewModel>() {
@@ -59,9 +57,15 @@ internal class StoreFragment : BaseFragment<FragmentStoreBinding, StoreViewModel
         }
 
         context?.let {
-            DatePickerDialog(it, DatePickerDialog.OnDateSetListener { _, year, month, day ->
-                viewModel.onSelectDatePicker(LocalDate.of(year, month + 1, day))
-            }, cal[Calendar.YEAR], cal[Calendar.MONTH], cal[Calendar.DAY_OF_MONTH]).apply {
+            DatePickerDialog(
+                it,
+                DatePickerDialog.OnDateSetListener { _, year, month, day ->
+                    viewModel.onSelectDatePicker(LocalDate.of(year, month + 1, day))
+                },
+                cal[Calendar.YEAR],
+                cal[Calendar.MONTH],
+                cal[Calendar.DAY_OF_MONTH]
+            ).apply {
                 setCancelable(false)
                 setButton(DatePickerDialog.BUTTON_NEGATIVE, null) { _, _ -> }
                 datePicker.minDate = cal.timeInMillis

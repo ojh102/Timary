@@ -6,7 +6,6 @@ import com.github.ojh102.timary.Event
 import com.github.ojh102.timary.base.BaseViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 internal class SplashViewModel @ViewModelInject constructor() : BaseViewModel() {
     fun initSplash() {

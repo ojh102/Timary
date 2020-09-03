@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 
 @Dao
-internal abstract class CapsuleDao : BaseDao<Capsule>() {
+internal abstract class CapsuleDao : BaseDao<Capsule> {
     @Query("SELECT * FROM capsule WHERE id = :id")
     abstract fun get(id: Long): Flow<Capsule>
 

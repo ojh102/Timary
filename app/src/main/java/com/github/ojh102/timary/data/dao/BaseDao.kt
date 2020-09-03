@@ -4,16 +4,16 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 
-internal abstract class BaseDao<T> {
+internal interface BaseDao<T> {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun createOrUpdate(entities: List<T>)
+    suspend fun createOrUpdate(entities: List<T>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun createOrUpdate(entity: T)
+    suspend fun createOrUpdate(entity: T)
 
     @Delete
-    abstract fun delete(entity: T)
+    suspend fun delete(entity: T)
 
     @Delete
-    abstract fun deletes(entities: List<T>)
+    suspend fun deletes(entities: List<T>)
 }

@@ -1,19 +1,13 @@
 package com.github.ojh102.timary.util.extension
 
 import com.github.ojh102.timary.R
+import com.github.ojh102.timary.data.Season
 import com.github.ojh102.timary.util.ResourcesProvider
 import com.github.ojh102.timary.util.ResourcesUtil
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.Locale
-
-enum class Season(val month: Int, val day: Int) {
-    SPRING(1, 4),
-    SUMMER(4, 5),
-    AUTUMN(7, 7),
-    WINTER(10, 7);
-}
 
 internal fun LocalDate.yyMMdd(): String {
     return DateTimeFormatter.ofPattern(ResourcesUtil.getString(R.string.format_date), Locale.KOREAN).format(this)

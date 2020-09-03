@@ -11,7 +11,6 @@ import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 
 internal class SettingViewModel @ViewModelInject constructor(
     @ApplicationContext private val context: Context,

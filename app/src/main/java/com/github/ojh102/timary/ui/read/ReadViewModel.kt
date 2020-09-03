@@ -12,10 +12,8 @@ import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.util.ResourcesProvider
 import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 internal class ReadViewModel @ViewModelInject constructor(
     val resourcesProvider: ResourcesProvider,
@@ -31,11 +29,9 @@ internal class ReadViewModel @ViewModelInject constructor(
     val navigateToComplete: LiveData<Event<NavDirections>> = _navigateToComplete
 
     fun loadCapusle(capsuleId: Long) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             localRepository.getCapsule(capsuleId).collect {
-                launch(Dispatchers.Main) {
-                    _capsule.value = it
-                }
+                _capsule.value = it
             }
         }
     }
@@ -45,20 +41,18 @@ internal class ReadViewModel @ViewModelInject constructor(
     }
 
     fun deleteCapsule(capsuleId: Long) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             localRepository.deleteCapsule(capsuleId)
 
-            launch(Dispatchers.Main) {
-                _navigateToComplete.value = Event(
-                    ReadFragmentDirections.actionReadFragmentToCompleteFragment(
-                        String.format(
-                            resourcesProvider.getString(R.string.format_delete_capsule_title),
-                            capsule.value!!.writtenDate.dateMemoryWithLineText(resourcesProvider)
-                        ),
-                        null
-                    )
+            _navigateToComplete.value = Event(
+                ReadFragmentDirections.actionReadFragmentToCompleteFragment(
+                    String.format(
+                        resourcesProvider.getString(R.string.format_delete_capsule_title),
+                        capsule.value!!.writtenDate.dateMemoryWithLineText(resourcesProvider)
+                    ),
+                    null
                 )
-            }
+            )
         }
     }
 }

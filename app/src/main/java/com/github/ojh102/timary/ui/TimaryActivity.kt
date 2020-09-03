@@ -6,7 +6,6 @@ import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseActivity
 import com.github.ojh102.timary.databinding.ActivityTimaryBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 internal class TimaryActivity : BaseActivity<ActivityTimaryBinding, TimaryActivityViewModel>() {

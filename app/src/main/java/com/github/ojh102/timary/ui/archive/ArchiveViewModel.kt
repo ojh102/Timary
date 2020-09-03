@@ -15,8 +15,6 @@ import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.main.MainFragmentDirections
 import com.github.ojh102.timary.util.ResourcesProvider
-import javax.inject.Inject
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -37,14 +35,12 @@ internal class ArchiveViewModel @ViewModelInject constructor(
     val navigateToRead: LiveData<Event<NavDirections>> = _navigateToRead
 
     fun loadArchiveCapsules() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             localRepository.getArchivedCapsules()
                 .map { createArchiveItems(it) }
                 .collect {
-                    launch(Dispatchers.Main) {
-                        _headerText.value = getHeaderText(it.size)
-                        _archiveItems.value = it
-                    }
+                    _headerText.value = getHeaderText(it.size)
+                    _archiveItems.value = it
                 }
         }
     }

@@ -2,13 +2,13 @@ package com.github.ojh102.timary.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.github.ojh102.timary.FakeLocalRepository
+import com.github.ojh102.timary.LiveDataTestUtil.getValue
 import com.github.ojh102.timary.MainCoroutineRule
 import com.github.ojh102.timary.data.entitiy.Capsule
 import com.github.ojh102.timary.data.repository.LocalRepository
 import com.github.ojh102.timary.ui.home.HomeItems
 import com.github.ojh102.timary.ui.home.HomeViewModel
 import com.github.ojh102.timary.util.ResourcesProvider
-import com.github.ojh102.timary.LiveDataTestUtil.getValue
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before

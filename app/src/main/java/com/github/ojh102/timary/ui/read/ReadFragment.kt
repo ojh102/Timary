@@ -2,14 +2,12 @@ package com.github.ojh102.timary.ui.read
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.github.ojh102.timary.EventObserver
 import com.github.ojh102.timary.R
 import com.github.ojh102.timary.base.BaseFragment
 import com.github.ojh102.timary.databinding.FragmentReadBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 internal class ReadFragment : BaseFragment<FragmentReadBinding, ReadViewModel>() {
@@ -25,16 +23,19 @@ internal class ReadFragment : BaseFragment<FragmentReadBinding, ReadViewModel>()
 
         initToolbar()
 
-        viewModel.showDeleteDialog.observe(this, EventObserver {
-            AlertDialog.Builder(context!!, R.style.TimaryDeleteAlertDialogStyle)
-                .setTitle(getString(R.string.read_delete_title))
-                .setMessage(getString(R.string.read_delete_message))
-                .setPositiveButton(getString(R.string.delete)) { _, _ ->
-                    viewModel.deleteCapsule(args.capsuleId)
-                }
-                .setNegativeButton(getString(R.string.cancel)) { _, _ -> }
-                .show()
-        })
+        viewModel.showDeleteDialog.observe(
+            this,
+            EventObserver {
+                AlertDialog.Builder(context!!, R.style.TimaryDeleteAlertDialogStyle)
+                    .setTitle(getString(R.string.read_delete_title))
+                    .setMessage(getString(R.string.read_delete_message))
+                    .setPositiveButton(getString(R.string.delete)) { _, _ ->
+                        viewModel.deleteCapsule(args.capsuleId)
+                    }
+                    .setNegativeButton(getString(R.string.cancel)) { _, _ -> }
+                    .show()
+            }
+        )
 
         viewModel.navigateToComplete.observe(this, EventObserver { navController.navigate(it) })
 

@@ -46,7 +46,7 @@ object Libs {
     object Test {
         const val junit = "junit:junit:${Versions.Test.junit}"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Kotlin.coroutines}"
-        const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Kotlin.coroutines}"
+        const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Kotlin.coroutines}"
         const val arcTesting = "androidx.arch.core:core-testing:${Versions.Test.archTesting}"
         const val roomTesting = "androidx.room:room-testing:${Versions.Google.Jetpack.room}"
         const val mockitoCore = "org.mockito:mockito-core:${Versions.Test.mockito}"

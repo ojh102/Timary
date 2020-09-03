@@ -9,7 +9,6 @@ import com.github.ojh102.timary.base.BaseViewModel
 import com.github.ojh102.timary.util.ResourcesProvider
 import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
 import java.time.LocalDate
-import javax.inject.Inject
 
 internal class WriteViewModel @ViewModelInject constructor(
     private val resourcesProvider: ResourcesProvider

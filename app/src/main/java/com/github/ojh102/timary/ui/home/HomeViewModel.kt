@@ -13,8 +13,6 @@ import com.github.ojh102.timary.ui.main.MainFragmentDirections
 import com.github.ojh102.timary.util.ResourcesProvider
 import com.github.ojh102.timary.util.extension.dDay
 import com.github.ojh102.timary.util.extension.dateMemoryWithLineText
-import javax.inject.Inject
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -34,13 +32,11 @@ internal class HomeViewModel @ViewModelInject constructor(
     fun loadCapsules() {
         _today.value = LocalDate.now().dateMemoryWithLineText(resourcesProvider)
 
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             localRepository.getHomeCapsules()
                 .map { createHomeItems(it) }
                 .collect {
-                    launch(Dispatchers.Main) {
-                        _homeItems.value = it
-                    }
+                    _homeItems.value = it
                 }
         }
     }

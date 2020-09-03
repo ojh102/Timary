@@ -3,7 +3,6 @@ package com.github.ojh102.timary.ui.home
 import android.os.Bundle
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ojh102.timary.EventObserver
@@ -14,7 +13,6 @@ import com.github.ojh102.timary.util.extension.toast
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.cursor
-import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 internal class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -37,9 +35,11 @@ internal class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>()
     }
 
     private fun initToolbar() {
-        binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, _ ->
-            binding.tvDate.alpha = (1 - (appBarLayout.y / appBarLayout.totalScrollRange) * -1)
-        })
+        binding.appbar.addOnOffsetChangedListener(
+            AppBarLayout.OnOffsetChangedListener { appBarLayout, _ ->
+                binding.tvDate.alpha = (1 - (appBarLayout.y / appBarLayout.totalScrollRange) * -1)
+            }
+        )
 
         cursor.run {
             animation = AlphaAnimation(0f, 1f).apply {
